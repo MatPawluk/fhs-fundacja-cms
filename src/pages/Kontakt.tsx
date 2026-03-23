@@ -194,7 +194,7 @@ const Kontakt = () => {
 
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#94c43d] text-gray-900 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]"
+                    className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#94c43d] text-white rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]"
                   >
                     {pt.submitButton}
                     <Send className="w-5 h-5" />
