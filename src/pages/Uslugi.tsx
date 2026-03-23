@@ -249,7 +249,7 @@ const Uslugi = () => {
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 backdrop-blur-sm text-gray-900/80 text-sm font-medium mb-4">{t.stats.badge}</span>
+            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 backdrop-blur-sm text-white/80 text-sm font-medium mb-4">{t.stats.badge}</span>
           </motion.div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -258,7 +258,7 @@ const Uslugi = () => {
                 <div className="font-display text-5xl lg:text-6xl font-bold text-lime mb-3">
                   {stat.isText ? <span>{stat.suffix}</span> : <AnimatedCounter end={stat.value} suffix={stat.suffix} />}
                 </div>
-                <p className="text-gray-900/70 text-sm">{stat.label}</p>
+                <p className="text-white/70 text-sm">{stat.label}</p>
               </motion.div>
             ))}
           </div>
