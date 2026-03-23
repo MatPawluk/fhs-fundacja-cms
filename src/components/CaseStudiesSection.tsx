@@ -37,10 +37,10 @@ export const CaseStudiesSection = () => {
               <motion.div animate={{ rotateY: flippedCard === index ? 180 : 0 }} transition={{ duration: 0.6 }} className="relative w-full h-full preserve-3d" style={{ transformStyle: 'preserve-3d' }}>
                 <div className="absolute inset-0 rounded-3xl overflow-hidden backface-hidden" style={{ backfaceVisibility: 'hidden' }}>
                   <img src={caseStudyImages[study.imageKey]} alt={study.name} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#f5f3ef] via-[#f5f3ef]/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <span className="text-lime text-sm font-medium uppercase tracking-wider">{study.category}</span>
-                    <h3 className="font-display text-2xl font-bold text-gray-900 mt-2">{study.name}</h3>
+                    <span className="text-[#94c43d] text-sm font-medium uppercase tracking-wider">{study.category}</span>
+                    <h3 className="font-display text-2xl font-bold text-white mt-2">{study.name}</h3>
                   </div>
                 </div>
                 <div className="absolute inset-0 rounded-3xl bg-[#f0ede8] border border-gray-200 p-6 backface-hidden overflow-hidden" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>
