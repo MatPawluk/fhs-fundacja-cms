@@ -34,7 +34,7 @@ export const TeamCarousel = () => {
           {duplicatedPhotos.map((photo, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-64 h-40 rounded-2xl overflow-hidden"
+              className="flex-shrink-0 w-64 h-40 rounded-2xl overflow-hidden shadow-md"
               style={{
                 transform: `rotate(${index % 2 === 0 ? '-2deg' : '2deg'})`,
               }}
