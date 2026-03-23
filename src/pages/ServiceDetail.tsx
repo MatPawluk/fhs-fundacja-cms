@@ -22,11 +22,11 @@ const ServiceDetail = () => {
   const displayTitle = service.title;
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#1a1a1a' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
       
       {/* Header */}
-      <section className="relative pt-28 pb-20 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="relative pt-28 pb-20 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img 
             src={service.image} 
@@ -163,7 +163,7 @@ const ServiceDetail = () => {
       </ParallaxSection>
 
       {/* Scope */}
-      <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -315,7 +315,7 @@ const ServiceDetail = () => {
       </ParallaxSection>
 
       {/* Case Study */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div
@@ -337,7 +337,7 @@ const ServiceDetail = () => {
       </section>
 
       {/* CTA Section - consistent style */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-lime/8 blur-[150px] rounded-full" />
         </div>

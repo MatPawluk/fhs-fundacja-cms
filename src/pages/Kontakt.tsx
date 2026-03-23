@@ -63,7 +63,7 @@ const Kontakt = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#1a1a1a' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
       
       {/* Main Content */}
@@ -207,7 +207,7 @@ const Kontakt = () => {
       </section>
 
       {/* Locations Section - consistent dark bg */}
-      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent" />
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div

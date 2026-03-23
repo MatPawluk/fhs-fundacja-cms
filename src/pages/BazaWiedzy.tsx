@@ -37,11 +37,11 @@ const BazaWiedzy = () => {
     : articles.filter(article => article.category === categories[activeCategoryIndex]);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#1a1a1a' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative pt-28 pb-12 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="relative pt-28 pb-12 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img src={worldMap} alt="" className="w-full h-full object-cover opacity-10" />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(5,6,8,0.8), rgba(5,6,8,0.9), #1a1a1a)' }} />
@@ -62,7 +62,7 @@ const BazaWiedzy = () => {
       </section>
 
       {/* Articles Section */}
-      <section className="py-12 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-12 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           {/* Categories */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="flex flex-wrap gap-3 mb-10">
@@ -132,7 +132,7 @@ const BazaWiedzy = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-lime/8 blur-[150px] rounded-full" />
         </div>

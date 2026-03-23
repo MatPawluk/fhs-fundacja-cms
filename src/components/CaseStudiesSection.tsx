@@ -25,7 +25,7 @@ export const CaseStudiesSection = () => {
   const caseStudies = caseStudiesTranslations[language];
 
   return (
-    <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+    <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
           <span className="inline-block px-4 py-2 rounded-full bg-lime/20 text-lime text-sm font-medium uppercase tracking-wider mb-4">{t.caseStudies.badge}</span>

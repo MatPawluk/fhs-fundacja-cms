@@ -69,18 +69,18 @@ const ArticleDetail = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-[#f5f3ef]">
       <Navbar />
       
       {/* Header */}
-      <section className="relative pt-28 pb-16 bg-gray-900 overflow-hidden">
+      <section className="relative pt-28 pb-16 bg-[#f5f3ef] overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <img 
             src={article.image} 
             alt={article.title}
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/90 to-gray-900/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#f5f3ef] via-[#f5f3ef]/90 to-[#f5f3ef]/70" />
         </div>
         
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
@@ -121,7 +121,7 @@ const ArticleDetail = () => {
       </section>
 
       {/* Article Content */}
-      <section className="py-16 bg-gray-950 text-gray-900">
+      <section className="py-16 bg-[#f5f3ef] text-gray-900">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-4 gap-12">
             {/* Sidebar */}
@@ -216,7 +216,7 @@ const ArticleDetail = () => {
                 </h3>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                   {['Skala', 'Innowacje', 'Koszty', 'Szybkość'].map((item, index) => (
-                    <div key={item} className="text-center p-4 bg-gray-900/50 rounded-2xl border border-gray-700/50">
+                    <div key={item} className="text-center p-4 bg-[#f5f3ef]/50 rounded-2xl border border-gray-700/50">
                       <div className="font-display text-4xl font-bold text-lime mb-2">
                         {['50%', '15%', '30%', '2x'][index]}
                       </div>
@@ -248,7 +248,7 @@ const ArticleDetail = () => {
                         alt={related.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#f5f3ef] via-[#f5f3ef]/50 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-6">
                         <h4 className="font-semibold text-gray-900 group-hover:text-lime transition-colors">
                           {related.title}

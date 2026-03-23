@@ -128,11 +128,11 @@ const Uslugi = () => {
   const translatedCategories = serviceCategoriesTranslations[language];
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#1a1a1a' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative pt-28 pb-16 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="relative pt-28 pb-16 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img src={worldMap} alt="" className="w-full h-full object-cover opacity-10" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/80 via-[#1a1a1a]/90 to-[#1a1a1a]" />
@@ -153,7 +153,7 @@ const Uslugi = () => {
       </section>
 
       {/* Categories Accordion Section */}
-      <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#1a1a1a] to-transparent z-[1]" />
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div className="absolute inset-0" style={{
@@ -266,7 +266,7 @@ const Uslugi = () => {
       </section>
 
       {/* Trust Section */}
-      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center text-gray-500 text-sm uppercase tracking-widest mb-8">
             {t.trust.title}
@@ -276,7 +276,7 @@ const Uslugi = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute bottom-10 left-10 opacity-[0.06] pointer-events-none">
           <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none"></span>
         </div>

@@ -52,7 +52,7 @@ const ONas = () => {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#1a1a1a' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
       
       {/* Hero Section */}
@@ -114,7 +114,7 @@ const ONas = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-lime/10 to-transparent" />
         
         <div className="container mx-auto px-6 lg:px-12">
@@ -155,7 +155,7 @@ const ONas = () => {
       <TeamCarousel />
 
       {/* World Dot Map */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 backdrop-blur-sm text-gray-900/80 text-sm font-medium mb-4">{pt.connectionBadge}</span>
@@ -168,7 +168,7 @@ const ONas = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-lime/8 to-transparent" />
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
@@ -207,7 +207,7 @@ const ONas = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute bottom-10 left-10 opacity-[0.06] pointer-events-none">
           <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none"></span>
         </div>
