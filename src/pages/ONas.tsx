@@ -59,7 +59,7 @@ const ONas = () => {
       <section ref={heroRef} className="relative min-h-screen overflow-hidden flex items-center">
         <motion.div style={{ y: heroY }} className="absolute inset-0">
           <img src={shanghaiHeroBg} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/60 via-[#1a1a1a]/80 to-[#1a1a1a]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#f5f3ef]/60 via-[#f5f3ef]/80 to-[#f5f3ef]" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#1a1a1a_80%)]" />
         </motion.div>
         
@@ -129,7 +129,7 @@ const ONas = () => {
                 <motion.div key={member.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="group">
                   <div className="relative mb-4 rounded-2xl overflow-hidden aspect-[3/4]">
                     <img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#f5f3ef]/80 via-transparent to-transparent" />
                   </div>
                   <h3 className="font-display font-bold text-base lg:text-lg text-gray-900">{member.name}</h3>
                   <p className="text-gray-500 text-xs lg:text-sm">{member.role}</p>
@@ -141,7 +141,7 @@ const ONas = () => {
                 <motion.div key={member.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (index + 3) * 0.1 }} className="group">
                   <div className="relative mb-4 rounded-2xl overflow-hidden aspect-[3/4]">
                     <img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#f5f3ef]/80 via-transparent to-transparent" />
                   </div>
                   <h3 className="font-display font-bold text-base lg:text-lg text-gray-900">{member.name}</h3>
                   <p className="text-gray-500 text-xs lg:text-sm">{member.role}</p>

@@ -135,7 +135,7 @@ const Uslugi = () => {
       <section className="relative pt-28 pb-16 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img src={worldMap} alt="" className="w-full h-full object-cover opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/80 via-[#1a1a1a]/90 to-[#1a1a1a]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#f5f3ef]/80 via-[#f5f3ef]/90 to-[#f5f3ef]" />
           <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-[#94c43d]/5 blur-[150px] rounded-full" />
         </div>
         
@@ -154,7 +154,7 @@ const Uslugi = () => {
 
       {/* Categories Accordion Section */}
       <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
-        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#1a1a1a] to-transparent z-[1]" />
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#f5f3ef] to-transparent z-[1]" />
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div className="absolute inset-0" style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, rgba(196, 255, 0, 0.3) 1px, transparent 0)`,
@@ -183,7 +183,7 @@ const Uslugi = () => {
                       <span className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-lime transition-colors duration-300">
                         {translated.title}
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-gray-800/50 text-gray-500 text-xs">
+                      <span className="px-3 py-1 rounded-full bg-white/80 text-gray-500 text-xs">
                         {catMeta.count} {getServicesCountLabel(catMeta.count, language)}
                       </span>
                     </div>
@@ -211,7 +211,7 @@ const Uslugi = () => {
                                 <div className="relative h-full rounded-2xl overflow-hidden border border-gray-200/50 bg-[#f0ede8]/80 hover:border-lime/50 transition-all duration-300 hover:shadow-lg hover:shadow-lime/5">
                                   <div className="aspect-[4/3] relative overflow-hidden">
                                     <img src={subService.image} alt={translated.subServices[subIndex]} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/60 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#f5f3ef] via-[#f5f3ef]/60 to-transparent" />
                                   </div>
                                   <div className="absolute bottom-0 left-0 right-0 p-5">
                                     <h3 className="text-gray-900 text-base font-semibold leading-tight group-hover:text-lime transition-colors mb-2">

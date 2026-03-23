@@ -33,7 +33,7 @@ const ServiceDetail = () => {
             alt="" 
             className="w-full h-full object-cover opacity-10 grayscale"
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(5,6,8,0.8), rgba(5,6,8,0.9), #1a1a1a)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(245,243,239,0.8), rgba(245,243,239,0.9), #1a1a1a)' }} />
           <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-lime/8 blur-[150px] rounded-full" />
         </div>
         

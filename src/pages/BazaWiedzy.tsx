@@ -44,7 +44,7 @@ const BazaWiedzy = () => {
       <section className="relative pt-28 pb-12 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img src={worldMap} alt="" className="w-full h-full object-cover opacity-10" />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(5,6,8,0.8), rgba(5,6,8,0.9), #1a1a1a)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(245,243,239,0.8), rgba(245,243,239,0.9), #1a1a1a)' }} />
           <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-lime/5 blur-[150px] rounded-full" />
         </div>
         
@@ -107,7 +107,7 @@ const BazaWiedzy = () => {
                           ? 'bg-lime text-gray-900'
                           : article.category === categories[2]
                           ? 'bg-white/90 text-gray-900'
-                          : 'text-gray-900 border border-gray-700'
+                          : 'text-gray-900 border border-gray-200'
                       }`}
                       style={article.category === categories[3] ? { backgroundColor: '#e8e5e0' } : {}}
                       >

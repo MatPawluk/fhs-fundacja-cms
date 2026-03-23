@@ -128,20 +128,20 @@ const ArticleDetail = () => {
             <aside className="lg:col-span-1 order-2 lg:order-1">
               <div className="sticky top-28 space-y-6">
                 {/* Share buttons */}
-                <div className="p-6 bg-gray-800/50 rounded-2xl border border-gray-700/50">
+                <div className="p-6 bg-white/80 rounded-2xl border border-gray-200/50">
                   <h3 className="font-semibold text-gray-900 mb-4">Udostępnij</h3>
                   <div className="flex gap-3">
-                    <button className="w-10 h-10 rounded-xl bg-gray-700/50 hover:bg-lime hover:text-gray-900 text-gray-500 flex items-center justify-center transition-all duration-300">
+                    <button className="w-10 h-10 rounded-xl bg-gray-200/50 hover:bg-lime hover:text-gray-900 text-gray-500 flex items-center justify-center transition-all duration-300">
                       <Share2 className="w-5 h-5" />
                     </button>
-                    <button className="w-10 h-10 rounded-xl bg-gray-700/50 hover:bg-lime hover:text-gray-900 text-gray-500 flex items-center justify-center transition-all duration-300">
+                    <button className="w-10 h-10 rounded-xl bg-gray-200/50 hover:bg-lime hover:text-gray-900 text-gray-500 flex items-center justify-center transition-all duration-300">
                       <Bookmark className="w-5 h-5" />
                     </button>
                   </div>
                 </div>
 
                 {/* Key Stats - Interactive element */}
-                <div className="p-6 bg-gray-800/50 rounded-2xl border border-gray-700/50">
+                <div className="p-6 bg-white/80 rounded-2xl border border-gray-200/50">
                   <h3 className="font-semibold text-gray-900 mb-4">Kluczowe dane</h3>
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
@@ -200,7 +200,7 @@ const ArticleDetail = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="prose prose-lg prose-invert max-w-none prose-headings:font-display prose-headings:text-gray-900 prose-p:text-gray-600 prose-li:text-gray-600 prose-a:text-lime prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900"
+                className="prose prose-lg  max-w-none prose-headings:font-display prose-headings:text-gray-900 prose-p:text-gray-600 prose-li:text-gray-600 prose-a:text-lime prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900"
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
 
@@ -209,14 +209,14 @@ const ArticleDetail = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="mt-12 p-8 bg-gray-800/50 rounded-3xl border border-gray-700/50"
+                className="mt-12 p-8 bg-white/80 rounded-3xl border border-gray-200/50"
               >
                 <h3 className="font-display font-bold text-xl text-gray-900 mb-6 text-center">
                   Kluczowe przewagi chińskich firm
                 </h3>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                   {['Skala', 'Innowacje', 'Koszty', 'Szybkość'].map((item, index) => (
-                    <div key={item} className="text-center p-4 bg-[#f5f3ef]/50 rounded-2xl border border-gray-700/50">
+                    <div key={item} className="text-center p-4 bg-[#f5f3ef]/50 rounded-2xl border border-gray-200/50">
                       <div className="font-display text-4xl font-bold text-lime mb-2">
                         {['50%', '15%', '30%', '2x'][index]}
                       </div>

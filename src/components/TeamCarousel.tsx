@@ -22,8 +22,8 @@ export const TeamCarousel = () => {
   return (
     <section className="py-16 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
       <div className="relative py-4">
-        <div className="absolute left-0 -top-4 -bottom-4 w-48 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #050608 30%, transparent)' }} />
-        <div className="absolute right-0 -top-4 -bottom-4 w-48 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #050608 30%, transparent)' }} />
+        <div className="absolute left-0 -top-4 -bottom-4 w-48 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #f5f3ef 30%, transparent)' }} />
+        <div className="absolute right-0 -top-4 -bottom-4 w-48 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #f5f3ef 30%, transparent)' }} />
 
         <motion.div
           animate={{ x: ['0%', '-50%'] }}
