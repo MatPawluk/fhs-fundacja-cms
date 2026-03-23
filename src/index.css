@@ -64,8 +64,8 @@
     --shadow-md: 0 8px 24px -8px hsl(0 0% 0% / 0.12);
     --shadow-lg: 0 16px 48px -12px hsl(0 0% 0% / 0.18);
     --shadow-xl: 0 24px 64px -16px hsl(0 0% 0% / 0.24);
-    --shadow-lime: 0 8px 32px -8px hsl(75 100% 50% / 0.4);
-    --shadow-lime-lg: 0 16px 48px -12px hsl(75 100% 50% / 0.5);
+    --shadow-lime: 0 8px 32px -8px hsl(88 53% 50% / 0.4);
+    --shadow-lime-lg: 0 16px 48px -12px hsl(88 53% 50% / 0.5);
 
     /* Blur effects */
     --blur-sm: blur(8px);
