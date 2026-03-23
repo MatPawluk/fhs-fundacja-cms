@@ -91,7 +91,7 @@ export const servicesTextEN: Record<string, ServiceDataText> = {
       client: 'Polish logistics network.',
       situation: 'Plan to implement Chinese sorting robots (AGV) in a warehouse near Warsaw. Client had an offer from a "Market Leader" from Shenzhen.',
       actions: 'Analysis showed the "Leader" was an indebted entity, and the offered technology was based on an old navigation standard being phased out of Chinese "Smart Warehouses".',
-      result: 'Client terminated negotiations. Yin Yang identified 2 alternative suppliers (smaller but with newer technology and government support). Client implemented a solution 15% cheaper and a generation more modern.',
+      result: 'Client terminated negotiations. FHS Foundation identified 2 alternative suppliers (smaller but with newer technology and government support). Client implemented a solution 15% cheaper and a generation more modern.',
     },
   },
   'scenariusze-strategiczne': {
@@ -324,7 +324,7 @@ export const servicesTextEN: Record<string, ServiceDataText> = {
       client: 'Polish toy wholesaler.',
       situation: 'Attractive offer from a "manufacturer" of plush toys found on Alibaba. Professional website, photos of a large production hall.',
       actions: 'Verification revealed registered capital of 10,000 RMB, registration in an office building, and business scope "Consulting & Trade". Factory photos came from a stock photo bank.',
-      result: 'Client did not pay 50,000 USD deposit. Yin Yang identified a real factory in the Yangzhou region (5 million RMB capital), producing the same assortment 10% cheaper — without an intermediary.',
+      result: 'Client did not pay 50,000 USD deposit. FHS Foundation identified a real factory in the Yangzhou region (5 million RMB capital), producing the same assortment 10% cheaper — without an intermediary.',
     },
   },
   'due-diligence': {
@@ -1110,7 +1110,7 @@ export const servicesTextEN: Record<string, ServiceDataText> = {
         'Agenda Curation: Designing the program around strategic goals.',
         'Meeting selection and preparation: Choosing companies/institutions to visit, preparing briefs.',
         'B2B Matchmaking: Organizing conversations with selected entities.',
-        'On-site Facilitation: Yin Yang presence as context translator and conversation moderator.',
+        'On-site Facilitation: FHS Foundation presence as context translator and conversation moderator.',
         'Daily Debriefing: Brief summary sessions: conclusions, "what this means for us", option ranking.',
         'Logistics (coordination): Route planning, local transfers, timing.',
       ],

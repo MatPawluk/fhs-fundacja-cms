@@ -184,7 +184,7 @@ export const servicesData: Record<string, ServiceData> = {
       client: 'Polska sieć logistyczna.',
       situation: 'Plan wdrożenia chińskich robotów sortujących (AGV) w magazynie pod Warszawą. Klient miał ofertę od "Lidera Rynku" z Shenzhen.',
       actions: 'Analiza wykazała, że "Lider" jest podmiotem zadłużonym, a oferowana technologia opiera się na starym standardzie nawigacji, który jest wycofywany z chińskich "Smart Warehouses" na rzecz nowszego.',
-      result: 'Klient zerwał negocjacje. Yin Yang wskazało 2 alternatywnych dostawców (mniejszych, ale z nowszą technologią i wsparciem rządu). Klient wdrożył rozwiązanie tańsze o 15% i nowocześniejsze o generację.',
+      result: 'Klient zerwał negocjacje. FHS Foundation wskazało 2 alternatywnych dostawców (mniejszych, ale z nowszą technologią i wsparciem rządu). Klient wdrożył rozwiązanie tańsze o 15% i nowocześniejsze o generację.',
     },
   },
   'scenariusze-strategiczne': {
@@ -432,7 +432,7 @@ export const servicesData: Record<string, ServiceData> = {
       client: 'Polska hurtownia zabawek.',
       situation: 'Atrakcyjna oferta "producenta" pluszaków znaleziona na Alibaba. Profesjonalna strona, zdjęcia dużej hali produkcyjnej.',
       actions: 'Weryfikacja wykazała kapitał zakładowy 10 000 RMB, rejestrację w biurowcu oraz zakres działalności "Consulting & Trade". Zdjęcia fabryki pochodziły z banku stockowego.',
-      result: 'Klient nie wpłacił zaliczki 50 tys. USD. Yin Yang wskazało realną fabrykę w regionie Yangzhou (kapitał 5 mln RMB), produkującą ten sam asortyment 10% taniej - bez pośrednika.',
+      result: 'Klient nie wpłacił zaliczki 50 tys. USD. FHS Foundation wskazało realną fabrykę w regionie Yangzhou (kapitał 5 mln RMB), produkującą ten sam asortyment 10% taniej - bez pośrednika.',
     },
   },
   'due-diligence': {
@@ -1283,7 +1283,7 @@ export const servicesData: Record<string, ServiceData> = {
         'Agenda Curation: Zaprojektowanie programu pod cel strategiczny.',
         'Selekcja i przygotowanie spotkań: Dobór firm/instytucji do odwiedzenia, przygotowanie briefów przed każdą wizytą.',
         'Matchmaking B2B: Organizacja rozmów z wybranymi podmiotami (dostawcy, integratorzy, partnerzy technologiczni, operatorzy kanałów).',
-        'Facylitacja na miejscu: Obecność prowadzącego Yin Yang jako tłumacza kontekstu i moderatora rozmów.',
+        'Facylitacja na miejscu: Obecność prowadzącego FHS Foundation jako tłumacza kontekstu i moderatora rozmów.',
         'Debriefing dzienny: Krótkie sesje podsumowujące: wnioski, "co to znaczy dla nas", ranking opcji, plan kolejnych działań.',
         'Logistyka (koordynacja): Ułożenie trasy, transfery lokalne, timing, wsparcie w doborze tłumaczy/partnerów operacyjnych.',
       ],
@@ -1494,7 +1494,7 @@ export const serviceSlugMap: Record<string, string> = {
 
 export const defaultServiceData: ServiceData = {
   title: 'Usługa',
-  subtitle: 'Yin Yang',
+  subtitle: 'FHS Foundation',
   image: uAnalizaWplywu,
   caseStudyImage: ucsAnalizaWplywu,
   description: 'Szczegółowy opis usługi.',

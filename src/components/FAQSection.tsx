@@ -9,7 +9,7 @@ import { GradientText } from './GradientText';
 
 const faqItems = [
   {
-    question: 'Jak wygląda typowy projekt współpracy z Yin Yang?',
+    question: 'Jak wygląda typowy projekt współpracy z FHS Foundation?',
     answer: 'Każdy projekt zaczynamy od bezpłatnej konsultacji, podczas której poznajemy Twoje potrzeby. Następnie przygotowujemy dedykowany plan działania, który realizujemy etapami z pełną transparentnością.',
   },
   {

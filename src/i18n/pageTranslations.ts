@@ -81,7 +81,7 @@ export const bazaWiedzyTranslations = {
 
 export const oNasTranslations = {
   pl: {
-    badge: 'O Yin Yang',
+    badge: 'O FHS Foundation',
     title: 'Twój',
     titleHighlight: 'partner',
     subtitle: 'na linii PL–CN',
@@ -95,7 +95,7 @@ export const oNasTranslations = {
     faqTitleHighlight: 'pytania',
   },
   en: {
-    badge: 'About Yin Yang',
+    badge: 'About FHS Foundation',
     title: 'Your',
     titleHighlight: 'partner',
     subtitle: 'on the PL–CN axis',
@@ -109,7 +109,7 @@ export const oNasTranslations = {
     faqTitleHighlight: 'questions',
   },
   nl: {
-    badge: '关于 Yin Yang',
+    badge: '关于 FHS Foundation',
     title: '您的',
     titleHighlight: '合作伙伴',
     subtitle: '在波中轴线上',
