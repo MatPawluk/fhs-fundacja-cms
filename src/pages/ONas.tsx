@@ -92,11 +92,11 @@ const ONas = () => {
               <span className="w-2 h-2 rounded-full bg-lime animate-pulse" />
               {pt.badge}
             </span>
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 leading-tight mb-8">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-8">
               {pt.title} <GradientText>{pt.titleHighlight}</GradientText>
               <br />{pt.subtitle}
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed">{pt.description}</p>
+            <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed">{pt.description}</p>
           </motion.div>
 
           {/* Stats Row */}
