@@ -25,7 +25,7 @@ export const uslugiTranslations = {
     ctaSubtitle: 'A free consultation will help determine how we can help you.',
     ctaButton: 'Book a call',
   },
-  cn: {
+  nl: {
     badge: '服务',
     title: '全面的',
     titleHighlight: '支持',
@@ -65,7 +65,7 @@ export const bazaWiedzyTranslations = {
     ctaSubtitle: 'We prepare custom materials tailored to your industry and needs.',
     ctaButton: 'Contact us',
   },
-  cn: {
+  nl: {
     badge: '知识库',
     title: '分析、',
     titleHighlight: '指南',
@@ -108,7 +108,7 @@ export const oNasTranslations = {
     faqTitle: 'Frequently asked',
     faqTitleHighlight: 'questions',
   },
-  cn: {
+  nl: {
     badge: '关于 Yin Yang',
     title: '您的',
     titleHighlight: '合作伙伴',
@@ -165,7 +165,7 @@ export const kontaktTranslations = {
     locationsTitle: 'Our',
     locationsTitleHighlight: 'locations',
   },
-  cn: {
+  nl: {
     badge: '联系方式',
     title: '让我们谈谈',
     titleHighlight: '您的需求',

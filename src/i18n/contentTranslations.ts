@@ -14,7 +14,7 @@ export const statsTranslations: Record<Language, { value: number; suffix: string
     { value: 7, suffix: '', label: 'technology sectors' },
     { value: 0, suffix: 'PL-CN', label: 'permanent operational presence', isText: true },
   ],
-  cn: [
+  nl: [
     { value: 480, suffix: '+', label: '已验证的实体和商业伙伴' },
     { value: 50, suffix: '+', label: '团队在国际项目中的累计经验年数' },
     { value: 7, suffix: '', label: '个技术领域' },
@@ -40,7 +40,7 @@ export const homeFaqTranslations: Record<Language, { question: string; answer: s
     { question: 'Do you also support the implementation phase?', answer: 'Yes. Depending on the project scope, we can support the client in discussions with partners, entity verification, organizing business meetings and operational supervision after market entry.' },
     { question: 'Do you support transport and supply chain organization?', answer: 'Yes. Depending on the project, we can take over coordination of the entire logistics process, from supplier verification and negotiations, through production organization and quality control, to international transport and delivery supervision.' },
   ],
-  cn: [
+  nl: [
     { question: '你们保证结果吗？', answer: '我们保证分析的可靠性和材料的质量。我们的建议基于可验证的来源和多年的经验。' },
     { question: '合作期间的报告是什么样的？', answer: '根据合作模式，我们在项目完成后一次性交付报告，或定期以月度或季度方式交付长期支持报告。' },
     { question: '你们在我的行业运营吗？', answer: '我们专注于以下领域：技术、制造、汽车、可再生能源、电子商务。对于其他行业，我们提供个人咨询。' },
@@ -70,7 +70,7 @@ export const oNasFaqTranslations: Record<Language, { question: string; answer: s
     { question: 'In what languages do you provide services?', answer: 'We provide services in Polish, English and Chinese (Mandarin). All reports and materials are prepared in the client\'s chosen language.' },
     { question: 'Do you offer legal and tax support?', answer: 'We do not directly provide legal or tax services, but we cooperate with trusted law firms specializing in Chinese and Polish law and international transactions.' },
   ],
-  cn: [
+  nl: [
     { question: 'Yin Yang 与其他在波中轴线上运营的公司有何不同？', answer: '我们将在中国的运营存在与深入的战略分析和对欧洲现实的了解相结合。我们使用三种语言工作，并在两个监管体系中自由穿梭。因此，我们不仅翻译市场，还真正解读它并过滤风险。' },
     { question: '与 Yin Yang 的典型合作项目是什么样的？', answer: '每个项目都从免费咨询开始，在此期间我们确定业务目标和支持范围。然后我们定义时间表和实施阶段，从分析和验证到运营支持或市场进入。每个项目都有明确定义的决策点和透明的沟通结构。' },
     { question: '你们只为大公司提供支持吗？', answer: '我们与中小企业和大型企业都有合作。我们的合作模式灵活，根据客户的规模和预算进行调整。' },
@@ -111,7 +111,7 @@ export const testimonialsTranslations: Record<Language, { name: string; content:
     { name: 'Zhang Min', content: 'Good strategic discussion before market entry. They did not promise fast success, they explained the risks first. I respect that.', rating: 4.5 },
     { name: 'Chen Hao', content: 'Their understanding of both Polish and Chinese business culture makes negotiations smoother. Less emotion, more structure. That makes a difference.', rating: 5 },
   ],
-  cn: [
+  nl: [
     { name: 'Marek Wiśniewski', content: '与Yin Yang的合作使我们免于与一个"制造商"签订合同，而这个"制造商"实际上并不是制造商。说实话？如果没有这个分析，我们可能会盲目进入。很多具体内容，没有废话。', rating: 5 },
     { name: 'Katarzyna Dąbrowska', content: '第一次没有中间商进口，我有点紧张。Maksymilian一步步列出了所有内容，检查什么，注意什么。没有空洞的承诺，只有真实的风险。因此我觉得一切在掌控中。', rating: 4.5 },
     { name: 'Tomasz Nowak', content: '我欣赏系统性的方法。不仅仅是"工厂看起来还好"，而是深入注册信息、资本关系等。你能感觉到这不是一家做漂亮演示的公司，而是做实事的公司。', rating: 5 },
@@ -141,7 +141,7 @@ export const caseStudiesTranslations: Record<Language, { name: string; category:
     { name: 'Aktir', category: 'Due Diligence', imageKey: 'aktir', client: 'International transport operator', goal: 'Due diligence of Chinese logistics partner', duration: '4 weeks', result: 'Comprehensive analysis of partner\'s financial and operational structure. Making an informed strategic decision and strengthening client\'s negotiating position.' },
     { name: 'Orvanta', category: 'Supply Chain Optimization', imageKey: 'orvanta', client: 'Consumer electronics e-commerce platform', goal: 'Optimization of import structure and sourcing model', duration: '6 weeks', result: '28% reduction in logistics costs. Implementation of stable direct cooperation model with manufacturers.' },
   ],
-  cn: [
+  nl: [
     { name: 'Vektor Automation', category: '供应商验证', imageKey: 'vektor', client: '工业自动化系统制造商', goal: '验证生产线零部件的中国供应商', duration: '3周', result: '发现认证和所有权结构方面的差异。保护客户免于签订具有较高运营风险的合同。' },
     { name: 'Arcom Electronics', category: '市场进入', imageKey: 'arcom', client: '高端电子设备分销商', goal: '制定中国市场进入战略（B2B模式）', duration: '3个月', result: '启动跨境试点销售。与当地分销合作伙伴签署首批协议。' },
     { name: 'Aktir', category: '尽职调查', imageKey: 'aktir', client: '国际运输运营商', goal: '对中国物流合作伙伴进行尽职调查', duration: '4周', result: '对合作伙伴的财务和运营结构进行全面分析。做出明智的战略决策并加强客户的谈判地位。' },
@@ -167,7 +167,7 @@ export const carouselServicesTranslations: Record<Language, { title: string; des
     { title: 'Marketing & Positioning', description: 'Local brand positioning, communication strategy, sales materials.' },
     { title: 'Business Missions & Training', description: 'Mission organization, B2B matchmaking, culture and system training.' },
   ],
-  cn: [
+  nl: [
     { title: '对华战略', description: '战略分析、情景规划和风险图、管理层简报。' },
     { title: '市场分析与合作伙伴验证', description: '行业研究、竞争分析、合作方验证和尽职调查。' },
     { title: '市场进入 波兰 ↔ 中国', description: '进入模式选择、监管支持、合作伙伴识别。' },
@@ -195,7 +195,7 @@ export const serviceCategoriesTranslations: Record<Language, { title: string; su
     { title: 'Marketing & Market Positioning', subServices: ['Local brand positioning (PL and CN)', 'Communication strategy', 'Communication adaptation for PL and CN markets', 'Sales and branding materials', 'Marketing support and lead generation'] },
     { title: 'Business Missions & Training', subServices: ['Business and technology missions PL ↔ CN', 'B2B meetings and partner matchmaking', 'Training on China\'s economic system', 'Business culture and negotiation training'] },
   ],
-  cn: [
+  nl: [
     { title: '对华战略', subServices: ['中国对公司或行业的影响分析', '进入、合作、扩展或减少风险敞口决策', '战略情景和风险图', '管理层决策简报'] },
     { title: '市场分析与合作伙伴验证', subServices: ['行业、产业集群和竞争分析', '监管分析和进入壁垒', '合作方验证（桌面检查）', '合作伙伴深度验证（尽职调查）'] },
     { title: '市场进入 波兰 ↔ 中国', subServices: ['市场进入模式选择', '正式和监管支持', '合作伙伴识别和选择', '谈判和关系支持', '贸易或合作结构准备'] },
@@ -217,7 +217,7 @@ export const caseStudyTabsTranslations: Record<Language, { id: string; label: st
     { id: 'actions', label: 'Actions' },
     { id: 'result', label: 'Result' },
   ],
-  cn: [
+  nl: [
     { id: 'situation', label: '情况' },
     { id: 'actions', label: '行动' },
     { id: 'result', label: '效果' },
@@ -246,7 +246,7 @@ export const articlesTranslations: Record<Language, { category: string; title: s
     { category: 'Blog', title: 'China as Europe\'s technological competitor - current trends', description: 'Commentary on the latest developments in the technology sector and their impact on the European market.', date: '10.12.2024', readTime: '5 min', slug: 'chiny-konkurent-technologiczny' },
     { category: 'Analyses', title: 'Automation and robotization in China and the future of manufacturing in Poland', description: 'How the development of automation in China may affect the Polish manufacturing sector.', date: '1.12.2024', readTime: '14 min', slug: 'automatyzacja-robotyzacja-chiny' },
   ],
-  cn: [
+  nl: [
     { category: '分析', title: '你的利润去哪了？5个信号表明你的中国"制造商"只是中间商', description: '在中国贸易体系中，确定谁真正站在生产背后就像侦探工作。我们解释如何在不到15分钟内使用中国国家注册的硬数据揭露中间商。', date: '7.02.2026', readTime: '14 min', slug: 'gdzie-znika-twoja-marza', featured: true },
     { category: '分析', title: '2026年中国新年：如何避免马年供应链瘫痪？', description: '对于中国制造业来说，春节是经济反应堆的完全关闭。没有提前4个月计划交货的波兰公司面临空仓风险。', date: '5.02.2026', readTime: '12 min', slug: 'chinski-nowy-rok-2026', featured: true },
     { category: '分析', title: '中国企业在特定行业的竞争优势', description: '分析使中国企业在全球特定行业中占据主导地位的关键优势。', date: '10.01.2025', readTime: '12 min', slug: 'przewagi-konkurencyjne-chinskich-firm', featured: true },
