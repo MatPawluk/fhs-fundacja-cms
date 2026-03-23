@@ -100,7 +100,7 @@ const BazaWiedzy = () => {
                       alt={article.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #f0ede8, rgba(11,11,11,0.3), transparent)' }} />
+                    <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #f0ede8, rgba(240,237,232,0.3), transparent)' }} />
                     <div className="absolute bottom-4 left-4">
                       <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-semibold ${
                         article.category === categories[1]
