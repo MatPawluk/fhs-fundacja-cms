@@ -109,7 +109,7 @@ export const oNasTranslations = {
     faqTitleHighlight: 'questions',
   },
   nl: {
-    badge: '关于 FHS Foundation',
+    badge: 'Over FHS Foundation',
     title: '您的',
     titleHighlight: '合作伙伴',
     subtitle: '在波中轴线上',
