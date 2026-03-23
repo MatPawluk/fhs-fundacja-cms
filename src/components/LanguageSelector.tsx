@@ -7,7 +7,7 @@ import { Language } from '@/i18n/translations';
 const languages: { code: Language; name: string; flag: string }[] = [
   { code: 'pl', name: 'Polski', flag: '🇵🇱' },
   { code: 'en', name: 'English', flag: '🇬🇧' },
-  { code: 'cn', name: '中文', flag: '🇨🇳' },
+  { code: 'nl', name: 'Nederlands', flag: '🇳🇱' },
 ];
 
 export const LanguageSelector = () => {
@@ -25,33 +25,31 @@ export const LanguageSelector = () => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 border border-white/10"
+        className="flex items-center gap-2 px-3 py-2 rounded-full bg-black/10 backdrop-blur-sm hover:bg-black/20 transition-all duration-300 border border-black/10"
       >
         <span className="text-lg">{selectedLang.flag}</span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <ChevronDown className="w-4 h-4 text-white/70" />
+          <ChevronDown className="w-4 h-4 text-foreground/70" />
         </motion.div>
       </button>
 
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop */}
             <div 
               className="fixed inset-0 z-40" 
               onClick={() => setIsOpen(false)}
             />
             
-            {/* Dropdown */}
             <motion.div
               initial={{ opacity: 0, y: -10, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.15 }}
-              className="absolute right-0 mt-2 w-40 py-2 bg-gray-900/95 backdrop-blur-xl rounded-2xl border border-white/10 shadow-xl z-50 overflow-hidden"
+              className="absolute right-0 mt-2 w-40 py-2 bg-white/95 backdrop-blur-xl rounded-2xl border border-black/10 shadow-xl z-50 overflow-hidden"
             >
               {languages.map((lang) => (
                 <button
@@ -59,8 +57,8 @@ export const LanguageSelector = () => {
                   onClick={() => handleSelect(lang.code)}
                   className={`w-full flex items-center gap-3 px-4 py-2.5 text-left transition-all duration-200 ${
                     language === lang.code
-                      ? 'bg-lime/20 text-lime'
-                      : 'text-white/80 hover:bg-white/10 hover:text-white'
+                      ? 'bg-[#94c43d]/20 text-[#94c43d]'
+                      : 'text-gray-700 hover:bg-black/5 hover:text-gray-900'
                   }`}
                 >
                   <span className="text-lg">{lang.flag}</span>
@@ -68,7 +66,7 @@ export const LanguageSelector = () => {
                   {language === lang.code && (
                     <motion.div 
                       layoutId="selectedIndicator"
-                      className="ml-auto w-1.5 h-1.5 rounded-full bg-lime"
+                      className="ml-auto w-1.5 h-1.5 rounded-full bg-[#94c43d]"
                     />
                   )}
                 </button>

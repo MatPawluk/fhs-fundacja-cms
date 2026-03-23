@@ -25,7 +25,7 @@ export const uslugiTranslations = {
     ctaSubtitle: 'A free consultation will help determine how we can help you.',
     ctaButton: 'Book a call',
   },
-  cn: {
+  nl: {
     badge: '服务',
     title: '全面的',
     titleHighlight: '支持',
@@ -65,7 +65,7 @@ export const bazaWiedzyTranslations = {
     ctaSubtitle: 'We prepare custom materials tailored to your industry and needs.',
     ctaButton: 'Contact us',
   },
-  cn: {
+  nl: {
     badge: '知识库',
     title: '分析、',
     titleHighlight: '指南',
@@ -81,7 +81,7 @@ export const bazaWiedzyTranslations = {
 
 export const oNasTranslations = {
   pl: {
-    badge: 'O Yin Yang',
+    badge: 'O FHS Foundation',
     title: 'Twój',
     titleHighlight: 'partner',
     subtitle: 'na linii PL–CN',
@@ -95,7 +95,7 @@ export const oNasTranslations = {
     faqTitleHighlight: 'pytania',
   },
   en: {
-    badge: 'About Yin Yang',
+    badge: 'About FHS Foundation',
     title: 'Your',
     titleHighlight: 'partner',
     subtitle: 'on the PL–CN axis',
@@ -108,8 +108,8 @@ export const oNasTranslations = {
     faqTitle: 'Frequently asked',
     faqTitleHighlight: 'questions',
   },
-  cn: {
-    badge: '关于 Yin Yang',
+  nl: {
+    badge: 'Over FHS Foundation',
     title: '您的',
     titleHighlight: '合作伙伴',
     subtitle: '在波中轴线上',
@@ -165,7 +165,7 @@ export const kontaktTranslations = {
     locationsTitle: 'Our',
     locationsTitleHighlight: 'locations',
   },
-  cn: {
+  nl: {
     badge: '联系方式',
     title: '让我们谈谈',
     titleHighlight: '您的需求',

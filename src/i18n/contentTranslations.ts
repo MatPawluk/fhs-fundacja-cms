@@ -14,7 +14,7 @@ export const statsTranslations: Record<Language, { value: number; suffix: string
     { value: 7, suffix: '', label: 'technology sectors' },
     { value: 0, suffix: 'PL-CN', label: 'permanent operational presence', isText: true },
   ],
-  cn: [
+  nl: [
     { value: 480, suffix: '+', label: '已验证的实体和商业伙伴' },
     { value: 50, suffix: '+', label: '团队在国际项目中的累计经验年数' },
     { value: 7, suffix: '', label: '个技术领域' },
@@ -40,7 +40,7 @@ export const homeFaqTranslations: Record<Language, { question: string; answer: s
     { question: 'Do you also support the implementation phase?', answer: 'Yes. Depending on the project scope, we can support the client in discussions with partners, entity verification, organizing business meetings and operational supervision after market entry.' },
     { question: 'Do you support transport and supply chain organization?', answer: 'Yes. Depending on the project, we can take over coordination of the entire logistics process, from supplier verification and negotiations, through production organization and quality control, to international transport and delivery supervision.' },
   ],
-  cn: [
+  nl: [
     { question: '你们保证结果吗？', answer: '我们保证分析的可靠性和材料的质量。我们的建议基于可验证的来源和多年的经验。' },
     { question: '合作期间的报告是什么样的？', answer: '根据合作模式，我们在项目完成后一次性交付报告，或定期以月度或季度方式交付长期支持报告。' },
     { question: '你们在我的行业运营吗？', answer: '我们专注于以下领域：技术、制造、汽车、可再生能源、电子商务。对于其他行业，我们提供个人咨询。' },
@@ -53,8 +53,8 @@ export const homeFaqTranslations: Record<Language, { question: string; answer: s
 // FAQ translations for ONas page
 export const oNasFaqTranslations: Record<Language, { question: string; answer: string }[]> = {
   pl: [
-    { question: 'Co wyróżnia Yin Yang na tle innych firm działających na linii Polska-Chiny?', answer: 'Łączymy operacyjną obecność w Chinach z dogłębną analizą strategiczną oraz znajomością realiów europejskich. Pracujemy w trzech językach i poruszamy się swobodnie po obu systemach regulacyjnych. Dzięki temu nie tylko tłumaczymy rynek, ale realnie go interpretujemy i filtrujemy ryzyka.' },
-    { question: 'Jak wygląda typowy projekt współpracy z Yin Yang?', answer: 'Każdy projekt zaczynamy od bezpłatnej konsultacji, podczas której precyzujemy cel biznesowy oraz zakres wsparcia. Następnie definiujemy harmonogram i etapy realizacji, od analizy i weryfikacji po wsparcie operacyjne lub wejście na rynek. Każdy projekt ma jasno określony punkt decyzyjny oraz przejrzystą strukturę komunikacji.' },
+    { question: 'Co wyróżnia FHS Foundation na tle innych firm działających na linii Polska-Chiny?', answer: 'Łączymy operacyjną obecność w Chinach z dogłębną analizą strategiczną oraz znajomością realiów europejskich. Pracujemy w trzech językach i poruszamy się swobodnie po obu systemach regulacyjnych. Dzięki temu nie tylko tłumaczymy rynek, ale realnie go interpretujemy i filtrujemy ryzyka.' },
+    { question: 'Jak wygląda typowy projekt współpracy z FHS Foundation?', answer: 'Każdy projekt zaczynamy od bezpłatnej konsultacji, podczas której precyzujemy cel biznesowy oraz zakres wsparcia. Następnie definiujemy harmonogram i etapy realizacji, od analizy i weryfikacji po wsparcie operacyjne lub wejście na rynek. Każdy projekt ma jasno określony punkt decyzyjny oraz przejrzystą strukturę komunikacji.' },
     { question: 'Czy oferujecie wsparcie tylko dla dużych firm?', answer: 'Współpracujemy zarówno z małymi i średnimi przedsiębiorstwami, jak i z dużymi korporacjami. Nasz model współpracy jest elastyczny i dopasowujemy go do skali i budżetu klienta.' },
     { question: 'Jak długo trwa typowy projekt analityczny?', answer: 'W zależności od zakresu, projekt analityczny trwa od 5 do 14 dni roboczych. Bardziej złożone projekty due diligence mogą wymagać do 4 tygodni.' },
     { question: 'Czy macie biuro w Chinach?', answer: 'Tak, posiadamy operacyjną obecność w Shanghai, co pozwala nam na bezpośredni dostęp do chińskiego rynku, źródeł informacji i sieci kontaktów biznesowych.' },
@@ -62,17 +62,17 @@ export const oNasFaqTranslations: Record<Language, { question: string; answer: s
     { question: 'Czy oferujecie wsparcie prawne i podatkowe?', answer: 'Nie świadczymy bezpośrednio usług prawnych ani podatkowych, ale współpracujemy z zaufanymi kancelariami specjalizującymi się w prawie chińskim i polskim oraz transakcjach międzynarodowych.' },
   ],
   en: [
-    { question: 'What distinguishes Yin Yang from other companies operating on the Poland-China axis?', answer: 'We combine operational presence in China with in-depth strategic analysis and knowledge of European realities. We work in three languages and navigate both regulatory systems freely. Thanks to this, we not only translate the market, but truly interpret it and filter risks.' },
-    { question: 'What does a typical cooperation project with Yin Yang look like?', answer: 'Every project begins with a free consultation, during which we define the business goal and scope of support. Then we define the schedule and stages of implementation, from analysis and verification to operational support or market entry. Every project has a clearly defined decision point and transparent communication structure.' },
+    { question: 'What distinguishes FHS Foundation from other companies operating on the Poland-China axis?', answer: 'We combine operational presence in China with in-depth strategic analysis and knowledge of European realities. We work in three languages and navigate both regulatory systems freely. Thanks to this, we not only translate the market, but truly interpret it and filter risks.' },
+    { question: 'What does a typical cooperation project with FHS Foundation look like?', answer: 'Every project begins with a free consultation, during which we define the business goal and scope of support. Then we define the schedule and stages of implementation, from analysis and verification to operational support or market entry. Every project has a clearly defined decision point and transparent communication structure.' },
     { question: 'Do you offer support only for large companies?', answer: 'We work with both small and medium enterprises as well as large corporations. Our cooperation model is flexible and we adapt it to the client\'s scale and budget.' },
     { question: 'How long does a typical analytical project take?', answer: 'Depending on the scope, an analytical project takes from 5 to 14 working days. More complex due diligence projects may require up to 4 weeks.' },
     { question: 'Do you have an office in China?', answer: 'Yes, we have an operational presence in Shanghai, which gives us direct access to the Chinese market, information sources and business contact networks.' },
     { question: 'In what languages do you provide services?', answer: 'We provide services in Polish, English and Chinese (Mandarin). All reports and materials are prepared in the client\'s chosen language.' },
     { question: 'Do you offer legal and tax support?', answer: 'We do not directly provide legal or tax services, but we cooperate with trusted law firms specializing in Chinese and Polish law and international transactions.' },
   ],
-  cn: [
-    { question: 'Yin Yang 与其他在波中轴线上运营的公司有何不同？', answer: '我们将在中国的运营存在与深入的战略分析和对欧洲现实的了解相结合。我们使用三种语言工作，并在两个监管体系中自由穿梭。因此，我们不仅翻译市场，还真正解读它并过滤风险。' },
-    { question: '与 Yin Yang 的典型合作项目是什么样的？', answer: '每个项目都从免费咨询开始，在此期间我们确定业务目标和支持范围。然后我们定义时间表和实施阶段，从分析和验证到运营支持或市场进入。每个项目都有明确定义的决策点和透明的沟通结构。' },
+  nl: [
+    { question: 'FHS Foundation 与其他在波中轴线上运营的公司有何不同？', answer: '我们将在中国的运营存在与深入的战略分析和对欧洲现实的了解相结合。我们使用三种语言工作，并在两个监管体系中自由穿梭。因此，我们不仅翻译市场，还真正解读它并过滤风险。' },
+    { question: '与 FHS Foundation 的典型合作项目是什么样的？', answer: '每个项目都从免费咨询开始，在此期间我们确定业务目标和支持范围。然后我们定义时间表和实施阶段，从分析和验证到运营支持或市场进入。每个项目都有明确定义的决策点和透明的沟通结构。' },
     { question: '你们只为大公司提供支持吗？', answer: '我们与中小企业和大型企业都有合作。我们的合作模式灵活，根据客户的规模和预算进行调整。' },
     { question: '一个典型的分析项目需要多长时间？', answer: '根据范围，分析项目需要5至14个工作日。更复杂的尽职调查项目可能需要长达4周。' },
     { question: '你们在中国有办公室吗？', answer: '是的，我们在上海有运营存在，这使我们能够直接进入中国市场、信息来源和商业联系网络。' },
@@ -84,11 +84,11 @@ export const oNasFaqTranslations: Record<Language, { question: string; answer: s
 // Testimonials translations
 export const testimonialsTranslations: Record<Language, { name: string; content: string; rating: number }[]> = {
   pl: [
-    { name: 'Marek Wiśniewski', content: 'Współpraca z Yin Yang uratowała nas przed podpisaniem umowy z „producentem", który jak się okazało producentem nie był. Szczerze? Gdyby nie ta analiza, pewnie byśmy weszli w to w ciemno. Dużo konkretów, mało lania wody.', rating: 5 },
+    { name: 'Marek Wiśniewski', content: 'Współpraca z FHS Foundation uratowała nas przed podpisaniem umowy z „producentem", który jak się okazało producentem nie był. Szczerze? Gdyby nie ta analiza, pewnie byśmy weszli w to w ciemno. Dużo konkretów, mało lania wody.', rating: 5 },
     { name: 'Katarzyna Dąbrowska', content: 'Pierwszy raz import bez pośrednika i miałam trochę stres. Pan Maksymilian wszystko rozpisał krok po kroku, co sprawdzić, gdzie uważać. Nie było obiecywania złotych gór tylko realne ryzyka. Dzięki temu czuję że mam kontrolę.', rating: 4.5 },
     { name: 'Tomasz Nowak', content: 'Doceniam podejście systemowe. Nie tylko „fabryka wygląda ok", ale wejście w rejestry, powiązania kapitałowe itd. Czuć że to nie jest firma od ładnych prezentacji tylko od realnych spraw.', rating: 5 },
     { name: 'Anna Kowalczyk', content: 'Dzięki weryfikacji dostawcy uniknęliśmy problemu z certyfikacją który wyszedłby dopiero przy odprawie celnej… a to by bolało. Polecam!', rating: 4.5 },
-    { name: 'Piotr Zieliński', content: 'Mieliśmy sytuację że po wpłacie zaliczki dostawca zaczął „kombinować" z dokumentami. Yin Yang pomogło nam ustawić rozmowę tak, żeby wszystko wróciło na właściwe tory. Bez paniki, bez straszenia, po prostu twarde argumenty.', rating: 5 },
+    { name: 'Piotr Zieliński', content: 'Mieliśmy sytuację że po wpłacie zaliczki dostawca zaczął „kombinować" z dokumentami. FHS Foundation pomogło nam ustawić rozmowę tak, żeby wszystko wróciło na właściwe tory. Bez paniki, bez straszenia, po prostu twarde argumenty.', rating: 5 },
     { name: 'Magdalena Król', content: 'Szkolenie z negocjacji było momentami niewygodne, bo pokazuje jak łatwo oddajemy pole. Dużo przykładów z życia, nie teoria. Od tamtej pory inaczej patrzę na to ich „yes, yes, no problem".', rating: 4.5 },
     { name: 'Paweł Lewandowski', content: 'W pewnym momencie usłyszałem wprost, że nasz pomysł wejścia do Chin w tej formie nie ma sensu. I to było najlepsze co mogli powiedzieć. Nie sprzedawali usługi na siłę.', rating: 5 },
     { name: 'Ewa Kamińska', content: 'Konsultacja otworzyła mi oczy na to jak bardzo polityka wpływa na biznes w Chinach. Czytałam raporty wcześniej, ale dopiero rozmowa z kimś kto tam realnie działa daje inny poziom zrozumienia.', rating: 4.5 },
@@ -98,11 +98,11 @@ export const testimonialsTranslations: Record<Language, { name: string; content:
     { name: 'Chen Hao', content: 'Their understanding of both Polish and Chinese business culture makes negotiations smoother. Less emotion, more structure. That makes a difference.', rating: 5 },
   ],
   en: [
-    { name: 'Marek Wiśniewski', content: 'Working with Yin Yang saved us from signing a contract with a "manufacturer" who turned out not to be one. Honestly? Without this analysis, we would have gone in blind. Lots of specifics, no fluff.', rating: 5 },
+    { name: 'Marek Wiśniewski', content: 'Working with FHS Foundation saved us from signing a contract with a "manufacturer" who turned out not to be one. Honestly? Without this analysis, we would have gone in blind. Lots of specifics, no fluff.', rating: 5 },
     { name: 'Katarzyna Dąbrowska', content: 'First time importing without a middleman and I was a bit stressed. Maksymilian laid everything out step by step, what to check, where to be careful. No empty promises, just real risks. Thanks to this I feel in control.', rating: 4.5 },
     { name: 'Tomasz Nowak', content: 'I appreciate the systematic approach. Not just "the factory looks ok", but diving into registries, capital connections etc. You can feel this is not a company for nice presentations but for real business.', rating: 5 },
     { name: 'Anna Kowalczyk', content: 'Thanks to supplier verification, we avoided a certification problem that would only have surfaced during customs clearance... that would have hurt. Recommended!', rating: 4.5 },
-    { name: 'Piotr Zieliński', content: 'We had a situation where after paying the deposit, the supplier started "playing games" with documents. Yin Yang helped us set up the conversation so everything got back on track. No panic, no threats, just hard arguments.', rating: 5 },
+    { name: 'Piotr Zieliński', content: 'We had a situation where after paying the deposit, the supplier started "playing games" with documents. FHS Foundation helped us set up the conversation so everything got back on track. No panic, no threats, just hard arguments.', rating: 5 },
     { name: 'Magdalena Król', content: 'The negotiation training was uncomfortable at times because it shows how easily we give ground. Lots of real-life examples, not theory. Since then I look differently at their "yes, yes, no problem".', rating: 4.5 },
     { name: 'Paweł Lewandowski', content: 'At one point I was told straight that our idea of entering China in that form made no sense. And that was the best thing they could say. They weren\'t pushing the service.', rating: 5 },
     { name: 'Ewa Kamińska', content: 'The consultation opened my eyes to how much politics affects business in China. I had read reports before, but only talking to someone who actually operates there gives a different level of understanding.', rating: 4.5 },
@@ -111,12 +111,12 @@ export const testimonialsTranslations: Record<Language, { name: string; content:
     { name: 'Zhang Min', content: 'Good strategic discussion before market entry. They did not promise fast success, they explained the risks first. I respect that.', rating: 4.5 },
     { name: 'Chen Hao', content: 'Their understanding of both Polish and Chinese business culture makes negotiations smoother. Less emotion, more structure. That makes a difference.', rating: 5 },
   ],
-  cn: [
-    { name: 'Marek Wiśniewski', content: '与Yin Yang的合作使我们免于与一个"制造商"签订合同，而这个"制造商"实际上并不是制造商。说实话？如果没有这个分析，我们可能会盲目进入。很多具体内容，没有废话。', rating: 5 },
+  nl: [
+    { name: 'Marek Wiśniewski', content: '与FHS Foundation的合作使我们免于与一个"制造商"签订合同，而这个"制造商"实际上并不是制造商。说实话？如果没有这个分析，我们可能会盲目进入。很多具体内容，没有废话。', rating: 5 },
     { name: 'Katarzyna Dąbrowska', content: '第一次没有中间商进口，我有点紧张。Maksymilian一步步列出了所有内容，检查什么，注意什么。没有空洞的承诺，只有真实的风险。因此我觉得一切在掌控中。', rating: 4.5 },
     { name: 'Tomasz Nowak', content: '我欣赏系统性的方法。不仅仅是"工厂看起来还好"，而是深入注册信息、资本关系等。你能感觉到这不是一家做漂亮演示的公司，而是做实事的公司。', rating: 5 },
     { name: 'Anna Kowalczyk', content: '多亏了供应商验证，我们避免了一个只有在清关时才会暴露的认证问题……那会很痛苦。推荐！', rating: 4.5 },
-    { name: 'Piotr Zieliński', content: '我们遇到了这样的情况：付了定金后，供应商开始在文件上"做手脚"。Yin Yang帮助我们安排了谈话，使一切回到正轨。没有恐慌，没有威胁，只是有力的论据。', rating: 5 },
+    { name: 'Piotr Zieliński', content: '我们遇到了这样的情况：付了定金后，供应商开始在文件上"做手脚"。FHS Foundation帮助我们安排了谈话，使一切回到正轨。没有恐慌，没有威胁，只是有力的论据。', rating: 5 },
     { name: 'Magdalena Król', content: '谈判培训有时令人不舒服，因为它展示了我们多么容易让步。很多来自现实生活的例子，不是理论。从那以后，我对他们的"是的，是的，没问题"有了不同的看法。', rating: 4.5 },
     { name: 'Paweł Lewandowski', content: '在某个时刻，我被直接告知我们以那种形式进入中国的想法没有意义。这是他们能说的最好的话。他们没有强行推销服务。', rating: 5 },
     { name: 'Ewa Kamińska', content: '咨询让我意识到政治对中国商业的影响有多大。我之前读过报告，但只有与真正在那里运营的人交谈才能获得不同层次的理解。', rating: 4.5 },
@@ -141,7 +141,7 @@ export const caseStudiesTranslations: Record<Language, { name: string; category:
     { name: 'Aktir', category: 'Due Diligence', imageKey: 'aktir', client: 'International transport operator', goal: 'Due diligence of Chinese logistics partner', duration: '4 weeks', result: 'Comprehensive analysis of partner\'s financial and operational structure. Making an informed strategic decision and strengthening client\'s negotiating position.' },
     { name: 'Orvanta', category: 'Supply Chain Optimization', imageKey: 'orvanta', client: 'Consumer electronics e-commerce platform', goal: 'Optimization of import structure and sourcing model', duration: '6 weeks', result: '28% reduction in logistics costs. Implementation of stable direct cooperation model with manufacturers.' },
   ],
-  cn: [
+  nl: [
     { name: 'Vektor Automation', category: '供应商验证', imageKey: 'vektor', client: '工业自动化系统制造商', goal: '验证生产线零部件的中国供应商', duration: '3周', result: '发现认证和所有权结构方面的差异。保护客户免于签订具有较高运营风险的合同。' },
     { name: 'Arcom Electronics', category: '市场进入', imageKey: 'arcom', client: '高端电子设备分销商', goal: '制定中国市场进入战略（B2B模式）', duration: '3个月', result: '启动跨境试点销售。与当地分销合作伙伴签署首批协议。' },
     { name: 'Aktir', category: '尽职调查', imageKey: 'aktir', client: '国际运输运营商', goal: '对中国物流合作伙伴进行尽职调查', duration: '4周', result: '对合作伙伴的财务和运营结构进行全面分析。做出明智的战略决策并加强客户的谈判地位。' },
@@ -167,7 +167,7 @@ export const carouselServicesTranslations: Record<Language, { title: string; des
     { title: 'Marketing & Positioning', description: 'Local brand positioning, communication strategy, sales materials.' },
     { title: 'Business Missions & Training', description: 'Mission organization, B2B matchmaking, culture and system training.' },
   ],
-  cn: [
+  nl: [
     { title: '对华战略', description: '战略分析、情景规划和风险图、管理层简报。' },
     { title: '市场分析与合作伙伴验证', description: '行业研究、竞争分析、合作方验证和尽职调查。' },
     { title: '市场进入 波兰 ↔ 中国', description: '进入模式选择、监管支持、合作伙伴识别。' },
@@ -195,7 +195,7 @@ export const serviceCategoriesTranslations: Record<Language, { title: string; su
     { title: 'Marketing & Market Positioning', subServices: ['Local brand positioning (PL and CN)', 'Communication strategy', 'Communication adaptation for PL and CN markets', 'Sales and branding materials', 'Marketing support and lead generation'] },
     { title: 'Business Missions & Training', subServices: ['Business and technology missions PL ↔ CN', 'B2B meetings and partner matchmaking', 'Training on China\'s economic system', 'Business culture and negotiation training'] },
   ],
-  cn: [
+  nl: [
     { title: '对华战略', subServices: ['中国对公司或行业的影响分析', '进入、合作、扩展或减少风险敞口决策', '战略情景和风险图', '管理层决策简报'] },
     { title: '市场分析与合作伙伴验证', subServices: ['行业、产业集群和竞争分析', '监管分析和进入壁垒', '合作方验证（桌面检查）', '合作伙伴深度验证（尽职调查）'] },
     { title: '市场进入 波兰 ↔ 中国', subServices: ['市场进入模式选择', '正式和监管支持', '合作伙伴识别和选择', '谈判和关系支持', '贸易或合作结构准备'] },
@@ -217,7 +217,7 @@ export const caseStudyTabsTranslations: Record<Language, { id: string; label: st
     { id: 'actions', label: 'Actions' },
     { id: 'result', label: 'Result' },
   ],
-  cn: [
+  nl: [
     { id: 'situation', label: '情况' },
     { id: 'actions', label: '行动' },
     { id: 'result', label: '效果' },
@@ -246,7 +246,7 @@ export const articlesTranslations: Record<Language, { category: string; title: s
     { category: 'Blog', title: 'China as Europe\'s technological competitor - current trends', description: 'Commentary on the latest developments in the technology sector and their impact on the European market.', date: '10.12.2024', readTime: '5 min', slug: 'chiny-konkurent-technologiczny' },
     { category: 'Analyses', title: 'Automation and robotization in China and the future of manufacturing in Poland', description: 'How the development of automation in China may affect the Polish manufacturing sector.', date: '1.12.2024', readTime: '14 min', slug: 'automatyzacja-robotyzacja-chiny' },
   ],
-  cn: [
+  nl: [
     { category: '分析', title: '你的利润去哪了？5个信号表明你的中国"制造商"只是中间商', description: '在中国贸易体系中，确定谁真正站在生产背后就像侦探工作。我们解释如何在不到15分钟内使用中国国家注册的硬数据揭露中间商。', date: '7.02.2026', readTime: '14 min', slug: 'gdzie-znika-twoja-marza', featured: true },
     { category: '分析', title: '2026年中国新年：如何避免马年供应链瘫痪？', description: '对于中国制造业来说，春节是经济反应堆的完全关闭。没有提前4个月计划交货的波兰公司面临空仓风险。', date: '5.02.2026', readTime: '12 min', slug: 'chinski-nowy-rok-2026', featured: true },
     { category: '分析', title: '中国企业在特定行业的竞争优势', description: '分析使中国企业在全球特定行业中占据主导地位的关键优势。', date: '10.01.2025', readTime: '12 min', slug: 'przewagi-konkurencyjne-chinskich-firm', featured: true },

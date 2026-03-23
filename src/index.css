@@ -6,9 +6,9 @@
 
 @layer base {
   :root {
-    /* Core brand colors */
-    --lime: 75 100% 50%;
-    --lime-glow: 75 100% 60%;
+    /* Core brand colors - FHS Foundation green */
+    --lime: 88 53% 50%;
+    --lime-glow: 88 53% 60%;
     
     /* Unified dark system - 3 levels */
     --base: 220 15% 2%;      /* #050608 */
@@ -55,17 +55,17 @@
     --surface-dark-foreground: var(--white);
 
     /* Gradients */
-    --gradient-lime: linear-gradient(135deg, hsl(75 100% 50%) 0%, hsl(85 100% 45%) 100%);
+    --gradient-lime: linear-gradient(135deg, hsl(88 53% 50%) 0%, hsl(95 50% 40%) 100%);
     --gradient-dark: linear-gradient(180deg, hsl(220 15% 2%) 0%, hsl(220 10% 4%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(75 100% 50% / 0.15) 0%, transparent 70%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(88 53% 50% / 0.15) 0%, transparent 70%);
 
     /* Shadows */
     --shadow-sm: 0 2px 8px -2px hsl(0 0% 0% / 0.08);
     --shadow-md: 0 8px 24px -8px hsl(0 0% 0% / 0.12);
     --shadow-lg: 0 16px 48px -12px hsl(0 0% 0% / 0.18);
     --shadow-xl: 0 24px 64px -16px hsl(0 0% 0% / 0.24);
-    --shadow-lime: 0 8px 32px -8px hsl(75 100% 50% / 0.4);
-    --shadow-lime-lg: 0 16px 48px -12px hsl(75 100% 50% / 0.5);
+    --shadow-lime: 0 8px 32px -8px hsl(88 53% 50% / 0.4);
+    --shadow-lime-lg: 0 16px 48px -12px hsl(88 53% 50% / 0.5);
 
     /* Blur effects */
     --blur-sm: blur(8px);
@@ -141,7 +141,7 @@
   .btn-primary::before {
     content: '';
     @apply absolute inset-0 opacity-0 transition-opacity duration-500;
-    background: linear-gradient(135deg, hsl(75 100% 60%) 0%, hsl(85 100% 55%) 100%);
+    background: linear-gradient(135deg, hsl(88 53% 60%) 0%, hsl(88 53% 55%) 100%);
   }
 
   .btn-primary:hover::before {
@@ -176,11 +176,11 @@
 
   /* Glow effects */
   .glow-lime {
-    box-shadow: 0 0 60px 20px hsl(75 100% 50% / 0.2);
+    box-shadow: 0 0 60px 20px hsl(88 53% 50% / 0.2);
   }
 
   .glow-lime-sm {
-    box-shadow: 0 0 30px 10px hsl(75 100% 50% / 0.15);
+    box-shadow: 0 0 30px 10px hsl(88 53% 50% / 0.15);
   }
 
   /* Card hover effects */
@@ -304,10 +304,10 @@
   /* Pulse glow */
   @keyframes pulseGlow {
     0%, 100% {
-      box-shadow: 0 0 20px 5px hsl(75 100% 50% / 0.3);
+      box-shadow: 0 0 20px 5px hsl(88 53% 50% / 0.3);
     }
     50% {
-      box-shadow: 0 0 40px 10px hsl(75 100% 50% / 0.5);
+      box-shadow: 0 0 40px 10px hsl(88 53% 50% / 0.5);
     }
   }
 
@@ -318,10 +318,10 @@
   /* Slower pulse glow for CTA buttons - VERY SLOW */
   @keyframes pulseGlowSlow {
     0%, 100% {
-      box-shadow: 0 0 15px 3px hsl(75 100% 50% / 0.15);
+      box-shadow: 0 0 15px 3px hsl(88 53% 50% / 0.15);
     }
     50% {
-      box-shadow: 0 0 25px 6px hsl(75 100% 50% / 0.3);
+      box-shadow: 0 0 25px 6px hsl(88 53% 50% / 0.3);
     }
   }
 
@@ -365,7 +365,7 @@
   }
 
   .shimmer {
-    background: linear-gradient(90deg, transparent 0%, hsl(75 100% 50% / 0.1) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, hsl(88 53% 50% / 0.1) 50%, transparent 100%);
     background-size: 200% 100%;
     animation: shimmer 3s ease-in-out infinite;
   }

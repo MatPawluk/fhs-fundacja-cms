@@ -4,7 +4,6 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { InteractiveCaseStudy } from '@/components/InteractiveCaseStudy';
 import { GradientText } from '@/components/GradientText';
-import { ChineseCharacters } from '@/components/ChineseCharacters';
 import { ParallaxSection } from '@/components/ParallaxSection';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ArrowLeft, ArrowRight, Check, X, FileText, Video } from 'lucide-react';
@@ -23,25 +22,25 @@ const ServiceDetail = () => {
   const displayTitle = service.title;
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#050608' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#1a1a1a' }}>
       <Navbar />
       
       {/* Header */}
-      <section className="relative pt-28 pb-20 overflow-hidden" style={{ backgroundColor: '#050608' }}>
+      <section className="relative pt-28 pb-20 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img 
             src={service.image} 
             alt="" 
             className="w-full h-full object-cover opacity-10 grayscale"
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(5,6,8,0.8), rgba(5,6,8,0.9), #050608)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(5,6,8,0.8), rgba(5,6,8,0.9), #1a1a1a)' }} />
           <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-lime/8 blur-[150px] rounded-full" />
         </div>
         
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <Link 
             to="/uslugi"
-            className="inline-flex items-center gap-2 text-gray-500 hover:text-[#c4ff00] transition-colors duration-300 mb-6"
+            className="inline-flex items-center gap-2 text-gray-500 hover:text-[#94c43d] transition-colors duration-300 mb-6"
           >
             <ArrowLeft className="w-4 h-4" />
             {t.serviceDetail.backToServices}
@@ -56,7 +55,7 @@ const ServiceDetail = () => {
             <span className="inline-block px-4 py-2 rounded-full bg-lime/20 text-lime text-sm font-medium mb-4">
               {service.subtitle}
             </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
               <GradientText>{displayTitle}</GradientText>
             </h1>
           </motion.div>
@@ -64,8 +63,7 @@ const ServiceDetail = () => {
       </section>
 
       {/* Description with Image */}
-      <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#0B0B0B' }}>
-        <ChineseCharacters characters="信" position="right" className="top-10" opacity={0.04} />
+      <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#f0ede8' }}>
         
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -80,7 +78,7 @@ const ServiceDetail = () => {
                 alt={service.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #0B0B0B, transparent, transparent)' }} />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #f0ede8, transparent, transparent)' }} />
             </motion.div>
 
             <motion.div
@@ -88,11 +86,11 @@ const ServiceDetail = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                <div className="w-1 h-8 bg-[#c4ff00] rounded-full" />
+              <h2 className="font-display text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                <div className="w-1 h-8 bg-[#94c43d] rounded-full" />
                 {t.serviceDetail.serviceDescription}
               </h2>
-              <p className="text-gray-400 text-lg leading-relaxed">
+              <p className="text-gray-500 text-lg leading-relaxed">
                 {service.description}
               </p>
             </motion.div>
@@ -109,7 +107,7 @@ const ServiceDetail = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-2xl font-bold text-white mb-8">
+              <h2 className="font-display text-2xl font-bold text-gray-900 mb-8">
                 {t.serviceDetail.whenMakesSense} <GradientText>{t.serviceDetail.whenMakesSenseHighlight}</GradientText>
               </h2>
               <div className="space-y-4">
@@ -126,7 +124,7 @@ const ServiceDetail = () => {
                       <span className="font-display text-sm font-bold text-lime/60 mt-0.5 flex-shrink-0">
                         {(index + 1).toString().padStart(2, '0')}
                       </span>
-                      <p className="text-gray-300 text-sm">{item}</p>
+                      <p className="text-gray-600 text-sm">{item}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -139,7 +137,7 @@ const ServiceDetail = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <h2 className="font-display text-2xl font-bold text-white mb-8">
+              <h2 className="font-display text-2xl font-bold text-gray-900 mb-8">
                 {t.serviceDetail.problemSolved} <GradientText>{t.serviceDetail.problemSolvedHighlight}</GradientText>
               </h2>
               <div className="space-y-4">
@@ -154,7 +152,7 @@ const ServiceDetail = () => {
                   >
                     <div className="flex items-start gap-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-lime flex-shrink-0 mt-2" />
-                      <p className="text-gray-300 text-sm">{problem}</p>
+                      <p className="text-gray-600 text-sm">{problem}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -165,7 +163,7 @@ const ServiceDetail = () => {
       </ParallaxSection>
 
       {/* Scope */}
-      <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#050608' }}>
+      <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -174,7 +172,7 @@ const ServiceDetail = () => {
               viewport={{ once: true }}
               className="text-center mb-10"
             >
-              <h2 className="font-display text-2xl font-bold text-white">
+              <h2 className="font-display text-2xl font-bold text-gray-900">
                 {t.serviceDetail.scopeTitle} <GradientText>{t.serviceDetail.scopeHighlight}</GradientText>
               </h2>
             </motion.div>
@@ -184,15 +182,15 @@ const ServiceDetail = () => {
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-2xl border border-gray-800/50" style={{ backgroundColor: '#0B0B0B' }}
+                className="p-8 rounded-2xl border border-gray-200/50" style={{ backgroundColor: '#f0ede8' }}
               >
-                <h3 className="font-semibold text-white mb-6 flex items-center gap-3">
-                  <div className="w-2 h-6 bg-[#c4ff00] rounded-full" />
+                <h3 className="font-semibold text-gray-900 mb-6 flex items-center gap-3">
+                  <div className="w-2 h-6 bg-[#94c43d] rounded-full" />
                   {t.serviceDetail.includes}
                 </h3>
                 <ul className="space-y-4">
                   {service.scope.includes.map((item, index) => (
-                    <li key={index} className="flex items-start gap-3 text-gray-400 text-sm">
+                    <li key={index} className="flex items-start gap-3 text-gray-500 text-sm">
                       <div className="w-1.5 h-1.5 rounded-full bg-lime flex-shrink-0 mt-2" />
                       {item}
                     </li>
@@ -204,9 +202,9 @@ const ServiceDetail = () => {
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-2xl border border-gray-800/50" style={{ backgroundColor: '#0B0B0B' }}
+                className="p-8 rounded-2xl border border-gray-200/50" style={{ backgroundColor: '#f0ede8' }}
               >
-                <h3 className="font-semibold text-white mb-6 flex items-center gap-3">
+                <h3 className="font-semibold text-gray-900 mb-6 flex items-center gap-3">
                   <div className="w-2 h-6 bg-red-500/60 rounded-full" />
                   {t.serviceDetail.excludes}
                 </h3>
@@ -225,12 +223,11 @@ const ServiceDetail = () => {
       </section>
 
       {/* Deliverables */}
-      <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#0B0B0B' }}>
+      <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#f0ede8' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-lime/3 blur-[150px] rounded-full" />
         </div>
         
-        <ChineseCharacters characters="任" position="left" className="top-10" opacity={0.04} />
         
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-4xl mx-auto text-center">
@@ -239,7 +236,7 @@ const ServiceDetail = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-2xl font-bold text-white mb-8">
+              <h2 className="font-display text-2xl font-bold text-gray-900 mb-8">
                 Output / <GradientText>{t.serviceDetail.deliverables}</GradientText>
               </h2>
               <div className="space-y-4">
@@ -250,12 +247,12 @@ const ServiceDetail = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-start gap-4 p-5 rounded-xl border border-gray-800/50 text-left" style={{ backgroundColor: '#111214' }}
+                    className="flex items-start gap-4 p-5 rounded-xl border border-gray-200/50 text-left" style={{ backgroundColor: '#e8e5e0' }}
                   >
                     <span className="font-display text-sm font-bold text-lime/50 mt-0.5 flex-shrink-0">
                       {(index + 1).toString().padStart(2, '0')}
                     </span>
-                    <p className="text-gray-300 text-sm">{item}</p>
+                    <p className="text-gray-600 text-sm">{item}</p>
                   </motion.div>
                 ))}
               </div>
@@ -277,7 +274,7 @@ const ServiceDetail = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-2xl font-bold text-white mb-10">
+              <h2 className="font-display text-2xl font-bold text-gray-900 mb-10">
                 {t.serviceDetail.workModelTitle} <GradientText>{t.serviceDetail.workModelHighlight}</GradientText>
               </h2>
               
@@ -288,8 +285,8 @@ const ServiceDetail = () => {
                   viewport={{ once: true }}
                   className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
                 >
-                  <p className="text-[#c4ff00] text-xs uppercase tracking-wider mb-3 font-medium">{t.serviceDetail.workModelType}</p>
-                  <p className="text-white font-semibold text-sm">{service.workModel.type}</p>
+                  <p className="text-[#94c43d] text-xs uppercase tracking-wider mb-3 font-medium">{t.serviceDetail.workModelType}</p>
+                  <p className="text-gray-900 font-semibold text-sm">{service.workModel.type}</p>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -298,8 +295,8 @@ const ServiceDetail = () => {
                   transition={{ delay: 0.1 }}
                   className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
                 >
-                  <p className="text-[#c4ff00] text-xs uppercase tracking-wider mb-3 font-medium">{t.serviceDetail.workModelDuration}</p>
-                  <p className="text-white font-semibold text-sm">{service.workModel.duration}</p>
+                  <p className="text-[#94c43d] text-xs uppercase tracking-wider mb-3 font-medium">{t.serviceDetail.workModelDuration}</p>
+                  <p className="text-gray-900 font-semibold text-sm">{service.workModel.duration}</p>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -308,8 +305,8 @@ const ServiceDetail = () => {
                   transition={{ delay: 0.2 }}
                   className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
                 >
-                  <p className="text-[#c4ff00] text-xs uppercase tracking-wider mb-3 font-medium">{t.serviceDetail.workModelComm}</p>
-                  <p className="text-white font-semibold text-sm">{service.workModel.communication}</p>
+                  <p className="text-[#94c43d] text-xs uppercase tracking-wider mb-3 font-medium">{t.serviceDetail.workModelComm}</p>
+                  <p className="text-gray-900 font-semibold text-sm">{service.workModel.communication}</p>
                 </motion.div>
               </div>
             </motion.div>
@@ -318,8 +315,7 @@ const ServiceDetail = () => {
       </ParallaxSection>
 
       {/* Case Study */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#050608' }}>
-        <ChineseCharacters characters="橋" position="right" className="top-20" opacity={0.05} />
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div
@@ -328,10 +324,10 @@ const ServiceDetail = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/80 text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 backdrop-blur-sm text-gray-900/80 text-sm font-medium mb-4">
               {t.serviceDetail.caseStudyBadge}
             </span>
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white">
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">
               {t.serviceDetail.caseStudyTitle} <GradientText>{t.serviceDetail.caseStudyHighlight}</GradientText>
             </h2>
           </motion.div>
@@ -341,13 +337,13 @@ const ServiceDetail = () => {
       </section>
 
       {/* CTA Section - consistent style */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#050608' }}>
+      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-lime/8 blur-[150px] rounded-full" />
         </div>
         
         <div className="absolute bottom-10 left-10 opacity-[0.06] pointer-events-none">
-          <span className="font-display text-[10rem] font-bold text-[#c4ff00] leading-none">合作</span>
+          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none"></span>
         </div>
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
@@ -356,7 +352,7 @@ const ServiceDetail = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-6">
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
               {t.serviceDetail.ctaTitle} <GradientText>{t.serviceDetail.ctaHighlight}</GradientText>
             </h2>
             <p className="text-gray-500 mb-8 max-w-lg mx-auto">
@@ -364,7 +360,7 @@ const ServiceDetail = () => {
             </p>
             <Link
               to="/kontakt"
-              className="group inline-flex items-center gap-3 px-10 py-5 bg-[#c4ff00] text-gray-900 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(196,255,0,0.5)]"
+              className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-gray-900 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]"
             >
               {t.serviceDetail.ctaButton}
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />

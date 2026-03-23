@@ -14,7 +14,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang);
-    document.documentElement.lang = lang === 'cn' ? 'zh' : lang;
+    document.documentElement.lang = lang;
   }, []);
 
   const t = translations[language];

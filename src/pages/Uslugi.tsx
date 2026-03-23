@@ -6,7 +6,6 @@ import { Footer } from '@/components/Footer';
 import { LogoMarquee } from '@/components/LogoMarquee';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
 import { GradientText } from '@/components/GradientText';
-import { ChineseCharacters } from '@/components/ChineseCharacters';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { uslugiTranslations } from '@/i18n/pageTranslations';
 import { statsTranslations, serviceCategoriesTranslations } from '@/i18n/contentTranslations';
@@ -129,35 +128,33 @@ const Uslugi = () => {
   const translatedCategories = serviceCategoriesTranslations[language];
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#050608' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#1a1a1a' }}>
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative pt-28 pb-16 overflow-hidden" style={{ backgroundColor: '#050608' }}>
+      <section className="relative pt-28 pb-16 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img src={worldMap} alt="" className="w-full h-full object-cover opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050608]/80 via-[#050608]/90 to-[#050608]" />
-          <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-[#c4ff00]/5 blur-[150px] rounded-full" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/80 via-[#1a1a1a]/90 to-[#1a1a1a]" />
+          <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-[#94c43d]/5 blur-[150px] rounded-full" />
         </div>
         
-        <ChineseCharacters characters="合作" position="right" className="top-32" opacity={0.06} />
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-4xl text-center mx-auto">
             <span className="inline-block px-4 py-2 rounded-full bg-lime/20 text-lime text-sm font-semibold uppercase tracking-wider mb-6">{pt.badge}</span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
               {pt.title} <GradientText>{pt.titleHighlight}</GradientText>
               <br />{pt.subtitle}
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">{pt.description}</p>
+            <p className="text-xl text-gray-500 max-w-2xl mx-auto">{pt.description}</p>
           </motion.div>
         </div>
       </section>
 
       {/* Categories Accordion Section */}
-      <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#050608' }}>
-        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#050608] to-transparent z-[1]" />
-        <ChineseCharacters characters="桥" position="right" className="bottom-20" opacity={0.04} />
+      <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#1a1a1a] to-transparent z-[1]" />
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div className="absolute inset-0" style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, rgba(196, 255, 0, 0.3) 1px, transparent 0)`,
@@ -176,17 +173,17 @@ const Uslugi = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
-                  className="border-b border-gray-800"
+                  className="border-b border-gray-200"
                 >
                   <button
                     onClick={() => setExpandedCategory(expandedCategory === index ? null : index)}
                     className="w-full flex items-center justify-between py-6 group"
                   >
                     <div className="flex items-center gap-4 md:gap-6">
-                      <span className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-white group-hover:text-lime transition-colors duration-300">
+                      <span className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-lime transition-colors duration-300">
                         {translated.title}
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-gray-800/50 text-gray-400 text-xs">
+                      <span className="px-3 py-1 rounded-full bg-gray-800/50 text-gray-500 text-xs">
                         {catMeta.count} {getServicesCountLabel(catMeta.count, language)}
                       </span>
                     </div>
@@ -211,13 +208,13 @@ const Uslugi = () => {
                               transition={{ delay: subIndex * 0.05 }}
                             >
                               <Link to={`/uslugi/${catMeta.slug}/${subService.slug}`} className="group relative block h-full">
-                                <div className="relative h-full rounded-2xl overflow-hidden border border-gray-800/50 bg-[#0B0B0B]/80 hover:border-lime/50 transition-all duration-300 hover:shadow-lg hover:shadow-lime/5">
+                                <div className="relative h-full rounded-2xl overflow-hidden border border-gray-200/50 bg-[#f0ede8]/80 hover:border-lime/50 transition-all duration-300 hover:shadow-lg hover:shadow-lime/5">
                                   <div className="aspect-[4/3] relative overflow-hidden">
                                     <img src={subService.image} alt={translated.subServices[subIndex]} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#050608] via-[#050608]/60 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/60 to-transparent" />
                                   </div>
                                   <div className="absolute bottom-0 left-0 right-0 p-5">
-                                    <h3 className="text-white text-base font-semibold leading-tight group-hover:text-lime transition-colors mb-2">
+                                    <h3 className="text-gray-900 text-base font-semibold leading-tight group-hover:text-lime transition-colors mb-2">
                                       {translated.subServices[subIndex]}
                                     </h3>
                                     <div className="flex items-center gap-2 text-lime">
@@ -243,7 +240,7 @@ const Uslugi = () => {
       {/* Stats Section */}
       <section className="relative py-32 overflow-hidden">
         <motion.div className="absolute inset-0" style={{ backgroundImage: `url(${statsBg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
-          <div className="absolute inset-0 bg-[#050608]/80 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-[#1a1a1a]/80 backdrop-blur-sm" />
         </motion.div>
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -252,7 +249,7 @@ const Uslugi = () => {
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/80 text-sm font-medium mb-4">{t.stats.badge}</span>
+            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 backdrop-blur-sm text-gray-900/80 text-sm font-medium mb-4">{t.stats.badge}</span>
           </motion.div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -261,7 +258,7 @@ const Uslugi = () => {
                 <div className="font-display text-5xl lg:text-6xl font-bold text-lime mb-3">
                   {stat.isText ? <span>{stat.suffix}</span> : <AnimatedCounter end={stat.value} suffix={stat.suffix} />}
                 </div>
-                <p className="text-white/70 text-sm">{stat.label}</p>
+                <p className="text-gray-900/70 text-sm">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -269,7 +266,7 @@ const Uslugi = () => {
       </section>
 
       {/* Trust Section */}
-      <section className="py-16" style={{ backgroundColor: '#050608' }}>
+      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center text-gray-500 text-sm uppercase tracking-widest mb-8">
             {t.trust.title}
@@ -279,9 +276,9 @@ const Uslugi = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#050608' }}>
+      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="absolute bottom-10 left-10 opacity-[0.06] pointer-events-none">
-          <span className="font-display text-[10rem] font-bold text-[#c4ff00] leading-none">合作</span>
+          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none"></span>
         </div>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-lime/8 blur-[150px] rounded-full" />
@@ -289,11 +286,11 @@ const Uslugi = () => {
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-6">
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
               {pt.ctaTitle} <GradientText>{pt.ctaTitleHighlight}</GradientText>
             </h2>
-            <p className="text-gray-400 mb-8 max-w-lg mx-auto">{pt.ctaSubtitle}</p>
-            <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#c4ff00] text-gray-900 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(196,255,0,0.5)]">
+            <p className="text-gray-500 mb-8 max-w-lg mx-auto">{pt.ctaSubtitle}</p>
+            <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-gray-900 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
               {pt.ctaButton}
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>

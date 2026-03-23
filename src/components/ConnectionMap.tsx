@@ -86,7 +86,7 @@ export const ConnectionMap = () => {
         <defs>
           <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#111827" />
-            <stop offset="100%" stopColor="#c4ff00" />
+            <stop offset="100%" stopColor="#94c43d" />
           </linearGradient>
         </defs>
       </svg>

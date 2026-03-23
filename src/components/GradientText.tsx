@@ -8,7 +8,7 @@ interface GradientTextProps {
 export const GradientText = ({ children, className = '' }: GradientTextProps) => {
   return (
     <span 
-      className={`bg-gradient-to-r from-[#e8ff80] via-[#c4ff00] to-[#d4ff40] bg-clip-text text-transparent box-decoration-clone ${className}`}
+      className={`bg-gradient-to-r from-[#a8d84e] via-[#94c43d] to-[#7db32e] bg-clip-text text-transparent box-decoration-clone ${className}`}
       style={{ WebkitBoxDecorationBreak: 'clone' }}
     >
       {children}

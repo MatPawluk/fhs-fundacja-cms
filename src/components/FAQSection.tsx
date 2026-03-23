@@ -9,7 +9,7 @@ import { GradientText } from './GradientText';
 
 const faqItems = [
   {
-    question: 'Jak wygląda typowy projekt współpracy z Yin Yang?',
+    question: 'Jak wygląda typowy projekt współpracy z FHS Foundation?',
     answer: 'Każdy projekt zaczynamy od bezpłatnej konsultacji, podczas której poznajemy Twoje potrzeby. Następnie przygotowujemy dedykowany plan działania, który realizujemy etapami z pełną transparentnością.',
   },
   {
@@ -44,10 +44,10 @@ export const FAQSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/80 text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 backdrop-blur-sm text-gray-900/80 text-sm font-medium mb-4">
             FAQ
           </span>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-white">
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900">
             Najczęściej zadawane <GradientText>pytania</GradientText>
           </h2>
         </motion.div>
@@ -66,10 +66,10 @@ export const FAQSection = () => {
                   value={`faq-${index}`}
                   className="bg-gray-800/50 rounded-2xl border border-gray-700/50 px-6 overflow-hidden data-[state=open]:border-lime/50"
                 >
-                  <AccordionTrigger className="text-left font-display font-semibold text-white hover:text-lime py-5 hover:no-underline">
+                  <AccordionTrigger className="text-left font-display font-semibold text-gray-900 hover:text-lime py-5 hover:no-underline">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-gray-400 pb-5">
+                  <AccordionContent className="text-gray-500 pb-5">
                     {item.answer}
                   </AccordionContent>
                 </AccordionItem>
