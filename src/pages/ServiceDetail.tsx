@@ -55,7 +55,7 @@ const ServiceDetail = () => {
             <span className="inline-block px-4 py-2 rounded-full bg-lime/20 text-lime text-sm font-medium mb-4">
               {service.subtitle}
             </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
               <GradientText>{displayTitle}</GradientText>
             </h1>
           </motion.div>
@@ -86,11 +86,11 @@ const ServiceDetail = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <h2 className="font-display text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <div className="w-1 h-8 bg-[#94c43d] rounded-full" />
                 {t.serviceDetail.serviceDescription}
               </h2>
-              <p className="text-gray-400 text-lg leading-relaxed">
+              <p className="text-gray-500 text-lg leading-relaxed">
                 {service.description}
               </p>
             </motion.div>
@@ -107,7 +107,7 @@ const ServiceDetail = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-2xl font-bold text-white mb-8">
+              <h2 className="font-display text-2xl font-bold text-gray-900 mb-8">
                 {t.serviceDetail.whenMakesSense} <GradientText>{t.serviceDetail.whenMakesSenseHighlight}</GradientText>
               </h2>
               <div className="space-y-4">
@@ -124,7 +124,7 @@ const ServiceDetail = () => {
                       <span className="font-display text-sm font-bold text-lime/60 mt-0.5 flex-shrink-0">
                         {(index + 1).toString().padStart(2, '0')}
                       </span>
-                      <p className="text-gray-300 text-sm">{item}</p>
+                      <p className="text-gray-600 text-sm">{item}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -137,7 +137,7 @@ const ServiceDetail = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <h2 className="font-display text-2xl font-bold text-white mb-8">
+              <h2 className="font-display text-2xl font-bold text-gray-900 mb-8">
                 {t.serviceDetail.problemSolved} <GradientText>{t.serviceDetail.problemSolvedHighlight}</GradientText>
               </h2>
               <div className="space-y-4">
@@ -152,7 +152,7 @@ const ServiceDetail = () => {
                   >
                     <div className="flex items-start gap-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-lime flex-shrink-0 mt-2" />
-                      <p className="text-gray-300 text-sm">{problem}</p>
+                      <p className="text-gray-600 text-sm">{problem}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -172,7 +172,7 @@ const ServiceDetail = () => {
               viewport={{ once: true }}
               className="text-center mb-10"
             >
-              <h2 className="font-display text-2xl font-bold text-white">
+              <h2 className="font-display text-2xl font-bold text-gray-900">
                 {t.serviceDetail.scopeTitle} <GradientText>{t.serviceDetail.scopeHighlight}</GradientText>
               </h2>
             </motion.div>
@@ -182,15 +182,15 @@ const ServiceDetail = () => {
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-2xl border border-gray-800/50" style={{ backgroundColor: '#f0ede8' }}
+                className="p-8 rounded-2xl border border-gray-200/50" style={{ backgroundColor: '#f0ede8' }}
               >
-                <h3 className="font-semibold text-white mb-6 flex items-center gap-3">
+                <h3 className="font-semibold text-gray-900 mb-6 flex items-center gap-3">
                   <div className="w-2 h-6 bg-[#94c43d] rounded-full" />
                   {t.serviceDetail.includes}
                 </h3>
                 <ul className="space-y-4">
                   {service.scope.includes.map((item, index) => (
-                    <li key={index} className="flex items-start gap-3 text-gray-400 text-sm">
+                    <li key={index} className="flex items-start gap-3 text-gray-500 text-sm">
                       <div className="w-1.5 h-1.5 rounded-full bg-lime flex-shrink-0 mt-2" />
                       {item}
                     </li>
@@ -202,9 +202,9 @@ const ServiceDetail = () => {
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-2xl border border-gray-800/50" style={{ backgroundColor: '#f0ede8' }}
+                className="p-8 rounded-2xl border border-gray-200/50" style={{ backgroundColor: '#f0ede8' }}
               >
-                <h3 className="font-semibold text-white mb-6 flex items-center gap-3">
+                <h3 className="font-semibold text-gray-900 mb-6 flex items-center gap-3">
                   <div className="w-2 h-6 bg-red-500/60 rounded-full" />
                   {t.serviceDetail.excludes}
                 </h3>
@@ -236,7 +236,7 @@ const ServiceDetail = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-2xl font-bold text-white mb-8">
+              <h2 className="font-display text-2xl font-bold text-gray-900 mb-8">
                 Output / <GradientText>{t.serviceDetail.deliverables}</GradientText>
               </h2>
               <div className="space-y-4">
@@ -247,12 +247,12 @@ const ServiceDetail = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-start gap-4 p-5 rounded-xl border border-gray-800/50 text-left" style={{ backgroundColor: '#e8e5e0' }}
+                    className="flex items-start gap-4 p-5 rounded-xl border border-gray-200/50 text-left" style={{ backgroundColor: '#e8e5e0' }}
                   >
                     <span className="font-display text-sm font-bold text-lime/50 mt-0.5 flex-shrink-0">
                       {(index + 1).toString().padStart(2, '0')}
                     </span>
-                    <p className="text-gray-300 text-sm">{item}</p>
+                    <p className="text-gray-600 text-sm">{item}</p>
                   </motion.div>
                 ))}
               </div>
@@ -274,7 +274,7 @@ const ServiceDetail = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-2xl font-bold text-white mb-10">
+              <h2 className="font-display text-2xl font-bold text-gray-900 mb-10">
                 {t.serviceDetail.workModelTitle} <GradientText>{t.serviceDetail.workModelHighlight}</GradientText>
               </h2>
               
@@ -286,7 +286,7 @@ const ServiceDetail = () => {
                   className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
                 >
                   <p className="text-[#94c43d] text-xs uppercase tracking-wider mb-3 font-medium">{t.serviceDetail.workModelType}</p>
-                  <p className="text-white font-semibold text-sm">{service.workModel.type}</p>
+                  <p className="text-gray-900 font-semibold text-sm">{service.workModel.type}</p>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -296,7 +296,7 @@ const ServiceDetail = () => {
                   className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
                 >
                   <p className="text-[#94c43d] text-xs uppercase tracking-wider mb-3 font-medium">{t.serviceDetail.workModelDuration}</p>
-                  <p className="text-white font-semibold text-sm">{service.workModel.duration}</p>
+                  <p className="text-gray-900 font-semibold text-sm">{service.workModel.duration}</p>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -306,7 +306,7 @@ const ServiceDetail = () => {
                   className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
                 >
                   <p className="text-[#94c43d] text-xs uppercase tracking-wider mb-3 font-medium">{t.serviceDetail.workModelComm}</p>
-                  <p className="text-white font-semibold text-sm">{service.workModel.communication}</p>
+                  <p className="text-gray-900 font-semibold text-sm">{service.workModel.communication}</p>
                 </motion.div>
               </div>
             </motion.div>
@@ -324,10 +324,10 @@ const ServiceDetail = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/80 text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 backdrop-blur-sm text-gray-900/80 text-sm font-medium mb-4">
               {t.serviceDetail.caseStudyBadge}
             </span>
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white">
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">
               {t.serviceDetail.caseStudyTitle} <GradientText>{t.serviceDetail.caseStudyHighlight}</GradientText>
             </h2>
           </motion.div>
@@ -352,7 +352,7 @@ const ServiceDetail = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-6">
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
               {t.serviceDetail.ctaTitle} <GradientText>{t.serviceDetail.ctaHighlight}</GradientText>
             </h2>
             <p className="text-gray-500 mb-8 max-w-lg mx-auto">

@@ -47,7 +47,7 @@ export const InteractiveCaseStudy = ({ data = defaultData, image }: InteractiveC
       <div className="lg:col-span-2 space-y-6">
         <div className="flex flex-wrap gap-3">
           {tabs.map((tab) => (
-            <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`relative px-6 py-3 rounded-2xl font-medium transition-all duration-300 ${activeTab === tab.id ? 'bg-lime text-gray-900' : 'bg-gray-800/50 text-gray-400 hover:bg-gray-700/50 hover:text-white'}`}>
+            <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`relative px-6 py-3 rounded-2xl font-medium transition-all duration-300 ${activeTab === tab.id ? 'bg-lime text-gray-900' : 'bg-gray-800/50 text-gray-500 hover:bg-gray-700/50 hover:text-gray-900'}`}>
               {tab.label}
               {activeTab === tab.id && (<motion.div layoutId="activeTab" className="absolute inset-0 bg-lime rounded-2xl -z-10" transition={{ type: "spring", duration: 0.5 }} />)}
             </button>
@@ -57,7 +57,7 @@ export const InteractiveCaseStudy = ({ data = defaultData, image }: InteractiveC
           <AnimatePresence mode="wait">
             <motion.div key={activeTab} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }}>
               <h4 className="text-lime font-medium mb-4 text-lg">{tabs.find(t => t.id === activeTab)?.label}</h4>
-              <p className={`text-lg leading-relaxed ${activeTab === 'result' ? 'text-white font-medium' : 'text-gray-300'}`}>{getContent()}</p>
+              <p className={`text-lg leading-relaxed ${activeTab === 'result' ? 'text-gray-900 font-medium' : 'text-gray-600'}`}>{getContent()}</p>
             </motion.div>
           </AnimatePresence>
         </div>

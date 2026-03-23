@@ -86,7 +86,7 @@ const ArticleDetail = () => {
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <Link 
             to="/baza-wiedzy"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-lime transition-colors duration-300 mb-8"
+            className="inline-flex items-center gap-2 text-gray-500 hover:text-lime transition-colors duration-300 mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             Wróć do bazy wiedzy
@@ -101,11 +101,11 @@ const ArticleDetail = () => {
             <span className="inline-block px-4 py-2 rounded-full bg-lime text-gray-900 text-sm font-semibold mb-6">
               {article.category}
             </span>
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-8">
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-8">
               <GradientText>{article.title}</GradientText>
             </h1>
             
-            <div className="flex flex-wrap items-center gap-6 text-gray-400">
+            <div className="flex flex-wrap items-center gap-6 text-gray-500">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
                 <span>{article.date}</span>
@@ -121,7 +121,7 @@ const ArticleDetail = () => {
       </section>
 
       {/* Article Content */}
-      <section className="py-16 bg-gray-950 text-white">
+      <section className="py-16 bg-gray-950 text-gray-900">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-4 gap-12">
             {/* Sidebar */}
@@ -129,12 +129,12 @@ const ArticleDetail = () => {
               <div className="sticky top-28 space-y-6">
                 {/* Share buttons */}
                 <div className="p-6 bg-gray-800/50 rounded-2xl border border-gray-700/50">
-                  <h3 className="font-semibold text-white mb-4">Udostępnij</h3>
+                  <h3 className="font-semibold text-gray-900 mb-4">Udostępnij</h3>
                   <div className="flex gap-3">
-                    <button className="w-10 h-10 rounded-xl bg-gray-700/50 hover:bg-lime hover:text-gray-900 text-gray-400 flex items-center justify-center transition-all duration-300">
+                    <button className="w-10 h-10 rounded-xl bg-gray-700/50 hover:bg-lime hover:text-gray-900 text-gray-500 flex items-center justify-center transition-all duration-300">
                       <Share2 className="w-5 h-5" />
                     </button>
-                    <button className="w-10 h-10 rounded-xl bg-gray-700/50 hover:bg-lime hover:text-gray-900 text-gray-400 flex items-center justify-center transition-all duration-300">
+                    <button className="w-10 h-10 rounded-xl bg-gray-700/50 hover:bg-lime hover:text-gray-900 text-gray-500 flex items-center justify-center transition-all duration-300">
                       <Bookmark className="w-5 h-5" />
                     </button>
                   </div>
@@ -142,7 +142,7 @@ const ArticleDetail = () => {
 
                 {/* Key Stats - Interactive element */}
                 <div className="p-6 bg-gray-800/50 rounded-2xl border border-gray-700/50">
-                  <h3 className="font-semibold text-white mb-4">Kluczowe dane</h3>
+                  <h3 className="font-semibold text-gray-900 mb-4">Kluczowe dane</h3>
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-xl bg-lime/20 flex items-center justify-center">
@@ -167,8 +167,8 @@ const ArticleDetail = () => {
 
                 {/* CTA */}
                 <div className="p-6 bg-lime/10 rounded-2xl border border-lime/20">
-                  <h3 className="font-semibold text-white mb-3">Potrzebujesz analizy?</h3>
-                  <p className="text-gray-400 text-sm mb-4">Przygotujemy dedykowany raport dla Twojej firmy.</p>
+                  <h3 className="font-semibold text-gray-900 mb-3">Potrzebujesz analizy?</h3>
+                  <p className="text-gray-500 text-sm mb-4">Przygotujemy dedykowany raport dla Twojej firmy.</p>
                   <Link 
                     to="/kontakt"
                     className="block w-full text-center px-4 py-3 bg-lime text-gray-900 rounded-xl font-semibold text-sm hover:scale-105 transition-transform duration-300"
@@ -200,7 +200,7 @@ const ArticleDetail = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="prose prose-lg prose-invert max-w-none prose-headings:font-display prose-headings:text-white prose-p:text-gray-300 prose-li:text-gray-300 prose-a:text-lime prose-a:no-underline hover:prose-a:underline prose-strong:text-white"
+                className="prose prose-lg prose-invert max-w-none prose-headings:font-display prose-headings:text-gray-900 prose-p:text-gray-600 prose-li:text-gray-600 prose-a:text-lime prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900"
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
 
@@ -211,7 +211,7 @@ const ArticleDetail = () => {
                 viewport={{ once: true }}
                 className="mt-12 p-8 bg-gray-800/50 rounded-3xl border border-gray-700/50"
               >
-                <h3 className="font-display font-bold text-xl text-white mb-6 text-center">
+                <h3 className="font-display font-bold text-xl text-gray-900 mb-6 text-center">
                   Kluczowe przewagi chińskich firm
                 </h3>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -220,7 +220,7 @@ const ArticleDetail = () => {
                       <div className="font-display text-4xl font-bold text-lime mb-2">
                         {['50%', '15%', '30%', '2x'][index]}
                       </div>
-                      <p className="text-gray-400 text-sm">{item}</p>
+                      <p className="text-gray-500 text-sm">{item}</p>
                     </div>
                   ))}
                 </div>
@@ -233,7 +233,7 @@ const ArticleDetail = () => {
                 viewport={{ once: true }}
                 className="mt-16"
               >
-                <h3 className="font-display font-bold text-2xl text-white mb-8">
+                <h3 className="font-display font-bold text-2xl text-gray-900 mb-8">
                   Powiązane <GradientText>artykuły</GradientText>
                 </h3>
                 <div className="grid sm:grid-cols-2 gap-6">
@@ -250,7 +250,7 @@ const ArticleDetail = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-6">
-                        <h4 className="font-semibold text-white group-hover:text-lime transition-colors">
+                        <h4 className="font-semibold text-gray-900 group-hover:text-lime transition-colors">
                           {related.title}
                         </h4>
                         <div className="flex items-center gap-2 text-lime opacity-0 group-hover:opacity-100 transition-opacity mt-2">

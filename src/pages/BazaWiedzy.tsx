@@ -52,7 +52,7 @@ const BazaWiedzy = () => {
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
             <span className="inline-block px-4 py-2 rounded-full bg-lime/20 text-lime text-sm font-medium mb-4">{pt.badge}</span>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
               {pt.title} <GradientText>{pt.titleHighlight}</GradientText>
               <br />{pt.titleEnd}
             </h1>
@@ -73,7 +73,7 @@ const BazaWiedzy = () => {
                 className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
                   activeCategoryIndex === idx
                     ? 'bg-lime text-gray-900'
-                    : 'text-gray-500 hover:text-white border border-gray-800/50'
+                    : 'text-gray-500 hover:text-gray-900 border border-gray-200/50'
                 }`}
                 style={activeCategoryIndex !== idx ? { backgroundColor: '#f0ede8' } : {}}
               >
@@ -90,7 +90,7 @@ const BazaWiedzy = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="group relative rounded-2xl overflow-hidden border border-gray-800/50 hover:border-lime/30 hover:shadow-xl hover:shadow-lime/5 transition-all duration-500"
+                className="group relative rounded-2xl overflow-hidden border border-gray-200/50 hover:border-lime/30 hover:shadow-xl hover:shadow-lime/5 transition-all duration-500"
                 style={{ backgroundColor: '#f0ede8' }}
               >
                 <Link to={`/baza-wiedzy/${article.slug}`}>
@@ -107,7 +107,7 @@ const BazaWiedzy = () => {
                           ? 'bg-lime text-gray-900'
                           : article.category === categories[2]
                           ? 'bg-white/90 text-gray-900'
-                          : 'text-white border border-gray-700'
+                          : 'text-gray-900 border border-gray-700'
                       }`}
                       style={article.category === categories[3] ? { backgroundColor: '#e8e5e0' } : {}}
                       >
@@ -117,7 +117,7 @@ const BazaWiedzy = () => {
                   </div>
 
                   <div className="p-6">
-                    <h3 className="font-display font-semibold text-xl mb-3 text-white group-hover:text-lime transition-colors duration-300 line-clamp-2">{article.title}</h3>
+                    <h3 className="font-display font-semibold text-xl mb-3 text-gray-900 group-hover:text-lime transition-colors duration-300 line-clamp-2">{article.title}</h3>
                     <p className="text-gray-500 text-sm mb-6 line-clamp-2">{article.description}</p>
                     <div className="flex items-center justify-between text-sm text-gray-600">
                       <div className="flex items-center gap-1"><Calendar className="w-4 h-4" /><span>{article.date}</span></div>
@@ -141,7 +141,7 @@ const BazaWiedzy = () => {
         </div>
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-6">{pt.ctaTitle} <GradientText>{pt.ctaTitleHighlight}</GradientText>?</h2>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">{pt.ctaTitle} <GradientText>{pt.ctaTitleHighlight}</GradientText>?</h2>
             <p className="text-gray-500 mb-8 max-w-lg mx-auto">{pt.ctaSubtitle}</p>
             <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-gray-900 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
               {pt.ctaButton}
