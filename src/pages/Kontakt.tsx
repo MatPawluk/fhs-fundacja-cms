@@ -64,7 +64,7 @@ const Kontakt = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#050608' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#1a1a1a' }}>
       <Navbar />
       
       {/* Main Content */}
@@ -103,9 +103,9 @@ const Kontakt = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 + index * 0.1 }}
                     className={`group flex items-center gap-4 p-5 rounded-2xl border-2 border-gray-800/50 ${method.hoverBorder} transition-all duration-300`}
-                    style={{ backgroundColor: '#0B0B0B' }}
+                    style={{ backgroundColor: '#f0ede8' }}
                   >
-                    <div className="w-14 h-14 rounded-xl flex items-center justify-center overflow-hidden p-2" style={{ backgroundColor: '#111214' }}>
+                    <div className="w-14 h-14 rounded-xl flex items-center justify-center overflow-hidden p-2" style={{ backgroundColor: '#e8e5e0' }}>
                       <img src={method.icon} alt={method.title} className="w-8 h-8 object-contain" />
                     </div>
                     <div className="flex-grow">
@@ -124,7 +124,7 @@ const Kontakt = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="rounded-3xl p-8 border border-gray-800/50" style={{ backgroundColor: '#0B0B0B' }}>
+              <div className="rounded-3xl p-8 border border-gray-800/50" style={{ backgroundColor: '#f0ede8' }}>
                 <h3 className="font-display font-semibold text-xl text-white mb-2">
                   {pt.formTitle}
                 </h3>
@@ -142,7 +142,7 @@ const Kontakt = () => {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl border border-gray-800/50 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent transition-all duration-300"
-                        style={{ backgroundColor: '#111214' }}
+                        style={{ backgroundColor: '#e8e5e0' }}
                       />
                     </div>
                     <div>
@@ -153,7 +153,7 @@ const Kontakt = () => {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl border border-gray-800/50 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent transition-all duration-300"
-                        style={{ backgroundColor: '#111214' }}
+                        style={{ backgroundColor: '#e8e5e0' }}
                       />
                     </div>
                   </div>
@@ -166,7 +166,7 @@ const Kontakt = () => {
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-gray-800/50 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent transition-all duration-300"
-                      style={{ backgroundColor: '#111214' }}
+                      style={{ backgroundColor: '#e8e5e0' }}
                     />
                   </div>
 
@@ -178,7 +178,7 @@ const Kontakt = () => {
                       value={formData.topic}
                       onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-gray-800/50 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent transition-all duration-300"
-                      style={{ backgroundColor: '#111214' }}
+                      style={{ backgroundColor: '#e8e5e0' }}
                     />
                   </div>
 
@@ -190,13 +190,13 @@ const Kontakt = () => {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-gray-800/50 text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent transition-all duration-300 resize-none"
-                      style={{ backgroundColor: '#111214' }}
+                      style={{ backgroundColor: '#e8e5e0' }}
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#c4ff00] text-gray-900 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(196,255,0,0.5)]"
+                    className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#94c43d] text-gray-900 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]"
                   >
                     {pt.submitButton}
                     <Send className="w-5 h-5" />
@@ -209,7 +209,7 @@ const Kontakt = () => {
       </section>
 
       {/* Locations Section - consistent dark bg */}
-      <section className="py-16" style={{ backgroundColor: '#050608' }}>
+      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent" />
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div
@@ -223,8 +223,8 @@ const Kontakt = () => {
             </h3>
 
             <div className="grid sm:grid-cols-2 gap-4 mb-8">
-              <div className="p-6 rounded-2xl border border-gray-800/50 hover:border-lime/30 transition-colors duration-300" style={{ backgroundColor: '#0B0B0B' }}>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: '#111214' }}>
+              <div className="p-6 rounded-2xl border border-gray-800/50 hover:border-lime/30 transition-colors duration-300" style={{ backgroundColor: '#f0ede8' }}>
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: '#e8e5e0' }}>
                   <MapPin className="w-5 h-5 text-lime" />
                 </div>
                 <h4 className="font-semibold text-white mb-2">Warszawa</h4>
@@ -234,8 +234,8 @@ const Kontakt = () => {
                   Polska
                 </p>
               </div>
-              <div className="p-6 rounded-2xl border border-gray-800/50 hover:border-lime/30 transition-colors duration-300" style={{ backgroundColor: '#0B0B0B' }}>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: '#111214' }}>
+              <div className="p-6 rounded-2xl border border-gray-800/50 hover:border-lime/30 transition-colors duration-300" style={{ backgroundColor: '#f0ede8' }}>
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: '#e8e5e0' }}>
                   <MapPin className="w-5 h-5 text-lime" />
                 </div>
                 <h4 className="font-semibold text-white mb-2">Shanghai</h4>

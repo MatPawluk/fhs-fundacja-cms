@@ -101,13 +101,13 @@ export const WorldDotMap = ({ className = '' }: WorldDotMapProps) => {
               animate={{ 
                 opacity: isHighlighted ? 1 : 0.4, 
                 scale: 1,
-                fill: isHighlighted ? '#c4ff00' : '#6b7280'
+                fill: isHighlighted ? '#94c43d' : '#6b7280'
               }}
               transition={{ 
                 delay: index * 0.002,
                 duration: 0.3
               }}
-              className={isHighlighted ? 'drop-shadow-[0_0_3px_#c4ff00]' : ''}
+              className={isHighlighted ? 'drop-shadow-[0_0_3px_#94c43d]' : ''}
             />
           );
         })}
@@ -122,18 +122,18 @@ export const WorldDotMap = ({ className = '' }: WorldDotMapProps) => {
             cx={POLAND_POS.x}
             cy={POLAND_POS.y}
             r={2}
-            fill="#c4ff00"
+            fill="#94c43d"
             initial={{ scale: 0 }}
             animate={{ scale: [1, 1.3, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="drop-shadow-[0_0_8px_#c4ff00]"
+            className="drop-shadow-[0_0_8px_#94c43d]"
           />
           <motion.circle
             cx={POLAND_POS.x}
             cy={POLAND_POS.y}
             r={4}
             fill="transparent"
-            stroke="#c4ff00"
+            stroke="#94c43d"
             strokeWidth={0.3}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: [1, 2], opacity: [0.6, 0] }}
@@ -151,18 +151,18 @@ export const WorldDotMap = ({ className = '' }: WorldDotMapProps) => {
             cx={CHINA_POS.x}
             cy={CHINA_POS.y}
             r={2}
-            fill="#c4ff00"
+            fill="#94c43d"
             initial={{ scale: 0 }}
             animate={{ scale: [1, 1.3, 1] }}
             transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-            className="drop-shadow-[0_0_8px_#c4ff00]"
+            className="drop-shadow-[0_0_8px_#94c43d]"
           />
           <motion.circle
             cx={CHINA_POS.x}
             cy={CHINA_POS.y}
             r={4}
             fill="transparent"
-            stroke="#c4ff00"
+            stroke="#94c43d"
             strokeWidth={0.3}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: [1, 2], opacity: [0.6, 0] }}
@@ -174,7 +174,7 @@ export const WorldDotMap = ({ className = '' }: WorldDotMapProps) => {
         <motion.path
           d={`M ${POLAND_POS.x} ${POLAND_POS.y} Q ${(POLAND_POS.x + CHINA_POS.x) / 2} ${POLAND_POS.y - 15} ${CHINA_POS.x} ${CHINA_POS.y}`}
           fill="none"
-          stroke="#c4ff00"
+          stroke="#94c43d"
           strokeWidth={0.4}
           strokeDasharray="2 1"
           initial={{ pathLength: 0, opacity: 0 }}
@@ -185,7 +185,7 @@ export const WorldDotMap = ({ className = '' }: WorldDotMapProps) => {
         {/* Animated dot on path */}
         <motion.circle
           r={0.8}
-          fill="#c4ff00"
+          fill="#94c43d"
           initial={{ opacity: 0 }}
           animate={{
             opacity: [0, 1, 1, 0],
@@ -199,7 +199,7 @@ export const WorldDotMap = ({ className = '' }: WorldDotMapProps) => {
           style={{
             offsetPath: `path('M ${POLAND_POS.x} ${POLAND_POS.y} Q ${(POLAND_POS.x + CHINA_POS.x) / 2} ${POLAND_POS.y - 15} ${CHINA_POS.x} ${CHINA_POS.y}')`
           }}
-          className="drop-shadow-[0_0_4px_#c4ff00]"
+          className="drop-shadow-[0_0_4px_#94c43d]"
         />
       </svg>
 

@@ -129,15 +129,15 @@ const Uslugi = () => {
   const translatedCategories = serviceCategoriesTranslations[language];
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#050608' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#1a1a1a' }}>
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative pt-28 pb-16 overflow-hidden" style={{ backgroundColor: '#050608' }}>
+      <section className="relative pt-28 pb-16 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img src={worldMap} alt="" className="w-full h-full object-cover opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050608]/80 via-[#050608]/90 to-[#050608]" />
-          <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-[#c4ff00]/5 blur-[150px] rounded-full" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/80 via-[#1a1a1a]/90 to-[#1a1a1a]" />
+          <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-[#94c43d]/5 blur-[150px] rounded-full" />
         </div>
         
         <ChineseCharacters characters="合作" position="right" className="top-32" opacity={0.06} />
@@ -155,8 +155,8 @@ const Uslugi = () => {
       </section>
 
       {/* Categories Accordion Section */}
-      <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#050608' }}>
-        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#050608] to-transparent z-[1]" />
+      <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#1a1a1a] to-transparent z-[1]" />
         <ChineseCharacters characters="桥" position="right" className="bottom-20" opacity={0.04} />
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div className="absolute inset-0" style={{
@@ -211,10 +211,10 @@ const Uslugi = () => {
                               transition={{ delay: subIndex * 0.05 }}
                             >
                               <Link to={`/uslugi/${catMeta.slug}/${subService.slug}`} className="group relative block h-full">
-                                <div className="relative h-full rounded-2xl overflow-hidden border border-gray-800/50 bg-[#0B0B0B]/80 hover:border-lime/50 transition-all duration-300 hover:shadow-lg hover:shadow-lime/5">
+                                <div className="relative h-full rounded-2xl overflow-hidden border border-gray-800/50 bg-[#f0ede8]/80 hover:border-lime/50 transition-all duration-300 hover:shadow-lg hover:shadow-lime/5">
                                   <div className="aspect-[4/3] relative overflow-hidden">
                                     <img src={subService.image} alt={translated.subServices[subIndex]} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#050608] via-[#050608]/60 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/60 to-transparent" />
                                   </div>
                                   <div className="absolute bottom-0 left-0 right-0 p-5">
                                     <h3 className="text-white text-base font-semibold leading-tight group-hover:text-lime transition-colors mb-2">
@@ -243,7 +243,7 @@ const Uslugi = () => {
       {/* Stats Section */}
       <section className="relative py-32 overflow-hidden">
         <motion.div className="absolute inset-0" style={{ backgroundImage: `url(${statsBg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
-          <div className="absolute inset-0 bg-[#050608]/80 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-[#1a1a1a]/80 backdrop-blur-sm" />
         </motion.div>
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -269,7 +269,7 @@ const Uslugi = () => {
       </section>
 
       {/* Trust Section */}
-      <section className="py-16" style={{ backgroundColor: '#050608' }}>
+      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center text-gray-500 text-sm uppercase tracking-widest mb-8">
             {t.trust.title}
@@ -279,9 +279,9 @@ const Uslugi = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#050608' }}>
+      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="absolute bottom-10 left-10 opacity-[0.06] pointer-events-none">
-          <span className="font-display text-[10rem] font-bold text-[#c4ff00] leading-none">合作</span>
+          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none">合作</span>
         </div>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-lime/8 blur-[150px] rounded-full" />
@@ -293,7 +293,7 @@ const Uslugi = () => {
               {pt.ctaTitle} <GradientText>{pt.ctaTitleHighlight}</GradientText>
             </h2>
             <p className="text-gray-400 mb-8 max-w-lg mx-auto">{pt.ctaSubtitle}</p>
-            <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#c4ff00] text-gray-900 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(196,255,0,0.5)]">
+            <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-gray-900 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
               {pt.ctaButton}
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>

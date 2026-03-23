@@ -53,15 +53,15 @@ const ONas = () => {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#050608' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#1a1a1a' }}>
       <Navbar />
       
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen overflow-hidden flex items-center">
         <motion.div style={{ y: heroY }} className="absolute inset-0">
           <img src={shanghaiHeroBg} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050608]/60 via-[#050608]/80 to-[#050608]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050608_80%)]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/60 via-[#1a1a1a]/80 to-[#1a1a1a]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#1a1a1a_80%)]" />
         </motion.div>
         
         <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
@@ -103,7 +103,7 @@ const ONas = () => {
           {/* Stats Row */}
           <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8 }} className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-5xl mx-auto relative z-20">
             {stats.map((stat, index) => (
-              <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 + index * 0.1 }} className="p-6 lg:p-8 rounded-2xl bg-[#0B0B0B]/80 backdrop-blur-lg border border-gray-800/50 hover:border-lime/30 transition-all duration-300">
+              <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 + index * 0.1 }} className="p-6 lg:p-8 rounded-2xl bg-[#f0ede8]/80 backdrop-blur-lg border border-gray-800/50 hover:border-lime/30 transition-all duration-300">
                 <div className="font-display text-3xl lg:text-4xl font-bold text-lime mb-2">
                   {stat.isText ? <span>{stat.suffix}</span> : <AnimatedCounter end={stat.value} suffix={stat.suffix} />}
                 </div>
@@ -115,7 +115,7 @@ const ONas = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#050608' }}>
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-lime/10 to-transparent" />
         <ChineseCharacters characters="作" position="left" className="top-20" opacity={0.05} />
         
@@ -131,7 +131,7 @@ const ONas = () => {
                 <motion.div key={member.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="group">
                   <div className="relative mb-4 rounded-2xl overflow-hidden aspect-[3/4]">
                     <img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#050608]/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/80 via-transparent to-transparent" />
                   </div>
                   <h3 className="font-display font-bold text-base lg:text-lg text-white">{member.name}</h3>
                   <p className="text-gray-500 text-xs lg:text-sm">{member.role}</p>
@@ -143,7 +143,7 @@ const ONas = () => {
                 <motion.div key={member.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (index + 3) * 0.1 }} className="group">
                   <div className="relative mb-4 rounded-2xl overflow-hidden aspect-[3/4]">
                     <img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#050608]/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/80 via-transparent to-transparent" />
                   </div>
                   <h3 className="font-display font-bold text-base lg:text-lg text-white">{member.name}</h3>
                   <p className="text-gray-500 text-xs lg:text-sm">{member.role}</p>
@@ -157,7 +157,7 @@ const ONas = () => {
       <TeamCarousel />
 
       {/* World Dot Map */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#050608' }}>
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <span className="inline-block px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/80 text-sm font-medium mb-4">{pt.connectionBadge}</span>
@@ -170,7 +170,7 @@ const ONas = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#050608' }}>
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <ChineseCharacters characters="信任" position="right" className="top-20" opacity={0.05} />
         <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-lime/8 to-transparent" />
 
@@ -210,15 +210,15 @@ const ONas = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#050608' }}>
+      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="absolute bottom-10 left-10 opacity-[0.06] pointer-events-none">
-          <span className="font-display text-[10rem] font-bold text-[#c4ff00] leading-none">合作</span>
+          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none">合作</span>
         </div>
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-6">{t.cta.title} <GradientText>{t.cta.titleHighlight}</GradientText></h2>
             <p className="text-gray-400 text-lg mb-10 max-w-xl mx-auto">{t.cta.subtitle}</p>
-            <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#c4ff00] text-gray-900 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(196,255,0,0.5)]">
+            <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-gray-900 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
               {t.cta.button}
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>

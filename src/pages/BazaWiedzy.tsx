@@ -38,14 +38,14 @@ const BazaWiedzy = () => {
     : articles.filter(article => article.category === categories[activeCategoryIndex]);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#050608' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#1a1a1a' }}>
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative pt-28 pb-12 overflow-hidden" style={{ backgroundColor: '#050608' }}>
+      <section className="relative pt-28 pb-12 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img src={worldMap} alt="" className="w-full h-full object-cover opacity-10" />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(5,6,8,0.8), rgba(5,6,8,0.9), #050608)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(5,6,8,0.8), rgba(5,6,8,0.9), #1a1a1a)' }} />
           <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-lime/5 blur-[150px] rounded-full" />
         </div>
         
@@ -64,7 +64,7 @@ const BazaWiedzy = () => {
       </section>
 
       {/* Articles Section */}
-      <section className="py-12 relative overflow-hidden" style={{ backgroundColor: '#050608' }}>
+      <section className="py-12 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <ChineseCharacters characters="桥梁" position="left" className="top-40" opacity={0.04} />
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           {/* Categories */}
@@ -78,7 +78,7 @@ const BazaWiedzy = () => {
                     ? 'bg-lime text-gray-900'
                     : 'text-gray-500 hover:text-white border border-gray-800/50'
                 }`}
-                style={activeCategoryIndex !== idx ? { backgroundColor: '#0B0B0B' } : {}}
+                style={activeCategoryIndex !== idx ? { backgroundColor: '#f0ede8' } : {}}
               >
                 {category}
               </button>
@@ -94,7 +94,7 @@ const BazaWiedzy = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
                 className="group relative rounded-2xl overflow-hidden border border-gray-800/50 hover:border-lime/30 hover:shadow-xl hover:shadow-lime/5 transition-all duration-500"
-                style={{ backgroundColor: '#0B0B0B' }}
+                style={{ backgroundColor: '#f0ede8' }}
               >
                 <Link to={`/baza-wiedzy/${article.slug}`}>
                   <div className="relative aspect-[4/3] overflow-hidden">
@@ -103,7 +103,7 @@ const BazaWiedzy = () => {
                       alt={article.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #0B0B0B, rgba(11,11,11,0.3), transparent)' }} />
+                    <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #f0ede8, rgba(11,11,11,0.3), transparent)' }} />
                     <div className="absolute bottom-4 left-4">
                       <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-semibold ${
                         article.category === categories[1]
@@ -112,7 +112,7 @@ const BazaWiedzy = () => {
                           ? 'bg-white/90 text-gray-900'
                           : 'text-white border border-gray-700'
                       }`}
-                      style={article.category === categories[3] ? { backgroundColor: '#111214' } : {}}
+                      style={article.category === categories[3] ? { backgroundColor: '#e8e5e0' } : {}}
                       >
                         {article.category}
                       </span>
@@ -135,18 +135,18 @@ const BazaWiedzy = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#050608' }}>
+      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-lime/8 blur-[150px] rounded-full" />
         </div>
         <div className="absolute bottom-10 right-10 opacity-[0.06] pointer-events-none">
-          <span className="font-display text-[10rem] font-bold text-[#c4ff00] leading-none">知識</span>
+          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none">知識</span>
         </div>
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
             <h2 className="font-display text-3xl lg:text-4xl font-bold text-white mb-6">{pt.ctaTitle} <GradientText>{pt.ctaTitleHighlight}</GradientText>?</h2>
             <p className="text-gray-500 mb-8 max-w-lg mx-auto">{pt.ctaSubtitle}</p>
-            <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#c4ff00] text-gray-900 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(196,255,0,0.5)]">
+            <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-gray-900 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
               {pt.ctaButton}
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>

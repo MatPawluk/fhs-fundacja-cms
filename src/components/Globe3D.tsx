@@ -70,7 +70,7 @@ const GlobeModel = () => {
       {/* Grid lines on globe */}
       <Sphere args={[radius + 0.02, 32, 32]}>
         <meshBasicMaterial
-          color="#c4ff00"
+          color="#94c43d"
           wireframe={true}
           transparent
           opacity={0.08}
@@ -80,21 +80,21 @@ const GlobeModel = () => {
       {/* Warsaw marker */}
       <mesh ref={warsawRef} position={warsawPos}>
         <sphereGeometry args={[0.1, 16, 16]} />
-        <meshBasicMaterial color="#c4ff00" />
-        <pointLight color="#c4ff00" intensity={2} distance={1} />
+        <meshBasicMaterial color="#94c43d" />
+        <pointLight color="#94c43d" intensity={2} distance={1} />
       </mesh>
       
       {/* Shanghai marker */}
       <mesh ref={shanghaiRef} position={shanghaiPos}>
         <sphereGeometry args={[0.1, 16, 16]} />
-        <meshBasicMaterial color="#c4ff00" />
-        <pointLight color="#c4ff00" intensity={2} distance={1} />
+        <meshBasicMaterial color="#94c43d" />
+        <pointLight color="#94c43d" intensity={2} distance={1} />
       </mesh>
       
       {/* Connection line using drei Line */}
       <Line
         points={curvePoints}
-        color="#c4ff00"
+        color="#94c43d"
         lineWidth={3}
         transparent
         opacity={0.8}
