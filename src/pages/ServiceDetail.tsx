@@ -4,7 +4,6 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { InteractiveCaseStudy } from '@/components/InteractiveCaseStudy';
 import { GradientText } from '@/components/GradientText';
-import { ChineseCharacters } from '@/components/ChineseCharacters';
 import { ParallaxSection } from '@/components/ParallaxSection';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ArrowLeft, ArrowRight, Check, X, FileText, Video } from 'lucide-react';
@@ -65,7 +64,6 @@ const ServiceDetail = () => {
 
       {/* Description with Image */}
       <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#f0ede8' }}>
-        <ChineseCharacters characters="信" position="right" className="top-10" opacity={0.04} />
         
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -230,7 +228,6 @@ const ServiceDetail = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-lime/3 blur-[150px] rounded-full" />
         </div>
         
-        <ChineseCharacters characters="任" position="left" className="top-10" opacity={0.04} />
         
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-4xl mx-auto text-center">
@@ -319,7 +316,6 @@ const ServiceDetail = () => {
 
       {/* Case Study */}
       <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
-        <ChineseCharacters characters="橋" position="right" className="top-20" opacity={0.05} />
         
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div
@@ -347,7 +343,7 @@ const ServiceDetail = () => {
         </div>
         
         <div className="absolute bottom-10 left-10 opacity-[0.06] pointer-events-none">
-          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none">合作</span>
+          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none"></span>
         </div>
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">

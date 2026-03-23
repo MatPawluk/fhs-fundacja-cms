@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { GradientText } from '@/components/GradientText';
-import { ChineseCharacters } from '@/components/ChineseCharacters';
 import { MapPin, Send, ArrowUpRight } from 'lucide-react';
 import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -16,10 +15,10 @@ const contactMethods = [
   {
     icon: gmailLogo,
     title: 'Napisz do nas',
-    subtitle: 'contact@yinyang.pl',
+    subtitle: 'contact@fhsfoundation.pl',
     hoverBorder: 'hover:border-red-500',
     hoverText: 'group-hover:text-red-500',
-    href: 'mailto:contact@yinyang.pl',
+    href: 'mailto:contact@fhsfoundation.pl',
   },
   {
     icon: whatsappLogo,
@@ -69,7 +68,6 @@ const Kontakt = () => {
       
       {/* Main Content */}
       <section className="pt-24 pb-12 relative overflow-hidden">
-        <ChineseCharacters characters="信" position="right" className="top-32" opacity={0.04} />
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-lime/5 blur-[150px] rounded-full" />
           <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-lime/3 blur-[120px] rounded-full" />

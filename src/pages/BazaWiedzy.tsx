@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { GradientText } from '@/components/GradientText';
-import { ChineseCharacters } from '@/components/ChineseCharacters';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { bazaWiedzyTranslations } from '@/i18n/pageTranslations';
 import { articlesTranslations } from '@/i18n/contentTranslations';
@@ -49,7 +48,6 @@ const BazaWiedzy = () => {
           <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-lime/5 blur-[150px] rounded-full" />
         </div>
         
-        <ChineseCharacters characters="知" position="right" className="top-20" opacity={0.06} />
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
@@ -65,7 +63,6 @@ const BazaWiedzy = () => {
 
       {/* Articles Section */}
       <section className="py-12 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
-        <ChineseCharacters characters="桥梁" position="left" className="top-40" opacity={0.04} />
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           {/* Categories */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="flex flex-wrap gap-3 mb-10">
@@ -140,7 +137,7 @@ const BazaWiedzy = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-lime/8 blur-[150px] rounded-full" />
         </div>
         <div className="absolute bottom-10 right-10 opacity-[0.06] pointer-events-none">
-          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none">知識</span>
+          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none"></span>
         </div>
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>

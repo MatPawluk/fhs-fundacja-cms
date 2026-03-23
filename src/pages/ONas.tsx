@@ -5,7 +5,6 @@ import { Footer } from '@/components/Footer';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
 import { WorldDotMap } from '@/components/WorldDotMap';
 import { GradientText } from '@/components/GradientText';
-import { ChineseCharacters } from '@/components/ChineseCharacters';
 import { FloatingDots } from '@/components/FloatingDots';
 import { TeamCarousel } from '@/components/TeamCarousel';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -117,7 +116,6 @@ const ONas = () => {
       {/* Team Section */}
       <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-lime/10 to-transparent" />
-        <ChineseCharacters characters="作" position="left" className="top-20" opacity={0.05} />
         
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
@@ -171,7 +169,6 @@ const ONas = () => {
 
       {/* FAQ Section */}
       <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
-        <ChineseCharacters characters="信任" position="right" className="top-20" opacity={0.05} />
         <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-lime/8 to-transparent" />
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
@@ -212,7 +209,7 @@ const ONas = () => {
       {/* CTA Section */}
       <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="absolute bottom-10 left-10 opacity-[0.06] pointer-events-none">
-          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none">合作</span>
+          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none"></span>
         </div>
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>

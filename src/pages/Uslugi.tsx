@@ -6,7 +6,6 @@ import { Footer } from '@/components/Footer';
 import { LogoMarquee } from '@/components/LogoMarquee';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
 import { GradientText } from '@/components/GradientText';
-import { ChineseCharacters } from '@/components/ChineseCharacters';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { uslugiTranslations } from '@/i18n/pageTranslations';
 import { statsTranslations, serviceCategoriesTranslations } from '@/i18n/contentTranslations';
@@ -140,7 +139,6 @@ const Uslugi = () => {
           <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-[#94c43d]/5 blur-[150px] rounded-full" />
         </div>
         
-        <ChineseCharacters characters="合作" position="right" className="top-32" opacity={0.06} />
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-4xl text-center mx-auto">
@@ -157,7 +155,6 @@ const Uslugi = () => {
       {/* Categories Accordion Section */}
       <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#1a1a1a] to-transparent z-[1]" />
-        <ChineseCharacters characters="桥" position="right" className="bottom-20" opacity={0.04} />
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div className="absolute inset-0" style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, rgba(196, 255, 0, 0.3) 1px, transparent 0)`,
@@ -281,7 +278,7 @@ const Uslugi = () => {
       {/* CTA Section */}
       <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <div className="absolute bottom-10 left-10 opacity-[0.06] pointer-events-none">
-          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none">合作</span>
+          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none"></span>
         </div>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-lime/8 blur-[150px] rounded-full" />

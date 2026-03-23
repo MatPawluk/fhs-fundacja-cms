@@ -51,7 +51,7 @@ const ArticleDetail = () => {
       </ol>
 
       <h2>Podsumowanie</h2>
-      <p>Zrozumienie przewag konkurencyjnych chińskich firm jest niezbędne dla każdej europejskiej organizacji planującej działalność na rynku azjatyckim lub konkurującej z podmiotami z tego regionu. Yin Yang oferuje kompleksowe analizy sektorowe, pomagające firmom w podejmowaniu świadomych decyzji strategicznych.</p>
+      <p>Zrozumienie przewag konkurencyjnych chińskich firm jest niezbędne dla każdej europejskiej organizacji planującej działalność na rynku azjatyckim lub konkurującej z podmiotami z tego regionu. FHS Foundation oferuje kompleksowe analizy sektorowe, pomagające firmom w podejmowaniu świadomych decyzji strategicznych.</p>
     `,
   };
 
