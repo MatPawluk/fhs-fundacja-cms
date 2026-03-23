@@ -6,9 +6,9 @@
 
 @layer base {
   :root {
-    /* Core brand colors */
-    --lime: 75 100% 50%;
-    --lime-glow: 75 100% 60%;
+    /* Core brand colors - FHS Foundation green */
+    --lime: 88 53% 50%;
+    --lime-glow: 88 53% 60%;
     
     /* Unified dark system - 3 levels */
     --base: 220 15% 2%;      /* #050608 */
