@@ -5,21 +5,15 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { LogoMarquee } from '@/components/LogoMarquee';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
-import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { RadarAnimation } from '@/components/RadarAnimation';
-import { TypewriterText } from '@/components/TypewriterText';
 import { GradientText } from '@/components/GradientText';
 import { HomeFAQSection } from '@/components/HomeFAQSection';
-import { ChineseCharacters } from '@/components/ChineseCharacters';
 import { CaseStudiesSection } from '@/components/CaseStudiesSection';
+import { PhotoCarousel } from '@/components/PhotoCarousel';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { statsTranslations, carouselServicesTranslations } from '@/i18n/contentTranslations';
 import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
-import heroVideo from '@/assets/hero-video.mp4';
 import statsBg from '@/assets/stats-bg.jpg';
-import avatarTeam1 from '@/assets/avatar-team-1.jpg';
-import avatarTeam2 from '@/assets/avatar-team-2.jpg';
-import avatarTeam3 from '@/assets/avatar-team-3.jpg';
 import consultantImg from '@/assets/consultant.png';
 
 // Service carousel images
@@ -88,41 +82,32 @@ const Index = () => {
   const getNextIndex = () => (currentSlide + 1) % carouselServices.length;
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#050608' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
       
-      {/* Hero Section with Video Background */}
-      <section ref={heroRef} className="relative min-h-screen overflow-hidden">
-        {/* Video Background */}
+      {/* Hero Section - Clean, warm, no video */}
+      <section ref={heroRef} className="relative min-h-screen overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
         <motion.div 
           style={{ y: heroY }}
           className="absolute inset-0"
         >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src={heroVideo} type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050608]/70 via-[#050608]/50 to-[#050608]" />
+          {/* Warm dark gradient background instead of video */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a]" />
           
-          {/* Animated overlay effects */}
+          {/* Subtle warm overlay */}
           <motion.div
             animate={{ 
               opacity: [0.3, 0.5, 0.3],
               scale: [1, 1.05, 1]
             }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-0 bg-gradient-to-br from-lime/5 via-transparent to-lime/10"
+            className="absolute inset-0 bg-gradient-to-br from-[#94c43d]/5 via-transparent to-[#94c43d]/10"
           />
         </motion.div>
 
         {/* Glow effects */}
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-lime/10 blur-[150px] rounded-full pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-lime/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#94c43d]/10 blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#94c43d]/5 blur-[120px] rounded-full pointer-events-none" />
 
         {/* Hero Content - CENTERED */}
         <motion.div 
@@ -130,15 +115,25 @@ const Index = () => {
           className="relative z-10 container mx-auto px-6 lg:px-12 pt-32 lg:pt-40"
         >
           <div className="max-w-4xl mx-auto text-center">
+            {/* FHS Foundation label */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-[#94c43d] font-display italic text-lg mb-6"
+            >
+              For Hope and Smile
+            </motion.p>
+
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
             >
-              {t.hero.title.split(' ')[0]} <TypewriterText words={[t.hero.title.split(' ').slice(1).join(' ')]} pauseDuration={3000} />
+              {t.hero.title}
               <br />
-              <span className="text-[#c4ff00]">{t.hero.titleHighlight}</span>
+              <span className="text-[#94c43d]">{t.hero.titleHighlight}</span>
             </motion.h1>
 
             <motion.p
@@ -158,21 +153,11 @@ const Index = () => {
             >
               <Link
                 to="/kontakt"
-                className="group inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-[#c4ff00] text-gray-900 rounded-full font-semibold text-sm sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(196,255,0,0.5)]"
+                className="group inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-[#94c43d] text-white rounded-full font-semibold text-sm sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]"
               >
                 {t.hero.cta}
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
-              <div className="flex items-center justify-center gap-3">
-                <div className="flex -space-x-2">
-                  <img src={avatarTeam1} alt="Client" className="w-8 h-8 rounded-full object-cover" />
-                  <img src={avatarTeam2} alt="Client" className="w-8 h-8 rounded-full object-cover" />
-                  <img src={avatarTeam3} alt="Client" className="w-8 h-8 rounded-full object-cover" />
-                </div>
-                <p className="text-gray-300 text-sm font-medium">
-                  {t.clients.join} <span className="text-[#c4ff00] font-bold">540+</span> {t.clients.satisfied}
-                </p>
-              </div>
             </motion.div>
           </div>
         </motion.div>
@@ -198,13 +183,7 @@ const Index = () => {
       {/* Services Carousel Section - overlapping hero */}
       <section ref={carouselRef} className="relative -mt-32 sm:-mt-40 md:-mt-48 pt-8 pb-24 z-10" style={{ backgroundColor: 'transparent' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-10 w-[400px] h-[400px] rounded-full bg-[#0B0B0B]/60 blur-3xl" />
-        </div>
-
-        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-          <div className="absolute top-[20%] left-[-5%] font-display text-[18vw] font-bold text-white/[0.02] tracking-wider">
-            PARTNER
-          </div>
+          <div className="absolute top-20 right-10 w-[400px] h-[400px] rounded-full bg-[#f5f3ef]/60 blur-3xl" />
         </div>
 
         <div className="container mx-auto px-6 lg:px-12">
@@ -229,9 +208,9 @@ const Index = () => {
                     transformOrigin: 'right center',
                   }}
                 >
-                  <div className="relative w-[220px] rounded-2xl overflow-hidden aspect-[3/4] opacity-40 hover:opacity-60 transition-opacity border border-gray-800/30">
+                  <div className="relative w-[220px] rounded-2xl overflow-hidden aspect-[3/4] opacity-40 hover:opacity-60 transition-opacity border border-gray-300/30">
                     <img src={carouselServices[getPrevIndex()].image} alt="" className="w-full h-full object-cover grayscale" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#050608] via-[#050608]/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/40 to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4">
                       <p className="text-white/60 text-sm font-medium truncate">{carouselServices[getPrevIndex()].title}</p>
                     </div>
@@ -247,7 +226,7 @@ const Index = () => {
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: -300, opacity: 0 }}
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative rounded-3xl overflow-hidden aspect-[16/10] lg:aspect-[2/1] border border-gray-800/50 shadow-2xl shadow-lime/5 group"
+                    className="relative rounded-3xl overflow-hidden aspect-[16/10] lg:aspect-[2/1] border border-gray-300/30 shadow-2xl group"
                   >
                     <motion.img
                       initial={{ scale: 1.05 }}
@@ -258,10 +237,10 @@ const Index = () => {
                       className={`absolute inset-0 w-full h-full object-cover ${carouselServices[currentSlide].slug === 'strategia-wobec-chin' ? 'scale-[1.15]' : ''}`}
                       style={carouselServices[currentSlide].slug === 'strategia-wobec-chin' ? { objectPosition: '60% 55%' } : undefined}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#050608] via-[#050608]/70 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/70 to-transparent" />
                     
-                    {/* Lime accent glow */}
-                    <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-lime via-lime/50 to-transparent" />
+                    {/* Accent line */}
+                    <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#94c43d] via-[#94c43d]/50 to-transparent" />
                     
                     {/* Content overlay */}
                     <div className="absolute inset-0 flex items-center p-8 sm:p-12 lg:p-16">
@@ -272,7 +251,7 @@ const Index = () => {
                         transition={{ duration: 0.4, delay: 0.1 }}
                         className="max-w-xl"
                       >
-                        <span className="inline-block px-3 py-1 rounded-full bg-lime/20 text-lime text-xs font-medium mb-4">
+                        <span className="inline-block px-3 py-1 rounded-full bg-[#94c43d]/20 text-[#94c43d] text-xs font-medium mb-4">
                           {currentSlide + 1} / {carouselServices.length}
                         </span>
                         
@@ -284,7 +263,7 @@ const Index = () => {
                         </p>
                         <Link
                           to={`/uslugi#${carouselServices[currentSlide].slug}`}
-                          className="inline-flex items-center gap-2 px-6 py-3 bg-[#c4ff00] text-[#050608] rounded-full font-semibold text-sm hover:scale-105 transition-transform duration-300"
+                          className="inline-flex items-center gap-2 px-6 py-3 bg-[#94c43d] text-white rounded-full font-semibold text-sm hover:scale-105 transition-transform duration-300"
                         >
                           <span>{t.services.learnMore}</span>
                           <ArrowRight className="w-4 h-4" />
@@ -306,9 +285,9 @@ const Index = () => {
                     transformOrigin: 'left center',
                   }}
                 >
-                  <div className="relative w-[220px] rounded-2xl overflow-hidden aspect-[3/4] opacity-40 hover:opacity-60 transition-opacity border border-gray-800/30">
+                  <div className="relative w-[220px] rounded-2xl overflow-hidden aspect-[3/4] opacity-40 hover:opacity-60 transition-opacity border border-gray-300/30">
                     <img src={carouselServices[getNextIndex()].image} alt="" className="w-full h-full object-cover grayscale" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#050608] via-[#050608]/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/40 to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4">
                       <p className="text-white/60 text-sm font-medium truncate">{carouselServices[getNextIndex()].title}</p>
                     </div>
@@ -319,21 +298,21 @@ const Index = () => {
 
             {/* Carousel Controls */}
             <div className="flex items-center justify-center mt-10 gap-4 sm:gap-6">
-              <button onClick={prevSlide} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0B0B0B] border border-gray-800 flex items-center justify-center hover:border-lime/50 hover:bg-[#111214] transition-all duration-300 group">
-                <ChevronLeft className="w-5 h-5 text-gray-500 group-hover:text-lime" />
+              <button onClick={prevSlide} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:border-[#94c43d]/50 hover:bg-gray-50 transition-all duration-300 group">
+                <ChevronLeft className="w-5 h-5 text-gray-400 group-hover:text-[#94c43d]" />
               </button>
               <div className="flex gap-2">
                 {carouselServices.map((_, index) => (
-                  <button key={index} onClick={() => setCurrentSlide(index)} className={`h-1.5 rounded-full transition-all duration-300 ${index === currentSlide ? 'w-8 bg-lime' : 'w-1.5 bg-gray-700 hover:bg-gray-600'}`} />
+                  <button key={index} onClick={() => setCurrentSlide(index)} className={`h-1.5 rounded-full transition-all duration-300 ${index === currentSlide ? 'w-8 bg-[#94c43d]' : 'w-1.5 bg-gray-300 hover:bg-gray-400'}`} />
                 ))}
               </div>
-              <button onClick={nextSlide} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0B0B0B] border border-gray-800 flex items-center justify-center hover:border-lime/50 hover:bg-[#111214] transition-all duration-300 group">
-                <ChevronRight className="w-5 h-5 text-gray-500 group-hover:text-lime" />
+              <button onClick={nextSlide} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:border-[#94c43d]/50 hover:bg-gray-50 transition-all duration-300 group">
+                <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-[#94c43d]" />
               </button>
             </div>
 
             <div className="text-center mt-8">
-              <Link to="/uslugi" className="inline-flex items-center gap-2 text-gray-500 hover:text-lime transition-colors duration-300 text-sm">
+              <Link to="/uslugi" className="inline-flex items-center gap-2 text-gray-500 hover:text-[#94c43d] transition-colors duration-300 text-sm">
                 {t.services.viewAll}
                 <ArrowRight className="w-4 h-4" />
               </Link>
@@ -353,14 +332,14 @@ const Index = () => {
             backgroundAttachment: 'fixed',
           }}
         >
-          <div className="absolute inset-0 bg-[#050608]/80 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-[#1a1a1a]/80 backdrop-blur-sm" />
         </motion.div>
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{ x: ['-20%', '20%', '-20%'], opacity: [0.3, 0.5, 0.3] }}
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-lime/20 blur-[100px] rounded-full"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#94c43d]/20 blur-[100px] rounded-full"
           />
         </div>
 
@@ -374,7 +353,7 @@ const Index = () => {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {stats.map((stat, index) => (
               <motion.div key={stat.label} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="text-center">
-                <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-lime mb-3">
+                <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-[#94c43d] mb-3">
                   {stat.isText ? <span>{stat.suffix}</span> : <AnimatedCounter end={stat.value} suffix={stat.suffix} />}
                 </div>
                 <p className="text-white/70 text-xs sm:text-sm">{stat.label}</p>
@@ -385,30 +364,27 @@ const Index = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#050608' }}>
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[1200px] h-[1200px] opacity-40">
+          <div className="w-[1200px] h-[1200px] opacity-20">
             <RadarAnimation size="lg" className="w-full h-full" />
           </div>
         </div>
         
-        <ChineseCharacters characters="合作关系" position="left" className="top-32" opacity={0.06} />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#050608]/80 via-[#050608]/70 to-[#050608]/80 pointer-events-none" />
-
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-lime/20 text-lime text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">
               {t.process.badge}
             </span>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-4">
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
               {t.process.title.split(' ').slice(0, -1).join(' ')} <GradientText>{t.process.title.split(' ').slice(-1)[0]}</GradientText>?
             </h2>
-            <p className="text-gray-400 max-w-xl mx-auto">{t.process.subtitle}</p>
+            <p className="text-gray-500 max-w-xl mx-auto">{t.process.subtitle}</p>
           </motion.div>
 
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-lime via-lime/50 to-lime/20 md:-translate-x-1/2" />
+              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#94c43d] via-[#94c43d]/50 to-[#94c43d]/20 md:-translate-x-1/2" />
               
               {t.process.steps.map((step, index) => (
                 <motion.div
@@ -419,18 +395,18 @@ const Index = () => {
                   transition={{ delay: index * 0.15 }}
                   className={`relative flex items-start gap-8 mb-12 last:mb-0 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
                 >
-                  <div className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-lime shadow-lg shadow-lime/50 md:-translate-x-1/2 z-10">
-                    <div className="absolute inset-0 rounded-full bg-lime animate-ping opacity-30" />
+                  <div className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-[#94c43d] shadow-lg shadow-[#94c43d]/50 md:-translate-x-1/2 z-10">
+                    <div className="absolute inset-0 rounded-full bg-[#94c43d] animate-ping opacity-30" />
                   </div>
                   
                   <div className={`ml-20 md:ml-0 md:w-[calc(50%-40px)] ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'}`}>
-                    <div className="relative bg-[#0B0B0B]/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-800/50 hover:border-lime/30 transition-all duration-300 group">
-                      <span className={`absolute top-4 font-display text-7xl font-bold text-lime/30 group-hover:text-lime/50 transition-colors ${index % 2 === 0 ? 'right-6 md:left-6 md:right-auto' : 'right-6'}`}>
+                    <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 hover:border-[#94c43d]/30 transition-all duration-300 group shadow-sm">
+                      <span className={`absolute top-4 font-display text-7xl font-bold text-[#94c43d]/20 group-hover:text-[#94c43d]/40 transition-colors ${index % 2 === 0 ? 'right-6 md:left-6 md:right-auto' : 'right-6'}`}>
                         {step.number}
                       </span>
                       <div className="relative z-10 pt-8">
-                        <h3 className="font-display font-semibold text-xl text-white mb-3">{step.title}</h3>
-                        <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
+                        <h3 className="font-display font-semibold text-xl text-gray-900 mb-3">{step.title}</h3>
+                        <p className="text-gray-500 text-sm leading-relaxed">{step.description}</p>
                       </div>
                     </div>
                   </div>
@@ -442,9 +418,9 @@ const Index = () => {
       </section>
 
       {/* Trusted By */}
-      <section className="py-16" style={{ backgroundColor: '#050608' }}>
+      <section className="py-16" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center text-gray-500 text-sm uppercase tracking-widest mb-8">
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center text-gray-400 text-sm uppercase tracking-widest mb-8">
             {t.trust.title}
           </motion.p>
         </div>
@@ -454,32 +430,30 @@ const Index = () => {
       {/* Case Studies Section */}
       <CaseStudiesSection />
 
-      {/* Testimonials Section */}
-      <TestimonialsSection />
+      {/* Photo Carousel - replaces Testimonials */}
+      <PhotoCarousel />
 
       {/* FAQ Section */}
       <HomeFAQSection />
 
       {/* CTA Section */}
-      <section className="relative py-16 overflow-hidden" style={{ backgroundColor: '#050608' }}>
-        <ChineseCharacters characters="信任" position="left" className="top-0" opacity={0.05} />
-        
+      <section className="relative py-16 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
-          <div className="relative max-w-5xl mx-auto rounded-[1.5rem] overflow-visible border border-gray-800/50" style={{ background: 'linear-gradient(135deg, #0B0B0B 0%, #111214 50%, rgba(196,255,0,0.08) 100%)' }}>
-            <div className="absolute bottom-0 right-0 w-[300px] h-[250px] bg-[#c4ff00]/10 blur-[100px] rounded-full pointer-events-none" />
+          <div className="relative max-w-5xl mx-auto rounded-[1.5rem] overflow-visible border border-gray-200/50" style={{ background: 'linear-gradient(135deg, #2a2a2a 0%, #333333 50%, rgba(148,196,61,0.15) 100%)' }}>
+            <div className="absolute bottom-0 right-0 w-[300px] h-[250px] bg-[#94c43d]/10 blur-[100px] rounded-full pointer-events-none" />
             
             <div className="relative grid lg:grid-cols-[1fr_auto] gap-0 items-end">
               <div className="p-8 lg:p-12">
                 <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 leading-tight">{t.cta.title}</h2>
                 <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-5 leading-tight"><GradientText>{t.cta.titleHighlight}</GradientText></h2>
-                <p className="text-gray-400 text-base mb-8 max-w-md">{t.cta.subtitle}</p>
-                <Link to="/kontakt" className="group inline-flex items-center gap-3 px-8 py-4 bg-[#c4ff00] text-gray-900 rounded-full font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(196,255,0,0.5)]">
+                <p className="text-gray-300 text-base mb-8 max-w-md">{t.cta.subtitle}</p>
+                <Link to="/kontakt" className="group inline-flex items-center gap-3 px-8 py-4 bg-[#94c43d] text-white rounded-full font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
                   {t.cta.button}
                   <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </div>
               <div className="relative hidden lg:flex items-end justify-end pr-8" style={{ minWidth: '320px' }}>
-                <img src={consultantImg} alt="Konsultant Yin Yang" className="relative z-10 w-[380px] object-contain -mb-1" style={{ marginTop: '-180px', filter: 'drop-shadow(0 20px 60px rgba(0,0,0,0.5))' }} />
+                <img src={consultantImg} alt="FHS Foundation" className="relative z-10 w-[380px] object-contain -mb-1" style={{ marginTop: '-180px', filter: 'drop-shadow(0 20px 60px rgba(0,0,0,0.5))' }} />
               </div>
             </div>
           </div>
