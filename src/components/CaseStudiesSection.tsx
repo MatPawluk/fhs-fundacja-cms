@@ -25,7 +25,7 @@ export const CaseStudiesSection = () => {
   const caseStudies = caseStudiesTranslations[language];
 
   return (
-    <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+    <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
       <div className="container mx-auto px-6 lg:px-12">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
           <span className="inline-block px-4 py-2 rounded-full bg-lime/20 text-lime text-sm font-medium uppercase tracking-wider mb-4">{t.caseStudies.badge}</span>
@@ -37,10 +37,10 @@ export const CaseStudiesSection = () => {
               <motion.div animate={{ rotateY: flippedCard === index ? 180 : 0 }} transition={{ duration: 0.6 }} className="relative w-full h-full preserve-3d" style={{ transformStyle: 'preserve-3d' }}>
                 <div className="absolute inset-0 rounded-3xl overflow-hidden backface-hidden" style={{ backfaceVisibility: 'hidden' }}>
                   <img src={caseStudyImages[study.imageKey]} alt={study.name} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <span className="text-lime text-sm font-medium uppercase tracking-wider">{study.category}</span>
-                    <h3 className="font-display text-2xl font-bold text-gray-900 mt-2">{study.name}</h3>
+                    <span className="text-[#94c43d] text-sm font-medium uppercase tracking-wider">{study.category}</span>
+                    <h3 className="font-display text-2xl font-bold text-white mt-2">{study.name}</h3>
                   </div>
                 </div>
                 <div className="absolute inset-0 rounded-3xl bg-[#f0ede8] border border-gray-200 p-6 backface-hidden overflow-hidden" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}>

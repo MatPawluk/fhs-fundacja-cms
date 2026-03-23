@@ -128,14 +128,14 @@ const Uslugi = () => {
   const translatedCategories = serviceCategoriesTranslations[language];
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#1a1a1a' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative pt-28 pb-16 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="relative pt-28 pb-16 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img src={worldMap} alt="" className="w-full h-full object-cover opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/80 via-[#1a1a1a]/90 to-[#1a1a1a]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#f5f3ef]/80 via-[#f5f3ef]/90 to-[#f5f3ef]" />
           <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-[#94c43d]/5 blur-[150px] rounded-full" />
         </div>
         
@@ -153,8 +153,8 @@ const Uslugi = () => {
       </section>
 
       {/* Categories Accordion Section */}
-      <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
-        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#1a1a1a] to-transparent z-[1]" />
+      <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#f5f3ef] to-transparent z-[1]" />
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           <div className="absolute inset-0" style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, rgba(196, 255, 0, 0.3) 1px, transparent 0)`,
@@ -183,7 +183,7 @@ const Uslugi = () => {
                       <span className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-lime transition-colors duration-300">
                         {translated.title}
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-gray-800/50 text-gray-500 text-xs">
+                      <span className="px-3 py-1 rounded-full bg-white/80 text-gray-500 text-xs">
                         {catMeta.count} {getServicesCountLabel(catMeta.count, language)}
                       </span>
                     </div>
@@ -211,10 +211,10 @@ const Uslugi = () => {
                                 <div className="relative h-full rounded-2xl overflow-hidden border border-gray-200/50 bg-[#f0ede8]/80 hover:border-lime/50 transition-all duration-300 hover:shadow-lg hover:shadow-lime/5">
                                   <div className="aspect-[4/3] relative overflow-hidden">
                                     <img src={subService.image} alt={translated.subServices[subIndex]} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/60 to-transparent" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                                   </div>
                                   <div className="absolute bottom-0 left-0 right-0 p-5">
-                                    <h3 className="text-gray-900 text-base font-semibold leading-tight group-hover:text-lime transition-colors mb-2">
+                                    <h3 className="text-white text-base font-semibold leading-tight group-hover:text-[#94c43d] transition-colors mb-2">
                                       {translated.subServices[subIndex]}
                                     </h3>
                                     <div className="flex items-center gap-2 text-lime">
@@ -249,7 +249,7 @@ const Uslugi = () => {
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 backdrop-blur-sm text-gray-900/80 text-sm font-medium mb-4">{t.stats.badge}</span>
+            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 backdrop-blur-sm text-white/80 text-sm font-medium mb-4">{t.stats.badge}</span>
           </motion.div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -258,7 +258,7 @@ const Uslugi = () => {
                 <div className="font-display text-5xl lg:text-6xl font-bold text-lime mb-3">
                   {stat.isText ? <span>{stat.suffix}</span> : <AnimatedCounter end={stat.value} suffix={stat.suffix} />}
                 </div>
-                <p className="text-gray-900/70 text-sm">{stat.label}</p>
+                <p className="text-white/70 text-sm">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -266,7 +266,7 @@ const Uslugi = () => {
       </section>
 
       {/* Trust Section */}
-      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center text-gray-500 text-sm uppercase tracking-widest mb-8">
             {t.trust.title}
@@ -276,7 +276,7 @@ const Uslugi = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute bottom-10 left-10 opacity-[0.06] pointer-events-none">
           <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none"></span>
         </div>
@@ -290,7 +290,7 @@ const Uslugi = () => {
               {pt.ctaTitle} <GradientText>{pt.ctaTitleHighlight}</GradientText>
             </h2>
             <p className="text-gray-500 mb-8 max-w-lg mx-auto">{pt.ctaSubtitle}</p>
-            <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-gray-900 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
+            <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
               {pt.ctaButton}
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>

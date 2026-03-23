@@ -63,7 +63,7 @@ const Kontakt = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#1a1a1a' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
       
       {/* Main Content */}
@@ -194,7 +194,7 @@ const Kontakt = () => {
 
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#94c43d] text-gray-900 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]"
+                    className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#94c43d] text-white rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]"
                   >
                     {pt.submitButton}
                     <Send className="w-5 h-5" />
@@ -207,7 +207,7 @@ const Kontakt = () => {
       </section>
 
       {/* Locations Section - consistent dark bg */}
-      <section className="py-16" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-16" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent" />
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div

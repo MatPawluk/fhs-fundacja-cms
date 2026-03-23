@@ -22,18 +22,18 @@ const ServiceDetail = () => {
   const displayTitle = service.title;
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#1a1a1a' }}>
+    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
       
       {/* Header */}
-      <section className="relative pt-28 pb-20 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="relative pt-28 pb-20 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img 
             src={service.image} 
             alt="" 
             className="w-full h-full object-cover opacity-10 grayscale"
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(5,6,8,0.8), rgba(5,6,8,0.9), #1a1a1a)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(245,243,239,0.8), rgba(245,243,239,0.9), #1a1a1a)' }} />
           <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-lime/8 blur-[150px] rounded-full" />
         </div>
         
@@ -163,7 +163,7 @@ const ServiceDetail = () => {
       </ParallaxSection>
 
       {/* Scope */}
-      <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -315,7 +315,7 @@ const ServiceDetail = () => {
       </ParallaxSection>
 
       {/* Case Study */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div
@@ -337,7 +337,7 @@ const ServiceDetail = () => {
       </section>
 
       {/* CTA Section - consistent style */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
+      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-lime/8 blur-[150px] rounded-full" />
         </div>
@@ -360,7 +360,7 @@ const ServiceDetail = () => {
             </p>
             <Link
               to="/kontakt"
-              className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-gray-900 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]"
+              className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]"
             >
               {t.serviceDetail.ctaButton}
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />

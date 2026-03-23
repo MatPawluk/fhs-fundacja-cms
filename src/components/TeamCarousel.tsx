@@ -20,10 +20,10 @@ export const TeamCarousel = () => {
   const duplicatedPhotos = [...teamPhotos, ...teamPhotos];
 
   return (
-    <section className="py-16 overflow-hidden" style={{ backgroundColor: '#050608' }}>
+    <section className="py-16 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
       <div className="relative py-4">
-        <div className="absolute left-0 -top-4 -bottom-4 w-48 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #050608 30%, transparent)' }} />
-        <div className="absolute right-0 -top-4 -bottom-4 w-48 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #050608 30%, transparent)' }} />
+        <div className="absolute left-0 -top-4 -bottom-4 w-48 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #f5f3ef 30%, transparent)' }} />
+        <div className="absolute right-0 -top-4 -bottom-4 w-48 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #f5f3ef 30%, transparent)' }} />
 
         <motion.div
           animate={{ x: ['0%', '-50%'] }}
@@ -34,7 +34,7 @@ export const TeamCarousel = () => {
           {duplicatedPhotos.map((photo, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-64 h-40 rounded-2xl overflow-hidden"
+              className="flex-shrink-0 w-64 h-40 rounded-2xl overflow-hidden shadow-md"
               style={{
                 transform: `rotate(${index % 2 === 0 ? '-2deg' : '2deg'})`,
               }}
