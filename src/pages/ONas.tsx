@@ -69,18 +69,6 @@ const ONas = () => {
         
         <FloatingDots count={40} />
         
-        {/* Transport elements */}
-        <motion.div initial={{ opacity: 0, x: 100, y: -50 }} animate={{ opacity: 1, x: 0, y: 0 }} transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }} className="absolute top-16 right-[5%] lg:right-[0%] w-[280px] md:w-[380px] lg:w-[460px] pointer-events-none z-20">
-          <img src={heroAirplane} alt="" className="w-full h-auto drop-shadow-[0_20px_60px_rgba(0,0,0,0.8)]" style={{ filter: 'drop-shadow(0 0 20px rgba(196, 255, 0, 0.15))' }} />
-        </motion.div>
-        
-        <motion.div initial={{ opacity: 0, z: -100, scale: 0.8 }} animate={{ opacity: 1, z: 0, scale: 1 }} transition={{ delay: 1, duration: 1.2, ease: "easeOut" }} className="absolute bottom-[2%] left-[0%] lg:left-[2%] w-[350px] md:w-[420px] lg:w-[500px] pointer-events-none z-40">
-          <img src={heroTruck} alt="" className="w-full h-auto drop-shadow-[0_30px_80px_rgba(0,0,0,0.9)]" style={{ filter: 'drop-shadow(0 0 20px rgba(196, 255, 0, 0.15))' }} />
-        </motion.div>
-        
-        <motion.div initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 1.2, ease: "easeOut" }} className="absolute top-[2%] left-[2%] lg:left-[5%] w-[280px] md:w-[380px] lg:w-[480px] pointer-events-none z-10 hidden md:block">
-          <img src={heroContainer} alt="" className="w-full h-auto drop-shadow-[0_40px_100px_rgba(0,0,0,0.9)]" style={{ filter: 'drop-shadow(0 0 30px rgba(196, 255, 0, 0.12))' }} />
-        </motion.div>
 
         {/* Hero content */}
         <motion.div style={{ opacity: heroOpacity }} className="relative z-30 container mx-auto px-6 lg:px-12 text-center pt-20">
