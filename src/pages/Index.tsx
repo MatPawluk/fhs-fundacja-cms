@@ -386,22 +386,17 @@ const Index = () => {
       {/* CTA Section */}
       <section className="relative py-16 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
-          <div className="relative max-w-5xl mx-auto rounded-[1.5rem] overflow-visible border border-gray-200/50" style={{ background: 'linear-gradient(135deg, #2a2a2a 0%, #333333 50%, rgba(148,196,61,0.15) 100%)' }}>
+          <div className="relative max-w-5xl mx-auto rounded-[1.5rem] overflow-hidden border border-gray-200/50" style={{ background: 'linear-gradient(135deg, #2a2a2a 0%, #333333 50%, rgba(148,196,61,0.15) 100%)' }}>
             <div className="absolute bottom-0 right-0 w-[300px] h-[250px] bg-[#94c43d]/10 blur-[100px] rounded-full pointer-events-none" />
             
-            <div className="relative grid lg:grid-cols-[1fr_auto] gap-0 items-end">
-              <div className="p-8 lg:p-12">
+            <div className="relative p-8 lg:p-12 text-center">
                 <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 leading-tight">{t.cta.title}</h2>
                 <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-5 leading-tight"><GradientText>{t.cta.titleHighlight}</GradientText></h2>
-                <p className="text-gray-300 text-base mb-8 max-w-md">{t.cta.subtitle}</p>
+                <p className="text-gray-300 text-base mb-8 max-w-md mx-auto">{t.cta.subtitle}</p>
                 <Link to="/kontakt" className="group inline-flex items-center gap-3 px-8 py-4 bg-[#94c43d] text-white rounded-full font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
                   {t.cta.button}
                   <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
-              </div>
-              <div className="relative hidden lg:flex items-end justify-end pr-8" style={{ minWidth: '320px' }}>
-                <img src={consultantImg} alt="FHS Foundation" className="relative z-10 w-[380px] object-contain -mb-1" style={{ marginTop: '-180px', filter: 'drop-shadow(0 20px 60px rgba(0,0,0,0.5))' }} />
-              </div>
             </div>
           </div>
         </div>

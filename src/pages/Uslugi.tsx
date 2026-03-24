@@ -330,6 +330,60 @@ const Uslugi = () => {
         <LogoMarquee />
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-24" style={{ backgroundColor: '#f5f3ef' }}>
+        <div className="container mx-auto px-6 lg:px-12">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">FAQ</span>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Najczęściej zadawane <GradientText>pytania</GradientText>
+            </h2>
+          </motion.div>
+
+          <div className="max-w-3xl mx-auto space-y-4">
+            {[
+              {
+                q: 'Na czym polega wirtualna adopcja?',
+                a: 'To forma regularnego wsparcia konkretnego dziecka, które dzięki Tobie zyskuje dostęp do edukacji, posiłków, opieki medycznej i innych podstawowych potrzeb. Nie adoptujesz go fizycznie - ale realnie zmieniasz jego życie.',
+              },
+              {
+                q: 'Dlaczego warto zaangażować się w pomoc?',
+                a: 'Bo to coś więcej niż darowizna - to realna zmiana w życiu konkretnego dziecka. Masz pewność, że Twoje wsparcie trafia tam, gdzie jest naprawdę potrzebne. Dzięki regularnym raportom, zdjęciom i wiadomościom widzisz, jak Twoja pomoc przekłada się na codzienne życie i rozwój dziecka.',
+              },
+              {
+                q: 'Jak wygląda proces adopcji krok po kroku?',
+                a: 'Wybierasz dziecko i deklarujesz miesięczne wsparcie. My dopasowujemy formę pomocy do Twoich możliwości. Regularnie otrzymujesz informacje o postępach dziecka. Obserwujesz, jak Twoje wsparcie zmienia jego codzienność i przyszłość.',
+              },
+              {
+                q: 'Ile kosztuje wirtualna adopcja?',
+                a: 'Wsparcie zaczyna się od 150 zł miesięcznie - to orientacyjna kwota, która pozwala pokryć podstawowe potrzeby dziecka. Możesz jednak samodzielnie zdecydować, ile i jak często chcesz pomagać. Każda, nawet najmniejsza regularna wpłata, naprawdę ma znaczenie.',
+              },
+              {
+                q: 'Czy mogę mieć kontakt z dzieckiem, które wspieram?',
+                a: 'Tak - to jeden z najpiękniejszych aspektów wirtualnej adopcji. Regularnie otrzymujesz zdjęcia, wiadomości i raporty o postępach dziecka. W ten sposób możesz śledzić jego rozwój, budować relację i zobaczyć, jak realnie zmienia się jego życie dzięki Twojemu wsparciu.',
+              },
+            ].map((faq, index) => (
+              <motion.details
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="group bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 hover:border-[#94c43d]/30 transition-all duration-300"
+              >
+                <summary className="flex items-center justify-between p-6 cursor-pointer list-none font-display font-semibold text-lg text-gray-900 group-hover:text-[#94c43d] transition-colors">
+                  {faq.q}
+                  <ChevronDown className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform duration-300 flex-shrink-0 ml-4" />
+                </summary>
+                <div className="px-6 pb-6 text-gray-500 leading-relaxed">
+                  {faq.a}
+                </div>
+              </motion.details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute bottom-10 left-10 opacity-[0.06] pointer-events-none">
