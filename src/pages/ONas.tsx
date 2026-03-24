@@ -22,9 +22,6 @@ import onasLiuWenhao from '@/assets/onas-liu-wenhao.jpeg';
 import onasZhangRui from '@/assets/onas-zhang-rui.png';
 import onasSara from '@/assets/onas-sara.png';
 import shanghaiHeroBg from '@/assets/shanghai-hero-bg.jpg';
-import heroAirplane from '@/assets/hero-airplane.png';
-import heroTruck from '@/assets/hero-truck.png';
-import heroContainer from '@/assets/hero-container.png';
 
 const team = [
   { name: 'Adrian Nkwamu', role: 'Co-Founder & Managing Partner', image: onasAdrian },
