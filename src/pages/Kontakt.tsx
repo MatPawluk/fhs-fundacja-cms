@@ -8,17 +8,17 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { kontaktTranslations } from '@/i18n/pageTranslations';
 import gmailLogo from '@/assets/gmail-logo.png';
 import whatsappLogo from '@/assets/whatsapp-logo.png';
-import wechatLogo from '@/assets/wechat-logo.png';
+
 import googleMeetLogo from '@/assets/google-meet-logo.png';
 
 const contactMethods = [
   {
     icon: gmailLogo,
     title: 'Napisz do nas',
-    subtitle: 'contact@fhsfoundation.pl',
+    subtitle: 'fundacja@fhspolska.com',
     hoverBorder: 'hover:border-red-500',
     hoverText: 'group-hover:text-red-500',
-    href: 'mailto:contact@fhsfoundation.pl',
+    href: 'mailto:fundacja@fhspolska.com',
   },
   {
     icon: whatsappLogo,
@@ -26,15 +26,7 @@ const contactMethods = [
     subtitle: 'WhatsApp',
     hoverBorder: 'hover:border-green-500',
     hoverText: 'group-hover:text-green-500',
-    href: 'https://wa.me/48123456789',
-  },
-  {
-    icon: wechatLogo,
-    title: 'WeChat',
-    subtitle: 'Skanuj kod QR',
-    hoverBorder: 'hover:border-green-500',
-    hoverText: 'group-hover:text-green-500',
-    href: '#',
+    href: 'https://wa.me/48698451498',
   },
   {
     icon: googleMeetLogo,
@@ -51,7 +43,6 @@ const Kontakt = () => {
   const pt = kontaktTranslations[language];
   const [formData, setFormData] = useState({
     name: '',
-    company: '',
     email: '',
     topic: '',
     message: '',
@@ -156,17 +147,6 @@ const Kontakt = () => {
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-500 mb-2">{pt.companyLabel}</label>
-                    <input
-                      type="text"
-                      placeholder={pt.companyPlaceholder}
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200/50 text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent transition-all duration-300"
-                      style={{ backgroundColor: '#e8e5e0' }}
-                    />
-                  </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-500 mb-2">{pt.topicLabel}</label>
