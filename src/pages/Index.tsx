@@ -5,7 +5,7 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { LogoMarquee } from '@/components/LogoMarquee';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
-import { RadarAnimation } from '@/components/RadarAnimation';
+
 import { GradientText } from '@/components/GradientText';
 import { HomeFAQSection } from '@/components/HomeFAQSection';
 import { CaseStudiesSection } from '@/components/CaseStudiesSection';
