@@ -363,59 +363,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[1200px] h-[1200px] opacity-20">
-            <RadarAnimation size="lg" className="w-full h-full" />
-          </div>
-        </div>
-        
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">
-              {t.process.badge}
-            </span>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              {t.process.title.split(' ').slice(0, -1).join(' ')} <GradientText>{t.process.title.split(' ').slice(-1)[0]}</GradientText>?
-            </h2>
-            <p className="text-gray-500 max-w-xl mx-auto">{t.process.subtitle}</p>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#94c43d] via-[#94c43d]/50 to-[#94c43d]/20 md:-translate-x-1/2" />
-              
-              {t.process.steps.map((step, index) => (
-                <motion.div
-                  key={step.number}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: index * 0.15 }}
-                  className={`relative flex items-start gap-8 mb-12 last:mb-0 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                >
-                  <div className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-[#94c43d] shadow-lg shadow-[#94c43d]/50 md:-translate-x-1/2 z-10">
-                    <div className="absolute inset-0 rounded-full bg-[#94c43d] animate-ping opacity-30" />
-                  </div>
-                  
-                  <div className={`ml-20 md:ml-0 md:w-[calc(50%-40px)] ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'}`}>
-                    <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 hover:border-[#94c43d]/30 transition-all duration-300 group shadow-sm">
-                      <span className={`absolute top-4 font-display text-7xl font-bold text-[#94c43d]/20 group-hover:text-[#94c43d]/40 transition-colors ${index % 2 === 0 ? 'right-6 md:left-6 md:right-auto' : 'right-6'}`}>
-                        {step.number}
-                      </span>
-                      <div className="relative z-10 pt-8">
-                        <h3 className="font-display font-semibold text-xl text-gray-900 mb-3">{step.title}</h3>
-                        <p className="text-gray-500 text-sm leading-relaxed">{step.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Trusted By */}
       <section className="py-16" style={{ backgroundColor: '#f5f3ef' }}>
