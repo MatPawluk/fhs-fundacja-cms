@@ -147,17 +147,6 @@ const Kontakt = () => {
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-500 mb-2">{pt.companyLabel}</label>
-                    <input
-                      type="text"
-                      placeholder={pt.companyPlaceholder}
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200/50 text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent transition-all duration-300"
-                      style={{ backgroundColor: '#e8e5e0' }}
-                    />
-                  </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-500 mb-2">{pt.topicLabel}</label>
