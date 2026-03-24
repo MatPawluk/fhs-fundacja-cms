@@ -43,7 +43,6 @@ const Kontakt = () => {
   const pt = kontaktTranslations[language];
   const [formData, setFormData] = useState({
     name: '',
-    company: '',
     email: '',
     topic: '',
     message: '',
