@@ -139,18 +139,6 @@ const ONas = () => {
 
       <TeamCarousel />
 
-      {/* World Dot Map */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
-        <div className="container mx-auto px-6 lg:px-12">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 backdrop-blur-sm text-white/80 text-sm font-medium mb-4">{pt.connectionBadge}</span>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900">
-              Warszawa ↔ <GradientText>Shanghai</GradientText>
-            </h2>
-          </motion.div>
-          <div className="max-w-5xl mx-auto"><WorldDotMap /></div>
-        </div>
-      </section>
 
       {/* FAQ Section */}
       <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
