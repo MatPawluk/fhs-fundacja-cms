@@ -10,6 +10,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { uslugiTranslations } from '@/i18n/pageTranslations';
 import { statsTranslations, serviceCategoriesTranslations } from '@/i18n/contentTranslations';
 import { ArrowRight, ChevronDown } from 'lucide-react';
+import { RadarAnimation } from '@/components/RadarAnimation';
 import statsBg from '@/assets/stats-bg.jpg';
 import worldMap from '@/assets/world-map.jpg';
 
