@@ -15,10 +15,10 @@ const contactMethods = [
   {
     icon: gmailLogo,
     title: 'Napisz do nas',
-    subtitle: 'contact@fhsfoundation.pl',
+    subtitle: 'fundacja@fhspolska.com',
     hoverBorder: 'hover:border-red-500',
     hoverText: 'group-hover:text-red-500',
-    href: 'mailto:contact@fhsfoundation.pl',
+    href: 'mailto:fundacja@fhspolska.com',
   },
   {
     icon: whatsappLogo,
@@ -26,15 +26,7 @@ const contactMethods = [
     subtitle: 'WhatsApp',
     hoverBorder: 'hover:border-green-500',
     hoverText: 'group-hover:text-green-500',
-    href: 'https://wa.me/48123456789',
-  },
-  {
-    icon: wechatLogo,
-    title: 'WeChat',
-    subtitle: 'Skanuj kod QR',
-    hoverBorder: 'hover:border-green-500',
-    hoverText: 'group-hover:text-green-500',
-    href: '#',
+    href: 'https://wa.me/48698451498',
   },
   {
     icon: googleMeetLogo,
