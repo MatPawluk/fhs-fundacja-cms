@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
-import { WorldDotMap } from '@/components/WorldDotMap';
+
 import { GradientText } from '@/components/GradientText';
 import { FloatingDots } from '@/components/FloatingDots';
 import { TeamCarousel } from '@/components/TeamCarousel';
