@@ -8,7 +8,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { kontaktTranslations } from '@/i18n/pageTranslations';
 import gmailLogo from '@/assets/gmail-logo.png';
 import whatsappLogo from '@/assets/whatsapp-logo.png';
-import wechatLogo from '@/assets/wechat-logo.png';
+
 import googleMeetLogo from '@/assets/google-meet-logo.png';
 
 const contactMethods = [
