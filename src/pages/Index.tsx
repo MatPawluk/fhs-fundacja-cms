@@ -14,7 +14,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { statsTranslations, carouselServicesTranslations } from '@/i18n/contentTranslations';
 import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import statsBg from '@/assets/stats-bg.jpg';
-import consultantImg from '@/assets/consultant.png';
+
 
 // Service carousel images
 import sgStrategia from '@/assets/sg-strategia.png';
