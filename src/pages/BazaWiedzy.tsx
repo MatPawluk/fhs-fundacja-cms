@@ -11,9 +11,7 @@ import { Clock, Calendar, ArrowRight } from 'lucide-react';
 import articleCompetition from '@/assets/article-competition.jpg';
 import articleInnovation from '@/assets/article-china-innovation.jpg';
 import serviceStrategy from '@/assets/service-strategy.jpg';
-import worldMap from '@/assets/world-map.jpg';
 
-// Images mapped by slug (stable across languages)
 const articleImages: Record<string, string> = {
   'gdzie-znika-twoja-marza': articleCompetition,
   'chinski-nowy-rok-2026': articleInnovation,
@@ -31,27 +29,24 @@ const BazaWiedzy = () => {
   const pt = bazaWiedzyTranslations[language];
   const articles = articlesTranslations[language];
   const categories = pt.categories;
-  
+
   const filteredArticles = activeCategoryIndex === 0
-    ? articles 
+    ? articles
     : articles.filter(article => article.category === categories[activeCategoryIndex]);
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
-      
-      {/* Hero Section */}
+
+      {/* Hero Section - light, no dark gradients */}
       <section className="relative pt-28 pb-12 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img src={worldMap} alt="" className="w-full h-full object-cover opacity-10" />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(245,243,239,0.8), rgba(245,243,239,0.9), #1a1a1a)' }} />
-          <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-lime/5 blur-[150px] rounded-full" />
+          <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#94c43d]/5 blur-[150px] rounded-full" />
         </div>
-        
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
-            <span className="inline-block px-4 py-2 rounded-full bg-lime/20 text-lime text-sm font-medium mb-4">{pt.badge}</span>
+            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">{pt.badge}</span>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
               {pt.title} <GradientText>{pt.titleHighlight}</GradientText>
               <br />{pt.titleEnd}
@@ -72,7 +67,7 @@ const BazaWiedzy = () => {
                 onClick={() => setActiveCategoryIndex(idx)}
                 className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
                   activeCategoryIndex === idx
-                    ? 'bg-lime text-gray-900'
+                    ? 'bg-[#94c43d] text-white'
                     : 'text-gray-500 hover:text-gray-900 border border-gray-200/50'
                 }`}
                 style={activeCategoryIndex !== idx ? { backgroundColor: '#f0ede8' } : {}}
@@ -90,7 +85,7 @@ const BazaWiedzy = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="group relative rounded-2xl overflow-hidden border border-gray-200/50 hover:border-lime/30 hover:shadow-xl hover:shadow-lime/5 transition-all duration-500"
+                className="group relative rounded-2xl overflow-hidden border border-gray-200/50 hover:border-[#94c43d]/30 hover:shadow-xl hover:shadow-[#94c43d]/5 transition-all duration-500"
                 style={{ backgroundColor: '#f0ede8' }}
               >
                 <Link to={`/baza-wiedzy/${article.slug}`}>
@@ -102,22 +97,14 @@ const BazaWiedzy = () => {
                     />
                     <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #f0ede8, rgba(240,237,232,0.3), transparent)' }} />
                     <div className="absolute bottom-4 left-4">
-                      <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-semibold ${
-                        article.category === categories[1]
-                          ? 'bg-lime text-gray-900'
-                          : article.category === categories[2]
-                          ? 'bg-white/90 text-gray-900'
-                          : 'text-gray-900 border border-gray-200'
-                      }`}
-                      style={article.category === categories[3] ? { backgroundColor: '#e8e5e0' } : {}}
-                      >
+                      <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold bg-[#94c43d] text-white">
                         {article.category}
                       </span>
                     </div>
                   </div>
 
                   <div className="p-6">
-                    <h3 className="font-display font-semibold text-xl mb-3 text-gray-900 group-hover:text-lime transition-colors duration-300 line-clamp-2">{article.title}</h3>
+                    <h3 className="font-display font-semibold text-xl mb-3 text-gray-900 group-hover:text-[#94c43d] transition-colors duration-300 line-clamp-2">{article.title}</h3>
                     <p className="text-gray-500 text-sm mb-6 line-clamp-2">{article.description}</p>
                     <div className="flex items-center justify-between text-sm text-gray-600">
                       <div className="flex items-center gap-1"><Calendar className="w-4 h-4" /><span>{article.date}</span></div>
@@ -134,10 +121,7 @@ const BazaWiedzy = () => {
       {/* CTA Section */}
       <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-lime/8 blur-[150px] rounded-full" />
-        </div>
-        <div className="absolute bottom-10 right-10 opacity-[0.06] pointer-events-none">
-          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none"></span>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#94c43d]/10 blur-[150px] rounded-full" />
         </div>
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>

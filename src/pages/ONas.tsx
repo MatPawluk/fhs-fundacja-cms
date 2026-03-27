@@ -1,111 +1,89 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
-
 import { GradientText } from '@/components/GradientText';
-import { FloatingDots } from '@/components/FloatingDots';
-import { TeamCarousel } from '@/components/TeamCarousel';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { oNasTranslations } from '@/i18n/pageTranslations';
-import { statsTranslations, oNasFaqTranslations } from '@/i18n/contentTranslations';
+import { oNasFaqTranslations } from '@/i18n/contentTranslations';
 import { ArrowRight, ChevronRight } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
-// Assets
 import onasAdrian from '@/assets/onas-adrian.png';
 import onasHugo from '@/assets/onas-hugo.png';
 import onasMaksymilian from '@/assets/onas-maksymilian.jpg';
 import onasLiuWenhao from '@/assets/onas-liu-wenhao.jpeg';
 import onasZhangRui from '@/assets/onas-zhang-rui.png';
 import onasSara from '@/assets/onas-sara.png';
-import shanghaiHeroBg from '@/assets/shanghai-hero-bg.jpg';
 
 const team = [
-  { name: 'Adrian Nkwamu', role: 'Co-Founder & Managing Partner', image: onasAdrian },
-  { name: 'Hugo Przybyła', role: 'Co-Founder & Poland Market Lead', image: onasHugo },
-  { name: 'Maksymilian Szabatin', role: 'Partner, Strategy & Intelligence', image: onasMaksymilian },
-  { name: 'Liu Wenhao', role: 'Senior China Market Analyst', image: onasLiuWenhao },
-  { name: 'Zhang Rui', role: 'Logistics & Supply Chain Coordinator', image: onasZhangRui },
-  { name: 'Sara Chen', role: 'Head of China Operations & International Relations', image: onasSara },
+  { name: 'Darek', role: 'Współzałożyciel, koordynacja lokalna', image: onasAdrian },
+  { name: 'Adrian', role: 'Współzałożyciel, marketing i komunikacja', image: onasHugo },
+  { name: 'Olga', role: 'Wsparcie projektowe', image: onasMaksymilian },
+  { name: 'Agata', role: 'Koordynacja lokalna', image: onasLiuWenhao },
+  { name: 'Maya', role: 'Gospodyni domu polskiego w Gambii', image: onasZhangRui },
+  { name: 'Kebba', role: 'Opiekun domu polskiego w Gambii', image: onasSara },
 ];
 
 const ONas = () => {
   const [openIndices, setOpenIndices] = useState<Set<number>>(new Set());
-  const heroRef = useRef<HTMLDivElement>(null);
   const { language, t } = useLanguage();
   const pt = oNasTranslations[language];
-  const stats = statsTranslations[language];
   const faqs = oNasFaqTranslations[language];
-  
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-  
-  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
-      
-      {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen overflow-hidden flex items-center">
-        <motion.div style={{ y: heroY }} className="absolute inset-0">
-          <img src={shanghaiHeroBg} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#f5f3ef]/60 via-[#f5f3ef]/80 to-[#f5f3ef]" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#1a1a1a_80%)]" />
-        </motion.div>
-        
-        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-          <div className="absolute top-[15%] left-[5%] font-display text-[12vw] font-bold text-gray-900/[0.04] blur-[2px] tracking-wider">LOGISTICS</div>
-          <div className="absolute top-[35%] right-[5%] font-display text-[10vw] font-bold text-gray-900/[0.05] blur-[2px] tracking-wider">PL—CN</div>
-          <div className="absolute bottom-[30%] left-[10%] font-display text-[8vw] font-bold text-gray-900/[0.03] blur-[2px] tracking-wider">CONNECTED</div>
-          <div className="absolute bottom-[15%] right-[15%] font-display text-[6vw] font-bold text-gray-900/[0.04] blur-[2px] tracking-wider">BRIDGE</div>
-        </div>
-        
-        <FloatingDots count={40} />
-        
 
-        {/* Hero content */}
-        <motion.div style={{ opacity: heroOpacity }} className="relative z-30 container mx-auto px-6 lg:px-12 text-center pt-20">
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-lime/20 text-lime text-sm font-medium mb-8">
-              <span className="w-2 h-2 rounded-full bg-lime animate-pulse" />
-              {pt.badge}
-            </span>
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-8">
-              {pt.title} <GradientText>{pt.titleHighlight}</GradientText>
-              <br />{pt.subtitle}
+      {/* Hero / Kim jesteśmy */}
+      <section className="relative pt-28 pb-20 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#94c43d]/5 blur-[150px] rounded-full pointer-events-none" />
+
+        <div className="relative z-10 container mx-auto px-6 lg:px-12">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-4xl mx-auto text-center">
+            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-6">O nas</span>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-8">
+              Kim <GradientText>jesteśmy</GradientText>?
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed">{pt.description}</p>
           </motion.div>
 
-          {/* Stats Row */}
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8 }} className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-5xl mx-auto relative z-20">
-            {stats.map((stat, index) => (
-              <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 + index * 0.1 }} className="p-6 lg:p-8 rounded-2xl bg-[#f0ede8]/80 backdrop-blur-lg border border-gray-200/50 hover:border-lime/30 transition-all duration-300">
-                <div className="font-display text-3xl lg:text-4xl font-bold text-lime mb-2">
-                  {stat.isText ? <span>{stat.suffix}</span> : <AnimatedCounter end={stat.value} suffix={stat.suffix} />}
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6 }} className="max-w-3xl mx-auto text-center">
+            <p className="text-gray-600 text-lg leading-relaxed mb-4">
+              Fundacja FHS to organizacja non-profit działająca od 2022 roku, której misją jest poprawa warunków życia i edukacji w społecznościach Afryki Zachodniej.
+            </p>
+            <p className="text-gray-600 text-lg leading-relaxed mb-4">
+              Nasze działania koncentrują się wokół edukacji, opieki zdrowotnej, rozwoju infrastruktury oraz wspierania lokalnych inicjatyw przedsiębiorczych.
+            </p>
+            <p className="text-gray-600 text-lg leading-relaxed mb-10">
+              Wierzymy, że przez empatię, zaangażowanie i wspólne działanie możemy tworzyć trwałe zmiany, które przekształcą życie całych społeczności.
+            </p>
+
+            <div className="flex items-center justify-center gap-12">
+              <div className="text-center">
+                <div className="font-display text-4xl lg:text-5xl font-bold text-[#94c43d] mb-2">
+                  <AnimatedCounter end={370} suffix="+" />
                 </div>
-                <p className="text-gray-500 text-sm">{stat.label}</p>
-              </motion.div>
-            ))}
+                <p className="text-gray-500 text-sm">Dzieci pod opieką</p>
+              </div>
+              <div className="text-center">
+                <div className="font-display text-4xl lg:text-5xl font-bold text-[#94c43d] mb-2">
+                  <AnimatedCounter end={17} suffix="+" />
+                </div>
+                <p className="text-gray-500 text-sm">Projektów</p>
+              </div>
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Team Section */}
       <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
-        <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-lime/10 to-transparent" />
-        
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 backdrop-blur-sm text-white/80 text-sm font-medium mb-4">{pt.teamBadge}</span>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900">{pt.teamTitle} <GradientText>{pt.teamTitleHighlight}</GradientText></h2>
+            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">{pt.teamBadge}</span>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900">Poznaj <GradientText>nas</GradientText></h2>
           </motion.div>
 
           <div className="max-w-5xl mx-auto">
@@ -137,16 +115,11 @@ const ONas = () => {
         </div>
       </section>
 
-      <TeamCarousel />
-
-
       {/* FAQ Section */}
       <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
-        <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-transparent via-lime/8 to-transparent" />
-
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-lime/20 text-lime text-sm font-medium mb-4">{pt.faqBadge}</span>
+            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">{pt.faqBadge}</span>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900">{pt.faqTitle} <GradientText>{pt.faqTitleHighlight}</GradientText></h2>
           </motion.div>
 
@@ -163,8 +136,8 @@ const ONas = () => {
                   }}
                   className="w-full flex items-center justify-between py-6 text-left group"
                 >
-                  <span className="font-display text-lg md:text-xl font-semibold text-gray-900 group-hover:text-lime transition-colors duration-300 pr-4">{faq.question}</span>
-                  <ChevronRight className={`w-5 h-5 text-gray-500 group-hover:text-lime transition-all duration-300 flex-shrink-0 ${openIndices.has(index) ? 'rotate-90' : ''}`} />
+                  <span className="font-display text-lg md:text-xl font-semibold text-gray-900 group-hover:text-[#94c43d] transition-colors duration-300 pr-4">{faq.question}</span>
+                  <ChevronRight className={`w-5 h-5 text-gray-500 group-hover:text-[#94c43d] transition-all duration-300 flex-shrink-0 ${openIndices.has(index) ? 'rotate-90' : ''}`} />
                 </button>
                 <AnimatePresence>
                   {openIndices.has(index) && (
@@ -181,9 +154,6 @@ const ONas = () => {
 
       {/* CTA Section */}
       <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
-        <div className="absolute bottom-10 left-10 opacity-[0.06] pointer-events-none">
-          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none"></span>
-        </div>
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-6">{t.cta.title} <GradientText>{t.cta.titleHighlight}</GradientText></h2>
