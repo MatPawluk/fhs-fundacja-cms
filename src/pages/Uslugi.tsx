@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
@@ -6,7 +6,8 @@ import { Footer } from '@/components/Footer';
 import { GradientText } from '@/components/GradientText';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { uslugiTranslations } from '@/i18n/pageTranslations';
-import { ArrowRight, ChevronDown, X, Heart, MapPin, GraduationCap, Utensils, Stethoscope } from 'lucide-react';
+import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, X, Heart, MapPin, GraduationCap, Utensils, Stethoscope } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 import child1 from '@/assets/child-1.jpg';
 import child2 from '@/assets/child-2.jpg';
@@ -14,6 +15,10 @@ import child3 from '@/assets/child-3.jpg';
 import child4 from '@/assets/child-4.jpg';
 import child5 from '@/assets/child-5.jpg';
 import child6 from '@/assets/child-6.jpg';
+import stepChoose from '@/assets/step-choose.jpg';
+import stepDeclare from '@/assets/step-declare.jpg';
+import stepProgress from '@/assets/step-progress.jpg';
+import stepChange from '@/assets/step-change.jpg';
 
 const children = [
   {
