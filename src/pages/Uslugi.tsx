@@ -294,6 +294,7 @@ function HowItWorksVerticalTabs() {
 
 const Uslugi = () => {
   const [selectedChild, setSelectedChild] = useState<number | null>(null);
+  const [faqOpen, setFaqOpen] = useState<Set<number>>(new Set());
   const { language } = useLanguage();
   const pt = uslugiTranslations[language];
 
