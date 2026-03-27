@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
@@ -6,7 +6,8 @@ import { Footer } from '@/components/Footer';
 import { GradientText } from '@/components/GradientText';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { uslugiTranslations } from '@/i18n/pageTranslations';
-import { ArrowRight, ChevronDown, X, Heart, MapPin, GraduationCap, Utensils, Stethoscope } from 'lucide-react';
+import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, X, Heart, MapPin, GraduationCap, Utensils, Stethoscope } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 import child1 from '@/assets/child-1.jpg';
 import child2 from '@/assets/child-2.jpg';
@@ -14,6 +15,10 @@ import child3 from '@/assets/child-3.jpg';
 import child4 from '@/assets/child-4.jpg';
 import child5 from '@/assets/child-5.jpg';
 import child6 from '@/assets/child-6.jpg';
+import stepChoose from '@/assets/step-choose.jpg';
+import stepDeclare from '@/assets/step-declare.jpg';
+import stepProgress from '@/assets/step-progress.jpg';
+import stepChange from '@/assets/step-change.jpg';
 
 const children = [
   {
@@ -96,6 +101,196 @@ const needIcons: Record<string, React.ReactNode> = {
   'Opieka medyczna': <Stethoscope className="w-4 h-4" />,
   'Materiały szkolne': <GraduationCap className="w-4 h-4" />,
 };
+
+const STEPS = [
+  {
+    id: '01',
+    title: 'Wybierz dziecko',
+    description: 'Przejrzyj profile dzieci i wybierz to, które chcesz wesprzeć. Każde z nich ma swoją unikalną historię, marzenia i potrzeby. Poznaj je bliżej i zdecyduj, komu chcesz pomóc.',
+    image: stepChoose,
+  },
+  {
+    id: '02',
+    title: 'Zadeklaruj wsparcie',
+    description: 'Zdecyduj o kwocie miesięcznego wsparcia — już od 150 zł. Wybierz formę płatności i częstotliwość. Każda regularna wpłata ma ogromne znaczenie.',
+    image: stepDeclare,
+  },
+  {
+    id: '03',
+    title: 'Obserwuj postępy',
+    description: 'Otrzymuj regularne raporty, zdjęcia i wiadomości od dziecka. Śledź jego rozwój, buduj relację i zobacz, jak Twoje wsparcie zmienia jego codzienność.',
+    image: stepProgress,
+  },
+  {
+    id: '04',
+    title: 'Zmieniaj życie',
+    description: 'Zobacz, jak Twoja pomoc realnie wpływa na przyszłość dziecka. Edukacja, posiłki, opieka medyczna — to wszystko jest możliwe dzięki Tobie.',
+    image: stepChange,
+  },
+];
+
+const AUTO_PLAY_DURATION = 5000;
+
+function HowItWorksVerticalTabs() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const handleNext = useCallback(() => {
+    setDirection(1);
+    setActiveIndex((prev) => (prev + 1) % STEPS.length);
+  }, []);
+
+  const handlePrev = useCallback(() => {
+    setDirection(-1);
+    setActiveIndex((prev) => (prev - 1 + STEPS.length) % STEPS.length);
+  }, []);
+
+  const handleTabClick = (index: number) => {
+    if (index === activeIndex) return;
+    setDirection(index > activeIndex ? 1 : -1);
+    setActiveIndex(index);
+    setIsPaused(false);
+  };
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      handleNext();
+    }, AUTO_PLAY_DURATION);
+    return () => clearInterval(interval);
+  }, [activeIndex, isPaused, handleNext]);
+
+  const variants = {
+    enter: (dir: number) => ({ y: dir > 0 ? '-100%' : '100%', opacity: 0 }),
+    center: { zIndex: 1, y: 0, opacity: 1 },
+    exit: (dir: number) => ({ zIndex: 0, y: dir > 0 ? '100%' : '-100%', opacity: 0 }),
+  };
+
+  return (
+    <section className="py-24" style={{ backgroundColor: '#f5f3ef' }}>
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Left: Tabs */}
+            <div className="flex flex-col">
+              <div className="flex items-center justify-between mb-8">
+                <div>
+                  <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-3">Jak to działa</span>
+                  <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">
+                    Cztery proste <GradientText>kroki</GradientText>
+                  </h2>
+                </div>
+                <span className="text-gray-300 font-display text-sm tracking-wider hidden md:block">({String(activeIndex + 1).padStart(2, '0')}/{String(STEPS.length).padStart(2, '0')})</span>
+              </div>
+
+              <div className="flex flex-col">
+                {STEPS.map((step, index) => {
+                  const isActive = activeIndex === index;
+                  return (
+                    <button
+                      key={step.id}
+                      onClick={() => handleTabClick(index)}
+                      className={cn(
+                        'group relative flex items-start gap-4 py-6 md:py-8 text-left transition-all duration-500 border-t border-gray-200/50 first:border-0',
+                        isActive ? 'text-gray-900' : 'text-gray-400 hover:text-gray-700'
+                      )}
+                    >
+                      <div className="relative w-1 self-stretch rounded-full bg-gray-200/50 overflow-hidden flex-shrink-0">
+                        {isActive && (
+                          <motion.div
+                            className="absolute inset-x-0 top-0 bg-[#94c43d] rounded-full"
+                            initial={{ height: '0%' }}
+                            animate={{ height: '100%' }}
+                            transition={{ duration: AUTO_PLAY_DURATION / 1000, ease: 'linear' }}
+                            key={activeIndex}
+                          />
+                        )}
+                      </div>
+
+                      <span className={cn(
+                        'font-display text-sm font-semibold transition-colors duration-300 mt-0.5 flex-shrink-0',
+                        isActive ? 'text-[#94c43d]' : 'text-gray-300'
+                      )}>
+                        /{step.id}
+                      </span>
+
+                      <div className="flex flex-col gap-2 min-w-0">
+                        <h3 className={cn(
+                          'font-display text-xl md:text-2xl font-bold transition-colors duration-300',
+                          isActive ? 'text-gray-900' : 'text-gray-400 group-hover:text-gray-600'
+                        )}>
+                          {step.title}
+                        </h3>
+                        <AnimatePresence mode="wait">
+                          {isActive && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <p className="text-gray-500 text-sm md:text-base leading-relaxed pr-4">
+                                {step.description}
+                              </p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right: Image */}
+            <div className="relative">
+              <div
+                className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-gray-100"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+              >
+                <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                  <motion.img
+                    key={activeIndex}
+                    src={STEPS[activeIndex].image}
+                    alt={STEPS[activeIndex].title}
+                    custom={direction}
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </AnimatePresence>
+
+                {/* Navigation arrows */}
+                <div className="absolute bottom-5 right-5 flex gap-2 z-10">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+                    className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/80 backdrop-blur-md border border-gray-200/50 flex items-center justify-center text-gray-700 hover:bg-white transition-all active:scale-90"
+                    aria-label="Poprzedni"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); handleNext(); }}
+                    className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/80 backdrop-blur-md border border-gray-200/50 flex items-center justify-center text-gray-700 hover:bg-white transition-all active:scale-90"
+                    aria-label="Następny"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 const Uslugi = () => {
   const [selectedChild, setSelectedChild] = useState<number | null>(null);
@@ -297,41 +492,8 @@ const Uslugi = () => {
         )}
       </AnimatePresence>
 
-      {/* How it works section */}
-      <section className="py-24" style={{ backgroundColor: '#f5f3ef' }}>
-        <div className="container mx-auto px-6 lg:px-12">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">Jak to działa</span>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900">
-              Cztery proste <GradientText>kroki</GradientText>
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {[
-              { step: '01', title: 'Wybierz dziecko', desc: 'Przejrzyj profile dzieci i wybierz to, które chcesz wesprzeć.' },
-              { step: '02', title: 'Zadeklaruj wsparcie', desc: 'Zdecyduj o kwocie miesięcznego wsparcia — już od 150 zł.' },
-              { step: '03', title: 'Obserwuj postępy', desc: 'Otrzymuj regularne raporty, zdjęcia i wiadomości.' },
-              { step: '04', title: 'Zmieniaj życie', desc: 'Zobacz, jak Twoja pomoc realnie wpływa na przyszłość dziecka.' },
-            ].map((item, index) => (
-              <motion.div
-                key={item.step}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center p-6"
-              >
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#94c43d]/10 text-[#94c43d] font-display font-bold text-lg mb-4">
-                  {item.step}
-                </div>
-                <h3 className="font-display font-bold text-lg text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* How it works — Vertical Tabs */}
+      <HowItWorksVerticalTabs />
 
       {/* FAQ Section */}
       <section className="py-24" style={{ backgroundColor: '#f5f3ef' }}>
