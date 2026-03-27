@@ -309,34 +309,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Dom Polski w Gambii */}
-      <section className="py-20" style={{ backgroundColor: '#f5f3ef' }}>
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">Dom Polski</span>
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                Nasze miejsce spotkań, kultury i odpoczynku
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-8">
-                Dom Polski w Gambii to serce Fundacji FHS – wyjątkowa przestrzeń, w której polska gościnność spotyka się z afrykańskim słońcem i lokalną społecznością. To miejsce stworzone z myślą o wolontariuszach, podróżnikach z misją i wszystkich, którzy chcą doświadczyć prawdziwej wspólnoty, odpocząć i poczuć się jak w domu. Z basenem, bujną zielenią i klimatycznym zapleczem noclegowym.
-              </p>
-              <Link to="/kontakt" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gray-300 text-gray-700 hover:border-[#94c43d] hover:text-[#94c43d] transition-all duration-300 text-sm font-medium">
-                Sprawdź dostępność! <ArrowRight className="w-4 h-4" />
-              </Link>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="rounded-3xl overflow-hidden shadow-lg">
-                <img src={domPolskiGambia} alt="Dom Polski w Gambii" className="w-full h-auto object-cover" loading="lazy" width={1024} height={768} />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Twoja pomoc realnie zmienia życie - Parallax */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0">
+      <section className="relative py-24 overflow-hidden" style={{ clipPath: 'inset(0)' }}>
+        <div className="fixed inset-0 -z-10">
           <img src={wsprzyjNas} alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gray-900/70" />
         </div>
@@ -356,15 +331,41 @@ const Index = () => {
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.05, y: -8 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="relative rounded-2xl p-6 text-center backdrop-blur-md bg-white/90 border border-[#94c43d]/20 shadow-lg"
+                className="relative rounded-2xl p-6 text-center backdrop-blur-md bg-white/85 border border-white/30 shadow-lg cursor-default group hover:bg-white/95 hover:shadow-2xl hover:border-[#94c43d]/40 transition-all duration-300"
               >
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-[#94c43d]/5 to-transparent pointer-events-none" />
-                <h3 className="font-display text-2xl lg:text-3xl font-bold text-gray-900 mb-3 relative z-10">{item.value}</h3>
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-[#94c43d]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <h3 className="font-display text-2xl lg:text-3xl font-bold text-gray-900 mb-3 relative z-10 group-hover:text-[#94c43d] transition-colors duration-300">{item.value}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed relative z-10">{item.desc}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Dom Polski w Gambii */}
+      <section className="py-20" style={{ backgroundColor: '#f5f3ef' }}>
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">Dom Polski</span>
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                Nasze miejsce spotkań, kultury i odpoczynku
+              </h2>
+              <p className="text-gray-600 leading-relaxed mb-8">
+                Dom Polski w Gambii to serce Fundacji FHS – wyjątkowa przestrzeń, w której polska gościnność spotyka się z afrykańskim słońcem i lokalną społecznością. To miejsce stworzone z myślą o wolontariuszach, podróżnikach z misją i wszystkich, którzy chcą doświadczyć prawdziwej wspólnoty, odpocząć i poczuć się jak w domu. Z basenem, bujną zielenią i klimatycznym zapleczem noclegowym.
+              </p>
+              <Link to="/kontakt" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gray-300 text-gray-700 hover:border-[#94c43d] hover:text-[#94c43d] transition-all duration-300 text-sm font-medium">
+                Sprawdź dostępność! <ArrowRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <div className="rounded-3xl overflow-hidden shadow-lg">
+                <img src={domPolskiGambia} alt="Dom Polski w Gambii" className="w-full h-full object-cover" loading="lazy" width={1024} height={768} />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
