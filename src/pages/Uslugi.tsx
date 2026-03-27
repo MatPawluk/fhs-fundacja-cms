@@ -325,17 +325,18 @@ const Uslugi = () => {
       </section>
 
       {/* Children Grid — 3 columns, spacious cards */}
-      <section className="py-16" style={{ backgroundColor: '#f5f3ef' }}>
+      <section id="children-grid" className="py-16 scroll-mt-8" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {children.map((child, index) => (
+            {children.slice((currentPage - 1) * CHILDREN_PER_PAGE, currentPage * CHILDREN_PER_PAGE).map((child, index) => {
+              const globalIndex = (currentPage - 1) * CHILDREN_PER_PAGE + index;
+              return (
               <motion.div
                 key={child.name}
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.08 }}
-                onClick={() => setSelectedChild(index)}
+                onClick={() => setSelectedChild(globalIndex)}
                 className="group cursor-pointer rounded-3xl overflow-hidden bg-white border border-gray-100 hover:border-[#94c43d]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
               >
                 {/* Image */}
@@ -346,15 +347,12 @@ const Uslugi = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
-                  {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                  {/* Location badge */}
                   <div className="absolute top-4 right-4">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#94c43d] text-white text-xs font-semibold shadow-lg">
                       <MapPin className="w-3 h-3" /> {child.country}
                     </span>
                   </div>
-                  {/* Name overlay on image */}
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <h3 className="font-display font-bold text-2xl text-white mb-1 drop-shadow-lg">{child.name}</h3>
                     <p className="text-white/80 text-sm">{child.age} lat · {child.grade}</p>
@@ -364,8 +362,6 @@ const Uslugi = () => {
                 {/* Content */}
                 <div className="p-6">
                   <p className="text-gray-600 text-sm leading-relaxed mb-5 line-clamp-3">{child.shortDesc}</p>
-
-                  {/* Needs tags */}
                   <div className="flex flex-wrap gap-2 mb-5">
                     {child.needs.map((need) => (
                       <span key={need} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#94c43d]/8 text-[#6b8f2b] text-xs font-medium">
@@ -373,8 +369,6 @@ const Uslugi = () => {
                       </span>
                     ))}
                   </div>
-
-                  {/* Support + CTA */}
                   <div className="flex items-center justify-between pt-5 border-t border-gray-100">
                     <div>
                       <p className="text-gray-400 text-[10px] uppercase tracking-widest font-medium">Miesięczne wsparcie</p>
@@ -386,21 +380,47 @@ const Uslugi = () => {
                   </div>
                 </div>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Pagination */}
-          <div className="flex items-center justify-center gap-2 mt-12">
-            <span className="w-9 h-9 rounded-full bg-[#c4b99a] text-white flex items-center justify-center text-sm font-semibold">1</span>
-            {[2, 3].map((n) => (
-              <span key={n} className="w-9 h-9 rounded-full text-gray-400 flex items-center justify-center text-sm font-medium hover:bg-gray-200 transition-colors cursor-pointer">{n}</span>
-            ))}
-            <span className="text-gray-300 px-1">...</span>
-            <span className="w-9 h-9 rounded-full text-gray-400 flex items-center justify-center text-sm font-medium hover:bg-gray-200 transition-colors cursor-pointer">10</span>
-            <button className="w-9 h-9 rounded-full text-gray-400 flex items-center justify-center hover:bg-gray-200 transition-colors">
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
+          {(() => {
+            const totalPages = Math.ceil(children.length / CHILDREN_PER_PAGE);
+            if (totalPages <= 1) return null;
+            const handlePageChange = (page: number) => {
+              setCurrentPage(page);
+              document.getElementById('children-grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            };
+            return (
+              <div className="flex items-center justify-center gap-2 mt-12">
+                {currentPage > 1 && (
+                  <button onClick={() => handlePageChange(currentPage - 1)} className="w-9 h-9 rounded-full text-gray-400 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                )}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => handlePageChange(page)}
+                    className={cn(
+                      'w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300',
+                      currentPage === page
+                        ? 'bg-[#94c43d] text-white'
+                        : 'text-gray-400 hover:bg-gray-200'
+                    )}
+                  >
+                    {page}
+                  </button>
+                ))}
+                {currentPage < totalPages && (
+                  <button onClick={() => handlePageChange(currentPage + 1)} className="w-9 h-9 rounded-full text-gray-400 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+            );
+          })()}
         </div>
       </section>
 
