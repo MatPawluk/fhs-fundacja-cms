@@ -292,8 +292,11 @@ function HowItWorksVerticalTabs() {
   );
 }
 
+const CHILDREN_PER_PAGE = 3;
+
 const Uslugi = () => {
   const [selectedChild, setSelectedChild] = useState<number | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const [faqOpen, setFaqOpen] = useState<Set<number>>(new Set());
   const { language } = useLanguage();
   const pt = uslugiTranslations[language];
