@@ -9,6 +9,7 @@ import { HomeFAQSection } from '@/components/HomeFAQSection';
 import { PhotoCarousel } from '@/components/PhotoCarousel';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { statsTranslations, carouselServicesTranslations, articlesTranslations } from '@/i18n/contentTranslations';
+import { PartnersSection } from '@/components/PartnersSection';
 import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, Heart, Calendar, Clock } from 'lucide-react';
 
 import sgStrategia from '@/assets/sg-strategia.png';
