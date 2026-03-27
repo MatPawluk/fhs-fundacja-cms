@@ -292,7 +292,7 @@ function HowItWorksVerticalTabs() {
   );
 }
 
-
+const Uslugi = () => {
   const [selectedChild, setSelectedChild] = useState<number | null>(null);
   const { language } = useLanguage();
   const pt = uslugiTranslations[language];
