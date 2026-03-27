@@ -14,38 +14,26 @@ import galeria11 from '@/assets/onas-galeria-11.png';
 import domPolskiGambia from '@/assets/dom-polski-gambia.jpg';
 
 const images = [
-  domPolskiGambia,
-  galeria0,
-  galeria1,
-  galeria2,
-  galeria3,
-  galeria4,
-  galeria5,
-  galeria6,
-  galeria9,
-  galeria10,
-  galeria11,
+  domPolskiGambia, galeria0, galeria1, galeria2, galeria3,
+  galeria4, galeria5, galeria6, galeria9, galeria10, galeria11,
 ];
 
 export const DomPolskiGallery = () => {
   return (
-    <Carousel.Root className="w-full">
-      {/* Main image */}
+    <Carousel.Root className="w-full" slideCount={images.length}>
       <div className="relative rounded-2xl overflow-hidden mb-3">
-        <Carousel.Viewport className="overflow-hidden rounded-2xl">
-          <Carousel.ItemGroup className="flex">
-            {images.map((img, index) => (
-              <Carousel.Item key={index} index={index} className="min-w-0 shrink-0 grow-0 basis-full">
-                <img
-                  src={img}
-                  alt={`Dom Polski ${index + 1}`}
-                  className="w-full aspect-[4/3] object-cover"
-                  loading="lazy"
-                />
-              </Carousel.Item>
-            ))}
-          </Carousel.ItemGroup>
-        </Carousel.Viewport>
+        <Carousel.ItemGroup className="flex">
+          {images.map((img, index) => (
+            <Carousel.Item key={index} index={index} className="min-w-0 shrink-0 grow-0 basis-full">
+              <img
+                src={img}
+                alt={`Dom Polski ${index + 1}`}
+                className="w-full aspect-[4/3] object-cover"
+                loading="lazy"
+              />
+            </Carousel.Item>
+          ))}
+        </Carousel.ItemGroup>
 
         <Carousel.PrevTrigger className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-colors shadow-md">
           <ChevronLeft className="w-5 h-5 text-gray-700" />
@@ -55,8 +43,7 @@ export const DomPolskiGallery = () => {
         </Carousel.NextTrigger>
       </div>
 
-      {/* Thumbnails */}
-      <Carousel.IndicatorGroup className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+      <Carousel.IndicatorGroup className="flex gap-2 overflow-x-auto pb-1">
         {images.map((img, index) => (
           <Carousel.Indicator
             key={index}

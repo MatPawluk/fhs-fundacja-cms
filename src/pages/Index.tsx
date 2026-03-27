@@ -362,9 +362,7 @@ const Index = () => {
               </Link>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="rounded-3xl overflow-hidden shadow-lg">
-                <img src={domPolskiGambia} alt="Dom Polski w Gambii" className="w-full h-full object-cover" loading="lazy" width={1024} height={768} />
-              </div>
+              <DomPolskiGallery />
             </motion.div>
           </div>
         </div>
