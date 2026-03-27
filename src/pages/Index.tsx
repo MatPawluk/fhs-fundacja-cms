@@ -334,6 +334,41 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Twoja pomoc realnie zmienia życie - Parallax */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={wsprzyjNas} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gray-900/70" />
+        </div>
+        <div className="relative z-10 container mx-auto px-6 lg:px-12">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white italic mb-4">Twoja pomoc realnie zmienia życie</h2>
+            <div className="w-12 h-1 bg-[#94c43d] mx-auto rounded-full" />
+          </motion.div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
+            {[
+              { value: '200 PLN', desc: 'Średnia pensja miesięczna w Gambii' },
+              { value: '130 PLN', desc: 'Miesięczny koszt dodatkowych lekcji angielskiego dla dziecka' },
+              { value: '100 PLN', desc: 'Podstawowe leczenie stomatologiczne u dentysty' },
+              { value: '170 PLN', desc: 'Miesięczne utrzymanie na studiach: czesne, akademik, wyżywienie' },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="relative rounded-2xl p-6 text-center backdrop-blur-md bg-white/90 border border-[#94c43d]/20 shadow-lg"
+              >
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-[#94c43d]/5 to-transparent pointer-events-none" />
+                <h3 className="font-display text-2xl lg:text-3xl font-bold text-gray-900 mb-3 relative z-10">{item.value}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed relative z-10">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Partners Section */}
       <PartnersSection />
 
