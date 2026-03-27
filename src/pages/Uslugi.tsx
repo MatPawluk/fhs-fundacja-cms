@@ -302,41 +302,8 @@ const Uslugi = () => {
         )}
       </AnimatePresence>
 
-      {/* How it works section */}
-      <section className="py-24" style={{ backgroundColor: '#f5f3ef' }}>
-        <div className="container mx-auto px-6 lg:px-12">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">Jak to działa</span>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900">
-              Cztery proste <GradientText>kroki</GradientText>
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {[
-              { step: '01', title: 'Wybierz dziecko', desc: 'Przejrzyj profile dzieci i wybierz to, które chcesz wesprzeć.' },
-              { step: '02', title: 'Zadeklaruj wsparcie', desc: 'Zdecyduj o kwocie miesięcznego wsparcia — już od 150 zł.' },
-              { step: '03', title: 'Obserwuj postępy', desc: 'Otrzymuj regularne raporty, zdjęcia i wiadomości.' },
-              { step: '04', title: 'Zmieniaj życie', desc: 'Zobacz, jak Twoja pomoc realnie wpływa na przyszłość dziecka.' },
-            ].map((item, index) => (
-              <motion.div
-                key={item.step}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center p-6"
-              >
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#94c43d]/10 text-[#94c43d] font-display font-bold text-lg mb-4">
-                  {item.step}
-                </div>
-                <h3 className="font-display font-bold text-lg text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* How it works — Vertical Tabs */}
+      <HowItWorksVerticalTabs />
 
       {/* FAQ Section */}
       <section className="py-24" style={{ backgroundColor: '#f5f3ef' }}>
