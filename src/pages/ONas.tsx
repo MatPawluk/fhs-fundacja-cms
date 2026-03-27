@@ -129,6 +129,7 @@ const ONas = () => {
         </div>
       </section>
 
+
       {/* FAQ Section */}
       <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
