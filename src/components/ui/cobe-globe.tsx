@@ -92,12 +92,17 @@ export function CobeGlobe({
         glowColor: [0.96, 0.95, 0.94],
         markers: markers.map((m) => ({ location: m.location, size: 0.07 })),
         opacity: 0.7,
-        onRender: (state) => {
-          if (!isPausedRef.current) phi += speed
-          state.phi = phi + phiOffsetRef.current + dragOffset.current.phi
-          state.theta = 0.15 + thetaOffsetRef.current + dragOffset.current.theta
-        },
       })
+
+      function animate() {
+        if (!isPausedRef.current) phi += speed
+        globe!.update({
+          phi: phi + phiOffsetRef.current + dragOffset.current.phi,
+          theta: 0.15 + thetaOffsetRef.current + dragOffset.current.theta,
+        })
+        animationId = requestAnimationFrame(animate)
+      }
+      animate()
 
       setTimeout(() => {
         if (canvas) canvas.style.opacity = "1"
