@@ -19,7 +19,7 @@ import sgImport from '@/assets/sg-import.png';
 import sgMarketing from '@/assets/sg-marketing.png';
 import sgMisje from '@/assets/sg-misje.png';
 import wsprzyjNas from '@/assets/wesprzyj-nas.jpg';
-import domPolskiGambia from '@/assets/dom-polski-gambia.jpg';
+import { DomPolskiGallery } from '@/components/DomPolskiGallery';
 import articleCompetition from '@/assets/article-competition.jpg';
 import articleInnovation from '@/assets/article-china-innovation.jpg';
 import serviceStrategy from '@/assets/service-strategy.jpg';
