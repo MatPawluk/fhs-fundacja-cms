@@ -333,6 +333,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Partners Section */}
+      <PartnersSection />
+
       {/* FAQ Section */}
       <HomeFAQSection />
 
