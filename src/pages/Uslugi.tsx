@@ -495,17 +495,19 @@ const Uslugi = () => {
       {/* How it works — Vertical Tabs */}
       <HowItWorksVerticalTabs />
 
-      {/* FAQ Section */}
-      <section className="py-24" style={{ backgroundColor: '#f5f3ef' }}>
-        <div className="container mx-auto px-6 lg:px-12">
+      {/* FAQ Section — same design as home page */}
+      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#94c43d]/5 blur-[150px] rounded-full" />
+        </div>
+        <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">FAQ</span>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900">
               Najczęściej zadawane <GradientText>pytania</GradientText>
             </h2>
           </motion.div>
-
-          <div className="max-w-3xl mx-auto space-y-4">
+          <div className="max-w-4xl mx-auto space-y-0">
             {[
               { q: 'Na czym polega wirtualna adopcja?', a: 'To forma regularnego wsparcia konkretnego dziecka, które dzięki Tobie zyskuje dostęp do edukacji, posiłków, opieki medycznej i innych podstawowych potrzeb. Nie adoptujesz go fizycznie - ale realnie zmieniasz jego życie.' },
               { q: 'Dlaczego warto zaangażować się w pomoc?', a: 'Bo to coś więcej niż darowizna - to realna zmiana w życiu konkretnego dziecka. Masz pewność, że Twoje wsparcie trafia tam, gdzie jest naprawdę potrzebne. Dzięki regularnym raportom, zdjęciom i wiadomościom widzisz, jak Twoja pomoc przekłada się na codzienne życie i rozwój dziecka.' },
@@ -513,20 +515,19 @@ const Uslugi = () => {
               { q: 'Ile kosztuje wirtualna adopcja?', a: 'Wsparcie zaczyna się od 150 zł miesięcznie - to orientacyjna kwota, która pozwala pokryć podstawowe potrzeby dziecka. Możesz jednak samodzielnie zdecydować, ile i jak często chcesz pomagać. Każda, nawet najmniejsza regularna wpłata, naprawdę ma znaczenie.' },
               { q: 'Czy mogę mieć kontakt z dzieckiem, które wspieram?', a: 'Tak - to jeden z najpiękniejszych aspektów wirtualnej adopcji. Regularnie otrzymujesz zdjęcia, wiadomości i raporty o postępach dziecka. W ten sposób możesz śledzić jego rozwój, budować relację i zobaczyć, jak realnie zmienia się jego życie dzięki Twojemu wsparciu.' },
             ].map((faq, index) => (
-              <motion.details
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="group bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/50 hover:border-[#94c43d]/30 transition-all duration-300"
-              >
-                <summary className="flex items-center justify-between p-6 cursor-pointer list-none font-display font-semibold text-lg text-gray-900 group-hover:text-[#94c43d] transition-colors">
-                  {faq.q}
-                  <ChevronDown className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform duration-300 flex-shrink-0 ml-4" />
-                </summary>
-                <div className="px-6 pb-6 text-gray-500 leading-relaxed">{faq.a}</div>
-              </motion.details>
+              <motion.div key={index} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.05 }} className="border-b border-gray-300">
+                <button onClick={() => setFaqOpen(prev => { const next = new Set(prev); if (next.has(index)) next.delete(index); else next.add(index); return next; })} className="w-full flex items-center justify-between py-6 text-left group">
+                  <span className="font-display text-lg md:text-xl font-semibold text-gray-900 group-hover:text-[#94c43d] transition-colors duration-300 pr-4">{faq.q}</span>
+                  <ChevronRight className={`w-5 h-5 text-gray-400 group-hover:text-[#94c43d] transition-all duration-300 flex-shrink-0 ${faqOpen.has(index) ? 'rotate-90' : ''}`} />
+                </button>
+                <AnimatePresence>
+                  {faqOpen.has(index) && (
+                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden">
+                      <p className="text-gray-600 pb-6 leading-relaxed">{faq.a}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             ))}
           </div>
         </div>
