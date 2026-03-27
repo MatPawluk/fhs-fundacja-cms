@@ -28,7 +28,7 @@ export const PartnersSection = () => {
           <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
             Nasi <GradientText>Partnerzy</GradientText>
           </h2>
-          <div className="w-16 h-1 bg-[#94c43d] mx-auto rounded-full" />
+          
         </motion.div>
 
         <div className="flex flex-wrap items-center justify-center gap-12 md:gap-16 lg:gap-20 max-w-5xl mx-auto">
