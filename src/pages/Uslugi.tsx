@@ -385,6 +385,19 @@ const Uslugi = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Pagination */}
+          <div className="flex items-center justify-center gap-2 mt-12">
+            <span className="w-9 h-9 rounded-full bg-[#c4b99a] text-white flex items-center justify-center text-sm font-semibold">1</span>
+            {[2, 3].map((n) => (
+              <span key={n} className="w-9 h-9 rounded-full text-gray-400 flex items-center justify-center text-sm font-medium hover:bg-gray-200 transition-colors cursor-pointer">{n}</span>
+            ))}
+            <span className="text-gray-300 px-1">...</span>
+            <span className="w-9 h-9 rounded-full text-gray-400 flex items-center justify-center text-sm font-medium hover:bg-gray-200 transition-colors cursor-pointer">10</span>
+            <button className="w-9 h-9 rounded-full text-gray-400 flex items-center justify-center hover:bg-gray-200 transition-colors">
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </section>
 
