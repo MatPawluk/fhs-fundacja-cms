@@ -244,9 +244,9 @@ function HowItWorksVerticalTabs() {
             </div>
 
             {/* Right: Image */}
-            <div className="relative">
+            <div className="relative flex items-center justify-center">
               <div
-                className="relative aspect-[3/4] lg:aspect-[4/3] rounded-3xl overflow-hidden bg-gray-100"
+                className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden bg-gray-100"
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
               >

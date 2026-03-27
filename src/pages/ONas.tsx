@@ -8,6 +8,7 @@ import { GradientText } from '@/components/GradientText';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { oNasTranslations } from '@/i18n/pageTranslations';
 import { oNasFaqTranslations } from '@/i18n/contentTranslations';
+import { PartnersSection } from '@/components/PartnersSection';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
@@ -133,7 +134,6 @@ const ONas = () => {
                 <motion.div key={member.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="group">
                   <div className="relative mb-4 rounded-2xl overflow-hidden aspect-[3/4]">
                     <img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#f5f3ef]/80 via-transparent to-transparent" />
                   </div>
                   <h3 className="font-display font-bold text-base lg:text-lg text-gray-900">{member.name}</h3>
                   <p className="text-gray-500 text-xs lg:text-sm">{member.role}</p>
@@ -145,7 +145,6 @@ const ONas = () => {
                 <motion.div key={member.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (index + 3) * 0.1 }} className="group">
                   <div className="relative mb-4 rounded-2xl overflow-hidden aspect-[3/4]">
                     <img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#f5f3ef]/80 via-transparent to-transparent" />
                   </div>
                   <h3 className="font-display font-bold text-base lg:text-lg text-gray-900">{member.name}</h3>
                   <p className="text-gray-500 text-xs lg:text-sm">{member.role}</p>
@@ -155,6 +154,9 @@ const ONas = () => {
           </div>
         </div>
       </section>
+
+      {/* Partners Section */}
+      <PartnersSection />
 
       {/* Globe Section */}
       <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
