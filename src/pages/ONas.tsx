@@ -43,39 +43,79 @@ const ONas = () => {
         <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#94c43d]/5 blur-[150px] rounded-full pointer-events-none" />
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-4xl mx-auto text-center">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-6">O nas</span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-8">
-              Kim <GradientText>jesteśmy</GradientText>?
-            </h1>
-          </motion.div>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Column: Text */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-6">O nas</span>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                Kim <GradientText>jesteśmy</GradientText>?
+              </h1>
+              <p className="text-gray-600 text-lg leading-relaxed mb-4">
+                Fundacja FHS to organizacja non-profit działająca od 2022 roku, której misją jest poprawa warunków życia i edukacji w społecznościach Afryki Zachodniej.
+              </p>
+              <p className="text-gray-600 text-lg leading-relaxed mb-4">
+                Nasze działania koncentrują się wokół edukacji, opieki zdrowotnej, rozwoju infrastruktury oraz wspierania lokalnych inicjatyw przedsiębiorczych.
+              </p>
+              <p className="text-gray-600 text-lg leading-relaxed mb-8">
+                Wierzymy, że przez empatię, zaangażowanie i wspólne działanie możemy tworzyć trwałe zmiany, które przekształcą życie całych społeczności.
+              </p>
 
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6 }} className="max-w-3xl mx-auto text-center">
-            <p className="text-gray-600 text-lg leading-relaxed mb-4">
-              Fundacja FHS to organizacja non-profit działająca od 2022 roku, której misją jest poprawa warunków życia i edukacji w społecznościach Afryki Zachodniej.
-            </p>
-            <p className="text-gray-600 text-lg leading-relaxed mb-4">
-              Nasze działania koncentrują się wokół edukacji, opieki zdrowotnej, rozwoju infrastruktury oraz wspierania lokalnych inicjatyw przedsiębiorczych.
-            </p>
-            <p className="text-gray-600 text-lg leading-relaxed mb-10">
-              Wierzymy, że przez empatię, zaangażowanie i wspólne działanie możemy tworzyć trwałe zmiany, które przekształcą życie całych społeczności.
-            </p>
+              <div className="flex items-center gap-8 pt-6 border-t border-gray-200">
+                <div className="text-center">
+                  <div className="font-display text-3xl lg:text-4xl font-bold text-[#94c43d] mb-1">
+                    <AnimatedCounter end={370} suffix="+" />
+                  </div>
+                  <p className="text-gray-500 text-sm">Dzieci pod opieką</p>
+                </div>
+                <div className="w-px h-12 bg-gray-200" />
+                <div className="text-center">
+                  <div className="font-display text-3xl lg:text-4xl font-bold text-[#94c43d] mb-1">
+                    <AnimatedCounter end={17} suffix="+" />
+                  </div>
+                  <p className="text-gray-500 text-sm">Projektów</p>
+                </div>
+              </div>
+            </motion.div>
 
-            <div className="flex items-center justify-center gap-12">
-              <div className="text-center">
-                <div className="font-display text-4xl lg:text-5xl font-bold text-[#94c43d] mb-2">
-                  <AnimatedCounter end={370} suffix="+" />
-                </div>
-                <p className="text-gray-500 text-sm">Dzieci pod opieką</p>
-              </div>
-              <div className="text-center">
-                <div className="font-display text-4xl lg:text-5xl font-bold text-[#94c43d] mb-2">
-                  <AnimatedCounter end={17} suffix="+" />
-                </div>
-                <p className="text-gray-500 text-sm">Projektów</p>
-              </div>
-            </div>
-          </motion.div>
+            {/* Right Column: Image Collage */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative h-[500px] lg:h-[600px]"
+            >
+              {/* Decorative shapes */}
+              <div className="absolute -top-6 -right-6 w-32 h-32 bg-[#94c43d]/10 rounded-full blur-2xl" />
+              <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-[#94c43d]/15 rounded-full blur-xl" />
+
+              {/* Image grid */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute top-0 left-0 w-[48%] h-[45%] rounded-2xl overflow-hidden shadow-lg"
+              >
+                <img src={team[0]?.image} alt="Fundacja" className="w-full h-full object-cover" />
+              </motion.div>
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute bottom-0 left-0 w-[48%] h-[48%] rounded-2xl overflow-hidden shadow-lg"
+              >
+                <img src={team[1]?.image} alt="Fundacja" className="w-full h-full object-cover" />
+              </motion.div>
+              <motion.div
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute top-[5%] right-0 w-[48%] h-[90%] rounded-2xl overflow-hidden shadow-lg"
+              >
+                <img src={team[2]?.image} alt="Fundacja" className="w-full h-full object-cover" />
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
