@@ -3,332 +3,188 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
-import { LogoMarquee } from '@/components/LogoMarquee';
-import { AnimatedCounter } from '@/components/AnimatedCounter';
 import { GradientText } from '@/components/GradientText';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { uslugiTranslations } from '@/i18n/pageTranslations';
-import { statsTranslations, serviceCategoriesTranslations } from '@/i18n/contentTranslations';
-import { ArrowRight, ChevronDown } from 'lucide-react';
-import { RadarAnimation } from '@/components/RadarAnimation';
-import statsBg from '@/assets/stats-bg.jpg';
-import worldMap from '@/assets/world-map.jpg';
+import { ArrowRight, ChevronDown, X, Heart, MapPin } from 'lucide-react';
 
-// Service cover images
-import uAnalizaWplywu from '@/assets/u-analiza-wplywu.png';
-import uDecyzjeWejscia from '@/assets/u-decyzje-wejscia.png';
-import uScenariuszeStrategiczne from '@/assets/u-scenariusze-strategiczne.png';
-import uBriefingiDecyzyjne from '@/assets/u-briefingi-decyzyjne.png';
-import uAnalizySektorow from '@/assets/u-analizy-sektorow.png';
-import uAnalizaRegulacyjna from '@/assets/u-analiza-regulacyjna.png';
-import uWeryfikacjaKontrahenta from '@/assets/u-weryfikacja-kontrahenta.png';
-import uRozszerzonaWeryfikacja from '@/assets/u-rozszerzona-weryfikacja.png';
-import uWyborModelu from '@/assets/u-wybor-modelu.png';
-import uWsparcieFormalne from '@/assets/u-wsparcie-formalne.png';
-import uIdentyfikacjaPartnerow from '@/assets/u-identyfikacja-partnerow.png';
-import uWsparcieNegocjacyjne from '@/assets/u-wsparcie-negocjacyjne.png';
-import uPrzygotowanieStruktur from '@/assets/u-przygotowanie-struktur.png';
-import uAudytyWeryfikacja from '@/assets/u-audyty-weryfikacja.png';
-import uProjektowanieLancucha from '@/assets/u-projektowanie-lancucha.png';
-import uNadzorProdukcji from '@/assets/u-nadzor-produkcji.png';
-import uOrganizacjaTransportu from '@/assets/u-organizacja-transportu.png';
-import uKompleksowaRealizacja from '@/assets/u-kompleksowa-realizacja.png';
-import uLokalnePozycjonowanie from '@/assets/u-lokalne-pozycjonowanie.png';
-import uStrategieKomunikacji from '@/assets/u-strategie-komunikacji.png';
-import uAdaptacjaKomunikacji from '@/assets/u-adaptacja-komunikacji.png';
-import uMaterialySprzedazowe from '@/assets/u-materialy-sprzedazowe.png';
-import uWsparcieMarketingowe from '@/assets/u-wsparcie-marketingowe.png';
-import uOrganizacjaMisji from '@/assets/u-organizacja-misji.png';
-import uAranzacjaSpotkan from '@/assets/u-aranzacja-spotkan.png';
-import uSzkoleniaSystem from '@/assets/u-szkolenia-system.png';
-import uSzkoleniaKultura from '@/assets/u-szkolenia-kultura.png';
+import child1 from '@/assets/child-1.jpg';
+import child2 from '@/assets/child-2.jpg';
+import child3 from '@/assets/child-3.jpg';
+import child4 from '@/assets/child-4.jpg';
 
-// Sub-service slugs (stable across languages)
-const serviceCategorySlugs = [
+const children = [
   {
-    slug: 'strategia-wobec-chin',
-    count: 4,
-    subServices: [
-      { slug: 'analiza-wplywu', image: uAnalizaWplywu },
-      { slug: 'decyzje-strategiczne', image: uDecyzjeWejscia },
-      { slug: 'scenariusze-mapy-ryzyk', image: uScenariuszeStrategiczne },
-      { slug: 'briefingi-decyzyjne', image: uBriefingiDecyzyjne },
-    ],
+    name: 'Lamin Ceessay',
+    age: 9,
+    country: 'Gambia',
+    image: child1,
+    monthlySupport: 150,
+    shortDesc: 'Lamin to ciekawy świata chłopiec z 2 klasy. Uwielbia matematykę, naukę, sztukę i sport.',
+    longDesc: 'Lamin to ambitny uczeń, który z pasją podchodzi do wszystkiego, co robi. Interesuje się matematyką, naukami przyrodniczymi i sztuką, a po lekcjach chętnie gra w piłkę i uczestniczy w zajęciach dodatkowych. Ceni sobie przyjaźń i współpracę – w szkole zawsze można na niego liczyć.\n\nWirtualna adopcja Lamina to szansa, by pomóc mu rozwijać się i osiągać kolejne cele. Twoja obecność może dodać mu odwagi, motywacji i wiary, że marzenia naprawdę się spełniają.',
   },
   {
-    slug: 'analizy-rynku',
-    count: 4,
-    subServices: [
-      { slug: 'analizy-sektorow-klastrow', image: uAnalizySektorow },
-      { slug: 'analiza-regulacyjna-bariery', image: uAnalizaRegulacyjna },
-      { slug: 'weryfikacja-kontrahenta-desktop', image: uWeryfikacjaKontrahenta },
-      { slug: 'due-diligence-partner', image: uRozszerzonaWeryfikacja },
-    ],
+    name: 'Aminata Jallow',
+    age: 7,
+    country: 'Gambia',
+    image: child2,
+    monthlySupport: 150,
+    shortDesc: 'Aminata to radosna dziewczynka, która marzy o zostaniu nauczycielką.',
+    longDesc: 'Aminata to pogodna, pełna energii dziewczynka, która uwielbia się uczyć. Jej ulubione przedmioty to język angielski i rysowanie. Marzy o tym, by pewnego dnia zostać nauczycielką i pomagać innym dzieciom w swojej wiosce.\n\nDzięki wirtualnej adopcji Aminata może kontynuować naukę, otrzymywać posiłki w szkole i rozwijać swoje talenty. Twoje wsparcie daje jej szansę na lepszą przyszłość.',
   },
   {
-    slug: 'wejscie-na-rynek',
-    count: 5,
-    subServices: [
-      { slug: 'wybor-modelu-wejscia', image: uWyborModelu },
-      { slug: 'wsparcie-formalne-regulacyjne', image: uWsparcieFormalne },
-      { slug: 'identyfikacja-selekcja-partnerow', image: uIdentyfikacjaPartnerow },
-      { slug: 'wsparcie-negocjacyjne-relacyjne', image: uWsparcieNegocjacyjne },
-      { slug: 'struktury-handlowe-partnerskie', image: uPrzygotowanieStruktur },
-    ],
+    name: 'Ousman Sanneh',
+    age: 10,
+    country: 'Gambia',
+    image: child3,
+    monthlySupport: 150,
+    shortDesc: 'Ousman jest utalentowanym sportowcem i pilnym uczniem trzeciej klasy.',
+    longDesc: 'Ousman to chłopiec o wielkim sercu i zaraźliwym uśmiechu. Jest jednym z najlepszych uczniów w swojej klasie i uwielbia grać w piłkę nożną po lekcjach. Marzy o tym, by zostać lekarzem i pomagać ludziom w swojej społeczności.\n\nTwoje wsparcie w ramach wirtualnej adopcji pozwoli Ousmanowi kontynuować edukację, rozwijać swoje pasje i budować przyszłość, o której marzy. Każda wpłata to krok bliżej jego marzeń.',
   },
   {
-    slug: 'import-eksport',
-    count: 5,
-    subServices: [
-      { slug: 'audyty-weryfikacja-dostawcow', image: uAudytyWeryfikacja },
-      { slug: 'optymalizacja-lancucha-dostaw', image: uProjektowanieLancucha },
-      { slug: 'nadzor-produkcji-jakosc', image: uNadzorProdukcji },
-      { slug: 'transport-miedzynarodowy', image: uOrganizacjaTransportu },
-      { slug: 'realizacja-projekt-end-to-end', image: uKompleksowaRealizacja },
-    ],
-  },
-  {
-    slug: 'marketing-pozycjonowanie',
-    count: 5,
-    subServices: [
-      { slug: 'lokalne-pozycjonowanie-marki', image: uLokalnePozycjonowanie },
-      { slug: 'strategia-komunikacji', image: uStrategieKomunikacji },
-      { slug: 'adaptacja-komunikacji-rynek', image: uAdaptacjaKomunikacji },
-      { slug: 'materialy-sprzedazowe-wizerunkowe', image: uMaterialySprzedazowe },
-      { slug: 'wsparcie-marketing-leady', image: uWsparcieMarketingowe },
-    ],
-  },
-  {
-    slug: 'misje-szkolenia',
-    count: 4,
-    subServices: [
-      { slug: 'misje-biznesowe-technologiczne', image: uOrganizacjaMisji },
-      { slug: 'matchmaking-b2b-partnerow', image: uAranzacjaSpotkan },
-      { slug: 'szkolenia-system-gospodarczy', image: uSzkoleniaSystem },
-      { slug: 'szkolenia-kultura-negocjacje', image: uSzkoleniaKultura },
-    ],
+    name: 'Fatou Touray',
+    age: 8,
+    country: 'Gambia',
+    image: child4,
+    monthlySupport: 150,
+    shortDesc: 'Fatou uwielbia śpiewać i tańczyć. Jest uczennicą drugiej klasy.',
+    longDesc: 'Fatou to dziewczynka pełna radości i talentu. Uwielbia muzykę, taniec i spędzanie czasu z przyjaciółkami. W szkole wyróżnia się kreatywnością i chęcią pomocy innym. Jej marzeniem jest podróżowanie i poznawanie nowych kultur.\n\nWirtualna adopcja Fatou to szansa na zapewnienie jej stabilnej edukacji, codziennych posiłków i opieki medycznej. Twoje wsparcie może zmienić jej życie na zawsze.',
   },
 ];
 
-// Polish grammar helper for "usługi/usług"
-const getServicesCountLabel = (count: number, language: string): string => {
-  if (language === 'pl') {
-    // 2-4: usługi, 5+: usług
-    return count >= 2 && count <= 4 ? 'usługi' : 'usług';
-  }
-  if (language === 'en') return count === 1 ? 'service' : 'services';
-  if (language === 'cn') return '项服务';
-  return 'usług';
-};
-
 const Uslugi = () => {
-  const [expandedCategory, setExpandedCategory] = useState<number | null>(0);
-  const { language, t } = useLanguage();
+  const [selectedChild, setSelectedChild] = useState<number | null>(null);
+  const { language } = useLanguage();
   const pt = uslugiTranslations[language];
-  const stats = statsTranslations[language];
-  const translatedCategories = serviceCategoriesTranslations[language];
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
-      
+
       {/* Hero Section */}
       <section className="relative pt-28 pb-16 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img src={worldMap} alt="" className="w-full h-full object-cover opacity-10" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#f5f3ef]/80 via-[#f5f3ef]/90 to-[#f5f3ef]" />
           <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-[#94c43d]/5 blur-[150px] rounded-full" />
         </div>
-        
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-4xl text-center mx-auto">
-            <span className="inline-block px-4 py-2 rounded-full bg-lime/20 text-lime text-sm font-semibold uppercase tracking-wider mb-6">{pt.badge}</span>
+            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-semibold uppercase tracking-wider mb-6">Wirtualna adopcja</span>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              {pt.title} <GradientText>{pt.titleHighlight}</GradientText>
-              <br />{pt.subtitle}
+              Zmień życie <GradientText>dziecka</GradientText>
             </h1>
-            <p className="text-xl text-gray-500 max-w-2xl mx-auto">{pt.description}</p>
+            <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+              Wybierz dziecko, które chcesz wesprzeć. Twoja regularna pomoc zapewni mu edukację, posiłki i opiekę medyczną.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Categories Accordion Section */}
-      <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
-        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#f5f3ef] to-transparent z-[1]" />
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(196, 255, 0, 0.3) 1px, transparent 0)`,
-            backgroundSize: '40px 40px',
-          }} />
-        </div>
-
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <div className="space-y-0">
-            {serviceCategorySlugs.map((catMeta, index) => {
-              const translated = translatedCategories[index];
-              return (
-                <motion.div
-                  key={catMeta.slug}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  className="border-b border-gray-200"
-                >
-                  <button
-                    onClick={() => setExpandedCategory(expandedCategory === index ? null : index)}
-                    className="w-full flex items-center justify-between py-6 group"
-                  >
-                    <div className="flex items-center gap-4 md:gap-6">
-                      <span className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-lime transition-colors duration-300">
-                        {translated.title}
-                      </span>
-                      <span className="px-3 py-1 rounded-full bg-white/80 text-gray-500 text-xs">
-                        {catMeta.count} {getServicesCountLabel(catMeta.count, language)}
-                      </span>
-                    </div>
-                    <ChevronDown className={`w-6 h-6 text-gray-500 group-hover:text-lime transition-all duration-300 ${expandedCategory === index ? 'rotate-180' : ''}`} />
-                  </button>
-
-                  <AnimatePresence>
-                    {expandedCategory === index && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-8">
-                          {catMeta.subServices.map((subService, subIndex) => (
-                            <motion.div
-                              key={subService.slug}
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: subIndex * 0.05 }}
-                            >
-                              <Link to={`/uslugi/${catMeta.slug}/${subService.slug}`} className="group relative block h-full">
-                                <div className="relative h-full rounded-2xl overflow-hidden border border-gray-200/50 bg-[#f0ede8]/80 hover:border-lime/50 transition-all duration-300 hover:shadow-lg hover:shadow-lime/5">
-                                  <div className="aspect-[4/3] relative overflow-hidden">
-                                    <img src={subService.image} alt={translated.subServices[subIndex]} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                                  </div>
-                                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                                    <h3 className="text-white text-base font-semibold leading-tight group-hover:text-[#94c43d] transition-colors mb-2">
-                                      {translated.subServices[subIndex]}
-                                    </h3>
-                                    <div className="flex items-center gap-2 text-lime">
-                                      <span className="text-sm">{pt.learnMore}</span>
-                                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                    </div>
-                                  </div>
-                                </div>
-                              </Link>
-                            </motion.div>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[1200px] h-[1200px] opacity-20">
-            <RadarAnimation size="lg" className="w-full h-full" />
-          </div>
-        </div>
-        
-        <div className="container mx-auto px-6 lg:px-12 relative z-10">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">
-              {t.process.badge}
-            </span>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-              {t.process.title.split(' ').slice(0, -1).join(' ')} <GradientText>{t.process.title.split(' ').slice(-1)[0]}</GradientText>?
-            </h2>
-            <p className="text-gray-500 max-w-xl mx-auto">{t.process.subtitle}</p>
-          </motion.div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#94c43d] via-[#94c43d]/50 to-[#94c43d]/20 md:-translate-x-1/2" />
-              
-              {t.process.steps.map((step, index) => (
-                <motion.div
-                  key={step.number}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: index * 0.15 }}
-                  className={`relative flex items-start gap-8 mb-12 last:mb-0 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                >
-                  <div className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full bg-[#94c43d] shadow-lg shadow-[#94c43d]/50 md:-translate-x-1/2 z-10">
-                    <div className="absolute inset-0 rounded-full bg-[#94c43d] animate-ping opacity-30" />
+      {/* Children Grid */}
+      <section className="py-16" style={{ backgroundColor: '#f5f3ef' }}>
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {children.map((child, index) => (
+              <motion.div
+                key={child.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                onClick={() => setSelectedChild(index)}
+                className="group cursor-pointer rounded-2xl overflow-hidden border border-gray-200/50 hover:border-[#94c43d]/30 hover:shadow-lg transition-all duration-300 bg-white/80"
+              >
+                <div className="relative aspect-[3/4] overflow-hidden">
+                  <img src={child.image} alt={child.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                  <div className="absolute top-3 right-3">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#94c43d] text-white text-xs font-medium">
+                      <MapPin className="w-3 h-3" /> {child.country}
+                    </span>
                   </div>
-                  
-                  <div className={`ml-20 md:ml-0 md:w-[calc(50%-40px)] ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'}`}>
-                    <div className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 hover:border-[#94c43d]/30 transition-all duration-300 group shadow-sm">
-                      <span className={`absolute top-4 font-display text-7xl font-bold text-[#94c43d]/20 group-hover:text-[#94c43d]/40 transition-colors ${index % 2 === 0 ? 'right-6 md:left-6 md:right-auto' : 'right-6'}`}>
-                        {step.number}
-                      </span>
-                      <div className="relative z-10 pt-8">
-                        <h3 className="font-display font-semibold text-xl text-gray-900 mb-3">{step.title}</h3>
-                        <p className="text-gray-500 text-sm leading-relaxed">{step.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="relative py-32 overflow-hidden">
-        <motion.div className="absolute inset-0" style={{ backgroundImage: `url(${statsBg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
-          <div className="absolute inset-0 bg-[#1a1a1a]/80 backdrop-blur-sm" />
-        </motion.div>
-
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div animate={{ x: ['-20%', '20%', '-20%'], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-lime/20 blur-[100px] rounded-full" />
-        </div>
-
-        <div className="relative z-10 container mx-auto px-6 lg:px-12">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 backdrop-blur-sm text-white/80 text-sm font-medium mb-4">{t.stats.badge}</span>
-          </motion.div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div key={stat.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="text-center">
-                <div className="font-display text-5xl lg:text-6xl font-bold text-lime mb-3">
-                  {stat.isText ? <span>{stat.suffix}</span> : <AnimatedCounter end={stat.value} suffix={stat.suffix} />}
                 </div>
-                <p className="text-white/70 text-sm">{stat.label}</p>
+                <div className="p-5">
+                  <h3 className="font-display font-bold text-lg text-gray-900 mb-1">{child.name}</h3>
+                  <p className="text-gray-400 text-sm mb-3">{child.age} lat</p>
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{child.shortDesc}</p>
+                  <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                    <div>
+                      <p className="text-gray-400 text-xs uppercase tracking-wider">Miesięczne wsparcie</p>
+                      <p className="font-display font-bold text-xl text-gray-900">{child.monthlySupport} zł</p>
+                    </div>
+                    <button className="px-4 py-2 bg-[#94c43d] text-white rounded-full text-sm font-semibold hover:scale-105 transition-transform">
+                      Wesprzyj
+                    </button>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Trust Section */}
-      <section className="py-16" style={{ backgroundColor: '#f5f3ef' }}>
-        <div className="container mx-auto px-6 lg:px-12">
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center text-gray-500 text-sm uppercase tracking-widest mb-8">
-            {t.trust.title}
-          </motion.p>
-        </div>
-        <LogoMarquee />
-      </section>
+      {/* Child Detail Popup */}
+      <AnimatePresence>
+        {selectedChild !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+            onClick={() => setSelectedChild(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button onClick={() => setSelectedChild(null)} className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center hover:bg-gray-100 transition-colors">
+                <X className="w-5 h-5 text-gray-600" />
+              </button>
+
+              <div className="grid md:grid-cols-2">
+                <div className="relative aspect-[3/4] md:aspect-auto">
+                  <img src={children[selectedChild].image} alt={children[selectedChild].name} className="w-full h-full object-cover rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none" />
+                  <div className="absolute top-4 left-4">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#94c43d] text-white text-xs font-medium">
+                      <MapPin className="w-3 h-3" /> {children[selectedChild].country}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-8">
+                  <h2 className="font-display text-2xl font-bold text-gray-900 mb-1">{children[selectedChild].name}</h2>
+                  <p className="text-gray-400 mb-6">{children[selectedChild].age} lat</p>
+
+                  <div className="prose prose-sm max-w-none mb-8">
+                    {children[selectedChild].longDesc.split('\n\n').map((p, i) => (
+                      <p key={i} className="text-gray-600 leading-relaxed mb-4">{p}</p>
+                    ))}
+                  </div>
+
+                  <p className="text-gray-500 text-sm mb-6">
+                    Aby poznać więcej historii dzieci oraz dowiedzieć się o ich aktualnych potrzebach, zapraszamy do kontaktu z nami.
+                  </p>
+
+                  <div className="p-4 rounded-2xl bg-[#f5f3ef] mb-6">
+                    <p className="text-gray-400 text-xs uppercase tracking-wider mb-1">Miesięczne wsparcie</p>
+                    <p className="font-display font-bold text-2xl text-gray-900">{children[selectedChild].monthlySupport} zł</p>
+                  </div>
+
+                  <Link
+                    to="/kontakt"
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 bg-[#94c43d] text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]"
+                    onClick={() => setSelectedChild(null)}
+                  >
+                    <Heart className="w-5 h-5" /> Wesprzyj {children[selectedChild].name.split(' ')[0]}
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* FAQ Section */}
       <section className="py-24" style={{ backgroundColor: '#f5f3ef' }}>
@@ -342,26 +198,11 @@ const Uslugi = () => {
 
           <div className="max-w-3xl mx-auto space-y-4">
             {[
-              {
-                q: 'Na czym polega wirtualna adopcja?',
-                a: 'To forma regularnego wsparcia konkretnego dziecka, które dzięki Tobie zyskuje dostęp do edukacji, posiłków, opieki medycznej i innych podstawowych potrzeb. Nie adoptujesz go fizycznie - ale realnie zmieniasz jego życie.',
-              },
-              {
-                q: 'Dlaczego warto zaangażować się w pomoc?',
-                a: 'Bo to coś więcej niż darowizna - to realna zmiana w życiu konkretnego dziecka. Masz pewność, że Twoje wsparcie trafia tam, gdzie jest naprawdę potrzebne. Dzięki regularnym raportom, zdjęciom i wiadomościom widzisz, jak Twoja pomoc przekłada się na codzienne życie i rozwój dziecka.',
-              },
-              {
-                q: 'Jak wygląda proces adopcji krok po kroku?',
-                a: 'Wybierasz dziecko i deklarujesz miesięczne wsparcie. My dopasowujemy formę pomocy do Twoich możliwości. Regularnie otrzymujesz informacje o postępach dziecka. Obserwujesz, jak Twoje wsparcie zmienia jego codzienność i przyszłość.',
-              },
-              {
-                q: 'Ile kosztuje wirtualna adopcja?',
-                a: 'Wsparcie zaczyna się od 150 zł miesięcznie - to orientacyjna kwota, która pozwala pokryć podstawowe potrzeby dziecka. Możesz jednak samodzielnie zdecydować, ile i jak często chcesz pomagać. Każda, nawet najmniejsza regularna wpłata, naprawdę ma znaczenie.',
-              },
-              {
-                q: 'Czy mogę mieć kontakt z dzieckiem, które wspieram?',
-                a: 'Tak - to jeden z najpiękniejszych aspektów wirtualnej adopcji. Regularnie otrzymujesz zdjęcia, wiadomości i raporty o postępach dziecka. W ten sposób możesz śledzić jego rozwój, budować relację i zobaczyć, jak realnie zmienia się jego życie dzięki Twojemu wsparciu.',
-              },
+              { q: 'Na czym polega wirtualna adopcja?', a: 'To forma regularnego wsparcia konkretnego dziecka, które dzięki Tobie zyskuje dostęp do edukacji, posiłków, opieki medycznej i innych podstawowych potrzeb. Nie adoptujesz go fizycznie - ale realnie zmieniasz jego życie.' },
+              { q: 'Dlaczego warto zaangażować się w pomoc?', a: 'Bo to coś więcej niż darowizna - to realna zmiana w życiu konkretnego dziecka. Masz pewność, że Twoje wsparcie trafia tam, gdzie jest naprawdę potrzebne. Dzięki regularnym raportom, zdjęciom i wiadomościom widzisz, jak Twoja pomoc przekłada się na codzienne życie i rozwój dziecka.' },
+              { q: 'Jak wygląda proces adopcji krok po kroku?', a: 'Wybierasz dziecko i deklarujesz miesięczne wsparcie. My dopasowujemy formę pomocy do Twoich możliwości. Regularnie otrzymujesz informacje o postępach dziecka. Obserwujesz, jak Twoje wsparcie zmienia jego codzienność i przyszłość.' },
+              { q: 'Ile kosztuje wirtualna adopcja?', a: 'Wsparcie zaczyna się od 150 zł miesięcznie - to orientacyjna kwota, która pozwala pokryć podstawowe potrzeby dziecka. Możesz jednak samodzielnie zdecydować, ile i jak często chcesz pomagać. Każda, nawet najmniejsza regularna wpłata, naprawdę ma znaczenie.' },
+              { q: 'Czy mogę mieć kontakt z dzieckiem, które wspieram?', a: 'Tak - to jeden z najpiękniejszych aspektów wirtualnej adopcji. Regularnie otrzymujesz zdjęcia, wiadomości i raporty o postępach dziecka. W ten sposób możesz śledzić jego rozwój, budować relację i zobaczyć, jak realnie zmienia się jego życie dzięki Twojemu wsparciu.' },
             ].map((faq, index) => (
               <motion.details
                 key={index}
@@ -375,9 +216,7 @@ const Uslugi = () => {
                   {faq.q}
                   <ChevronDown className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform duration-300 flex-shrink-0 ml-4" />
                 </summary>
-                <div className="px-6 pb-6 text-gray-500 leading-relaxed">
-                  {faq.a}
-                </div>
+                <div className="px-6 pb-6 text-gray-500 leading-relaxed">{faq.a}</div>
               </motion.details>
             ))}
           </div>
@@ -386,13 +225,9 @@ const Uslugi = () => {
 
       {/* CTA Section */}
       <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
-        <div className="absolute bottom-10 left-10 opacity-[0.06] pointer-events-none">
-          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none"></span>
-        </div>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-lime/8 blur-[150px] rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#94c43d]/10 blur-[150px] rounded-full" />
         </div>
-
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
             <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
