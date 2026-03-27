@@ -19,7 +19,7 @@ import sgImport from '@/assets/sg-import.png';
 import sgMarketing from '@/assets/sg-marketing.png';
 import sgMisje from '@/assets/sg-misje.png';
 import wsprzyjNas from '@/assets/wesprzyj-nas.jpg';
-import domPolskiGambia from '@/assets/dom-polski-gambia.jpg';
+import { DomPolskiGallery } from '@/components/DomPolskiGallery';
 import articleCompetition from '@/assets/article-competition.jpg';
 import articleInnovation from '@/assets/article-china-innovation.jpg';
 import serviceStrategy from '@/assets/service-strategy.jpg';
@@ -362,9 +362,7 @@ const Index = () => {
               </Link>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="rounded-3xl overflow-hidden shadow-lg">
-                <img src={domPolskiGambia} alt="Dom Polski w Gambii" className="w-full h-full object-cover" loading="lazy" width={1024} height={768} />
-              </div>
+              <DomPolskiGallery />
             </motion.div>
           </div>
         </div>
