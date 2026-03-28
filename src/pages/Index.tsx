@@ -40,13 +40,115 @@ const carouselSlugs = ['wyjazdy-wolontariackie', 'wsparcie-edukacyjne', 'wolonta
 const DONATION_AMOUNTS = [5, 10, 20, 50, 100, 200];
 
 const Index = () => {
+  const { t, language } = useLanguage();
+
+  const indexTranslations = {
+    pl: {
+      poznajBadge: 'Poznaj Fundację',
+      poznajTitle: 'Poznaj Fundację',
+      poznajP1: 'Fundacja FHS to organizacja non-profit działająca od 2022 roku, której misją jest poprawa warunków życia i edukacji w społecznościach Afryki Zachodniej.',
+      poznajP2: 'Nasze działania koncentrują się wokół edukacji, opieki zdrowotnej, rozwoju infrastruktury oraz wspierania lokalnych inicjatyw przedsiębiorczych.',
+      poznajCta: 'O Fundacji',
+      aktualnosci: 'Aktualności',
+      aktWszystkie: 'Wszystkie aktualności',
+      wsprzyjBadge: 'Wesprzyj',
+      wsprzyjTitle: 'Jak możesz',
+      wsprzyjHighlight: 'pomóc',
+      wsprzyjDesc: 'Twoje wsparcie zmienia życie dzieci w Afryce. Każda wpłata, nawet najmniejsza, trafia bezpośrednio tam, gdzie jest najbardziej potrzebna — na edukację, posiłki i opiekę medyczną.',
+      wsprzyjAdopcja: 'Wirtualna adopcja — od 150 zł/mies.',
+      wsprzyjJednorazowa: 'Jednorazowa darowizna',
+      wsprzyjWolontariat: 'Wolontariat w Gambii',
+      wsprzyjCta: 'Wesprzyj misję',
+      donacjaTitle: 'Wpłać darowiznę',
+      donacjaDesc: 'Tylko dzięki Twojemu wsparciu możemy rozwijać się i prowadzić nasze działania!',
+      donacjaKwota: 'Dowolna kwota (zł)',
+      donacjaCta: 'Wspieram!',
+      parallaxTitle: 'Twoja pomoc realnie zmienia życie',
+      parallaxItems: [
+        { value: '200 PLN', desc: 'Średnia pensja miesięczna w Gambii' },
+        { value: '130 PLN', desc: 'Miesięczny koszt dodatkowych lekcji angielskiego dla dziecka' },
+        { value: '100 PLN', desc: 'Podstawowe leczenie stomatologiczne u dentysty' },
+        { value: '170 PLN', desc: 'Miesięczne utrzymanie na studiach: czesne, akademik, wyżywienie' },
+      ],
+      domPolskiBadge: 'Dom Polski',
+      domPolskiTitle: 'Nasze miejsce spotkań, kultury i odpoczynku',
+      domPolskiDesc: 'Dom Polski w Gambii to serce Fundacji FHS – wyjątkowa przestrzeń, w której polska gościnność spotyka się z afrykańskim słońcem i lokalną społecznością. To miejsce stworzone z myślą o wolontariuszach, podróżnikach z misją i wszystkich, którzy chcą doświadczyć prawdziwej wspólnoty, odpocząć i poczuć się jak w domu. Z basenem, bujną zielenią i klimatycznym zapleczem noclegowym.',
+      domPolskiCta: 'Sprawdź dostępność!',
+    },
+    en: {
+      poznajBadge: 'About Foundation',
+      poznajTitle: 'About Foundation',
+      poznajP1: 'FHS Foundation is a non-profit organization operating since 2022, whose mission is to improve living conditions and education in West African communities.',
+      poznajP2: 'Our activities focus on education, healthcare, infrastructure development and supporting local entrepreneurial initiatives.',
+      poznajCta: 'About Foundation',
+      aktualnosci: 'News',
+      aktWszystkie: 'All news',
+      wsprzyjBadge: 'Support',
+      wsprzyjTitle: 'How you can',
+      wsprzyjHighlight: 'help',
+      wsprzyjDesc: 'Your support changes children\'s lives in Africa. Every donation, even the smallest, goes directly where it\'s needed most — education, meals and medical care.',
+      wsprzyjAdopcja: 'Virtual adoption — from 150 PLN/month',
+      wsprzyjJednorazowa: 'One-time donation',
+      wsprzyjWolontariat: 'Volunteering in The Gambia',
+      wsprzyjCta: 'Support the mission',
+      donacjaTitle: 'Make a donation',
+      donacjaDesc: 'Only thanks to your support can we grow and continue our activities!',
+      donacjaKwota: 'Custom amount (PLN)',
+      donacjaCta: 'I support!',
+      parallaxTitle: 'Your help truly changes lives',
+      parallaxItems: [
+        { value: '200 PLN', desc: 'Average monthly salary in The Gambia' },
+        { value: '130 PLN', desc: 'Monthly cost of extra English lessons for a child' },
+        { value: '100 PLN', desc: 'Basic dental treatment' },
+        { value: '170 PLN', desc: 'Monthly university costs: tuition, dormitory, food' },
+      ],
+      domPolskiBadge: 'Polish House',
+      domPolskiTitle: 'Our meeting place of culture and rest',
+      domPolskiDesc: 'The Polish House in The Gambia is the heart of FHS Foundation — a unique space where Polish hospitality meets African sun and local community. A place created for volunteers, travelers with a mission and everyone who wants to experience real community, rest and feel at home. With a pool, lush greenery and atmospheric accommodation.',
+      domPolskiCta: 'Check availability!',
+    },
+    nl: {
+      poznajBadge: 'Over de Stichting',
+      poznajTitle: 'Over de Stichting',
+      poznajP1: 'FHS Foundation is een non-profitorganisatie die sinds 2022 actief is en als missie heeft de levensomstandigheden en het onderwijs in West-Afrikaanse gemeenschappen te verbeteren.',
+      poznajP2: 'Onze activiteiten richten zich op onderwijs, gezondheidszorg, infrastructuurontwikkeling en het ondersteunen van lokale ondernemersinitiatieven.',
+      poznajCta: 'Over de Stichting',
+      aktualnosci: 'Nieuws',
+      aktWszystkie: 'Alle nieuws',
+      wsprzyjBadge: 'Steun',
+      wsprzyjTitle: 'Hoe u kunt',
+      wsprzyjHighlight: 'helpen',
+      wsprzyjDesc: 'Uw steun verandert het leven van kinderen in Afrika. Elke donatie, zelfs de kleinste, gaat direct waar het het meest nodig is — onderwijs, maaltijden en medische zorg.',
+      wsprzyjAdopcja: 'Virtuele adoptie — vanaf 150 PLN/maand',
+      wsprzyjJednorazowa: 'Eenmalige donatie',
+      wsprzyjWolontariat: 'Vrijwilligerswerk in Gambia',
+      wsprzyjCta: 'Steun de missie',
+      donacjaTitle: 'Doe een donatie',
+      donacjaDesc: 'Alleen dankzij uw steun kunnen wij groeien en onze activiteiten voortzetten!',
+      donacjaKwota: 'Vrij bedrag (PLN)',
+      donacjaCta: 'Ik steun!',
+      parallaxTitle: 'Uw hulp verandert echt levens',
+      parallaxItems: [
+        { value: '200 PLN', desc: 'Gemiddeld maandsalaris in Gambia' },
+        { value: '130 PLN', desc: 'Maandelijkse kosten van extra Engelse lessen voor een kind' },
+        { value: '100 PLN', desc: 'Basis tandheelkundige behandeling' },
+        { value: '170 PLN', desc: 'Maandelijkse universiteitskosten: collegegeld, slaapzaal, eten' },
+      ],
+      domPolskiBadge: 'Pools Huis',
+      domPolskiTitle: 'Onze ontmoetingsplek van cultuur en rust',
+      domPolskiDesc: 'Het Poolse Huis in Gambia is het hart van de FHS Foundation — een unieke ruimte waar Poolse gastvrijheid de Afrikaanse zon en de lokale gemeenschap ontmoet. Een plek gemaakt voor vrijwilligers, reizigers met een missie en iedereen die echte gemeenschap wil ervaren.',
+      domPolskiCta: 'Controleer beschikbaarheid!',
+    },
+  };
+
+  const ix = indexTranslations[language];
+
   const heroRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedAmount, setSelectedAmount] = useState<number | null>(20);
   const [customAmount, setCustomAmount] = useState('20,00');
   const isCarouselInView = useInView(carouselRef, { amount: 0.3 });
-  const { t, language } = useLanguage();
   const stats = statsTranslations[language];
   const articles = articlesTranslations[language].slice(0, 3);
   const carouselServices = carouselServicesTranslations[language].map((s, i) => ({
@@ -220,18 +322,18 @@ const Index = () => {
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex-shrink-0">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-8 h-px bg-gray-900" />
-                <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">Poznaj Fundację</h2>
+                <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">{ix.poznajTitle}</h2>
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex-1">
               <p className="text-gray-600 leading-relaxed mb-4">
-                <strong>Fundacja FHS</strong> to organizacja non-profit działająca od 2022 roku, której misją jest poprawa warunków życia i edukacji w społecznościach Afryki Zachodniej.
+                <strong>{ix.poznajP1.split(' ').slice(0, 3).join(' ')}</strong> {ix.poznajP1.split(' ').slice(3).join(' ')}
               </p>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Nasze działania koncentrują się wokół <strong>edukacji, opieki zdrowotnej, rozwoju infrastruktury</strong> oraz wspierania lokalnych inicjatyw przedsiębiorczych.
+                {ix.poznajP2}
               </p>
               <Link to="/o-nas" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-300 text-gray-700 hover:border-[#94c43d] hover:text-[#94c43d] transition-all duration-300 text-sm font-medium">
-                O Fundacji <ArrowRight className="w-4 h-4" />
+                {ix.poznajCta} <ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>
           </div>
@@ -244,13 +346,13 @@ const Index = () => {
       {/* Aktualności Section */}
       <section className="py-20" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start justify-between mb-12">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 gap-4">
             <div className="flex items-center gap-3">
               <div className="w-8 h-px bg-gray-900" />
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">Aktualności</h2>
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">{ix.aktualnosci}</h2>
             </div>
             <Link to="/baza-wiedzy" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-300 text-gray-700 hover:border-[#94c43d] hover:text-[#94c43d] transition-all duration-300 text-sm font-medium">
-              Wszystkie aktualności <ArrowRight className="w-4 h-4" />
+              {ix.aktWszystkie} <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>
 
@@ -282,29 +384,29 @@ const Index = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">Wesprzyj</span>
+              <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">{ix.wsprzyjBadge}</span>
               <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                Jak możesz <GradientText>pomóc</GradientText>?
+                {ix.wsprzyjTitle} <GradientText>{ix.wsprzyjHighlight}</GradientText>?
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Twoje wsparcie zmienia życie dzieci w Afryce. Każda wpłata, nawet najmniejsza, trafia bezpośrednio tam, gdzie jest najbardziej potrzebna — na edukację, posiłki i opiekę medyczną.
+                {ix.wsprzyjDesc}
               </p>
               <div className="space-y-3 mb-8">
                 <div className="flex items-center gap-3">
                   <Heart className="w-5 h-5 text-[#94c43d]" />
-                  <span className="text-gray-700">Wirtualna adopcja — od 150 zł/mies.</span>
+                  <span className="text-gray-700">{ix.wsprzyjAdopcja}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Heart className="w-5 h-5 text-[#94c43d]" />
-                  <span className="text-gray-700">Jednorazowa darowizna</span>
+                  <span className="text-gray-700">{ix.wsprzyjJednorazowa}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Heart className="w-5 h-5 text-[#94c43d]" />
-                  <span className="text-gray-700">Wolontariat w Gambii</span>
+                  <span className="text-gray-700">{ix.wsprzyjWolontariat}</span>
                 </div>
               </div>
               <Link to="/uslugi" className="group inline-flex items-center gap-3 px-8 py-4 bg-[#94c43d] text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
-                Wesprzyj misję
+                {ix.wsprzyjCta}
                 <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </motion.div>
@@ -316,8 +418,8 @@ const Index = () => {
                   <div className="w-14 h-14 rounded-2xl bg-[#94c43d]/10 flex items-center justify-center mx-auto mb-4">
                     <CreditCard className="w-7 h-7 text-[#94c43d]" />
                   </div>
-                  <h3 className="font-display font-bold text-xl text-gray-900 mb-1">Wpłać darowiznę</h3>
-                  <p className="text-gray-500 text-sm">Tylko dzięki Twojemu wsparciu możemy rozwijać się i prowadzić nasze działania!</p>
+                  <h3 className="font-display font-bold text-xl text-gray-900 mb-1">{ix.donacjaTitle}</h3>
+                  <p className="text-gray-500 text-sm">{ix.donacjaDesc}</p>
                 </div>
 
                 <div className="flex flex-wrap gap-2 justify-center mb-6">
@@ -337,7 +439,7 @@ const Index = () => {
                 </div>
 
                 <div className="mb-6">
-                  <label className="block text-sm text-gray-500 mb-2">Dowolna kwota (zł)</label>
+                  <label className="block text-sm text-gray-500 mb-2">{ix.donacjaKwota}</label>
                   <input
                     type="text"
                     value={customAmount}
@@ -351,7 +453,7 @@ const Index = () => {
                 </div>
 
                 <button className="w-full py-4 bg-[#94c43d] text-white rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)] transition-all duration-300">
-                  Wspieram! <span className="text-xl">💚</span>
+                  {ix.donacjaCta} <span className="text-xl">💚</span>
                 </button>
 
                 <div className="flex flex-wrap items-center justify-center gap-3 mt-5 opacity-50">
@@ -373,16 +475,11 @@ const Index = () => {
         </div>
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white italic mb-4">Twoja pomoc realnie zmienia życie</h2>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white italic mb-4">{ix.parallaxTitle}</h2>
             <div className="w-12 h-1 bg-[#94c43d] mx-auto rounded-full" />
           </motion.div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
-            {[
-              { value: '200 PLN', desc: 'Średnia pensja miesięczna w Gambii' },
-              { value: '130 PLN', desc: 'Miesięczny koszt dodatkowych lekcji angielskiego dla dziecka' },
-              { value: '100 PLN', desc: 'Podstawowe leczenie stomatologiczne u dentysty' },
-              { value: '170 PLN', desc: 'Miesięczne utrzymanie na studiach: czesne, akademik, wyżywienie' },
-            ].map((item, i) => (
+            {ix.parallaxItems.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -406,15 +503,15 @@ const Index = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">Dom Polski</span>
+              <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">{ix.domPolskiBadge}</span>
               <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                Nasze miejsce spotkań, kultury i odpoczynku
+                {ix.domPolskiTitle}
               </h2>
               <p className="text-gray-600 leading-relaxed mb-8">
-                Dom Polski w Gambii to serce Fundacji FHS – wyjątkowa przestrzeń, w której polska gościnność spotyka się z afrykańskim słońcem i lokalną społecznością. To miejsce stworzone z myślą o wolontariuszach, podróżnikach z misją i wszystkich, którzy chcą doświadczyć prawdziwej wspólnoty, odpocząć i poczuć się jak w domu. Z basenem, bujną zielenią i klimatycznym zapleczem noclegowym.
+                {ix.domPolskiDesc}
               </p>
               <Link to="/kontakt" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-gray-300 text-gray-700 hover:border-[#94c43d] hover:text-[#94c43d] transition-all duration-300 text-sm font-medium">
-                Sprawdź dostępność! <ArrowRight className="w-4 h-4" />
+                {ix.domPolskiCta} <ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>

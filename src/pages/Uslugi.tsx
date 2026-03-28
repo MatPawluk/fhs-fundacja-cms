@@ -9,12 +9,13 @@ import { uslugiTranslations } from '@/i18n/pageTranslations';
 import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, X, Heart, MapPin, GraduationCap, Utensils, Stethoscope } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-import child1 from '@/assets/child-1.jpg';
-import child2 from '@/assets/child-2.jpg';
-import child3 from '@/assets/child-3.jpg';
-import child4 from '@/assets/child-4.jpg';
-import child5 from '@/assets/child-5.jpg';
-import child6 from '@/assets/child-6.jpg';
+import adopcjaAlima from '@/assets/adopcja-alima.jpg';
+import adopcjaLamin from '@/assets/adopcja-lamin.jpg';
+import adopcjaSuna from '@/assets/adopcja-suna.jpg';
+import adopcjaElizabeth from '@/assets/adopcja-elizabeth.jpg';
+import adopcjaUnique from '@/assets/adopcja-unique.jpg';
+import adopcjaMariatou from '@/assets/adopcja-mariatou.jpg';
+import adopcjaPeggy from '@/assets/adopcja-peggy.jpg';
 import stepChoose from '@/assets/step-choose.jpg';
 import stepDeclare from '@/assets/step-declare.jpg';
 import stepProgress from '@/assets/step-progress.jpg';
@@ -27,7 +28,7 @@ const children = [
     gender: 'dziewczynka',
     country: 'Gambia',
     location: 'Bijilo',
-    image: child1,
+    image: adopcjaAlima,
     monthlySupport: 150,
     grade: '1 klasa',
     shortDesc: 'Alima to pilna uczennica, która potrzebuje wsparcia. Jej tata od blisko dwóch lat pozostaje bez pracy.',
@@ -40,7 +41,7 @@ const children = [
     gender: 'chłopiec',
     country: 'Gambia',
     location: 'Bijilo',
-    image: child2,
+    image: adopcjaLamin,
     monthlySupport: 150,
     grade: '2 klasa',
     shortDesc: 'Lamin to ciekawy świata chłopiec z 2 klasy. Uwielbia matematykę, naukę, sztukę i sport.',
@@ -53,7 +54,7 @@ const children = [
     gender: 'dziewczynka',
     country: 'Gambia',
     location: 'Bijilo',
-    image: child3,
+    image: adopcjaSuna,
     monthlySupport: 150,
     grade: '2 klasa',
     shortDesc: 'Suna chodzi do 2 klasy w My Gambia School. Jest bardzo ambitną uczennicą, która kocha czytać i rysować.',
@@ -66,7 +67,7 @@ const children = [
     gender: 'dziewczynka',
     country: 'Gambia',
     location: 'Bijilo',
-    image: child4,
+    image: adopcjaElizabeth,
     monthlySupport: 150,
     grade: '2 klasa',
     shortDesc: 'Elizabeth to radosna, pełna energii dziewczynka, która z pasją podchodzi do nauki.',
@@ -79,7 +80,7 @@ const children = [
     gender: 'chłopiec',
     country: 'Gambia',
     location: 'Bijilo',
-    image: child5,
+    image: adopcjaUnique,
     monthlySupport: 150,
     grade: '8 klasa',
     shortDesc: 'Unique to bystry i kreatywny chłopiec, który z dużą ciekawością odkrywa świat.',
@@ -92,7 +93,7 @@ const children = [
     gender: 'dziewczynka',
     country: 'Gambia',
     location: 'Bijilo',
-    image: child6,
+    image: adopcjaMariatou,
     monthlySupport: 150,
     grade: '8 klasa',
     shortDesc: 'Mariatou to serdeczna i pełna energii dziewczynka, która z ciekawością poznaje świat.',
@@ -105,7 +106,7 @@ const children = [
     gender: 'dziewczynka',
     country: 'Gambia',
     location: 'Bijilo',
-    image: child1,
+    image: adopcjaPeggy,
     monthlySupport: 150,
     grade: '1 klasa',
     shortDesc: 'Peggy to urocza i pełna energii dziewczynka, która uczęszcza do 1 klasy.',
