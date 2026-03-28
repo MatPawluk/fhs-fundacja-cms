@@ -1,20 +1,16 @@
 import { Carousel } from '@ark-ui/react/carousel';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import galeria0 from '@/assets/onas-galeria-0.png';
-import galeria1 from '@/assets/onas-galeria-1.png';
-import galeria2 from '@/assets/onas-galeria-2.png';
-import galeria3 from '@/assets/onas-galeria-3.png';
-import galeria4 from '@/assets/onas-galeria-4.jpg';
-import galeria5 from '@/assets/onas-galeria-5.jpg';
-import galeria6 from '@/assets/onas-galeria-6.jpg';
-import galeria9 from '@/assets/onas-galeria-9.jpg';
-import galeria10 from '@/assets/onas-galeria-10.png';
-import galeria11 from '@/assets/onas-galeria-11.png';
-import domPolskiGambia from '@/assets/dom-polski-gambia.jpg';
+import dompolski1 from '@/assets/dompolski-1.jpg';
+import dompolski2 from '@/assets/dompolski-2.jpg';
+import dompolski3 from '@/assets/dompolski-3.jpg';
+import dompolski4 from '@/assets/dompolski-4.jpg';
+import dompolski5 from '@/assets/dompolski-5.jpg';
+import dompolski6 from '@/assets/dompolski-6.jpg';
+import dompolski7 from '@/assets/dompolski-7.jpg';
 
 const images = [
-  domPolskiGambia, galeria0, galeria1, galeria2, galeria3, galeria4, galeria5,
+  dompolski1, dompolski2, dompolski3, dompolski4, dompolski5, dompolski6, dompolski7,
 ];
 
 export const DomPolskiGallery = () => {
