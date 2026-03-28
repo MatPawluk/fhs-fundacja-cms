@@ -54,7 +54,7 @@ const children = [
     gender: 'dziewczynka',
     country: 'Gambia',
     location: 'Bijilo',
-    image: child3,
+    image: adopcjaSuna,
     monthlySupport: 150,
     grade: '2 klasa',
     shortDesc: 'Suna chodzi do 2 klasy w My Gambia School. Jest bardzo ambitną uczennicą, która kocha czytać i rysować.',
