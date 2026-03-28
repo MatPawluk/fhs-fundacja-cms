@@ -3,22 +3,22 @@ import { Language } from './translations';
 // Stats translations used across pages
 export const statsTranslations: Record<Language, { value: number; suffix: string; label: string; isText?: boolean }[]> = {
   pl: [
-    { value: 480, suffix: '+', label: 'zweryfikowanych podmiotów i partnerów biznesowych' },
-    { value: 50, suffix: '+', label: 'lat łącznego doświadczenia zespołu w projektach międzynarodowych' },
-    { value: 7, suffix: '', label: 'sektorów technologicznych' },
-    { value: 0, suffix: 'PL-CN', label: 'stała obecność operacyjna', isText: true },
+    { value: 370, suffix: '+', label: 'dzieci pod opieką fundacji' },
+    { value: 17, suffix: '+', label: 'zrealizowanych projektów w Afryce' },
+    { value: 3, suffix: '', label: 'lata działalności' },
+    { value: 5, suffix: '+', label: 'partnerów i instytucji wspierających' },
   ],
   en: [
-    { value: 480, suffix: '+', label: 'verified entities and business partners' },
-    { value: 50, suffix: '+', label: 'years of combined team experience in international projects' },
-    { value: 7, suffix: '', label: 'technology sectors' },
-    { value: 0, suffix: 'PL-CN', label: 'permanent operational presence', isText: true },
+    { value: 370, suffix: '+', label: 'children under foundation care' },
+    { value: 17, suffix: '+', label: 'completed projects in Africa' },
+    { value: 3, suffix: '', label: 'years of activity' },
+    { value: 5, suffix: '+', label: 'supporting partners and institutions' },
   ],
   nl: [
-    { value: 480, suffix: '+', label: '已验证的实体和商业伙伴' },
-    { value: 50, suffix: '+', label: '团队在国际项目中的累计经验年数' },
-    { value: 7, suffix: '', label: '个技术领域' },
-    { value: 0, suffix: 'PL-CN', label: '常驻运营' , isText: true },
+    { value: 370, suffix: '+', label: 'kinderen onder zorg van de stichting' },
+    { value: 17, suffix: '+', label: 'voltooide projecten in Afrika' },
+    { value: 3, suffix: '', label: 'jaar actief' },
+    { value: 5, suffix: '+', label: 'ondersteunende partners en instellingen' },
   ],
 };
 
