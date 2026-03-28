@@ -155,28 +155,25 @@ export const caseStudiesTranslations: Record<Language, { name: string; category:
 // Carousel service translations for homepage
 export const carouselServicesTranslations: Record<Language, { title: string; description: string }[]> = {
   pl: [
-    { title: 'Strategia wobec Chin', description: 'Analizy strategiczne, scenariusze i mapy ryzyk, briefingi dla zarządów.' },
-    { title: 'Analizy rynku i weryfikacja partnerów', description: 'Badania sektorów, analiza konkurencji, weryfikacja kontrahentów i due diligence.' },
-    { title: 'Wejście na rynek Polska ↔ Chiny', description: 'Wybór modelu wejścia, wsparcie regulacyjne, identyfikacja partnerów.' },
-    { title: 'Import, eksport i łańcuch dostaw', description: 'Audyty dostawców, optymalizacja logistyki, nadzór produkcji, transport.' },
-    { title: 'Marketing i pozycjonowanie', description: 'Lokalne pozycjonowanie marki, strategia komunikacji, materiały sprzedażowe.' },
-    { title: 'Misje biznesowe i szkolenia', description: 'Organizacja misji, matchmaking B2B, szkolenia z kultury i systemu Chin.' },
+    { title: 'Wyjazdy wolontariackie', description: 'Organizujemy wyjazdy dla wolontariuszy, którzy chcą bezpośrednio włączyć się w nasze działania w Afryce' },
+    { title: 'Wsparcie edukacyjne', description: 'Zapewniamy materiały szkolne, stypendia i wsparcie edukacyjne dla dzieci w Afryce' },
+    { title: 'Wolontariat Misyjny', description: 'Inwestujemy w infrastrukturę edukacyjną, budując i remontując szkoły w potrzebujących regionach' },
+    { title: 'Zbiórki charytatywne', description: 'Prowadzimy regularne zbiórki na rzecz dzieci w Afryce oraz realizujemy specjalne akcje pomocowe' },
+    { title: 'Współpraca z ministerstwami', description: 'Współpracujemy z Ministerstwami Zdrowia i Edukacji Gambii, niosąc pomoc w kluczowych obszarach' },
   ],
   en: [
-    { title: 'China Strategy', description: 'Strategic analyses, scenarios and risk maps, board briefings.' },
-    { title: 'Market Analysis & Partner Verification', description: 'Sector research, competition analysis, contractor verification and due diligence.' },
-    { title: 'Market Entry Poland ↔ China', description: 'Entry model selection, regulatory support, partner identification.' },
-    { title: 'Import, Export & Supply Chain', description: 'Supplier audits, logistics optimization, production supervision, transport.' },
-    { title: 'Marketing & Positioning', description: 'Local brand positioning, communication strategy, sales materials.' },
-    { title: 'Business Missions & Training', description: 'Mission organization, B2B matchmaking, culture and system training.' },
+    { title: 'Volunteer Trips', description: 'We organize trips for volunteers who want to directly participate in our activities in Africa' },
+    { title: 'Educational Support', description: 'We provide school supplies, scholarships and educational support for children in Africa' },
+    { title: 'Missionary Volunteering', description: 'We invest in educational infrastructure, building and renovating schools in needy regions' },
+    { title: 'Charity Collections', description: 'We conduct regular collections for children in Africa and implement special aid campaigns' },
+    { title: 'Ministry Cooperation', description: 'We cooperate with the Gambian Ministries of Health and Education, providing help in key areas' },
   ],
   nl: [
-    { title: '对华战略', description: '战略分析、情景规划和风险图、管理层简报。' },
-    { title: '市场分析与合作伙伴验证', description: '行业研究、竞争分析、合作方验证和尽职调查。' },
-    { title: '市场进入 波兰 ↔ 中国', description: '进入模式选择、监管支持、合作伙伴识别。' },
-    { title: '进出口与供应链', description: '供应商审计、物流优化、生产监督、运输。' },
-    { title: '营销与市场定位', description: '本地品牌定位、传播策略、销售材料。' },
-    { title: '商务考察与培训', description: '考察组织、B2B配对、文化和体系培训。' },
+    { title: 'Vrijwilligersreizen', description: 'We organiseren reizen voor vrijwilligers die direct willen deelnemen aan onze activiteiten in Afrika' },
+    { title: 'Educatieve ondersteuning', description: 'We bieden schoolbenodigdheden, beurzen en educatieve ondersteuning voor kinderen in Afrika' },
+    { title: 'Missionair vrijwilligerswerk', description: 'We investeren in educatieve infrastructuur door scholen te bouwen en te renoveren' },
+    { title: 'Liefdadigheidsinzamelingen', description: 'We voeren regelmatige inzamelingen uit voor kinderen in Afrika' },
+    { title: 'Samenwerking met ministeries', description: 'We werken samen met de Gambiaanse ministeries van Gezondheid en Onderwijs' },
   ],
 };
 
