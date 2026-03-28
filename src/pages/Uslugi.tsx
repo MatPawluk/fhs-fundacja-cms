@@ -67,7 +67,7 @@ const children = [
     gender: 'dziewczynka',
     country: 'Gambia',
     location: 'Bijilo',
-    image: child4,
+    image: adopcjaElizabeth,
     monthlySupport: 150,
     grade: '2 klasa',
     shortDesc: 'Elizabeth to radosna, pełna energii dziewczynka, która z pasją podchodzi do nauki.',
