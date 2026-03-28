@@ -118,10 +118,10 @@ export const caseStudiesTranslations: Record<Language, { name: string; category:
     { name: 'Orvanta', category: 'Supply Chain Optimization', imageKey: 'orvanta', client: 'Consumer electronics e-commerce platform', goal: 'Optimization of import structure and sourcing model', duration: '6 weeks', result: '28% reduction in logistics costs. Implementation of stable direct cooperation model with manufacturers.' },
   ],
   nl: [
-    { name: 'Vektor Automation', category: '供应商验证', imageKey: 'vektor', client: '工业自动化系统制造商', goal: '验证生产线零部件的中国供应商', duration: '3周', result: '发现认证和所有权结构方面的差异。保护客户免于签订具有较高运营风险的合同。' },
-    { name: 'Arcom Electronics', category: '市场进入', imageKey: 'arcom', client: '高端电子设备分销商', goal: '制定中国市场进入战略（B2B模式）', duration: '3个月', result: '启动跨境试点销售。与当地分销合作伙伴签署首批协议。' },
-    { name: 'Aktir', category: '尽职调查', imageKey: 'aktir', client: '国际运输运营商', goal: '对中国物流合作伙伴进行尽职调查', duration: '4周', result: '对合作伙伴的财务和运营结构进行全面分析。做出明智的战略决策并加强客户的谈判地位。' },
-    { name: 'Orvanta', category: '供应链优化', imageKey: 'orvanta', client: '消费电子电商平台', goal: '优化进口结构和采购模式', duration: '6周', result: '物流成本降低28%。实施与制造商的稳定直接合作模式。' },
+    { name: 'Vektor Automation', category: 'Leveranciersverificatie', imageKey: 'vektor', client: 'Fabrikant van industriële automatiseringssystemen', goal: 'Verificatie van Chinese leverancier van onderdelen voor productielijnen', duration: '3 weken', result: 'Ontdekking van discrepanties in certificering en eigendomsstructuur.' },
+    { name: 'Arcom Electronics', category: 'Markttoetreding', imageKey: 'arcom', client: 'Distributeur van premium elektronische apparatuur', goal: 'Ontwikkeling van markttoetreding strategie (B2B-model)', duration: '3 maanden', result: 'Lancering van pilot cross-border verkoop. Ondertekening van eerste overeenkomsten met lokale distributiepartners.' },
+    { name: 'Aktir', category: 'Due Diligence', imageKey: 'aktir', client: 'Internationale transportoperator', goal: 'Due diligence van logistieke partner', duration: '4 weken', result: 'Uitgebreide analyse van de financiële en operationele structuur van de partner.' },
+    { name: 'Orvanta', category: 'Supply Chain Optimalisatie', imageKey: 'orvanta', client: 'E-commerce platform voor consumentenelektronica', goal: 'Optimalisatie van importstructuur en sourcingmodel', duration: '6 weken', result: '28% verlaging van logistieke kosten. Implementatie van stabiel direct samenwerkingsmodel.' },
   ],
 };
 
