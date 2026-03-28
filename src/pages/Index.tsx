@@ -322,18 +322,18 @@ const Index = () => {
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex-shrink-0">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-8 h-px bg-gray-900" />
-                <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">Poznaj Fundację</h2>
+                <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">{ix.poznajTitle}</h2>
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex-1">
               <p className="text-gray-600 leading-relaxed mb-4">
-                <strong>Fundacja FHS</strong> to organizacja non-profit działająca od 2022 roku, której misją jest poprawa warunków życia i edukacji w społecznościach Afryki Zachodniej.
+                <strong>{ix.poznajP1.split(' ').slice(0, 3).join(' ')}</strong> {ix.poznajP1.split(' ').slice(3).join(' ')}
               </p>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Nasze działania koncentrują się wokół <strong>edukacji, opieki zdrowotnej, rozwoju infrastruktury</strong> oraz wspierania lokalnych inicjatyw przedsiębiorczych.
+                {ix.poznajP2}
               </p>
               <Link to="/o-nas" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-300 text-gray-700 hover:border-[#94c43d] hover:text-[#94c43d] transition-all duration-300 text-sm font-medium">
-                O Fundacji <ArrowRight className="w-4 h-4" />
+                {ix.poznajCta} <ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>
           </div>
