@@ -93,7 +93,7 @@ const children = [
     gender: 'dziewczynka',
     country: 'Gambia',
     location: 'Bijilo',
-    image: child6,
+    image: adopcjaMariatou,
     monthlySupport: 150,
     grade: '8 klasa',
     shortDesc: 'Mariatou to serdeczna i pełna energii dziewczynka, która z ciekawością poznaje świat.',
