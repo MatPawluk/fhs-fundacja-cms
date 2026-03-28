@@ -169,12 +169,12 @@ export const serviceCategoriesTranslations: Record<Language, { title: string; su
     { title: 'Business Missions & Training', subServices: ['Business and technology missions PL ↔ CN', 'B2B meetings and partner matchmaking', 'Training on China\'s economic system', 'Business culture and negotiation training'] },
   ],
   nl: [
-    { title: '对华战略', subServices: ['中国对公司或行业的影响分析', '进入、合作、扩展或减少风险敞口决策', '战略情景和风险图', '管理层决策简报'] },
-    { title: '市场分析与合作伙伴验证', subServices: ['行业、产业集群和竞争分析', '监管分析和进入壁垒', '合作方验证（桌面检查）', '合作伙伴深度验证（尽职调查）'] },
-    { title: '市场进入 波兰 ↔ 中国', subServices: ['市场进入模式选择', '正式和监管支持', '合作伙伴识别和选择', '谈判和关系支持', '贸易或合作结构准备'] },
-    { title: '进出口与供应链管理', subServices: ['供应商审计和验证（现场）', '供应链设计和优化', '生产监督和质量控制', '国际运输组织', '波中项目综合交付（端到端）'] },
-    { title: '营销与市场定位', subServices: ['本地品牌定位（波兰和中国）', '传播策略', '传播适配波兰和中国市场', '销售和品牌材料', '营销支持和潜客开发'] },
-    { title: '商务考察与培训', subServices: ['商务和技术考察 波兰 ↔ 中国', 'B2B会议和合作伙伴匹配', '中国经济体系培训', '商务文化和谈判培训'] },
+    { title: 'Educatie & ondersteuning', subServices: ['Schoolbenodigdheden en beurzen', 'Educatieve programma\'s voor kinderen', 'Ondersteuning van lokale leerkrachten', 'Naschoolse activiteiten'] },
+    { title: 'Gezondheidszorg', subServices: ['Medische missies', 'Gezondheidskliniek ondersteuning', 'Vaccinatieprogramma\'s', 'Gezondheidsvoorlichting'] },
+    { title: 'Infrastructuur', subServices: ['Bouw en renovatie van scholen', 'Watervoorziening projecten', 'Gemeenschapscentra', 'Sanitaire voorzieningen'] },
+    { title: 'Virtuele adoptie', subServices: ['Maandelijkse ondersteuning van een kind', 'Educatie- en voedingsprogramma', 'Regelmatige voortgangsrapporten', 'Directe communicatie met het kind'] },
+    { title: 'Vrijwilligerswerk', subServices: ['Vrijwilligersmissies in Gambia', 'Culturele uitwisseling', 'Ondersteuning ter plaatse', 'Gemeenschapsontwikkeling'] },
+    { title: 'Partnerschappen', subServices: ['Samenwerking met ministeries', 'NGO-partnerschappen', 'Bedrijfspartnerschappen', 'Academische samenwerkingen'] },
   ],
 };
 
