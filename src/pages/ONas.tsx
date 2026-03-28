@@ -30,10 +30,8 @@ const team = [
 ];
 
 const ONas = () => {
-  const [openIndices, setOpenIndices] = useState<Set<number>>(new Set());
   const { language, t } = useLanguage();
   const pt = oNasTranslations[language];
-  const faqs = oNasFaqTranslations[language];
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
