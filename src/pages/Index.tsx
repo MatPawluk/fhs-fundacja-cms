@@ -418,8 +418,8 @@ const Index = () => {
                   <div className="w-14 h-14 rounded-2xl bg-[#94c43d]/10 flex items-center justify-center mx-auto mb-4">
                     <CreditCard className="w-7 h-7 text-[#94c43d]" />
                   </div>
-                  <h3 className="font-display font-bold text-xl text-gray-900 mb-1">Wpłać darowiznę</h3>
-                  <p className="text-gray-500 text-sm">Tylko dzięki Twojemu wsparciu możemy rozwijać się i prowadzić nasze działania!</p>
+                  <h3 className="font-display font-bold text-xl text-gray-900 mb-1">{ix.donacjaTitle}</h3>
+                  <p className="text-gray-500 text-sm">{ix.donacjaDesc}</p>
                 </div>
 
                 <div className="flex flex-wrap gap-2 justify-center mb-6">
@@ -439,7 +439,7 @@ const Index = () => {
                 </div>
 
                 <div className="mb-6">
-                  <label className="block text-sm text-gray-500 mb-2">Dowolna kwota (zł)</label>
+                  <label className="block text-sm text-gray-500 mb-2">{ix.donacjaKwota}</label>
                   <input
                     type="text"
                     value={customAmount}
@@ -453,7 +453,7 @@ const Index = () => {
                 </div>
 
                 <button className="w-full py-4 bg-[#94c43d] text-white rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)] transition-all duration-300">
-                  Wspieram! <span className="text-xl">💚</span>
+                  {ix.donacjaCta} <span className="text-xl">💚</span>
                 </button>
 
                 <div className="flex flex-wrap items-center justify-center gap-3 mt-5 opacity-50">
