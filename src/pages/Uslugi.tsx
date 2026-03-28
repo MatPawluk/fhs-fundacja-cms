@@ -309,6 +309,155 @@ function HowItWorksVerticalTabs() {
   );
 }
 
+function ChildDetailPopup({ selectedChild, onClose }: { selectedChild: number | null; onClose: () => void }) {
+  const [imgIndex, setImgIndex] = useState(0);
+
+  // Reset image index when child changes
+  useEffect(() => {
+    setImgIndex(0);
+  }, [selectedChild]);
+
+  if (selectedChild === null) return null;
+
+  const child = children[selectedChild];
+  // For now each child has one image repeated — in future add multiple per child
+  const images = [child.image, child.image, child.image];
+
+  const prevImg = () => setImgIndex((p) => (p - 1 + images.length) % images.length);
+  const nextImg = () => setImgIndex((p) => (p + 1) % images.length);
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-black/60 backdrop-blur-md"
+        onClick={onClose}
+      >
+        <motion.div
+          initial={{ scale: 0.92, opacity: 0, y: 20 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 0.92, opacity: 0, y: 20 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-[2rem] bg-white shadow-2xl"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            onClick={onClose}
+            className="absolute top-5 right-5 z-20 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg"
+          >
+            <X className="w-5 h-5 text-gray-700" />
+          </button>
+
+          <div className="grid md:grid-cols-[45%_55%] h-full max-h-[90vh]">
+            {/* Left: Image carousel */}
+            <div className="relative h-64 md:h-full bg-gray-100">
+              <img
+                src={images[imgIndex]}
+                alt={child.name}
+                className="w-full h-full object-cover"
+              />
+
+              {/* Location badge */}
+              <div className="absolute top-5 left-5">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#94c43d] text-white text-xs font-semibold shadow-lg">
+                  <MapPin className="w-3 h-3" /> {child.location}, {child.country}
+                </span>
+              </div>
+
+              {/* Image navigation arrows */}
+              <button
+                onClick={prevImg}
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-all shadow-md"
+              >
+                <ChevronLeft className="w-5 h-5 text-gray-700" />
+              </button>
+              <button
+                onClick={nextImg}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center hover:bg-white transition-all shadow-md"
+              >
+                <ChevronRight className="w-5 h-5 text-gray-700" />
+              </button>
+
+              {/* Dots indicator */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+                {images.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setImgIndex(i)}
+                    className={cn(
+                      'w-2 h-2 rounded-full transition-all duration-300',
+                      i === imgIndex ? 'bg-white w-5' : 'bg-white/50 hover:bg-white/70'
+                    )}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Right: Content */}
+            <div className="overflow-y-auto p-8 md:p-10 flex flex-col">
+              <div className="flex-1">
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-2">{child.name}</h2>
+                <div className="flex items-center gap-2 text-gray-400 text-base mb-5">
+                  <span>{child.age} lat</span>
+                  <span className="w-1 h-1 rounded-full bg-gray-300" />
+                  <span>{child.grade}</span>
+                  <span className="w-1 h-1 rounded-full bg-gray-300" />
+                  <span>{child.gender}</span>
+                </div>
+
+                <p className="text-gray-400 text-sm leading-relaxed mb-5 italic">
+                  Aby poznać więcej historii dzieci oraz dowiedzieć się o ich aktualnych potrzebach, zapraszamy do kontaktu z nami.
+                </p>
+
+                {/* Story */}
+                <div className="space-y-3 mb-6">
+                  {child.longDesc.split('\n\n').map((p, i) => (
+                    <p key={i} className="text-gray-600 text-base leading-relaxed">{p}</p>
+                  ))}
+                </div>
+
+                {/* Needs */}
+                <div className="mb-6">
+                  <p className="text-gray-400 text-xs uppercase tracking-widest font-medium mb-3">Potrzeby</p>
+                  <div className="flex flex-wrap gap-2">
+                    {child.needs.map((need) => (
+                      <span key={need} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-100 text-gray-600 text-sm font-medium border border-gray-200/50">
+                        {needIcons[need]} {need}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom: Support info + CTA */}
+              <div className="border-t border-gray-100 pt-6 mt-auto">
+                <div className="flex items-center justify-between mb-4 p-4 rounded-2xl bg-[#f5f3ef]">
+                  <div>
+                    <p className="text-gray-400 text-[10px] uppercase tracking-widest font-medium">Miesięczne wsparcie</p>
+                    <p className="font-display font-bold text-2xl text-gray-900">{child.monthlySupport} <span className="text-sm font-semibold text-gray-500">zł/mies.</span></p>
+                  </div>
+                  <Heart className="w-8 h-8 text-[#94c43d]/30" />
+                </div>
+
+                <Link
+                  to="/#wesprzyj"
+                  className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#94c43d] text-white rounded-2xl font-semibold text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)] active:scale-[0.98]"
+                  onClick={onClose}
+                >
+                  <Heart className="w-5 h-5" /> Wesprzyj {child.name.split(' ')[0]}
+                </Link>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 const CHILDREN_PER_PAGE = 9;
 
 const Uslugi = () => {
