@@ -80,7 +80,7 @@ const children = [
     gender: 'chłopiec',
     country: 'Gambia',
     location: 'Bijilo',
-    image: child5,
+    image: adopcjaUnique,
     monthlySupport: 150,
     grade: '8 klasa',
     shortDesc: 'Unique to bystry i kreatywny chłopiec, który z dużą ciekawością odkrywa świat.',
