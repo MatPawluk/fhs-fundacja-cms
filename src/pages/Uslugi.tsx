@@ -41,7 +41,7 @@ const children = [
     gender: 'chłopiec',
     country: 'Gambia',
     location: 'Bijilo',
-    image: child2,
+    image: adopcjaLamin,
     monthlySupport: 150,
     grade: '2 klasa',
     shortDesc: 'Lamin to ciekawy świata chłopiec z 2 klasy. Uwielbia matematykę, naukę, sztukę i sport.',
