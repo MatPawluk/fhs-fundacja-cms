@@ -191,9 +191,9 @@ export const caseStudyTabsTranslations: Record<Language, { id: string; label: st
     { id: 'result', label: 'Result' },
   ],
   nl: [
-    { id: 'situation', label: '情况' },
-    { id: 'actions', label: '行动' },
-    { id: 'result', label: '效果' },
+    { id: 'situation', label: 'Situatie' },
+    { id: 'actions', label: 'Acties' },
+    { id: 'result', label: 'Resultaat' },
   ],
 };
 
