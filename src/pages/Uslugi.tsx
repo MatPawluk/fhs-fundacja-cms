@@ -28,7 +28,7 @@ const children = [
     gender: 'dziewczynka',
     country: 'Gambia',
     location: 'Bijilo',
-    image: child1,
+    image: adopcjaAlima,
     monthlySupport: 150,
     grade: '1 klasa',
     shortDesc: 'Alima to pilna uczennica, która potrzebuje wsparcia. Jej tata od blisko dwóch lat pozostaje bez pracy.',
