@@ -2,30 +2,22 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-interface FooterProps {
-  variant?: 'dark' | 'light';
-}
-
-export const Footer = ({ variant = 'light' }: FooterProps) => {
+export const Footer = () => {
   const { t } = useLanguage();
 
-  const footerLinks = {
-    navigation: [
-      { name: t.nav.home, href: '/' },
-      { name: t.nav.services, href: '/uslugi' },
-      { name: t.nav.about, href: '/o-nas' },
-      { name: t.nav.knowledge, href: '/baza-wiedzy' },
-      { name: t.nav.contact, href: '/kontakt' },
-    ],
-  };
+  const footerLinks = [
+    { name: t.nav.home, href: '/' },
+    { name: t.nav.services, href: '/uslugi' },
+    { name: t.nav.about, href: '/o-nas' },
+    { name: t.nav.knowledge, href: '/baza-wiedzy' },
+    { name: t.nav.contact, href: '/kontakt' },
+  ];
 
   return (
-    <footer className="relative" style={{ backgroundColor: '#f0ede8' }}>
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-300/50 to-transparent" />
-
+    <footer className="relative" style={{ backgroundColor: '#f5f3ef' }}>
       <div className="container mx-auto px-6 lg:px-12 pt-16 pb-8">
-        {/* Main grid - 3 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-12">
+        {/* Main grid - 4 columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10 mb-12">
           {/* Brand & description */}
           <div>
             <Link to="/" className="inline-block mb-4">
@@ -48,6 +40,18 @@ export const Footer = ({ variant = 'light' }: FooterProps) => {
               <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center text-white hover:bg-red-700 transition-colors duration-300">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
               </a>
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <h4 className="font-display font-semibold text-lg mb-6 text-gray-900">Nawigacja</h4>
+            <div className="space-y-3">
+              {footerLinks.map((link) => (
+                <Link key={link.href} to={link.href} className="block text-gray-600 hover:text-[#94c43d] transition-colors duration-300 text-sm">
+                  {link.name}
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -89,21 +93,9 @@ export const Footer = ({ variant = 'light' }: FooterProps) => {
         {/* Bottom bar */}
         <div className="pt-6 border-t border-gray-300/50">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-3">
-              {footerLinks.navigation.map((link, i) => (
-                <span key={link.href} className="flex items-center gap-3">
-                  <Link to={link.href} className="text-gray-500 hover:text-gray-900 transition-colors duration-300 text-sm">
-                    {link.name}
-                  </Link>
-                  {i < footerLinks.navigation.length - 1 && <span className="text-gray-300">|</span>}
-                </span>
-              ))}
-            </div>
             <div className="flex items-center gap-6 text-sm text-gray-500">
               <a href="#" className="hover:text-gray-900 transition-colors">Statut</a>
-              <span className="text-gray-300">|</span>
               <a href="#" className="hover:text-gray-900 transition-colors">Regulamin</a>
-              <span className="text-gray-300">|</span>
               <a href="#" className="hover:text-gray-900 transition-colors">Polityka Prywatności</a>
             </div>
             <p className="text-gray-500 text-sm">
