@@ -7,7 +7,7 @@ import { AnimatedCounter } from '@/components/AnimatedCounter';
 import { GradientText } from '@/components/GradientText';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { oNasTranslations } from '@/i18n/pageTranslations';
-import { oNasFaqTranslations } from '@/i18n/contentTranslations';
+
 import { PartnersSection } from '@/components/PartnersSection';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
