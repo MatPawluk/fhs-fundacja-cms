@@ -9,9 +9,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { oNasTranslations } from '@/i18n/pageTranslations';
 
 import { PartnersSection } from '@/components/PartnersSection';
-import { ArrowRight, ChevronRight } from 'lucide-react';
-import { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 import onasAdrian from '@/assets/onas-adrian.png';
 import onasHugo from '@/assets/onas-hugo.png';
