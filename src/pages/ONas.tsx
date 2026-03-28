@@ -163,7 +163,7 @@ const ONas = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-8">
             <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">Gdzie <GradientText>działamy</GradientText></h2>
-            <p className="text-gray-500 mt-3 max-w-lg mx-auto">Łączymy Polskę z Gambią — wspólnie budujemy lepszą przyszłość</p>
+            <p className="text-gray-500 mt-3 max-w-lg mx-auto">Łączymy Polskę z Gambią - wspólnie budujemy lepszą przyszłość</p>
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
             <CobeGlobe className="max-w-lg mx-auto" />
