@@ -106,7 +106,7 @@ const children = [
     gender: 'dziewczynka',
     country: 'Gambia',
     location: 'Bijilo',
-    image: child1,
+    image: adopcjaPeggy,
     monthlySupport: 150,
     grade: '1 klasa',
     shortDesc: 'Peggy to urocza i pełna energii dziewczynka, która uczęszcza do 1 klasy.',
