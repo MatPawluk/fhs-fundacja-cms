@@ -69,7 +69,7 @@ const Kontakt = () => {
               <div className="mb-8">
                 <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">{pt.badge}</span>
                 <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-                  {pt.title}<br /><GradientText>{pt.titleHighlight}</GradientText>
+                  Masz pytania? Chcesz zostać wolontariuszem?<br /><GradientText>Napisz do nas!</GradientText>
                 </h1>
               </div>
 

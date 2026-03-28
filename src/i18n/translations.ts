@@ -179,7 +179,7 @@ export const translations = {
     },
     services: {
       title: 'Our programs',
-      viewAll: 'View all programs',
+      viewAll: 'View all projects',
       learnMore: 'Learn more',
     },
     serviceDetail: {
