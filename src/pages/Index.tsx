@@ -475,16 +475,11 @@ const Index = () => {
         </div>
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white italic mb-4">Twoja pomoc realnie zmienia życie</h2>
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-white italic mb-4">{ix.parallaxTitle}</h2>
             <div className="w-12 h-1 bg-[#94c43d] mx-auto rounded-full" />
           </motion.div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
-            {[
-              { value: '200 PLN', desc: 'Średnia pensja miesięczna w Gambii' },
-              { value: '130 PLN', desc: 'Miesięczny koszt dodatkowych lekcji angielskiego dla dziecka' },
-              { value: '100 PLN', desc: 'Podstawowe leczenie stomatologiczne u dentysty' },
-              { value: '170 PLN', desc: 'Miesięczne utrzymanie na studiach: czesne, akademik, wyżywienie' },
-            ].map((item, i) => (
+            {ix.parallaxItems.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
