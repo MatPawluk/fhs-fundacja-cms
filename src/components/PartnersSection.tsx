@@ -25,10 +25,9 @@ export const PartnersSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-3">
+          <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">
             Nasi <GradientText>Partnerzy</GradientText>
           </h2>
-          
         </motion.div>
 
         <div className="flex flex-wrap items-center justify-center gap-12 md:gap-16 lg:gap-20 max-w-5xl mx-auto">

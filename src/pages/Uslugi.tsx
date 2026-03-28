@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
@@ -22,75 +22,94 @@ import stepChange from '@/assets/step-change.jpg';
 
 const children = [
   {
-    name: 'Lamin Ceessay',
-    age: 9,
+    name: 'Alima Sadia',
+    age: 7,
+    gender: 'dziewczynka',
     country: 'Gambia',
+    location: 'Bijilo',
     image: child1,
     monthlySupport: 150,
-    grade: '2 klasa',
-    dream: 'Zostać inżynierem',
-    shortDesc: 'Lamin to ciekawy świata chłopiec z 2 klasy. Uwielbia matematykę, naukę, sztukę i sport.',
-    longDesc: 'Lamin to ambitny uczeń, który z pasją podchodzi do wszystkiego, co robi. Interesuje się matematyką, naukami przyrodniczymi i sztuką, a po lekcjach chętnie gra w piłkę i uczestniczy w zajęciach dodatkowych. Ceni sobie przyjaźń i współpracę – w szkole zawsze można na niego liczyć.\n\nWirtualna adopcja Lamina to szansa, by pomóc mu rozwijać się i osiągać kolejne cele. Twoja obecność może dodać mu odwagi, motywacji i wiary, że marzenia naprawdę się spełniają.',
+    grade: '1 klasa',
+    shortDesc: 'Alima to pilna uczennica, która potrzebuje wsparcia. Jej tata od blisko dwóch lat pozostaje bez pracy.',
+    longDesc: 'Alima to pilna uczennica, która potrzebuje wsparcia. Jej tata od blisko dwóch lat pozostaje bez pracy, a drobny biznes prowadzony przez mamę nie przynosi wystarczających dochodów. Z tego powodu rodzina nie jest w stanie opłacić czesnego i zapewnić Alimie ciągłości nauki.',
     needs: ['Edukacja', 'Posiłki', 'Opieka medyczna'],
   },
   {
-    name: 'Aminata Jallow',
-    age: 7,
+    name: 'Lamin Ceessay',
+    age: 9,
+    gender: 'chłopiec',
     country: 'Gambia',
+    location: 'Bijilo',
     image: child2,
     monthlySupport: 150,
-    grade: '1 klasa',
-    dream: 'Zostać nauczycielką',
-    shortDesc: 'Aminata to radosna dziewczynka, która marzy o zostaniu nauczycielką.',
-    longDesc: 'Aminata to pogodna, pełna energii dziewczynka, która uwielbia się uczyć. Jej ulubione przedmioty to język angielski i rysowanie. Marzy o tym, by pewnego dnia zostać nauczycielką i pomagać innym dzieciom w swojej wiosce.\n\nDzięki wirtualnej adopcji Aminata może kontynuować naukę, otrzymywać posiłki w szkole i rozwijać swoje talenty. Twoje wsparcie daje jej szansę na lepszą przyszłość.',
+    grade: '2 klasa',
+    shortDesc: 'Lamin to ciekawy świata chłopiec z 2 klasy. Uwielbia matematykę, naukę, sztukę i sport.',
+    longDesc: 'Lamin to ciekawy świata chłopiec z 2 klasy. To ambitny uczeń, który z pasją podchodzi do wszystkiego, co robi. Interesuje się matematyką, naukami przyrodniczymi i sztuką, a po lekcjach chętnie gra w piłkę i uczestniczy w zajęciach dodatkowych. Ceni sobie przyjaźń i współpracę - W szkole zawsze można na niego liczyć.',
     needs: ['Edukacja', 'Posiłki', 'Materiały szkolne'],
   },
   {
-    name: 'Ousman Sanneh',
+    name: 'Suna Fai',
     age: 10,
+    gender: 'dziewczynka',
     country: 'Gambia',
+    location: 'Bijilo',
     image: child3,
     monthlySupport: 150,
-    grade: '3 klasa',
-    dream: 'Zostać lekarzem',
-    shortDesc: 'Ousman jest utalentowanym sportowcem i pilnym uczniem trzeciej klasy.',
-    longDesc: 'Ousman to chłopiec o wielkim sercu i zaraźliwym uśmiechu. Jest jednym z najlepszych uczniów w swojej klasie i uwielbia grać w piłkę nożną po lekcjach. Marzy o tym, by zostać lekarzem i pomagać ludziom w swojej społeczności.\n\nTwoje wsparcie w ramach wirtualnej adopcji pozwoli Ousmanowi kontynuować edukację, rozwijać swoje pasje i budować przyszłość, o której marzy. Każda wpłata to krok bliżej jego marzeń.',
-    needs: ['Edukacja', 'Opieka medyczna', 'Posiłki'],
+    grade: '2 klasa',
+    shortDesc: 'Suna chodzi do 2 klasy w My Gambia School. Jest bardzo ambitną uczennicą, która kocha czytać i rysować.',
+    longDesc: 'Suna chodzi do 2 klasy w My Gambia School. Jest bardzo ambitną uczennicą, która kocha czytać i rysować. Jej mama robi wszystko, by zapewnić jej edukację mimo skromnych dochodów. Suna marzy o tym, by kiedyś zostać nauczycielką.',
+    needs: ['Edukacja', 'Posiłki', 'Materiały szkolne'],
   },
   {
-    name: 'Fatou Touray',
-    age: 8,
+    name: 'Elizabeth Christian',
+    age: 7,
+    gender: 'dziewczynka',
     country: 'Gambia',
+    location: 'Bijilo',
     image: child4,
     monthlySupport: 150,
     grade: '2 klasa',
-    dream: 'Podróżować po świecie',
-    shortDesc: 'Fatou uwielbia śpiewać i tańczyć. Jest uczennicą drugiej klasy.',
-    longDesc: 'Fatou to dziewczynka pełna radości i talentu. Uwielbia muzykę, taniec i spędzanie czasu z przyjaciółkami. W szkole wyróżnia się kreatywnością i chęcią pomocy innym. Jej marzeniem jest podróżowanie i poznawanie nowych kultur.\n\nWirtualna adopcja Fatou to szansa na zapewnienie jej stabilnej edukacji, codziennych posiłków i opieki medycznej. Twoje wsparcie może zmienić jej życie na zawsze.',
+    shortDesc: 'Elizabeth to radosna, pełna energii dziewczynka, która z pasją podchodzi do nauki.',
+    longDesc: 'Elizabeth uczęszcza do 2 klasy w My Gambia School. To radosna, pełna energii dziewczynka, która z pasją podchodzi do nauki. Marzy o tym, by poznawać świat i uczyć się nowych rzeczy, ale potrzebuje wsparcia, by móc kontynuować edukację i rozwijać swoje talenty.',
     needs: ['Edukacja', 'Posiłki', 'Opieka medyczna'],
   },
   {
-    name: 'Modou Bah',
-    age: 11,
+    name: "Unique J'gin",
+    age: 10,
+    gender: 'chłopiec',
     country: 'Gambia',
+    location: 'Bijilo',
     image: child5,
     monthlySupport: 150,
-    grade: '4 klasa',
-    dream: 'Zostać pilotem',
-    shortDesc: 'Modou to pracowity chłopiec, który marzy o lataniu. Uwielbia naukę i przyrodę.',
-    longDesc: 'Modou jest jednym z najstarszych uczniów w swojej klasie i naturalnym liderem. Pomaga młodszym dzieciom w nauce i organizuje mecze piłki nożnej. Fascynuje go przyroda i samoloty – marzy o tym, by pewnego dnia zostać pilotem.\n\nDzięki Twojemu wsparciu Modou może kontynuować naukę, rozwijać swoje zainteresowania i zbliżać się do swoich marzeń. Każdy miesiąc wsparcia to nowa szansa na lepsze jutro.',
+    grade: '8 klasa',
+    shortDesc: 'Unique to bystry i kreatywny chłopiec, który z dużą ciekawością odkrywa świat.',
+    longDesc: 'Unique to bystry i kreatywny chłopiec, który z dużą ciekawością odkrywa świat. Mimo młodego wieku uczy się już w 8 klasie, co świadczy o jego dużych możliwościach i szybkim rozwoju. Interesuje się nauką, sztuką, muzyką oraz sportem. Jest otwarty, pełen energii i znany z radosnego usposobienia.',
     needs: ['Edukacja', 'Materiały szkolne', 'Posiłki'],
   },
   {
-    name: 'Isatou Camara',
-    age: 6,
+    name: 'Mariatou Kanteh',
+    age: 14,
+    gender: 'dziewczynka',
     country: 'Gambia',
+    location: 'Bijilo',
     image: child6,
     monthlySupport: 150,
-    grade: 'Przedszkole',
-    dream: 'Zostać piosenkarką',
-    shortDesc: 'Isatou to najmłodsza w grupie. Uwielbia śpiewać i bawić się z innymi dziećmi.',
-    longDesc: 'Isatou to mała dziewczynka o ogromnym sercu i zaraźliwym śmiechu. Dopiero zaczyna swoją przygodę z edukacją, ale już teraz widać, jak bardzo chłonie wiedzę. Uwielbia kolorować, śpiewać i bawić się z rówieśnikami.\n\nWirtualna adopcja Isatou to szansa na zapewnienie jej bezpiecznego startu w edukacji, regularnych posiłków i podstawowej opieki zdrowotnej. Twoje wsparcie może dać jej fundament na całe życie.',
+    grade: '8 klasa',
+    shortDesc: 'Mariatou to serdeczna i pełna energii dziewczynka, która z ciekawością poznaje świat.',
+    longDesc: 'Mariatou to serdeczna i pełna energii dziewczynka, która z ciekawością poznaje świat i chętnie się uczy. Ma 14 lat i obecnie uczęszcza do 8 klasy. Jest osobą otwartą, życzliwą i łatwo nawiązuje relacje z innymi. Ceni przyjaźń, wsparcie i poczucie bezpieczeństwa.',
+    needs: ['Edukacja', 'Posiłki', 'Opieka medyczna'],
+  },
+  {
+    name: 'Peggy',
+    age: 6,
+    gender: 'dziewczynka',
+    country: 'Gambia',
+    location: 'Bijilo',
+    image: child1,
+    monthlySupport: 150,
+    grade: '1 klasa',
+    shortDesc: 'Peggy to urocza i pełna energii dziewczynka, która uczęszcza do 1 klasy.',
+    longDesc: 'Peggy to urocza i pełna energii dziewczynka, która uczęszcza do 1 klasy. Jest pogodna, serdeczna i chętnie nawiązuje relacje z innymi. Lubi spędzać czas z rówieśnikami i ceni przyjaźń oraz życzliwość. Dzięki swojej otwartości i radosnemu usposobieniu z entuzjazmem odkrywa świat i stawia pierwsze kroki w szkolnej przygodzie.',
     needs: ['Edukacja', 'Posiłki', 'Opieka medyczna'],
   },
 ];
@@ -112,7 +131,7 @@ const STEPS = [
   {
     id: '02',
     title: 'Zadeklaruj wsparcie',
-    description: 'Zdecyduj o kwocie miesięcznego wsparcia — już od 150 zł. Wybierz formę płatności i częstotliwość. Każda regularna wpłata ma ogromne znaczenie.',
+    description: 'Wybierz formę wsparcia dopasowaną do swoich możliwości - jednorazową lub regularną. Możesz również rozszerzyć pomoc o konkretne potrzeby, takie jak edukacja, zajęcia rozwojowe czy opieka zdrowotna.',
     image: stepDeclare,
   },
   {
@@ -134,7 +153,7 @@ const AUTO_PLAY_DURATION = 5000;
 function HowItWorksVerticalTabs() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [userInteracted, setUserInteracted] = useState(false);
 
   const handleNext = useCallback(() => {
     setDirection(1);
@@ -150,16 +169,16 @@ function HowItWorksVerticalTabs() {
     if (index === activeIndex) return;
     setDirection(index > activeIndex ? 1 : -1);
     setActiveIndex(index);
-    setIsPaused(false);
+    setUserInteracted(true);
   };
 
   useEffect(() => {
-    if (isPaused) return;
+    if (userInteracted) return;
     const interval = setInterval(() => {
       handleNext();
     }, AUTO_PLAY_DURATION);
     return () => clearInterval(interval);
-  }, [activeIndex, isPaused, handleNext]);
+  }, [activeIndex, userInteracted, handleNext]);
 
   const variants = {
     enter: (dir: number) => ({ y: dir > 0 ? '-100%' : '100%', opacity: 0 }),
@@ -197,7 +216,7 @@ function HowItWorksVerticalTabs() {
                       )}
                     >
                       <div className="relative w-1 self-stretch rounded-full bg-gray-200/50 overflow-hidden flex-shrink-0">
-                        {isActive && (
+                        {isActive && !userInteracted && (
                           <motion.div
                             className="absolute inset-x-0 top-0 bg-[#94c43d] rounded-full"
                             initial={{ height: '0%' }}
@@ -205,6 +224,9 @@ function HowItWorksVerticalTabs() {
                             transition={{ duration: AUTO_PLAY_DURATION / 1000, ease: 'linear' }}
                             key={activeIndex}
                           />
+                        )}
+                        {isActive && userInteracted && (
+                          <div className="absolute inset-x-0 top-0 bottom-0 bg-[#94c43d] rounded-full" />
                         )}
                       </div>
 
@@ -244,12 +266,8 @@ function HowItWorksVerticalTabs() {
             </div>
 
             {/* Right: Image */}
-            <div className="relative flex items-center justify-center">
-              <div
-                className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden bg-gray-100"
-                onMouseEnter={() => setIsPaused(true)}
-                onMouseLeave={() => setIsPaused(false)}
-              >
+            <div className="relative flex items-start justify-center pt-8 lg:pt-12">
+              <div className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden bg-gray-100">
                 <AnimatePresence initial={false} custom={direction} mode="popLayout">
                   <motion.img
                     key={activeIndex}
@@ -266,17 +284,16 @@ function HowItWorksVerticalTabs() {
                   />
                 </AnimatePresence>
 
-                {/* Navigation arrows */}
                 <div className="absolute bottom-5 right-5 flex gap-2 z-10">
                   <button
-                    onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+                    onClick={(e) => { e.stopPropagation(); handlePrev(); setUserInteracted(true); }}
                     className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/80 backdrop-blur-md border border-gray-200/50 flex items-center justify-center text-gray-700 hover:bg-white transition-all active:scale-90"
                     aria-label="Poprzedni"
                   >
                     <ChevronLeft className="w-5 h-5" />
                   </button>
                   <button
-                    onClick={(e) => { e.stopPropagation(); handleNext(); }}
+                    onClick={(e) => { e.stopPropagation(); handleNext(); setUserInteracted(true); }}
                     className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/80 backdrop-blur-md border border-gray-200/50 flex items-center justify-center text-gray-700 hover:bg-white transition-all active:scale-90"
                     aria-label="Następny"
                   >
@@ -292,7 +309,7 @@ function HowItWorksVerticalTabs() {
   );
 }
 
-const CHILDREN_PER_PAGE = 3;
+const CHILDREN_PER_PAGE = 9;
 
 const Uslugi = () => {
   const [selectedChild, setSelectedChild] = useState<number | null>(null);
@@ -324,7 +341,7 @@ const Uslugi = () => {
         </div>
       </section>
 
-      {/* Children Grid — 3 columns, spacious cards */}
+      {/* Children Grid — 3 columns, 9 per page */}
       <section id="children-grid" className="py-16 scroll-mt-8" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -339,7 +356,6 @@ const Uslugi = () => {
                 onClick={() => setSelectedChild(globalIndex)}
                 className="group cursor-pointer rounded-3xl overflow-hidden bg-white border border-gray-100 hover:border-[#94c43d]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
               >
-                {/* Image */}
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <img
                     src={child.image}
@@ -350,7 +366,7 @@ const Uslugi = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                   <div className="absolute top-4 right-4">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#94c43d] text-white text-xs font-semibold shadow-lg">
-                      <MapPin className="w-3 h-3" /> {child.country}
+                      <MapPin className="w-3 h-3" /> {child.location}, {child.country}
                     </span>
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -359,7 +375,6 @@ const Uslugi = () => {
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="p-6">
                   <p className="text-gray-600 text-sm leading-relaxed mb-5 line-clamp-3">{child.shortDesc}</p>
                   <div className="flex flex-wrap gap-2 mb-5">
@@ -424,7 +439,7 @@ const Uslugi = () => {
         </div>
       </section>
 
-      {/* Child Detail Popup — full-screen overlay with spacious layout */}
+      {/* Child Detail Popup */}
       <AnimatePresence>
         {selectedChild !== null && (
           <motion.div
@@ -443,7 +458,6 @@ const Uslugi = () => {
               className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-[2rem] bg-white shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close button */}
               <button
                 onClick={() => setSelectedChild(null)}
                 className="absolute top-5 right-5 z-20 w-11 h-11 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg"
@@ -452,17 +466,24 @@ const Uslugi = () => {
               </button>
 
               <div className="grid md:grid-cols-[45%_55%] h-full max-h-[90vh]">
-                {/* Left: Full image */}
-                <div className="relative h-64 md:h-full">
-                  <img
-                    src={children[selectedChild].image}
-                    alt={children[selectedChild].name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-transparent" />
+                {/* Left: Scrollable image gallery */}
+                <div className="relative h-64 md:h-full overflow-y-auto">
+                  <div className="flex flex-col">
+                    <img
+                      src={children[selectedChild].image}
+                      alt={children[selectedChild].name}
+                      className="w-full aspect-[3/4] object-cover"
+                    />
+                    <img
+                      src={children[selectedChild].image}
+                      alt={children[selectedChild].name}
+                      className="w-full aspect-[3/4] object-cover"
+                      style={{ filter: 'brightness(0.95)' }}
+                    />
+                  </div>
                   <div className="absolute top-5 left-5">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#94c43d] text-white text-xs font-semibold shadow-lg">
-                      <MapPin className="w-3 h-3" /> {children[selectedChild].country}
+                      <MapPin className="w-3 h-3" /> {children[selectedChild].location}, {children[selectedChild].country}
                     </span>
                   </div>
                 </div>
@@ -471,23 +492,23 @@ const Uslugi = () => {
                 <div className="overflow-y-auto p-8 md:p-10 flex flex-col">
                   <div className="flex-1">
                     <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-2">{children[selectedChild].name}</h2>
-                    <div className="flex items-center gap-3 mb-8">
+                    <div className="flex items-center gap-3 mb-6">
                       <span className="text-gray-400 text-lg">{children[selectedChild].age} lat</span>
                       <span className="w-1 h-1 rounded-full bg-gray-300" />
                       <span className="text-gray-400 text-lg">{children[selectedChild].grade}</span>
+                      <span className="w-1 h-1 rounded-full bg-gray-300" />
+                      <span className="text-gray-400 text-lg">{children[selectedChild].gender}</span>
                     </div>
+
+                    <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                      Aby poznać więcej historii dzieci oraz dowiedzieć się o ich aktualnych potrzebach, zapraszamy do kontaktu z nami.
+                    </p>
 
                     {/* Story */}
                     <div className="space-y-4 mb-8">
                       {children[selectedChild].longDesc.split('\n\n').map((p, i) => (
                         <p key={i} className="text-gray-600 text-base leading-relaxed">{p}</p>
                       ))}
-                    </div>
-
-                    {/* Dream */}
-                    <div className="mb-8 p-5 rounded-2xl bg-[#94c43d]/5 border border-[#94c43d]/10">
-                      <p className="text-[#6b8f2b] text-sm font-semibold mb-1">💫 Marzenie</p>
-                      <p className="text-gray-700 font-medium">{children[selectedChild].dream}</p>
                     </div>
 
                     {/* Needs */}
@@ -501,10 +522,6 @@ const Uslugi = () => {
                         ))}
                       </div>
                     </div>
-
-                    <p className="text-gray-400 text-sm leading-relaxed mb-8">
-                      Aby poznać więcej historii dzieci oraz dowiedzieć się o ich aktualnych potrzebach, zapraszamy do kontaktu z nami.
-                    </p>
                   </div>
 
                   {/* Bottom: Support + CTA */}
@@ -515,7 +532,7 @@ const Uslugi = () => {
                     </div>
 
                     <Link
-                      to="/kontakt"
+                      to="/#wesprzyj"
                       className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#94c43d] text-white rounded-2xl font-semibold text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]"
                       onClick={() => setSelectedChild(null)}
                     >
@@ -532,7 +549,7 @@ const Uslugi = () => {
       {/* How it works — Vertical Tabs */}
       <HowItWorksVerticalTabs />
 
-      {/* FAQ Section — same design as home page */}
+      {/* FAQ Section */}
       <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#94c43d]/5 blur-[150px] rounded-full" />
@@ -578,11 +595,11 @@ const Uslugi = () => {
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
             <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              {pt.ctaTitle} <GradientText>{pt.ctaTitleHighlight}</GradientText>
+              Twoja pomoc może <GradientText>zacząć się dziś</GradientText>
             </h2>
-            <p className="text-gray-500 mb-8 max-w-lg mx-auto">{pt.ctaSubtitle}</p>
+            <p className="text-gray-500 mb-8 max-w-lg mx-auto">Wystarczy jeden krok, aby realnie zmienić czyjeś życie.</p>
             <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
-              {pt.ctaButton}
+              Skontaktuj się
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </motion.div>

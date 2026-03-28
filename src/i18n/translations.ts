@@ -39,7 +39,7 @@ export const translations = {
     },
     services: {
       title: 'Nasze programy',
-      viewAll: 'Zobacz wszystkie programy',
+      viewAll: 'Zobacz wszystkie projekty',
       learnMore: 'Dowiedz się więcej',
     },
     serviceDetail: {
@@ -179,7 +179,7 @@ export const translations = {
     },
     services: {
       title: 'Our programs',
-      viewAll: 'View all programs',
+      viewAll: 'View all projects',
       learnMore: 'Learn more',
     },
     serviceDetail: {

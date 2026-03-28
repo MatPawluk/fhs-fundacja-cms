@@ -14,8 +14,7 @@ import galeria11 from '@/assets/onas-galeria-11.png';
 import domPolskiGambia from '@/assets/dom-polski-gambia.jpg';
 
 const images = [
-  domPolskiGambia, galeria0, galeria1, galeria2, galeria3,
-  galeria4, galeria5, galeria6, galeria9, galeria10, galeria11,
+  domPolskiGambia, galeria0, galeria1, galeria2, galeria3, galeria4, galeria5,
 ];
 
 export const DomPolskiGallery = () => {

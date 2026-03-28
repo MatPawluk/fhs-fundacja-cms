@@ -10,14 +10,13 @@ import { PhotoCarousel } from '@/components/PhotoCarousel';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { statsTranslations, carouselServicesTranslations, articlesTranslations } from '@/i18n/contentTranslations';
 import { PartnersSection } from '@/components/PartnersSection';
-import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, Heart, Calendar, Clock } from 'lucide-react';
+import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, Heart, Calendar, Clock, CreditCard } from 'lucide-react';
 
 import sgStrategia from '@/assets/sg-strategia.png';
 import sgAnalizy from '@/assets/sg-analizy.png';
 import sgWejscie from '@/assets/sg-wejscie.png';
 import sgImport from '@/assets/sg-import.png';
 import sgMarketing from '@/assets/sg-marketing.png';
-import sgMisje from '@/assets/sg-misje.png';
 import wsprzyjNas from '@/assets/wesprzyj-nas.jpg';
 import { DomPolskiGallery } from '@/components/DomPolskiGallery';
 import articleCompetition from '@/assets/article-competition.jpg';
@@ -35,13 +34,17 @@ const articleImages: Record<string, string> = {
   'automatyzacja-robotyzacja-chiny': serviceStrategy,
 };
 
-const carouselImages = [sgStrategia, sgAnalizy, sgWejscie, sgImport, sgMarketing, sgMisje];
-const carouselSlugs = ['strategia-wobec-chin', 'analizy-rynku', 'wejscie-na-rynek', 'import-eksport', 'marketing-pozycjonowanie', 'misje-szkolenia'];
+const carouselImages = [sgStrategia, sgAnalizy, sgWejscie, sgImport, sgMarketing];
+const carouselSlugs = ['wyjazdy-wolontariackie', 'wsparcie-edukacyjne', 'wolontariat-misyjny', 'zbiorki-charytatywne', 'wspolpraca-z-ministerstwami'];
+
+const DONATION_AMOUNTS = [5, 10, 20, 50, 100, 200];
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedAmount, setSelectedAmount] = useState<number | null>(20);
+  const [customAmount, setCustomAmount] = useState('20,00');
   const isCarouselInView = useInView(carouselRef, { amount: 0.3 });
   const { t, language } = useLanguage();
   const stats = statsTranslations[language];
@@ -91,6 +94,11 @@ const Index = () => {
   const getPrevIndex = () => (currentSlide - 1 + carouselServices.length) % carouselServices.length;
   const getNextIndex = () => (currentSlide + 1) % carouselServices.length;
 
+  const handleAmountSelect = (amount: number) => {
+    setSelectedAmount(amount);
+    setCustomAmount(amount.toFixed(2).replace('.', ','));
+  };
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
@@ -137,10 +145,7 @@ const Index = () => {
       </section>
 
       {/* Services Carousel Section */}
-      <section ref={carouselRef} className="relative -mt-32 sm:-mt-40 md:-mt-48 pt-8 pb-24 z-10" style={{ backgroundColor: 'transparent' }}>
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-10 w-[400px] h-[400px] rounded-full bg-[#f5f3ef]/60 blur-3xl" />
-        </div>
+      <section ref={carouselRef} className="relative pt-16 pb-24 z-10" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="relative">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="relative">
@@ -156,7 +161,7 @@ const Index = () => {
                 <div className="flex-shrink-0 w-full max-w-3xl overflow-hidden">
                   <AnimatePresence mode="popLayout">
                     <motion.div key={currentSlide} initial={{ x: 300, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -300, opacity: 0 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} className="relative rounded-3xl overflow-hidden aspect-[16/10] lg:aspect-[2/1] border border-gray-300/30 shadow-2xl group">
-                      <motion.img initial={{ scale: 1.05 }} animate={{ scale: 1 }} transition={{ duration: 0.6 }} src={carouselServices[currentSlide].image} alt={carouselServices[currentSlide].title} className={`absolute inset-0 w-full h-full object-cover ${carouselServices[currentSlide].slug === 'strategia-wobec-chin' ? 'scale-[1.15]' : ''}`} style={carouselServices[currentSlide].slug === 'strategia-wobec-chin' ? { objectPosition: '60% 55%' } : undefined} />
+                      <motion.img initial={{ scale: 1.05 }} animate={{ scale: 1 }} transition={{ duration: 0.6 }} src={carouselServices[currentSlide].image} alt={carouselServices[currentSlide].title} className="absolute inset-0 w-full h-full object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/70 to-transparent" />
                       <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#94c43d] via-[#94c43d]/50 to-transparent" />
                       <div className="absolute inset-0 flex items-center p-8 sm:p-12 lg:p-16">
@@ -219,8 +224,11 @@ const Index = () => {
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex-1">
+              <p className="text-gray-600 leading-relaxed mb-4">
+                <strong>Fundacja FHS</strong> to organizacja non-profit działająca od 2022 roku, której misją jest poprawa warunków życia i edukacji w społecznościach Afryki Zachodniej.
+              </p>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Główne cele działalności fundacji zbudowane są na wartościach, które stanowią fundament nowoczesnego i dobrze sytuowanego społeczeństwa. Każda z tych wartości zrodziła się w sercu Omeny w wyniku jej doświadczeń życiowych i dziś wyznacza główne kierunki działalności fundacji. A są nimi: edukacja, tolerancja i współpraca.
+                Nasze działania koncentrują się wokół <strong>edukacji, opieki zdrowotnej, rozwoju infrastruktury</strong> oraz wspierania lokalnych inicjatyw przedsiębiorczych.
               </p>
               <Link to="/o-nas" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-300 text-gray-700 hover:border-[#94c43d] hover:text-[#94c43d] transition-all duration-300 text-sm font-medium">
                 O Fundacji <ArrowRight className="w-4 h-4" />
@@ -230,7 +238,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Photo Carousel - Nasze Projekty */}
+      {/* Photo Carousel */}
       <PhotoCarousel />
 
       {/* Aktualności Section */}
@@ -270,15 +278,10 @@ const Index = () => {
       </section>
 
       {/* Wesprzyj Nas Section */}
-      <section className="py-20" style={{ backgroundColor: '#f5f3ef' }}>
+      <section id="wesprzyj" className="py-20" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
-              <div className="rounded-3xl overflow-hidden shadow-lg">
-                <img src={wsprzyjNas} alt="Wesprzyj nas" className="w-full h-auto object-cover" loading="lazy" width={800} height={1024} />
-              </div>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">Wesprzyj</span>
               <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
                 Jak możesz <GradientText>pomóc</GradientText>?
@@ -304,6 +307,59 @@ const Index = () => {
                 Wesprzyj misję
                 <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
+            </motion.div>
+
+            {/* Payment Gateway Placeholder */}
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <div className="rounded-3xl p-8 border border-gray-200/50" style={{ backgroundColor: '#f0ede8' }}>
+                <div className="text-center mb-6">
+                  <div className="w-14 h-14 rounded-2xl bg-[#94c43d]/10 flex items-center justify-center mx-auto mb-4">
+                    <CreditCard className="w-7 h-7 text-[#94c43d]" />
+                  </div>
+                  <h3 className="font-display font-bold text-xl text-gray-900 mb-1">Wpłać darowiznę</h3>
+                  <p className="text-gray-500 text-sm">Tylko dzięki Twojemu wsparciu możemy rozwijać się i prowadzić nasze działania!</p>
+                </div>
+
+                <div className="flex flex-wrap gap-2 justify-center mb-6">
+                  {DONATION_AMOUNTS.map((amount) => (
+                    <button
+                      key={amount}
+                      onClick={() => handleAmountSelect(amount)}
+                      className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
+                        selectedAmount === amount
+                          ? 'bg-[#94c43d] text-white shadow-md'
+                          : 'bg-white border border-gray-200 text-gray-700 hover:border-[#94c43d]/50'
+                      }`}
+                    >
+                      {amount} zł
+                    </button>
+                  ))}
+                </div>
+
+                <div className="mb-6">
+                  <label className="block text-sm text-gray-500 mb-2">Dowolna kwota (zł)</label>
+                  <input
+                    type="text"
+                    value={customAmount}
+                    onChange={(e) => {
+                      setCustomAmount(e.target.value);
+                      setSelectedAmount(null);
+                    }}
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200/50 text-gray-900 text-center text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[#94c43d] focus:border-transparent transition-all"
+                    style={{ backgroundColor: '#e8e5e0' }}
+                  />
+                </div>
+
+                <button className="w-full py-4 bg-[#94c43d] text-white rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)] transition-all duration-300">
+                  Wspieram! <span className="text-xl">💚</span>
+                </button>
+
+                <div className="flex flex-wrap items-center justify-center gap-3 mt-5 opacity-50">
+                  {['Przelewy24', 'Mastercard', 'VISA', 'BLIK'].map((method) => (
+                    <span key={method} className="text-xs font-medium text-gray-500 px-2 py-1 rounded bg-white/60">{method}</span>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
