@@ -346,13 +346,13 @@ const Index = () => {
       {/* Aktualności Section */}
       <section className="py-20" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-start justify-between mb-12">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 gap-4">
             <div className="flex items-center gap-3">
               <div className="w-8 h-px bg-gray-900" />
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">Aktualności</h2>
+              <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">{ix.aktualnosci}</h2>
             </div>
             <Link to="/baza-wiedzy" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-300 text-gray-700 hover:border-[#94c43d] hover:text-[#94c43d] transition-all duration-300 text-sm font-medium">
-              Wszystkie aktualności <ArrowRight className="w-4 h-4" />
+              {ix.aktWszystkie} <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>
 
