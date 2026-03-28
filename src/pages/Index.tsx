@@ -384,29 +384,29 @@ const Index = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">Wesprzyj</span>
+              <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">{ix.wsprzyjBadge}</span>
               <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                Jak możesz <GradientText>pomóc</GradientText>?
+                {ix.wsprzyjTitle} <GradientText>{ix.wsprzyjHighlight}</GradientText>?
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Twoje wsparcie zmienia życie dzieci w Afryce. Każda wpłata, nawet najmniejsza, trafia bezpośrednio tam, gdzie jest najbardziej potrzebna — na edukację, posiłki i opiekę medyczną.
+                {ix.wsprzyjDesc}
               </p>
               <div className="space-y-3 mb-8">
                 <div className="flex items-center gap-3">
                   <Heart className="w-5 h-5 text-[#94c43d]" />
-                  <span className="text-gray-700">Wirtualna adopcja — od 150 zł/mies.</span>
+                  <span className="text-gray-700">{ix.wsprzyjAdopcja}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Heart className="w-5 h-5 text-[#94c43d]" />
-                  <span className="text-gray-700">Jednorazowa darowizna</span>
+                  <span className="text-gray-700">{ix.wsprzyjJednorazowa}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Heart className="w-5 h-5 text-[#94c43d]" />
-                  <span className="text-gray-700">Wolontariat w Gambii</span>
+                  <span className="text-gray-700">{ix.wsprzyjWolontariat}</span>
                 </div>
               </div>
               <Link to="/uslugi" className="group inline-flex items-center gap-3 px-8 py-4 bg-[#94c43d] text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
-                Wesprzyj misję
+                {ix.wsprzyjCta}
                 <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </motion.div>
