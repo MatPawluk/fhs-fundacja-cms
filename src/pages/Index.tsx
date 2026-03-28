@@ -40,6 +40,8 @@ const carouselSlugs = ['wyjazdy-wolontariackie', 'wsparcie-edukacyjne', 'wolonta
 const DONATION_AMOUNTS = [5, 10, 20, 50, 100, 200];
 
 const Index = () => {
+  const { t, language } = useLanguage();
+
   const indexTranslations = {
     pl: {
       poznajBadge: 'Poznaj Fundację',
