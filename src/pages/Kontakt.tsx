@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { GradientText } from '@/components/GradientText';
@@ -46,6 +46,23 @@ const Kontakt = () => {
     topic: '',
     message: '',
   });
+
+  const locations = [
+    {
+      id: 'warszawa',
+      name: 'Warszawa',
+      address: 'ul. Nowogrodzka 31\n00-511 Warszawa\nPolska',
+      mapUrl: "https://maps.google.com/maps?q=Nowogrodzka%2031,%20Warszawa&t=&z=15&ie=UTF8&iwloc=&output=embed"
+    },
+    {
+      id: 'gambia',
+      name: 'Gambia',
+      address: 'Bandżul\nGambia',
+      mapUrl: "https://maps.google.com/maps?q=Banjul,%20Gambia&t=&z=13&ie=UTF8&iwloc=&output=embed"
+    }
+  ];
+
+  const [activeLocation, setActiveLocation] = useState(locations[0]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -137,42 +154,61 @@ const Kontakt = () => {
             </h3>
 
             <div className="grid sm:grid-cols-2 gap-4 mb-8">
-              <div className="p-6 rounded-2xl border border-gray-200/50 hover:border-[#94c43d]/30 transition-colors duration-300" style={{ backgroundColor: '#f0ede8' }}>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: '#e8e5e0' }}>
-                  <MapPin className="w-5 h-5 text-[#94c43d]" />
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Warszawa</h4>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  ul. Nowogrodzka 31<br />
-                  00-511 Warszawa<br />
-                  Polska
-                </p>
-              </div>
-              <div className="p-6 rounded-2xl border border-gray-200/50 hover:border-[#94c43d]/30 transition-colors duration-300" style={{ backgroundColor: '#f0ede8' }}>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: '#e8e5e0' }}>
-                  <MapPin className="w-5 h-5 text-[#94c43d]" />
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Gambia</h4>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  Bandżul<br />
-                  Gambia
-                </p>
-              </div>
+              {locations.map((loc) => (
+                <button
+                  key={loc.id}
+                  onClick={() => setActiveLocation(loc)}
+                  className={`text-left p-6 rounded-2xl border-2 transition-all duration-300 ${
+                    activeLocation.id === loc.id 
+                      ? 'border-[#94c43d] bg-white shadow-lg shadow-[#94c43d]/5' 
+                      : 'border-gray-200/50 hover:border-[#94c43d]/30 bg-[#f0ede8]'
+                  }`}
+                >
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors ${
+                    activeLocation.id === loc.id ? 'bg-[#94c43d]/10' : 'bg-[#e8e5e0]'
+                  }`}>
+                    <MapPin className={`w-5 h-5 ${activeLocation.id === loc.id ? 'text-[#94c43d]' : 'text-gray-400'}`} />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 mb-2">{loc.name}</h4>
+                  <p className="text-gray-500 text-sm leading-relaxed whitespace-pre-line">
+                    {loc.address}
+                  </p>
+                </button>
+              ))}
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="rounded-3xl overflow-hidden border border-gray-200/50">
-            <iframe
-              src="https://embed.apple.com/maps/place?address=Nowogrodzka%2031,%2000-511%20Warsaw,%20Poland&h=400&colorScheme=light"
-              width="100%"
-              height="400"
-              style={{ border: 0, minHeight: '400px' }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Mapa lokalizacji Warszawa"
-              className="w-full"
-            />
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true }} 
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="rounded-[2.5rem] overflow-hidden border border-white/50 shadow-2xl shadow-gray-400/20 bg-white"
+          >
+            <div className="relative h-[450px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeLocation.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute inset-0"
+                >
+                  <iframe
+                    src={activeLocation.mapUrl}
+                    width="100%"
+                    height="450"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`Mapa lokalizacji ${activeLocation.name}`}
+                    className="w-full h-full"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </motion.div>
         </div>
       </section>

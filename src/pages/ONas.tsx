@@ -19,11 +19,13 @@ import teamAgata from '@/assets/team-agata.jpg';
 import teamMaya from '@/assets/team-maya.jpg';
 import teamKebba from '@/assets/team-kebba.jpg';
 import teamChe from '@/assets/team-che.jpg';
+import teamAdrianNew from '@/assets/Adrian-2-e1753411695887.jpg';
 
 const teamData = {
   pl: [
     { name: 'Darek', role: 'Współzałożyciel, koordynacja lokalna', image: teamDarek },
     { name: 'Adrian', role: 'Współzałożyciel, marketing i komunikacja', image: teamAdrian },
+    { name: 'Adrian', role: 'Wsparcie projektowe', image: teamAdrianNew },
     { name: 'Olga', role: 'Wsparcie projektowe', image: teamOlga },
     { name: 'Agata', role: 'Koordynacja lokalna', image: teamAgata },
     { name: 'Maya', role: 'Gospodyni domu polskiego w Gambii', image: teamMaya },
@@ -33,6 +35,7 @@ const teamData = {
   en: [
     { name: 'Darek', role: 'Co-founder, local coordination', image: teamDarek },
     { name: 'Adrian', role: 'Co-founder, marketing & communication', image: teamAdrian },
+    { name: 'Adrian', role: 'Project support', image: teamAdrianNew },
     { name: 'Olga', role: 'Project support', image: teamOlga },
     { name: 'Agata', role: 'Local coordination', image: teamAgata },
     { name: 'Maya', role: 'Housekeeper of the Polish House in Gambia', image: teamMaya },
@@ -42,6 +45,7 @@ const teamData = {
   nl: [
     { name: 'Darek', role: 'Medeoprichter, lokale coördinatie', image: teamDarek },
     { name: 'Adrian', role: 'Medeoprichter, marketing & communicatie', image: teamAdrian },
+    { name: 'Adrian', role: 'Projectondersteuning', image: teamAdrianNew },
     { name: 'Olga', role: 'Projectondersteuning', image: teamOlga },
     { name: 'Agata', role: 'Lokale coördinatie', image: teamAgata },
     { name: 'Maya', role: 'Huishoudster van het Poolse Huis in Gambia', image: teamMaya },

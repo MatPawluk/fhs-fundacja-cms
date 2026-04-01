@@ -2,15 +2,45 @@ import { motion, useScroll, useTransform, AnimatePresence, useInView } from 'fra
 import { Link } from 'react-router-dom';
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { Navbar } from '@/components/Navbar';
+import { toast } from 'sonner';
 import { Footer } from '@/components/Footer';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
 import { GradientText } from '@/components/GradientText';
 import { HomeFAQSection } from '@/components/HomeFAQSection';
 import { PhotoCarousel } from '@/components/PhotoCarousel';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { statsTranslations, carouselServicesTranslations, articlesTranslations } from '@/i18n/contentTranslations';
+import { statsTranslations, carouselServicesTranslations } from '@/i18n/contentTranslations';
+import { useArtykuly } from '@/hooks/useArtykuly';
+import { urlFor } from '@/lib/sanityClient';
 import { PartnersSection } from '@/components/PartnersSection';
+import { ThreeDPhotoBackground } from '@/components/ThreeDPhotoBackground';
 import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, Heart, Calendar, Clock, CreditCard } from 'lucide-react';
+
+// Hero Background Images
+import hero01 from '@/assets/hero-bg-images/hero-01.webp';
+import hero02 from '@/assets/hero-bg-images/hero-02.webp';
+import hero03 from '@/assets/hero-bg-images/hero-03.webp';
+import hero04 from '@/assets/hero-bg-images/hero-04.webp';
+import hero05 from '@/assets/hero-bg-images/hero-05.webp';
+import hero06 from '@/assets/hero-bg-images/hero-06.webp';
+import hero07 from '@/assets/hero-bg-images/hero-07.webp';
+import hero08 from '@/assets/hero-bg-images/hero-08.webp';
+import hero09 from '@/assets/hero-bg-images/hero-09.webp';
+import hero10 from '@/assets/hero-bg-images/hero-10.webp';
+import hero11 from '@/assets/hero-bg-images/hero-11.webp';
+import hero12 from '@/assets/hero-bg-images/hero-12.webp';
+import hero13 from '@/assets/hero-bg-images/hero-13.webp';
+import hero14 from '@/assets/hero-bg-images/hero-14.webp';
+import hero15 from '@/assets/hero-bg-images/hero-15.webp';
+import hero16 from '@/assets/hero-bg-images/hero-16.webp';
+import hero17 from '@/assets/hero-bg-images/hero-17.webp';
+import hero18 from '@/assets/hero-bg-images/hero-18.webp';
+import hero19 from '@/assets/hero-bg-images/hero-19.webp';
+
+const localHeroImages = [
+  hero01, hero02, hero03, hero04, hero05, hero06, hero07, hero08, hero09, hero10,
+  hero11, hero12, hero13, hero14, hero15, hero16, hero17, hero18, hero19
+];
 
 import sgStrategia from '@/assets/sg-strategia.png';
 import sgAnalizy from '@/assets/sg-analizy.png';
@@ -148,9 +178,13 @@ const Index = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedAmount, setSelectedAmount] = useState<number | null>(20);
   const [customAmount, setCustomAmount] = useState('20,00');
+  const [isPaymentLoading, setIsPaymentLoading] = useState(false);
+  const [donorEmail, setDonorEmail] = useState('');
+  const [donateToName, setDonateToName] = useState<string | null>(null);
   const isCarouselInView = useInView(carouselRef, { amount: 0.3 });
   const stats = statsTranslations[language];
-  const articles = articlesTranslations[language].slice(0, 3);
+  const { articles: allArticles } = useArtykuly(language);
+  const articles = allArticles.slice(0, 3);
   const carouselServices = carouselServicesTranslations[language].map((s, i) => ({
     ...s,
     image: carouselImages[i],
@@ -201,20 +235,111 @@ const Index = () => {
     setCustomAmount(amount.toFixed(2).replace('.', ','));
   };
 
+  // Pre-fill from URL if coming from Uslugi
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const urlAmount = params.get('amount');
+    const donateTo = params.get('donateTo');
+    
+    if (urlAmount) {
+      const numAmount = parseFloat(urlAmount);
+      if (!isNaN(numAmount)) {
+        setSelectedAmount(numAmount);
+        setCustomAmount(numAmount.toFixed(2).replace('.', ','));
+      }
+    }
+
+    if (donateTo) {
+      setDonateToName(donateTo);
+    }
+
+    // Explicit scroll to #wesprzyj if params are present
+    if (donateTo || urlAmount || window.location.hash === '#wesprzyj') {
+      setTimeout(() => {
+        const element = document.getElementById('wesprzyj');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
+
+  const handleDonation = async (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Initiating donation process...', { donorEmail, customAmount });
+    
+    if (!donorEmail || !donorEmail.includes('@')) {
+      toast.error('Proszę podać poprawny adres e-mail');
+      return;
+    }
+
+    const donationAmount = parseFloat(customAmount.replace(',', '.'));
+    if (isNaN(donationAmount) || donationAmount <= 0) {
+      toast.error('Proszę podać poprawną kwotę');
+      return;
+    }
+
+    setIsPaymentLoading(true);
+    try {
+      const donateTo = new URLSearchParams(window.location.search).get('donateTo');
+      const description = donateTo ? `Wirtualna adopcja - ${donateTo}` : 'Darowizna dla Fundacji FHS';
+
+      console.log('Calling API /api/create-transaction...', { donationAmount, description });
+
+      const response = await fetch('/api/create-transaction', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount: donationAmount,
+          email: donorEmail,
+          description
+        }),
+      });
+
+      console.log('API Response status:', response.status);
+
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error('Endpoint /api nie został znaleziony. Jeśli testujesz lokalnie, uruchom projekt komendą: npx vercel dev');
+        }
+        const errData = await response.json();
+        throw new Error(errData.error || `Błąd serwera (${response.status})`);
+      }
+
+      const data = await response.json();
+      console.log('API Response data:', data);
+
+      if (data.redirectUrl) {
+        console.log('Redirecting to P24:', data.redirectUrl);
+        window.location.href = data.redirectUrl;
+      } else {
+        throw new Error(data.error || 'Błąd serwera (brak URL przekierowania)');
+      }
+    } catch (error: any) {
+      console.error('Payment failure detail:', error);
+      toast.error(`Wystąpił błąd: ${error.message}`);
+    } finally {
+      setIsPaymentLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen overflow-hidden" style={{ backgroundColor: '#1a1a1a' }}>
-        <motion.div style={{ y: heroY }} className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a1a] via-[#2a2a2a] to-[#1a1a1a]" />
-          <motion.div
-            animate={{ opacity: [0.3, 0.5, 0.3], scale: [1, 1.05, 1] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute inset-0 bg-gradient-to-br from-[#94c43d]/5 via-transparent to-[#94c43d]/10"
-          />
-        </motion.div>
+      <section ref={heroRef} className="relative min-h-screen overflow-hidden bg-[#0a0a0a] w-full max-w-full">
+        <AnimatePresence>
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            transition={{ duration: 1.5 }}
+            className="absolute inset-0"
+          >
+            <ThreeDPhotoBackground images={localHeroImages} />
+          </motion.div>
+        </AnimatePresence>
+
 
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#94c43d]/10 blur-[150px] rounded-full pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#94c43d]/5 blur-[120px] rounded-full pointer-events-none" />
@@ -361,7 +486,12 @@ const Index = () => {
               <motion.article key={article.slug} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="group">
                 <Link to={`/baza-wiedzy/${article.slug}`}>
                   <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-4">
-                    <img src={articleImages[article.slug] || articleCompetition} alt={article.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                    <img
+                      src={(article.mainImage as any)?.asset?._ref ? urlFor(article.mainImage as any).width(500).height(375).fit('crop').auto('format').url() : (articleImages[article.slug] || articleCompetition)}
+                      alt={article.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
                     <div className="absolute bottom-3 left-3">
                       <span className="inline-block px-3 py-1 rounded-full bg-[#94c43d] text-white text-xs font-semibold">{article.category}</span>
                     </div>
@@ -418,6 +548,19 @@ const Index = () => {
                   <div className="w-14 h-14 rounded-2xl bg-[#94c43d]/10 flex items-center justify-center mx-auto mb-4">
                     <CreditCard className="w-7 h-7 text-[#94c43d]" />
                   </div>
+                  
+                  {/* "Supporting" badge */}
+                  {donateToName && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#94c43d] text-white text-xs font-bold mb-4 shadow-sm"
+                    >
+                      <Heart className="w-3 h-3 fill-white" />
+                      Wspierasz: {donateToName}
+                    </motion.div>
+                  )}
+
                   <h3 className="font-display font-bold text-xl text-gray-900 mb-1">{ix.donacjaTitle}</h3>
                   <p className="text-gray-500 text-sm">{ix.donacjaDesc}</p>
                 </div>
@@ -438,23 +581,48 @@ const Index = () => {
                   ))}
                 </div>
 
-                <div className="mb-6">
-                  <label className="block text-sm text-gray-500 mb-2">{ix.donacjaKwota}</label>
-                  <input
-                    type="text"
-                    value={customAmount}
-                    onChange={(e) => {
-                      setCustomAmount(e.target.value);
-                      setSelectedAmount(null);
-                    }}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200/50 text-gray-900 text-center text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[#94c43d] focus:border-transparent transition-all"
-                    style={{ backgroundColor: '#e8e5e0' }}
-                  />
-                </div>
+                <form onSubmit={handleDonation}>
+                  <div className="mb-4">
+                    <label className="block text-sm text-gray-500 mb-2">Twój e-mail</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="email@przyklad.pl"
+                      value={donorEmail}
+                      onChange={(e) => setDonorEmail(e.target.value)}
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200/50 text-gray-900 text-center focus:outline-none focus:ring-2 focus:ring-[#94c43d] focus:border-transparent transition-all"
+                      style={{ backgroundColor: '#e8e5e0' }}
+                    />
+                  </div>
 
-                <button className="w-full py-4 bg-[#94c43d] text-white rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)] transition-all duration-300">
-                  {ix.donacjaCta} <span className="text-xl">💚</span>
-                </button>
+                  <div className="mb-6">
+                    <label className="block text-sm text-gray-500 mb-2">{ix.donacjaKwota}</label>
+                    <input
+                      type="text"
+                      value={customAmount}
+                      onChange={(e) => {
+                        setCustomAmount(e.target.value);
+                        setSelectedAmount(null);
+                      }}
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200/50 text-gray-900 text-center text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-[#94c43d] focus:border-transparent transition-all"
+                      style={{ backgroundColor: '#e8e5e0' }}
+                    />
+                  </div>
+
+                  <button 
+                    type="submit"
+                    disabled={isPaymentLoading}
+                    className="w-full py-4 bg-[#94c43d] text-white rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isPaymentLoading ? (
+                      <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    ) : (
+                      <>
+                        {ix.donacjaCta} <span className="text-xl">💚</span>
+                      </>
+                    )}
+                  </button>
+                </form>
 
                 <div className="flex flex-wrap items-center justify-center gap-3 mt-5 opacity-50">
                   {['Przelewy24', 'Mastercard', 'VISA', 'BLIK'].map((method) => (
@@ -498,10 +666,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Dom Polski w Gambii */}
-      <section className="py-20" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="py-20 overflow-hidden w-full max-w-full" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto w-full">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">{ix.domPolskiBadge}</span>
               <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">

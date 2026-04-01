@@ -6,11 +6,12 @@ import { Footer } from '@/components/Footer';
 import { GradientText } from '@/components/GradientText';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { bazaWiedzyTranslations } from '@/i18n/pageTranslations';
-import { articlesTranslations } from '@/i18n/contentTranslations';
-import { Clock, Calendar, ArrowRight } from 'lucide-react';
+import { Clock, Calendar, ArrowRight, Loader2 } from 'lucide-react';
 import articleCompetition from '@/assets/article-competition.jpg';
 import articleInnovation from '@/assets/article-china-innovation.jpg';
 import serviceStrategy from '@/assets/service-strategy.jpg';
+import { useArtykuly } from '@/hooks/useArtykuly';
+import { urlFor } from '@/lib/sanityClient';
 
 const articleImages: Record<string, string> = {
   'gdzie-znika-twoja-marza': articleCompetition,
@@ -23,12 +24,20 @@ const articleImages: Record<string, string> = {
   'automatyzacja-robotyzacja-chiny': serviceStrategy,
 };
 
+function getArticleImage(slug: string, mainImage?: { asset: { _ref: string } }): string {
+  if (mainImage?.asset?._ref) {
+    return urlFor(mainImage).width(600).height(450).fit('crop').auto('format').url();
+  }
+  return articleImages[slug] || articleCompetition;
+}
+
 const BazaWiedzy = () => {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
   const { language } = useLanguage();
   const pt = bazaWiedzyTranslations[language];
-  const articles = articlesTranslations[language];
   const categories = pt.categories;
+
+  const { articles, isLoading } = useArtykuly(language);
 
   const filteredArticles = activeCategoryIndex === 0
     ? articles
@@ -38,7 +47,7 @@ const BazaWiedzy = () => {
     <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
 
-      {/* Hero Section - light, no dark gradients */}
+      {/* Hero Section */}
       <section className="relative pt-28 pb-12 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#94c43d]/5 blur-[150px] rounded-full" />
@@ -77,44 +86,59 @@ const BazaWiedzy = () => {
             ))}
           </motion.div>
 
-          {/* Articles Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredArticles.map((article, index) => (
-              <motion.article
-                key={article.slug}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="group relative rounded-2xl overflow-hidden border border-gray-200/50 hover:border-[#94c43d]/30 hover:shadow-xl hover:shadow-[#94c43d]/5 transition-all duration-500"
-                style={{ backgroundColor: '#f0ede8' }}
-              >
-                <Link to={`/baza-wiedzy/${article.slug}`}>
-                  <div className="relative aspect-[4/3] overflow-hidden">
-                    <img
-                      src={articleImages[article.slug] || articleCompetition}
-                      alt={article.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    
-                    <div className="absolute bottom-4 left-4">
-                      <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold bg-[#94c43d] text-white">
-                        {article.category}
-                      </span>
-                    </div>
-                  </div>
+          {/* Loading state */}
+          {isLoading && (
+            <div className="flex items-center justify-center py-24">
+              <Loader2 className="w-8 h-8 text-[#94c43d] animate-spin" />
+            </div>
+          )}
 
-                  <div className="p-6">
-                    <h3 className="font-display font-semibold text-xl mb-3 text-gray-900 group-hover:text-[#94c43d] transition-colors duration-300 line-clamp-2">{article.title}</h3>
-                    <p className="text-gray-500 text-sm mb-6 line-clamp-2">{article.description}</p>
-                    <div className="flex items-center justify-between text-sm text-gray-600">
-                      <div className="flex items-center gap-1"><Calendar className="w-4 h-4" /><span>{article.date}</span></div>
-                      <div className="flex items-center gap-1"><Clock className="w-4 h-4" /><span>{article.readTime}</span></div>
+          {/* Articles Grid */}
+          {!isLoading && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredArticles.map((article, index) => (
+                <motion.article
+                  key={article._id}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  className="group relative rounded-2xl overflow-hidden border border-gray-200/50 hover:border-[#94c43d]/30 hover:shadow-xl hover:shadow-[#94c43d]/5 transition-all duration-500"
+                  style={{ backgroundColor: '#f0ede8' }}
+                >
+                  <Link to={`/baza-wiedzy/${article.slug}`}>
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img
+                        src={getArticleImage(article.slug, article.mainImage as any)}
+                        alt={article.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute bottom-4 left-4">
+                        <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold bg-[#94c43d] text-white">
+                          {article.category}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </motion.article>
-            ))}
-          </div>
+
+                    <div className="p-6">
+                      <h3 className="font-display font-semibold text-xl mb-3 text-gray-900 group-hover:text-[#94c43d] transition-colors duration-300 line-clamp-2">{article.title}</h3>
+                      <p className="text-gray-500 text-sm mb-6 line-clamp-2">{article.description}</p>
+                      <div className="flex items-center justify-between text-sm text-gray-600">
+                        <div className="flex items-center gap-1"><Calendar className="w-4 h-4" /><span>{article.date}</span></div>
+                        <div className="flex items-center gap-1"><Clock className="w-4 h-4" /><span>{article.readTime}</span></div>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.article>
+              ))}
+
+              {/* Brak artykułów */}
+              {filteredArticles.length === 0 && (
+                <div className="col-span-3 text-center py-16 text-gray-400">
+                  Brak artykułów w tej kategorii.
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </section>
 

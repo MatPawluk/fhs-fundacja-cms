@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from "react"
+import { useEffect, useRef, useCallback, useState } from "react"
 import createGlobe from "cobe"
 
 interface PolaroidMarker {
@@ -96,10 +96,15 @@ export function CobeGlobe({
 
       function animate() {
         if (!isPausedRef.current) phi += speed
+
+        const currentPhi = phi + phiOffsetRef.current + dragOffset.current.phi
+        const currentTheta = 0.15 + thetaOffsetRef.current + dragOffset.current.theta
+
         globe!.update({
-          phi: phi + phiOffsetRef.current + dragOffset.current.phi,
-          theta: 0.15 + thetaOffsetRef.current + dragOffset.current.theta,
+          phi: currentPhi,
+          theta: currentTheta,
         })
+
         animationId = requestAnimationFrame(animate)
       }
       animate()
@@ -123,6 +128,7 @@ export function CobeGlobe({
 
     return () => {
       if (globe) globe.destroy()
+      cancelAnimationFrame(animationId)
     }
   }, [markers, speed])
 
@@ -141,18 +147,6 @@ export function CobeGlobe({
           transition: "opacity 0.5s ease",
         }}
       />
-      {/* Labels */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-6">
-        {markers.map((m) => (
-          <div
-            key={m.id}
-            className="flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm"
-          >
-            <div className="w-2 h-2 rounded-full bg-[#94c43d]" />
-            <span className="text-xs font-medium text-gray-700">{m.caption}</span>
-          </div>
-        ))}
-      </div>
     </div>
   )
 }

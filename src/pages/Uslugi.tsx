@@ -8,112 +8,34 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { uslugiTranslations } from '@/i18n/pageTranslations';
 import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, X, Heart, MapPin, GraduationCap, Utensils, Stethoscope } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { sanityClient, urlFor } from '@/lib/sanityClient';
 
-import adopcjaAlima from '@/assets/adopcja-alima.jpg';
-import adopcjaLamin from '@/assets/adopcja-lamin.jpg';
-import adopcjaSuna from '@/assets/adopcja-suna.jpg';
-import adopcjaElizabeth from '@/assets/adopcja-elizabeth.jpg';
-import adopcjaUnique from '@/assets/adopcja-unique.jpg';
-import adopcjaMariatou from '@/assets/adopcja-mariatou.jpg';
-import adopcjaPeggy from '@/assets/adopcja-peggy.jpg';
 import stepChoose from '@/assets/step-choose.jpg';
 import stepDeclare from '@/assets/step-declare.jpg';
 import stepProgress from '@/assets/step-progress.jpg';
 import stepChange from '@/assets/step-change.jpg';
 
-const children = [
-  {
-    name: 'Alima Sadia',
-    age: 7,
-    gender: 'dziewczynka',
-    country: 'Gambia',
-    location: 'Bijilo',
-    image: adopcjaAlima,
-    monthlySupport: 150,
-    grade: '1 klasa',
-    shortDesc: 'Alima to pilna uczennica, która potrzebuje wsparcia. Jej tata od blisko dwóch lat pozostaje bez pracy.',
-    longDesc: 'Alima to pilna uczennica, która potrzebuje wsparcia. Jej tata od blisko dwóch lat pozostaje bez pracy, a drobny biznes prowadzony przez mamę nie przynosi wystarczających dochodów. Z tego powodu rodzina nie jest w stanie opłacić czesnego i zapewnić Alimie ciągłości nauki.',
-    needs: ['Edukacja', 'Posiłki', 'Opieka medyczna'],
-  },
-  {
-    name: 'Lamin Ceessay',
-    age: 9,
-    gender: 'chłopiec',
-    country: 'Gambia',
-    location: 'Bijilo',
-    image: adopcjaLamin,
-    monthlySupport: 150,
-    grade: '2 klasa',
-    shortDesc: 'Lamin to ciekawy świata chłopiec z 2 klasy. Uwielbia matematykę, naukę, sztukę i sport.',
-    longDesc: 'Lamin to ciekawy świata chłopiec z 2 klasy. To ambitny uczeń, który z pasją podchodzi do wszystkiego, co robi. Interesuje się matematyką, naukami przyrodniczymi i sztuką, a po lekcjach chętnie gra w piłkę i uczestniczy w zajęciach dodatkowych. Ceni sobie przyjaźń i współpracę - W szkole zawsze można na niego liczyć.',
-    needs: ['Edukacja', 'Posiłki', 'Materiały szkolne'],
-  },
-  {
-    name: 'Suna Fai',
-    age: 10,
-    gender: 'dziewczynka',
-    country: 'Gambia',
-    location: 'Bijilo',
-    image: adopcjaSuna,
-    monthlySupport: 150,
-    grade: '2 klasa',
-    shortDesc: 'Suna chodzi do 2 klasy w My Gambia School. Jest bardzo ambitną uczennicą, która kocha czytać i rysować.',
-    longDesc: 'Suna chodzi do 2 klasy w My Gambia School. Jest bardzo ambitną uczennicą, która kocha czytać i rysować. Jej mama robi wszystko, by zapewnić jej edukację mimo skromnych dochodów. Suna marzy o tym, by kiedyś zostać nauczycielką.',
-    needs: ['Edukacja', 'Posiłki', 'Materiały szkolne'],
-  },
-  {
-    name: 'Elizabeth Christian',
-    age: 7,
-    gender: 'dziewczynka',
-    country: 'Gambia',
-    location: 'Bijilo',
-    image: adopcjaElizabeth,
-    monthlySupport: 150,
-    grade: '2 klasa',
-    shortDesc: 'Elizabeth to radosna, pełna energii dziewczynka, która z pasją podchodzi do nauki.',
-    longDesc: 'Elizabeth uczęszcza do 2 klasy w My Gambia School. To radosna, pełna energii dziewczynka, która z pasją podchodzi do nauki. Marzy o tym, by poznawać świat i uczyć się nowych rzeczy, ale potrzebuje wsparcia, by móc kontynuować edukację i rozwijać swoje talenty.',
-    needs: ['Edukacja', 'Posiłki', 'Opieka medyczna'],
-  },
-  {
-    name: "Unique J'gin",
-    age: 10,
-    gender: 'chłopiec',
-    country: 'Gambia',
-    location: 'Bijilo',
-    image: adopcjaUnique,
-    monthlySupport: 150,
-    grade: '8 klasa',
-    shortDesc: 'Unique to bystry i kreatywny chłopiec, który z dużą ciekawością odkrywa świat.',
-    longDesc: 'Unique to bystry i kreatywny chłopiec, który z dużą ciekawością odkrywa świat. Mimo młodego wieku uczy się już w 8 klasie, co świadczy o jego dużych możliwościach i szybkim rozwoju. Interesuje się nauką, sztuką, muzyką oraz sportem. Jest otwarty, pełen energii i znany z radosnego usposobienia.',
-    needs: ['Edukacja', 'Materiały szkolne', 'Posiłki'],
-  },
-  {
-    name: 'Mariatou Kanteh',
-    age: 14,
-    gender: 'dziewczynka',
-    country: 'Gambia',
-    location: 'Bijilo',
-    image: adopcjaMariatou,
-    monthlySupport: 150,
-    grade: '8 klasa',
-    shortDesc: 'Mariatou to serdeczna i pełna energii dziewczynka, która z ciekawością poznaje świat.',
-    longDesc: 'Mariatou to serdeczna i pełna energii dziewczynka, która z ciekawością poznaje świat i chętnie się uczy. Ma 14 lat i obecnie uczęszcza do 8 klasy. Jest osobą otwartą, życzliwą i łatwo nawiązuje relacje z innymi. Ceni przyjaźń, wsparcie i poczucie bezpieczeństwa.',
-    needs: ['Edukacja', 'Posiłki', 'Opieka medyczna'],
-  },
-  {
-    name: 'Peggy',
-    age: 6,
-    gender: 'dziewczynka',
-    country: 'Gambia',
-    location: 'Bijilo',
-    image: adopcjaPeggy,
-    monthlySupport: 150,
-    grade: '1 klasa',
-    shortDesc: 'Peggy to urocza i pełna energii dziewczynka, która uczęszcza do 1 klasy.',
-    longDesc: 'Peggy to urocza i pełna energii dziewczynka, która uczęszcza do 1 klasy. Jest pogodna, serdeczna i chętnie nawiązuje relacje z innymi. Lubi spędzać czas z rówieśnikami i ceni przyjaźń oraz życzliwość. Dzięki swojej otwartości i radosnemu usposobieniu z entuzjazmem odkrywa świat i stawia pierwsze kroki w szkolnej przygodzie.',
-    needs: ['Edukacja', 'Posiłki', 'Opieka medyczna'],
-  },
-];
+interface Child {
+  _id: string;
+  name: string;
+  age: number;
+  gender: 'chłopiec' | 'dziewczynka';
+  country: string;
+  location: string;
+  image: any;
+  monthlySupport: number;
+  grade: string;
+  isAdopted: boolean;
+  shortDescPl: string;
+  shortDescEn?: string;
+  shortDescNl?: string;
+  longDescPl: string;
+  longDescEn?: string;
+  longDescNl?: string;
+  needsPl: string[];
+  needsEn?: string[];
+  needsNl?: string[];
+}
 
 const needIcons: Record<string, React.ReactNode> = {
   'Edukacja': <GraduationCap className="w-4 h-4" />,
@@ -191,7 +113,7 @@ function HowItWorksVerticalTabs() {
     <section className="py-24" style={{ backgroundColor: '#f5f3ef' }}>
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Left: Tabs */}
             <div className="flex flex-col">
               <div className="flex items-center justify-between mb-8">
@@ -267,7 +189,7 @@ function HowItWorksVerticalTabs() {
             </div>
 
             {/* Right: Image */}
-            <div className="relative flex items-start justify-center pt-8 lg:pt-12">
+            <div className="relative flex justify-center lg:pt-0 py-8 lg:py-0">
               <div className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden bg-gray-100">
                 <AnimatePresence initial={false} custom={direction} mode="popLayout">
                   <motion.img
@@ -310,7 +232,16 @@ function HowItWorksVerticalTabs() {
   );
 }
 
-function ChildDetailPopup({ selectedChild, onClose }: { selectedChild: number | null; onClose: () => void }) {
+function ChildDetailPopup({ 
+  selectedChild, 
+  onClose,
+  children 
+}: { 
+  selectedChild: number | null; 
+  onClose: () => void;
+  children: Child[];
+}) {
+  const { language } = useLanguage();
   const [imgIndex, setImgIndex] = useState(0);
 
   // Reset image index when child changes
@@ -321,8 +252,30 @@ function ChildDetailPopup({ selectedChild, onClose }: { selectedChild: number | 
   if (selectedChild === null) return null;
 
   const child = children[selectedChild];
-  // For now each child has one image repeated — in future add multiple per child
-  const images = [child.image, child.image, child.image];
+  if (!child) return null;
+
+  // Translation helpers
+  const getLongDesc = () => {
+    if (language === 'en' && child.longDescEn) return child.longDescEn;
+    if (language === 'nl' && child.longDescNl) return child.longDescNl;
+    return child.longDescPl;
+  };
+
+  const getNeeds = () => {
+    if (language === 'en' && child.needsEn) return child.needsEn;
+    if (language === 'nl' && child.needsNl) return child.needsNl;
+    return child.needsPl;
+  };
+
+  const getGender = () => {
+    if (language === 'en') return child.gender === 'chłopiec' ? 'boy' : 'girl';
+    if (language === 'nl') return child.gender === 'chłopiec' ? 'jongen' : 'meisje';
+    return child.gender;
+  };
+
+  const ageText = language === 'en' ? 'years' : language === 'nl' ? 'jaar' : 'lat';
+
+  const images = [urlFor(child.image).url()]; 
 
   const prevImg = () => setImgIndex((p) => (p - 1 + images.length) % images.length);
   const nextImg = () => setImgIndex((p) => (p + 1) % images.length);
@@ -402,11 +355,11 @@ function ChildDetailPopup({ selectedChild, onClose }: { selectedChild: number | 
               <div className="flex-1">
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-2">{child.name}</h2>
                 <div className="flex items-center gap-2 text-gray-400 text-base mb-5">
-                  <span>{child.age} lat</span>
+                  <span>{child.age} {ageText}</span>
                   <span className="w-1 h-1 rounded-full bg-gray-300" />
                   <span>{child.grade}</span>
                   <span className="w-1 h-1 rounded-full bg-gray-300" />
-                  <span>{child.gender}</span>
+                  <span>{getGender()}</span>
                 </div>
 
                 <p className="text-gray-400 text-sm leading-relaxed mb-5 italic">
@@ -415,7 +368,7 @@ function ChildDetailPopup({ selectedChild, onClose }: { selectedChild: number | 
 
                 {/* Story */}
                 <div className="space-y-3 mb-6">
-                  {child.longDesc.split('\n\n').map((p, i) => (
+                  {getLongDesc().split('\n\n').map((p, i) => (
                     <p key={i} className="text-gray-600 text-base leading-relaxed">{p}</p>
                   ))}
                 </div>
@@ -424,7 +377,7 @@ function ChildDetailPopup({ selectedChild, onClose }: { selectedChild: number | 
                 <div className="mb-6">
                   <p className="text-gray-400 text-xs uppercase tracking-widest font-medium mb-3">Potrzeby</p>
                   <div className="flex flex-wrap gap-2">
-                    {child.needs.map((need) => (
+                    {getNeeds().map((need) => (
                       <span key={need} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-100 text-gray-600 text-sm font-medium border border-gray-200/50">
                         {needIcons[need]} {need}
                       </span>
@@ -444,7 +397,7 @@ function ChildDetailPopup({ selectedChild, onClose }: { selectedChild: number | 
                 </div>
 
                 <Link
-                  to="/#wesprzyj"
+                  to={`/?donateTo=${encodeURIComponent(child.name)}&amount=${child.monthlySupport}#wesprzyj`}
                   className="w-full inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#94c43d] text-white rounded-2xl font-semibold text-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)] active:scale-[0.98]"
                   onClick={onClose}
                 >
@@ -459,20 +412,51 @@ function ChildDetailPopup({ selectedChild, onClose }: { selectedChild: number | 
   );
 }
 
-const CHILDREN_PER_PAGE = 9;
+const CHILDREN_PER_PAGE = 6;
 
 const Uslugi = () => {
+  const [children, setChildren] = useState<Child[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedChild, setSelectedChild] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [faqOpen, setFaqOpen] = useState<Set<number>>(new Set());
   const { language } = useLanguage();
   const pt = uslugiTranslations[language];
 
+  useEffect(() => {
+    const fetchChildren = async () => {
+      try {
+        const query = `*[_type == "dziecko"] | order(_createdAt asc)`;
+        const data = await sanityClient.fetch(query);
+        setChildren(data);
+      } catch (error) {
+        console.error('Error fetching children:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchChildren();
+  }, []);
+
+  const getShortDesc = (child: Child) => {
+    if (language === 'en' && child.shortDescEn) return child.shortDescEn;
+    if (language === 'nl' && child.shortDescNl) return child.shortDescNl;
+    return child.shortDescPl;
+  };
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
       <Navbar />
 
-      {/* Hero Section */}
+      {isLoading ? (
+        <div className="min-h-[60vh] flex flex-col items-center justify-center">
+          <div className="w-12 h-12 border-4 border-[#94c43d] border-t-transparent rounded-full animate-spin mb-4" />
+          <p className="text-gray-500 font-display animate-pulse">Pobieranie profilów dzieci...</p>
+        </div>
+      ) : (
+        <>
+          {/* Hero Section */}
       <section className="relative pt-28 pb-16 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-[#94c43d]/5 blur-[150px] rounded-full" />
@@ -491,60 +475,65 @@ const Uslugi = () => {
         </div>
       </section>
 
-      {/* Children Grid — 3 columns, 9 per page */}
+      {/* Children Grid — 3 columns, 6 per page */}
       <section id="children-grid" className="py-16 scroll-mt-8" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {children.slice((currentPage - 1) * CHILDREN_PER_PAGE, currentPage * CHILDREN_PER_PAGE).map((child, index) => {
               const globalIndex = (currentPage - 1) * CHILDREN_PER_PAGE + index;
               return (
-              <motion.div
-                key={child.name}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.08 }}
-                onClick={() => setSelectedChild(globalIndex)}
-                className="group cursor-pointer rounded-3xl overflow-hidden bg-white border border-gray-100 hover:border-[#94c43d]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1"
-              >
-                <div className="relative aspect-[4/5] overflow-hidden">
-                  <img
-                    src={child.image}
-                    alt={child.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                  <div className="absolute top-4 right-4">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#94c43d] text-white text-xs font-semibold shadow-lg">
-                      <MapPin className="w-3 h-3" /> {child.location}, {child.country}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="font-display font-bold text-2xl text-white mb-1 drop-shadow-lg">{child.name}</h3>
-                    <p className="text-white/80 text-sm">{child.age} lat · {child.grade}</p>
-                  </div>
-                </div>
-
-                <div className="p-6">
-                  <p className="text-gray-600 text-sm leading-relaxed mb-5 line-clamp-3">{child.shortDesc}</p>
-                  <div className="flex flex-wrap gap-2 mb-5">
-                    {child.needs.map((need) => (
-                      <span key={need} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#94c43d]/8 text-[#6b8f2b] text-xs font-medium">
-                        {needIcons[need]} {need}
+                <motion.div
+                  key={child._id}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.08 }}
+                  onClick={() => setSelectedChild(globalIndex)}
+                  className="group cursor-pointer rounded-3xl overflow-hidden bg-white border border-gray-100 hover:border-[#94c43d]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-1 relative"
+                >
+                  {/* Status badge if adopted */}
+                  {child.isAdopted && (
+                    <div className="absolute top-4 right-4 z-10">
+                      <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-[#94c43d] text-[10px] font-bold uppercase tracking-wider shadow-sm border border-[#94c43d]/20">
+                        Adoptowane
                       </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center justify-between pt-5 border-t border-gray-100">
-                    <div>
-                      <p className="text-gray-400 text-[10px] uppercase tracking-widest font-medium">Miesięczne wsparcie</p>
-                      <p className="font-display font-bold text-2xl text-gray-900">{child.monthlySupport} <span className="text-base font-semibold">zł</span></p>
                     </div>
-                    <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#94c43d] text-white rounded-full text-sm font-semibold group-hover:shadow-[0_8px_24px_-6px_rgba(148,196,61,0.5)] transition-all duration-300">
-                      <Heart className="w-4 h-4" /> Wesprzyj
-                    </span>
+                  )}
+
+                  <div className="relative aspect-[9/16] overflow-hidden">
+                    <img
+                      src={urlFor(child.image).url()}
+                      alt={child.name}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                    
+                    <div className="absolute bottom-6 left-6 right-6 text-white text-left">
+                      <div className="flex items-center gap-2 text-white/80 text-[10px] uppercase tracking-wider font-semibold mb-2">
+                        <span>{child.age} {language === 'en' ? 'years' : language === 'nl' ? 'jaar' : 'lat'}</span>
+                        <span className="w-1 h-1 rounded-full bg-white/40" />
+                        <span>{child.location}</span>
+                      </div>
+                      <h3 className="font-display text-2xl font-bold">{child.name}</h3>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                  
+                  <div className="p-6">
+                    <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-6 h-10 text-left">
+                      {getShortDesc(child)}
+                    </p>
+                    
+                    <div className="flex items-center justify-between pt-6 border-t border-gray-100">
+                      <div>
+                        <p className="text-[10px] text-gray-400 uppercase tracking-widest font-medium mb-1 text-left">Miesięcznie</p>
+                        <p className="font-display font-medium text-gray-900 border-b-2 border-[#94c43d] inline-block">{child.monthlySupport} zł</p>
+                      </div>
+                      <div className="w-10 h-10 rounded-full bg-[#fdfdfd] border border-gray-100 flex items-center justify-center text-gray-400 group-hover:bg-[#94c43d] group-hover:text-white group-hover:border-[#94c43d] transition-all duration-300">
+                        <ArrowRight className="w-5 h-5" />
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
               );
             })}
           </div>
@@ -593,6 +582,7 @@ const Uslugi = () => {
       <ChildDetailPopup
         selectedChild={selectedChild}
         onClose={() => setSelectedChild(null)}
+        children={children}
       />
 
       {/* How it works — Vertical Tabs */}
@@ -654,6 +644,9 @@ const Uslugi = () => {
           </motion.div>
         </div>
       </section>
+
+        </>
+      )}
 
       <Footer />
     </div>

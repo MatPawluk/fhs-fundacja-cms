@@ -26,7 +26,7 @@ export const Footer = () => {
               </span>
             </Link>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Tworzymy przestrzeń, w której empatia, edukacja i uśmiech stają się fundamentem przyszłości dzieci w Afryce
+              {t.footer.description}
             </p>
 
             {/* Social icons */}
@@ -45,7 +45,7 @@ export const Footer = () => {
 
           {/* Navigation */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-6 text-gray-900">Nawigacja</h4>
+            <h4 className="font-display font-semibold text-lg mb-6 text-gray-900">{t.footer.navigation}</h4>
             <div className="space-y-3">
               {footerLinks.map((link) => (
                 <Link key={link.href} to={link.href} className="block text-gray-600 hover:text-[#94c43d] transition-colors duration-300 text-sm">
@@ -57,7 +57,7 @@ export const Footer = () => {
 
           {/* Contact info */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-6 text-gray-900">Dane kontaktowe</h4>
+            <h4 className="font-display font-semibold text-lg mb-6 text-gray-900">{t.footer.contact}</h4>
             <div className="space-y-4">
               <a href="tel:+48698451498" className="flex items-center gap-3 text-gray-600 hover:text-[#94c43d] transition-colors duration-300 text-sm">
                 <Phone size={18} className="text-[#94c43d]" />
@@ -76,15 +76,15 @@ export const Footer = () => {
 
           {/* Bank account */}
           <div>
-            <h4 className="font-display font-semibold text-lg mb-6 text-gray-900">Rachunek bankowy</h4>
+            <h4 className="font-display font-semibold text-lg mb-6 text-gray-900">{t.footer.bankAccountLabel}</h4>
             <div className="space-y-3 text-sm text-gray-600">
               <p>FHS Foundation</p>
               <div>
-                <p className="text-gray-500">Numer konta:</p>
+                <p className="text-gray-500">{t.footer.accountNumberLabel}</p>
                 <p className="font-bold text-gray-900 mt-1">PL 50 1020 3802 0000 1002 0319 5856</p>
               </div>
               <p className="mt-4 leading-relaxed">
-                Każdy wkład bezpośrednio wspiera nasze projekty realizowane w Afryce
+                {t.footer.supportNote}
               </p>
             </div>
           </div>
@@ -94,12 +94,12 @@ export const Footer = () => {
         <div className="pt-6 border-t border-gray-300/50">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-6 text-sm text-gray-500">
-              <a href="#" className="hover:text-gray-900 transition-colors">Statut</a>
-              <a href="#" className="hover:text-gray-900 transition-colors">Regulamin</a>
-              <a href="#" className="hover:text-gray-900 transition-colors">Polityka Prywatności</a>
+              <a href="/Statut_FHS-Foundation.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors">{t.footer.statute}</a>
+              <Link to="/regulamin" className="hover:text-gray-900 transition-colors">{t.footer.terms}</Link>
+              <Link to="/polityka-prywatnosci" className="hover:text-gray-900 transition-colors">{t.footer.privacy}</Link>
             </div>
             <p className="text-gray-500 text-sm">
-              © 2026 FHS Foundation. All rights reserved.
+              © 2026 FHS Foundation. {t.footer.rights}
             </p>
           </div>
         </div>

@@ -9,10 +9,14 @@ import Uslugi from "./pages/Uslugi";
 import BazaWiedzy from "./pages/BazaWiedzy";
 import ONas from "./pages/ONas";
 import Kontakt from "./pages/Kontakt";
+import Dziekujemy from "./pages/Dziekujemy";
+import PolitykaPrywatnosci from "./pages/PolitykaPrywatnosci";
+import Regulamin from "./pages/Regulamin";
 import ServiceDetail from "./pages/ServiceDetail";
 import ArticleDetail from "./pages/ArticleDetail";
 import NotFound from "./pages/NotFound";
 import { ScrollToTop } from "./components/ScrollToTop";
+import CookieBanner from "./components/CookieBanner";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +28,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
+          <CookieBanner />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/uslugi" element={<Uslugi />} />
@@ -33,6 +38,9 @@ const App = () => (
             <Route path="/baza-wiedzy/:articleSlug" element={<ArticleDetail />} />
             <Route path="/o-nas" element={<ONas />} />
             <Route path="/kontakt" element={<Kontakt />} />
+            <Route path="/dziekujemy" element={<Dziekujemy />} />
+            <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
+            <Route path="/regulamin" element={<Regulamin />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -15,7 +15,7 @@ const images = [
 
 export const DomPolskiGallery = () => {
   return (
-    <Carousel.Root className="w-full" slideCount={images.length}>
+    <Carousel.Root className="w-full max-w-[90vw] md:max-w-full mx-auto" slideCount={images.length}>
       <div className="relative rounded-2xl overflow-hidden mb-3">
         <Carousel.ItemGroup className="flex">
           {images.map((img, index) => (
@@ -38,7 +38,7 @@ export const DomPolskiGallery = () => {
         </Carousel.NextTrigger>
       </div>
 
-      <Carousel.IndicatorGroup className="flex gap-2 overflow-x-auto pb-1">
+      <Carousel.IndicatorGroup className="flex gap-2 overflow-x-auto pb-1 max-w-full">
         {images.map((img, index) => (
           <Carousel.Indicator
             key={index}

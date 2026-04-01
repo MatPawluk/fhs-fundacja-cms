@@ -43,33 +43,56 @@ export const PartnersSection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
           <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">
             {title.our} <GradientText>{title.highlight}</GradientText>
           </h2>
         </motion.div>
 
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16 max-w-5xl mx-auto">
-          {partners.map((partner, index) => (
-            <motion.div
-              key={partner.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              className="flex items-center justify-center"
-            >
-              <img
-                src={partner.logo}
-                alt={partner.name}
-                className="h-10 md:h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100"
-                loading="lazy"
-              />
-            </motion.div>
-          ))}
+        {/* Carousel Container */}
+        <div className="relative w-full overflow-hidden">
+          {/* Gradient Masks */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 z-10 bg-gradient-to-r from-[#f5f3ef] to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 z-10 bg-gradient-to-l from-[#f5f3ef] to-transparent pointer-events-none" />
+
+          {/* Scrolling Track */}
+          <div className="flex w-fit animate-marquee hover:[animation-play-state:paused]">
+            <div className="flex items-center gap-16 py-8 pr-16 md:pr-32">
+              {partners.map((partner, index) => (
+                <div
+                  key={`${partner.name}-${index}`}
+                  className="flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 opacity-70 hover:opacity-100 transform hover:scale-110 min-w-[120px] md:min-w-[180px]"
+                >
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="h-28 w-auto object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+            {/* Duplicate set for seamless loop */}
+            <div className="flex items-center gap-16 md:gap-32 py-8 pr-16 md:pr-32" aria-hidden="true">
+              {partners.map((partner, index) => (
+                <div
+                  key={`${partner.name}-duplicate-${index}`}
+                  className="flex-shrink-0 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 opacity-70 hover:opacity-100 transform hover:scale-110 min-w-[120px] md:min-w-[180px]"
+                >
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="h-12 md:h-20 w-auto object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
+

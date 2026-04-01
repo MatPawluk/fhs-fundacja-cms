@@ -11,6 +11,9 @@ export const Navbar = () => {
   const location = useLocation();
   const { t } = useLanguage();
 
+  // True gdy jesteśmy na głównej I jeszcze nie scrollowaliśmy — wtedy biały tekst
+  const isHeroMode = location.pathname === '/' && !isScrolled;
+
   const navLinks = [
     { name: t.nav.home, href: '/' },
     { name: t.nav.services, href: '/uslugi' },
@@ -37,47 +40,54 @@ export const Navbar = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
             ? 'bg-[#f5f3ef]/95 backdrop-blur-xl border-b border-black/5 shadow-sm'
             : 'bg-transparent'
-        }`}
+          }`}
       >
         <nav className="container mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
+
             {/* Logo */}
-            <Link 
-              to="/" 
-              className="relative z-10 flex items-center gap-3 group"
-            >
-              <span className="font-display font-bold text-xl text-gray-900 italic">
-                <span className="text-[#94c43d]">FHS</span> Foundation
+            <Link to="/" className="relative z-10 flex items-center gap-3 group">
+              <span className="font-display font-bold text-xl italic">
+                <span className="text-[#94c43d]">FHS</span>{' '}
+                <span className={`transition-colors duration-300 ${isHeroMode ? 'text-white' : 'text-gray-900'}`}>
+                  Foundation
+                </span>
               </span>
             </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={`relative text-sm font-medium transition-colors duration-300 ${
-                    'text-gray-600 hover:text-[#94c43d]'
-                  } ${location.pathname === link.href ? 'text-[#94c43d]' : ''}`}
-                >
-                  {link.name}
-                  {location.pathname === link.href && (
-                    <motion.div
-                      layoutId="navbar-indicator"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#94c43d] rounded-full"
-                    />
-                  )}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = location.pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className={`relative text-sm font-medium transition-colors duration-300 ${isActive
+                        ? 'text-[#94c43d]'
+                        : isHeroMode
+                          ? 'text-white/80 hover:text-white'
+                          : 'text-gray-600 hover:text-[#94c43d]'
+                      }`}
+                  >
+                    {link.name}
+                    {isActive && (
+                      <motion.div
+                        layoutId="navbar-indicator"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#94c43d] rounded-full"
+                      />
+                    )}
+                  </Link>
+                );
+              })}
             </div>
 
             {/* Right Side - Language + CTA */}
             <div className="hidden lg:flex items-center gap-4">
+              {/* LanguageSelector powinien też przyjmować prop `light` jeśli chcesz biały tekst */}
               <LanguageSelector />
               <Link
                 to="/kontakt"
@@ -90,7 +100,8 @@ export const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden relative z-10 p-2 text-gray-900"
+              className={`lg:hidden relative z-10 p-2 transition-colors duration-300 ${isHeroMode ? 'text-white' : 'text-gray-900'
+                }`}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -119,9 +130,10 @@ export const Navbar = () => {
                   >
                     <Link
                       to={link.href}
-                      className={`text-2xl font-display font-semibold transition-colors duration-300 ${
-                        location.pathname === link.href ? 'text-[#94c43d]' : 'text-gray-900 hover:text-[#94c43d]'
-                      }`}
+                      className={`text-2xl font-display font-semibold transition-colors duration-300 ${location.pathname === link.href
+                          ? 'text-[#94c43d]'
+                          : 'text-gray-900 hover:text-[#94c43d]'
+                        }`}
                     >
                       {link.name}
                     </Link>
