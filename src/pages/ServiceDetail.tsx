@@ -3,10 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ArrowLeft, ArrowRight, Camera, Info } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Camera } from 'lucide-react';
 import { serviceSlugMap, defaultServiceData, getLocalizedServicesData } from '@/data/servicesData';
-import statsBg from '@/assets/stats-bg.jpg';
-import { ParallaxSection } from '@/components/ParallaxSection';
 
 const ServiceDetail = () => {
   const { serviceSlug } = useParams();
@@ -118,22 +116,6 @@ const ServiceDetail = () => {
         </section>
       )}
 
-      {/* Parallax Quote/Info */}
-      <ParallaxSection imageUrl={statsBg} overlayOpacity={0.85} className="py-32">
-        <div className="container mx-auto px-6 lg:px-12 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
-          >
-            <Info className="w-12 h-12 text-[#94c43d] mx-auto mb-8 opacity-50" />
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-gray-900 leading-tight italic">
-              "W Afryce liczy się każda pomoc - muzyka, sport, rękodzieło... wszystko, co robisz z sercem, może stać się narzędziem dobra."
-            </h2>
-          </motion.div>
-        </div>
-      </ParallaxSection>
 
       {/* Project Gallery - Dynamic */}
       {service.gallery && service.gallery.length > 0 && (
