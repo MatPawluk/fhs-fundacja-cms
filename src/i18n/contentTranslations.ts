@@ -125,29 +125,123 @@ export const caseStudiesTranslations: Record<Language, { name: string; category:
   ],
 };
 
-// Carousel service translations for homepage
-export const carouselServicesTranslations: Record<Language, { title: string; description: string }[]> = {
+// Carousel service translations for homepage (brief highlights)
+export const carouselServicesTranslations: Record<Language, { title: string; description: string; slug: string }[]> = {
   pl: [
-    { title: 'Wyjazdy wolontariackie', description: 'Organizujemy wyjazdy dla wolontariuszy, którzy chcą bezpośrednio włączyć się w nasze działania w Afryce' },
-    { title: 'Wsparcie edukacyjne', description: 'Zapewniamy materiały szkolne, stypendia i wsparcie edukacyjne dla dzieci w Afryce' },
-    { title: 'Wolontariat Misyjny', description: 'Inwestujemy w infrastrukturę edukacyjną, budując i remontując szkoły w potrzebujących regionach' },
-    { title: 'Zbiórki charytatywne', description: 'Prowadzimy regularne zbiórki na rzecz dzieci w Afryce oraz realizujemy specjalne akcje pomocowe' },
-    { title: 'Współpraca z ministerstwami', description: 'Współpracujemy z Ministerstwami Zdrowia i Edukacji Gambii, niosąc pomoc w kluczowych obszarach' },
+    { title: 'Wyjazdy wolontariackie', description: 'Bezpośrednia pomoc na miejscu w Gambii. Stań się częścią naszej misji.', slug: 'wyjazdy-wolontariackie' },
+    { title: 'Wsparcie edukacyjne', description: 'Stypendia i materiały szkolne. Budujemy fundament przyszłości dzieci.', slug: 'wsparcie-edukacyjne' },
+    { title: 'Wolontariat Misyjny', description: 'Duchowe i materialne wsparcie wspólnoty katolickiej w Gambii.', slug: 'wolontariat-misyjny' },
+    { title: 'Zbiórki charytatywne', description: 'Realna pomoc dzięki Waszemu wsparciu. Razem możemy więcej.', slug: 'zbiorki-charytatywne' },
+    { title: 'Współpraca z ministerstwami', description: 'Systemowe działania w ochronie zdrowia i oświaty w Gambii.', slug: 'wspolpraca-z-ministerstwami' },
   ],
   en: [
-    { title: 'Volunteer Trips', description: 'We organize trips for volunteers who want to directly participate in our activities in Africa' },
-    { title: 'Educational Support', description: 'We provide school supplies, scholarships and educational support for children in Africa' },
-    { title: 'Missionary Volunteering', description: 'We invest in educational infrastructure, building and renovating schools in needy regions' },
-    { title: 'Charity Collections', description: 'We conduct regular collections for children in Africa and implement special aid campaigns' },
-    { title: 'Ministry Cooperation', description: 'We cooperate with the Gambian Ministries of Health and Education, providing help in key areas' },
+    { title: 'Volunteer Trips', description: 'Direct help on the ground in The Gambia. Become part of our mission.', slug: 'wyjazdy-wolontariackie' },
+    { title: 'Educational Support', description: 'Scholarships and school supplies. We build the foundation for children\'s future.', slug: 'wsparcie-edukacyjne' },
+    { title: 'Missionary Volunteering', description: 'Spiritual and material support for the Catholic community in The Gambia.', slug: 'wolontariat-misyjny' },
+    { title: 'Charity Collections', description: 'Real help through your support. Together we can do more.', slug: 'zbiorki-charytatywne' },
+    { title: 'Ministry Cooperation', description: 'Systemic actions in healthcare and education in The Gambia.', slug: 'wspolpraca-z-ministerstwami' },
   ],
   nl: [
-    { title: 'Vrijwilligersreizen', description: 'We organiseren reizen voor vrijwilligers die direct willen deelnemen aan onze activiteiten in Afrika' },
-    { title: 'Educatieve ondersteuning', description: 'We bieden schoolbenodigdheden, beurzen en educatieve ondersteuning voor kinderen in Afrika' },
-    { title: 'Missionair vrijwilligerswerk', description: 'We investeren in educatieve infrastructuur door scholen te bouwen en te renoveren' },
-    { title: 'Liefdadigheidsinzamelingen', description: 'We voeren regelmatige inzamelingen uit voor kinderen in Afrika' },
-    { title: 'Samenwerking met ministeries', description: 'We werken samen met de Gambiaanse ministeries van Gezondheid en Onderwijs' },
+    { title: 'Vrijwilligersreizen', description: 'Directe hulp ter plaatse in Gambia. Word deel van onze missie.', slug: 'wyjazdy-wolontariackie' },
+    { title: 'Educatieve ondersteuning', description: 'Beurzen en schoolbenodigdheden. We leggen de basis voor de toekomst.', slug: 'wsparcie-edukacyjne' },
+    { title: 'Missionair vrijwilligerswerk', description: 'Spirituele en materiële steun voor de katholieke gemeenschap.', slug: 'wolontariat-misyjny' },
+    { title: 'Liefdadigheidsinzamelingen', description: 'Echte hulp door uw steun. Samen kunnen we meer.', slug: 'zbiorki-charytatywne' },
+    { title: 'Samenwerking met ministeries', description: 'Systemische acties in gezondheidszorg en onderwijs w Gambia.', slug: 'wspolpraca-z-ministerstwami' },
   ],
+};
+
+// Detailed project descriptions for ServiceDetail page
+export const projectDetailTranslations: Record<Language, Record<string, { fullDescription: string; sections?: { title: string; content: string }[] }>> = {
+  pl: {
+    'wyjazdy-wolontariackie': {
+      fullDescription: 'Wolontariat w Gambii to coś więcej niż pomoc. To spotkanie - z drugim człowiekiem, z inną kulturą, a często także z samym sobą. Przez codzienną obecność, prostą pomoc, wspólną modlitwę i uśmiech możesz realnie zmienić czyjeś życie. I pozwolić, by ktoś zmienił Twoje.',
+      sections: [
+        { title: 'Miejsce i warunki', content: 'Nasi wolontariusze mieszkają w Domu Polskim - centrum wolontariatu w Gambii. To bezpieczne, przyjazne miejsce, położone zaledwie 400 metrów od oceanu. Czeka tam basen, przestrzeń do odpoczynku i chwile wytchnienia. Bo w życiu liczy się równowaga - między pracą a odpoczynkiem, zaangażowaniem a ciszą.' },
+        { title: 'Doświadczenie Afryki', content: 'Na miejscu nie tylko działasz - uczysz się innego świata. Odwiedzasz wioski, szkoły i parafie, rozmawiasz, słuchasz i poznajesz codzienność ludzi, którzy mimo ubóstwa potrafią promieniować pokojem i siłą ducha. Podczas pobytu znajdzie się też czas na wyjątkowe doświadczenia: safari, spacer z lwami, spotkanie z krokodylami czy rejs na legendarną wyspę Kunta Kinteh.' },
+        { title: 'Rodzaje wolontariatu', content: 'Oferujemy różne ścieżki zaangażowania: medyczną (dla studentów medycyny i pielęgniarstwa), edukacyjną (pedagogika i psychologia), oraz Liturgiczną Służbę Ołtarza. Jesteśmy też otwarci na Twoje własne pomysły - w Afryce liczy się każda pomoc: muzyka, sport, fotografia czy ewangelizacja.' },
+        { title: 'Dołącz do nas', content: 'Jeśli nie możesz wyjechać, zostań wolontariuszem w Polsce! Pomóż szerzyć misję fundacji, organizować zbiórki i pozyskiwać sponsorów. W dowód wdzięczności otrzymasz legitymację wolontariusza oraz różaniec poświęcony przez papieża Franciszka.' }
+      ]
+    },
+    'wolontariat-misyjny': {
+      fullDescription: 'W Gambii żyje około 300 tysięcy katolików. Choć stanowią mniejszość, ich wiara jest głęboka i żywa. Fundacja FHS od lat wspiera tę wspólnotę w ścisłym porozumieniu z biskupem Gabrielem Mendym.',
+      sections: [
+        { title: 'Duchowe wsparcie', content: 'Dzięki osobistemu zaangażowaniu fundatora do Gambii trafiły relikwie św. Jana Pawła II oraz setki papieskich różańców od papieża Franciszka. Relikwiarz stał się centrum modlitwy i symbolem duchowej jedności z Kościołem powszechnym.' },
+        { title: 'Realna pomoc wspólnocie', content: 'Budujemy szkoły, wspieramy parafie i rozwijamy projekty edukacyjne. Współpracujemy z siostrami Misjonarkami Miłości, w tym z polskimi siostrami Urszulą i Lilianą, których codzienna służba najuboższym jest żywą Ewangelią.' },
+        { title: 'Kościół to jedno ciało', content: 'Nasza misja to uświadamianie Gambijczykom, że nie są sami. Pomóż nam wspierać tych, którzy mimo trudnych warunków trwają przy Chrystusie z ogromną nadzieją i uśmiechem.' }
+      ]
+    },
+    'wspolpraca-z-ministerstwami': {
+      fullDescription: 'Nasza Fundacja współpracuje z Ministerstwem Zdrowia oraz Ministerstwem Edukacji Gambii, niosąc pomoc w dwóch kluczowych obszarach dla przyszłości tego kraju.',
+      sections: [
+        { title: 'Ochrona zdrowia', content: 'Wspólnie z Ministerstwem Zdrowia nasi wolontariusze – lekarze i studenci – wspierają szpitale miejskie oraz docierają do najdalszych wiosek, gdzie dostęp do medycyny jest niemal zerowy. To realne ratowanie życia i poprawa warunków zdrowotnych mieszkańców.' },
+        { title: 'Rozwój edukacji', content: 'Przy wsparciu Ministerstwa Edukacji prowadzimy zajęcia na Uniwersytecie w Gambii oraz w szkołach podstawowych i średnich. Program „Wirtualna Adopcja” pozwala najuboższym, ale uzdolnionym uczniom kontynuować naukę i budować lepszą przyszłość.' },
+        { title: 'Budowanie mostów', content: 'Ta współpraca to dowód ogromnego zaufania rządu Gambii. Inwestujemy w przyszłość młodego pokolenia, łącząc nasze kraje poprzez konkretną, praktyczną pomoc i dzielenie się wiedzą.' }
+      ]
+    },
+    'wsparcie-edukacyjne': {
+      fullDescription: 'Ten projekt opiera się obecnie głównie na dokumentacji wizualnej naszych działań terenowych. Zapraszamy do obejrzenia galerii zdjęć reprezentującej nasze wsparcie dla szkół i uczniów w Gambii.',
+    },
+    'zbiorki-charytatywne': {
+      fullDescription: 'Ten projekt opiera się obecnie głównie na dokumentacji wizualnej naszych działań terenowych. Zapraszamy do obejrzenia galerii zdjęć reprezentującej przebieg i efekty naszych zbiórek.',
+    }
+  },
+  en: {
+    'wyjazdy-wolontariackie': {
+      fullDescription: 'Volunteering in The Gambia is more than just help. It\'s an encounter - with another person, a different culture, and often with oneself. Through everyday presence, prayer, and a smile, you can truly change lives.',
+      sections: [
+        { title: 'Location and Conditions', content: 'Our volunteers stay at the Polish House, a safe and friendly center just 400m from the ocean, featuring a pool and spaces for rest and reflection.' },
+        { title: 'African Experience', content: 'Learn about a different world by visiting villages, schools, and parishes. Experience unique moments like safaris, walking with lions, and visiting the historic Kunta Kinteh Island.' },
+        { title: 'Types of Volunteering', content: 'We offer medical, educational, and liturgical paths. We also welcome your own creative ideas for help - in Africa, everything done with heart counts.' }
+      ]
+    },
+    'wolontariat-misyjny': {
+      fullDescription: 'Supporting a vibrant community of 300,000 Catholics in The Gambia, standing strong in their faith despite challenging conditions.',
+      sections: [
+        { title: 'Spiritual Support', content: 'Bringing relics of St. John Paul II and rosaries blessed by Pope Francis to provide spiritual strength and unity with the universal Church.' },
+        { title: 'Community Aid', content: 'Building schools, supporting parishes, and working with the Missionaries of Charity to serve the poorest of the poor.' }
+      ]
+    },
+    'wspolpraca-z-ministerstwami': {
+      fullDescription: 'Strategic partnership with the Gambian Ministries of Health and Education to deliver essential care and knowledge.',
+      sections: [
+        { title: 'Healthcare', content: 'Doctors and medical students supporting urban hospitals and reaching remote villages where healthcare access is minimal.' },
+        { title: 'Education', content: 'Lecturing at the University of The Gambia and supporting primary schools through our "Virtual Adoption" program.' }
+      ]
+    },
+    'wsparcie-edukacyjne': {
+      fullDescription: 'This project currently focuses on visual documentation. Please see our gallery for photos of our work with schools and students.',
+    },
+    'zbiorki-charytatywne': {
+      fullDescription: 'This project currently focuses on visual documentation. Please see our gallery for photos of our fundraising results and aid distribution.',
+    }
+  },
+  nl: {
+    'wyjazdy-wolontariackie': {
+      fullDescription: 'Vrijwilligerswerk in Gambia is meer dan hulp alleen. Het is een ontmoeting met een andere cultuur en jezelf. Verander levens door aanwezigheid en een glimlach.',
+      sections: [
+        { title: 'Locatie en condities', content: 'Verblijf in het Poolse Huis, een veilig centrum op 400m van de oceaan, compleet met zwembad en rustruimtes.' },
+        { title: 'Afrikaanse ervaring', content: 'Bezoek dorpen en scholen, en beleef unieke momenten zoals safari\'s en een bezoek aan Kunta Kinteh Island.' }
+      ]
+    },
+    'wolontariat-misyjny': {
+      fullDescription: 'Ondersteuning van de katholieke gemeenschap in Gambia, die ondanks moeilijke omstandigheden standvastig blijft in het geloof.',
+      sections: [
+        { title: 'Spirituele steun', content: 'Het binnenbrengen van relikwieën van St. Johannes Paulus II en rozenkransen gezegend door Paus Franciscus.' }
+      ]
+    },
+    'wspolpraca-z-ministerstwami': {
+      fullDescription: 'Samenwerking met de Gambiaanse ministeries van Gezondheid en Onderwijs voor cruciale hulp.',
+      sections: [
+        { title: 'Gezondheidszorg', content: 'Medische vrijwilligers die ziekenhuizen en afgelegen dorpen ondersteunen.' }
+      ]
+    },
+    'wsparcie-edukacyjne': {
+      fullDescription: 'Dit project richt zich momenteel op visuele documentatie. Bekijk onze galerij voor foto\'s van onze steun aan scholen.',
+    },
+    'zbiorki-charytatywne': {
+      fullDescription: 'Dit project richt się momenteel op visuele documentatie. Bekijk onze galerij voor foto\'s van onze inzamelingen.',
+    }
+  }
 };
 
 // Service categories translations for Uslugi page

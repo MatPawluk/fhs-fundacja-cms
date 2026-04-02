@@ -59,7 +59,7 @@ const BazaWiedzy = () => {
               <div className="w-8 h-px bg-[#94c43d]" />
               <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{pt.badge}</span>
             </div>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 leading-tight mb-4">
               {pt.title} <span className="text-[#94c43d]">{pt.titleHighlight}</span>
               <br />{pt.titleEnd}
             </h1>

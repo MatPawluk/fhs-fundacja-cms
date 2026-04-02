@@ -125,7 +125,7 @@ const ONas = () => {
                 <div className="w-8 h-px bg-[#94c43d]" />
                 <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{hero.badge}</span>
               </div>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
                 {hero.title} <span className="text-[#94c43d]">{hero.titleHighlight}</span>{hero.titleEnd}
               </h1>
               <p className="text-gray-600 text-lg leading-relaxed mb-4">{hero.p1}</p>

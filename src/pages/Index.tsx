@@ -42,11 +42,11 @@ const localHeroImages = [
   hero11, hero12, hero13, hero14, hero15, hero16, hero17, hero18, hero19
 ];
 
-import sgStrategia from '@/assets/sg-strategia.png';
-import sgAnalizy from '@/assets/sg-analizy.png';
-import sgWejscie from '@/assets/sg-wejscie.png';
-import sgImport from '@/assets/sg-import.png';
-import sgMarketing from '@/assets/sg-marketing.png';
+import wyjazdyOkladka from '@/assets/projects/wyjazdy-okladka.jpg';
+import edukacjaOkladka from '@/assets/projects/edukacja-okladka.jpg';
+import misjaOkladka from '@/assets/projects/misja-okladka.jpg';
+import zbiorkiOkladka from '@/assets/projects/zbiorki-okladka.jpg';
+import ministerstwoOkladka from '@/assets/projects/ministerstwo-okladka.jpg';
 import wsprzyjNas from '@/assets/wesprzyj-nas.jpg';
 import { DomPolskiGallery } from '@/components/DomPolskiGallery';
 import articleCompetition from '@/assets/article-competition.jpg';
@@ -64,7 +64,7 @@ const articleImages: Record<string, string> = {
   'automatyzacja-robotyzacja-chiny': serviceStrategy,
 };
 
-const carouselImages = [sgStrategia, sgAnalizy, sgWejscie, sgImport, sgMarketing];
+const carouselImages = [wyjazdyOkladka, edukacjaOkladka, misjaOkladka, zbiorkiOkladka, ministerstwoOkladka];
 const carouselSlugs = ['wyjazdy-wolontariackie', 'wsparcie-edukacyjne', 'wolontariat-misyjny', 'zbiorki-charytatywne', 'wspolpraca-z-ministerstwami'];
 
 const DONATION_AMOUNTS = [5, 10, 20, 50, 100, 200];
@@ -506,7 +506,7 @@ const Index = () => {
                               {service.description}
                             </p>
                             <Link 
-                              to={`/uslugi#${service.slug}`} 
+                              to={`/uslugi/${service.slug}`} 
                               className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold text-sm hover:bg-[#94c43d] hover:border-[#94c43d] hover:text-white transition-all duration-300 uppercase tracking-wide group/btn"
                             >
                               <span>Dowiedz się więcej</span>
@@ -531,7 +531,7 @@ const Index = () => {
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex-shrink-0">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-px bg-[#94c43d]" />
-                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">O fundacji</span>
+                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{ix.poznajBadge}</span>
               </div>
               <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
                 Poznaj <br />
@@ -563,7 +563,7 @@ const Index = () => {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-px bg-[#94c43d]" />
-                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Baza wiedzy</span>
+                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{ix.aktualnosci}</span>
               </div>
               <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 Nasze <br />
@@ -770,7 +770,7 @@ const Index = () => {
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-px bg-[#94c43d]" />
-                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Gambia</span>
+                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{ix.domPolskiBadge}</span>
               </div>
               <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 Nasz dom <br />

@@ -2,417 +2,217 @@ import { motion } from 'framer-motion';
 import { useParams, Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
-import { InteractiveCaseStudy } from '@/components/InteractiveCaseStudy';
-import { GradientText } from '@/components/GradientText';
-import { ParallaxSection } from '@/components/ParallaxSection';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ArrowLeft, ArrowRight, Check, X, FileText, Video } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Camera, Info } from 'lucide-react';
 import { serviceSlugMap, defaultServiceData, getLocalizedServicesData } from '@/data/servicesData';
 import statsBg from '@/assets/stats-bg.jpg';
+import { ParallaxSection } from '@/components/ParallaxSection';
 
 const ServiceDetail = () => {
-  const { serviceSlug, subServiceSlug } = useParams();
+  const { serviceSlug } = useParams();
   const { t, language } = useLanguage();
   
   const localizedServices = getLocalizedServicesData(language);
   const mainSlug = serviceSlug || '';
-  const mappedSlug = subServiceSlug ? (serviceSlugMap[subServiceSlug] || subServiceSlug) : mainSlug;
-  const service = localizedServices[mappedSlug] || localizedServices[mainSlug] || defaultServiceData;
+  const service = localizedServices[mainSlug] || defaultServiceData;
   
   const displayTitle = service.title;
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#f8f7f4]">
       <Navbar />
       
-      {/* Header */}
-      <section className="relative pt-28 pb-20 overflow-hidden">
+      {/* Hero Header */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img 
             src={service.image} 
             alt="" 
-            className="w-full h-full object-cover opacity-10 grayscale"
+            className="w-full h-full object-cover opacity-5 grayscale"
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(245,243,239,0.8), rgba(245,243,239,0.9), #1a1a1a)' }} />
-          <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-lime/8 blur-[150px] rounded-full" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#f8f7f4] via-[#f8f7f4]/90 to-[#f8f7f4]" />
         </div>
         
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <Link 
-            to="/uslugi"
-            className="inline-flex items-center gap-2 text-gray-500 hover:text-[#94c43d] transition-colors duration-300 mb-6"
+            to="/projekty"
+            className="inline-flex items-center gap-2 text-gray-500 hover:text-[#94c43d] transition-colors duration-300 mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
-            {t.serviceDetail.backToServices}
+            Powrót do projektów
           </Link>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-4xl"
+            transition={{ duration: 0.8 }}
+            className="max-w-5xl"
           >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-px bg-[#94c43d]" />
-              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{service.subtitle}</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-px bg-[#94c43d]" />
+              <span className="text-[#94c43d] font-display font-bold tracking-[0.2em] uppercase text-xs md:text-sm">{service.subtitle}</span>
             </div>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 leading-tight">
-              <span className="text-[#94c43d] block mb-2">{displayTitle.split(' ').slice(0, -1).join(' ')}</span>
-              {displayTitle.split(' ').slice(-1)}
+            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 leading-[1.1] mb-8">
+              <span className="text-[#94c43d] block">{displayTitle.split(' ').slice(0, 2).join(' ')}</span>
+              {displayTitle.split(' ').slice(2).join(' ')}
             </h1>
+            
+            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-3xl font-light">
+              {service.fullDescription}
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Description with Image */}
-      <section className="py-20 relative overflow-hidden">
-        
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative rounded-3xl overflow-hidden aspect-[4/3]"
-            >
-              <img 
-                src={service.image} 
-                alt={service.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, transparent, transparent)' }} />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-px bg-[#94c43d]" />
-                <h2 className="font-display text-2xl font-bold text-gray-900 uppercase tracking-widest text-sm">
-                  {t.serviceDetail.serviceDescription}
-                </h2>
-              </div>
-              <p className="text-gray-500 text-lg leading-relaxed">
-                {service.description}
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* When it makes sense + Problems Solved - parallax */}
-      <ParallaxSection imageUrl={statsBg} overlayOpacity={0.88} className="py-24">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-px bg-[#94c43d]" />
-                <h2 className="font-display text-gray-900 font-bold uppercase tracking-widest text-sm">
-                  {t.serviceDetail.whenMakesSense}
-                </h2>
-              </div>
-              <h3 className="font-display text-3xl font-bold text-gray-900 mb-8 leading-tight">
-                {t.serviceDetail.whenMakesSenseHighlight}
-              </h3>
-              <div className="space-y-4">
-                {service.whenItMakesSense.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="relative p-5 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-lime/20 transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-3">
-                      <span className="font-display text-sm font-bold text-lime/60 mt-0.5 flex-shrink-0">
-                        {(index + 1).toString().padStart(2, '0')}
-                      </span>
-                      <p className="text-gray-600 text-sm">{item}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-px bg-[#94c43d]" />
-                <h2 className="font-display text-gray-900 font-bold uppercase tracking-widest text-sm">
-                  {t.serviceDetail.problemSolved}
-                </h2>
-              </div>
-              <h3 className="font-display text-3xl font-bold text-gray-900 mb-8 leading-tight">
-                {t.serviceDetail.problemSolvedHighlight}
-              </h3>
-              <div className="space-y-4">
-                {service.problemsSolved.map((problem, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="group p-5 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-lime/20 transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-lime flex-shrink-0 mt-2" />
-                      <p className="text-gray-600 text-sm">{problem}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </ParallaxSection>
-
-      {/* Scope */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-5xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="w-8 h-px bg-[#94c43d]" />
-                <h2 className="font-display text-gray-900 font-bold uppercase tracking-widest text-sm">
-                  {t.serviceDetail.scopeTitle}
-                </h2>
-                <div className="w-8 h-px bg-[#94c43d]" />
-              </div>
-              <h3 className="font-display text-4xl lg:text-5xl font-bold text-center text-gray-900 leading-tight">
-                {t.serviceDetail.scopeHighlight}
-              </h3>
-            </motion.div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="p-8 rounded-2xl border border-gray-200/50"
-              >
-                <h3 className="font-semibold text-gray-900 mb-6 flex items-center gap-3">
-                  <div className="w-2 h-6 bg-[#94c43d] rounded-full" />
-                  {t.serviceDetail.includes}
-                </h3>
-                <ul className="space-y-4">
-                  {service.scope.includes.map((item, index) => (
-                    <li key={index} className="flex items-start gap-3 text-gray-500 text-sm">
-                      <div className="w-1.5 h-1.5 rounded-full bg-lime flex-shrink-0 mt-2" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="p-8 rounded-2xl border border-gray-200/50"
-              >
-                <h3 className="font-semibold text-gray-900 mb-6 flex items-center gap-3">
-                  <div className="w-2 h-6 bg-red-500/60 rounded-full" />
-                  {t.serviceDetail.excludes}
-                </h3>
-                <ul className="space-y-4">
-                  {service.scope.excludes.map((item, index) => (
-                    <li key={index} className="flex items-start gap-3 text-gray-500 text-sm">
-                      <div className="w-1.5 h-1.5 rounded-full bg-red-400/60 flex-shrink-0 mt-2" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Deliverables */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-lime/3 blur-[150px] rounded-full" />
-        </div>
-        
-        
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="w-8 h-px bg-[#94c43d]" />
-                <h2 className="font-display text-gray-900 font-bold uppercase tracking-widest text-sm">
-                  Output / {t.serviceDetail.deliverables}
-                </h2>
-                <div className="w-8 h-px bg-[#94c43d]" />
-              </div>
-              <h3 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-12 leading-tight">
-                Co otrzymasz w ramach <br />
-                <span className="text-[#94c43d]">współpracy?</span>
-              </h3>
-              <div className="space-y-4">
-                {service.deliverables.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-start gap-4 p-5 rounded-xl border border-gray-200/50 text-left"
-                  >
-                    <span className="font-display text-sm font-bold text-lime/50 mt-0.5 flex-shrink-0">
-                      {(index + 1).toString().padStart(2, '0')}
-                    </span>
-                    <p className="text-gray-600 text-sm">{item}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Work Model - clean, no icons, no weird decorations */}
-      <ParallaxSection 
-        imageUrl={statsBg} 
-        overlayOpacity={0.92} 
-        className="py-20"
-      >
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="w-8 h-px bg-[#94c43d]" />
-                <h2 className="font-display text-gray-900 font-bold uppercase tracking-widest text-sm">
-                  {t.serviceDetail.workModelTitle}
-                </h2>
-                <div className="w-8 h-px bg-[#94c43d]" />
-              </div>
-              <h3 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-12 leading-tight">
-                {t.serviceDetail.workModelHighlight}
-              </h3>
-              
-              <div className="grid md:grid-cols-3 gap-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
-                >
-                  <p className="text-[#94c43d] text-xs uppercase tracking-wider mb-3 font-medium">{t.serviceDetail.workModelType}</p>
-                  <p className="text-gray-900 font-semibold text-sm">{service.workModel.type}</p>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
-                  className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
-                >
-                  <p className="text-[#94c43d] text-xs uppercase tracking-wider mb-3 font-medium">{t.serviceDetail.workModelDuration}</p>
-                  <p className="text-gray-900 font-semibold text-sm">{service.workModel.duration}</p>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                  className="p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
-                >
-                  <p className="text-[#94c43d] text-xs uppercase tracking-wider mb-3 font-medium">{t.serviceDetail.workModelComm}</p>
-                  <p className="text-gray-900 font-semibold text-sm">{service.workModel.communication}</p>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </ParallaxSection>
-
-      {/* Case Study */}
-      <section className="py-24 relative overflow-hidden">
-        
+      {/* Main Image with decorative elements */}
+      <section className="pb-24">
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            transition={{ duration: 1 }}
+            className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[21/9]"
           >
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-8 h-px bg-[#94c43d]" />
-              <h2 className="font-display text-gray-900 font-bold uppercase tracking-widest text-sm">
-                Case study
-              </h2>
-              <div className="w-8 h-px bg-[#94c43d]" />
-            </div>
-            <h3 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-16 leading-tight">
-              {t.serviceDetail.caseStudyTitle} <span className="text-[#94c43d]">{t.serviceDetail.caseStudyHighlight}</span>
-            </h3>
+            <img 
+              src={service.image} 
+              alt={service.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           </motion.div>
-
-          <InteractiveCaseStudy data={service.caseStudy} image={service.caseStudyImage} />
         </div>
       </section>
 
-      {/* CTA Section - consistent style */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-lime/8 blur-[150px] rounded-full" />
-        </div>
-        
-        <div className="absolute bottom-10 left-10 opacity-[0.06] pointer-events-none">
-          <span className="font-display text-[10rem] font-bold text-[#94c43d] leading-none"></span>
-        </div>
+      {/* Structured Sections (Dynamic) */}
+      {service.sections && service.sections.length > 0 && (
+        <section className="py-24 bg-white relative">
+          <div className="container mx-auto px-6 lg:px-12">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+              {service.sections.map((section, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="group"
+                >
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-10 h-10 rounded-full border border-[#94c43d]/30 flex items-center justify-center group-hover:bg-[#94c43d] group-hover:border-[#94c43d] transition-all duration-500">
+                      <span className="text-[#94c43d] group-hover:text-white font-display font-bold text-sm">
+                        {(index + 1).toString().padStart(2, '0')}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-2xl font-bold text-gray-900 group-hover:text-[#94c43d] transition-colors duration-500">
+                      {section.title}
+                    </h3>
+                  </div>
+                  <p className="text-gray-500 text-lg leading-relaxed pl-14">
+                    {section.content}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
+      {/* Parallax Quote/Info */}
+      <ParallaxSection imageUrl={statsBg} overlayOpacity={0.85} className="py-32">
+        <div className="container mx-auto px-6 lg:px-12 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
           >
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-8 h-px bg-[#94c43d]" />
-              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Zacznij pomagać</span>
-              <div className="w-8 h-px bg-[#94c43d]" />
-            </div>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-              {t.serviceDetail.ctaTitle} <br />
-              <span className="text-[#94c43d]">{t.serviceDetail.ctaHighlight}</span>
+            <Info className="w-12 h-12 text-[#94c43d] mx-auto mb-8 opacity-50" />
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-gray-900 leading-tight italic">
+              "W Afryce liczy się każda pomoc - muzyka, sport, rękodzieło... wszystko, co robisz z sercem, może stać się narzędziem dobra."
             </h2>
-            <p className="text-gray-500 mb-8 max-w-lg mx-auto">
-              {t.serviceDetail.ctaSubtitle}
+          </motion.div>
+        </div>
+      </ParallaxSection>
+
+      {/* Project Gallery - Dynamic */}
+      {service.gallery && service.gallery.length > 0 && (
+        <section className="py-32 overflow-hidden">
+          <div className="container mx-auto px-6 lg:px-12">
+            <div className="flex flex-col md:flex-row items-end justify-between gap-6 mb-16">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-px bg-[#94c43d]" />
+                  <span className="text-[#94c43d] font-display font-bold tracking-[0.2em] uppercase text-xs">Galeria</span>
+                </div>
+                <h2 className="font-display text-5xl font-bold text-gray-900">
+                  Momenty w <span className="text-[#94c43d]">Gambii</span>
+                </h2>
+              </div>
+              <div className="flex items-center gap-2 text-gray-400">
+                <Camera className="w-5 h-5" />
+                <span className="text-sm uppercase tracking-widest font-display">Nasza dokumentacja</span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+              {service.gallery.map((img, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                  className={`relative rounded-3xl overflow-hidden bg-gray-100 shadow-xl group cursor-pointer ${i % 5 === 0 ? 'md:col-span-2 md:aspect-[21/9]' : 'aspect-square'}`}
+                >
+                  <img src={img} alt={`${service.title} gallery ${i}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-[#94c43d]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 z-20 scale-90 group-hover:scale-100">
+                    <span className="px-6 py-3 bg-white/90 backdrop-blur-sm rounded-full text-gray-900 font-bold text-sm uppercase tracking-widest shadow-xl">Powiększ</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CTA Section */}
+      <section className="relative py-32 bg-gray-900 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#94c43d]/10 blur-[150px] rounded-full" />
+        </div>
+        
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="font-display text-4xl lg:text-7xl font-bold text-white mb-8">
+              Chcesz wesprzeć <br />
+              ten <span className="text-[#94c43d]">projekt?</span>
+            </h2>
+            <p className="text-gray-400 mb-12 max-w-2xl mx-auto text-lg md:text-xl font-light">
+              Każda wpłata, godzina wolontariatu lub udostępnienie naszej misji przybliża nas do realizacji celów w Afryce.
             </p>
-            <Link
-              to="/kontakt"
-              className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]"
-            >
-              {t.serviceDetail.ctaButton}
-              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <Link
+                to="/kontakt"
+                className="group relative inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-white rounded-full font-bold text-lg overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-[0_0_50px_-12px_rgba(148,196,61,0.5)]"
+              >
+                <span className="relative z-10">Zacznij działać</span>
+                <ArrowRight className="w-5 h-5 relative z-10 transition-transform duration-500 group-hover:translate-x-1" />
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity" />
+              </Link>
+              <Link
+                to="/projekty"
+                className="text-white/60 hover:text-white transition-colors duration-300 font-display font-medium tracking-widest text-sm uppercase flex items-center gap-2"
+              >
+                Inne projekty
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
