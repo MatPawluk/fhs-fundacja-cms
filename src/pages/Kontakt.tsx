@@ -70,7 +70,7 @@ const Kontakt = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
+    <div className="min-h-screen">
       <Navbar />
 
       {/* Main Content */}
@@ -96,7 +96,7 @@ const Kontakt = () => {
 
               <div className="space-y-4">
                 {contactMethods.map((method, index) => (
-                  <motion.a key={method.title} href={method.href} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 + index * 0.1 }} className={`group flex items-center gap-4 p-5 rounded-2xl border-2 border-gray-200/50 ${method.hoverBorder} transition-all duration-300`} style={{ backgroundColor: '#f0ede8' }}>
+                  <motion.a key={method.title} href={method.href} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 + index * 0.1 }} className={`group flex items-center gap-4 p-5 rounded-2xl border-2 border-gray-200/50 ${method.hoverBorder} transition-all duration-300`}>
                     <div className="w-14 h-14 rounded-xl flex items-center justify-center overflow-hidden p-2" style={{ backgroundColor: '#e8e5e0' }}>
                       <img src={method.icon} alt={method.title} className="w-8 h-8 object-contain" />
                     </div>
@@ -112,7 +112,7 @@ const Kontakt = () => {
 
             {/* Right side - Form */}
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
-              <div className="rounded-3xl p-8 border border-gray-200/50" style={{ backgroundColor: '#f0ede8' }}>
+              <div className="rounded-3xl p-8 border border-gray-200/50">
                 <h3 className="font-display font-semibold text-xl text-gray-900 mb-2">{pt.formTitle}</h3>
                 <p className="text-gray-500 text-sm mb-6">{pt.formSubtitle}</p>
 
@@ -150,7 +150,7 @@ const Kontakt = () => {
       </section>
 
       {/* Locations Section */}
-      <section className="py-16" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="py-16">
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
             <div className="flex items-center gap-3 mb-4">
@@ -169,7 +169,7 @@ const Kontakt = () => {
                   className={`text-left p-6 rounded-2xl border-2 transition-all duration-300 ${
                     activeLocation.id === loc.id 
                       ? 'border-[#94c43d] bg-white shadow-lg shadow-[#94c43d]/5' 
-                      : 'border-gray-200/50 hover:border-[#94c43d]/30 bg-[#f0ede8]'
+                      : 'border-gray-200/50 hover:border-[#94c43d]/30 bg-white/50'
                   }`}
                 >
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors ${

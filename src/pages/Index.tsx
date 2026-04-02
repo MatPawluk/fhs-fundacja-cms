@@ -357,7 +357,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
+    <div className="min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
@@ -525,7 +525,7 @@ const Index = () => {
       </section>
 
       {/* Poznaj Fundację Section */}
-      <section className="py-20" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="py-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row items-start gap-12 max-w-5xl mx-auto">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex-shrink-0">
@@ -557,7 +557,7 @@ const Index = () => {
       <PhotoCarousel />
 
       {/* Aktualności Section */}
-      <section className="py-20" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="py-20">
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 gap-4">
             <div>
@@ -604,7 +604,7 @@ const Index = () => {
       </section>
 
       {/* Wesprzyj Nas Section */}
-      <section id="wesprzyj" className="py-20" style={{ backgroundColor: '#f5f3ef' }}>
+      <section id="wesprzyj" className="py-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
@@ -641,7 +641,7 @@ const Index = () => {
 
             {/* Payment Gateway Placeholder */}
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="rounded-3xl p-8 border border-gray-200/50" style={{ backgroundColor: '#f0ede8' }}>
+              <div className="rounded-3xl p-8 border border-gray-200/50">
                 <div className="text-center mb-6">
                   <div className="w-14 h-14 rounded-2xl bg-[#94c43d]/10 flex items-center justify-center mx-auto mb-4">
                     <CreditCard className="w-7 h-7 text-[#94c43d]" />
@@ -764,7 +764,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 overflow-hidden w-full max-w-full" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="py-20 overflow-hidden w-full max-w-full">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto w-full">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
@@ -797,7 +797,7 @@ const Index = () => {
       <HomeFAQSection />
 
       {/* CTA Section */}
-      <section className="relative py-16 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="relative py-16 overflow-hidden">
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <div className="relative max-w-5xl mx-auto rounded-[1.5rem] overflow-hidden border border-gray-200/50" style={{ background: 'linear-gradient(135deg, #2a2a2a 0%, #333333 50%, rgba(148,196,61,0.15) 100%)' }}>
             <div className="absolute bottom-0 right-0 w-[300px] h-[250px] bg-[#94c43d]/10 blur-[100px] rounded-full pointer-events-none" />

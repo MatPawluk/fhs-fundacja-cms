@@ -230,7 +230,7 @@ const Regulamin = () => {
   const t = content[language as Language] || content.pl;
 
   return (
-    <div className="min-h-screen bg-[#f5f3ef]">
+    <div className="min-h-screen">
       <Navbar />
       
       <main className="pt-32 pb-20 px-6 lg:px-12">

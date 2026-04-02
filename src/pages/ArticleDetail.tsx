@@ -93,7 +93,7 @@ const ArticleDetail = () => {
   // Loading state
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#f5f3ef' }}>
+      <div className="min-h-screen flex items-center justify-center">
         <Navbar />
         <Loader2 className="w-10 h-10 text-[#94c43d] animate-spin" />
       </div>
@@ -116,7 +116,7 @@ const ArticleDetail = () => {
 
   if (!displayArticle) {
     return (
-      <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
+      <div className="min-h-screen">
         <Navbar />
         <div className="container mx-auto px-6 pt-40 text-center">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">Artykuł nie został znaleziony</h1>
@@ -132,11 +132,11 @@ const ArticleDetail = () => {
     : staticImages[displayArticle.slug] || articleCompetition;
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
+    <div className="min-h-screen">
       <Navbar />
 
       {/* Header */}
-      <section className="relative pt-28 pb-16 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="relative pt-28 pb-16 overflow-hidden">
         <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#94c43d]/5 blur-[150px] rounded-full pointer-events-none" />
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <Link to="/baza-wiedzy" className="inline-flex items-center gap-2 text-gray-500 hover:text-[#94c43d] transition-colors duration-300 mb-8">
@@ -159,7 +159,7 @@ const ArticleDetail = () => {
       </section>
 
       {/* Article Content */}
-      <section className="py-16" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="py-16">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-4 gap-12">
             {/* Sidebar */}

@@ -22,11 +22,11 @@ const ServiceDetail = () => {
   const displayTitle = service.title;
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
+    <div className="min-h-screen">
       <Navbar />
       
       {/* Header */}
-      <section className="relative pt-28 pb-20 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="relative pt-28 pb-20 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <img 
             src={service.image} 
@@ -65,7 +65,7 @@ const ServiceDetail = () => {
       </section>
 
       {/* Description with Image */}
-      <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#f0ede8' }}>
+      <section className="py-20 relative overflow-hidden">
         
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -80,7 +80,7 @@ const ServiceDetail = () => {
                 alt={service.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #f0ede8, transparent, transparent)' }} />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, transparent, transparent)' }} />
             </motion.div>
 
             <motion.div
@@ -179,7 +179,7 @@ const ServiceDetail = () => {
       </ParallaxSection>
 
       {/* Scope */}
-      <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="py-20 relative overflow-hidden">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-5xl mx-auto">
             <motion.div
@@ -205,7 +205,7 @@ const ServiceDetail = () => {
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-2xl border border-gray-200/50" style={{ backgroundColor: '#f0ede8' }}
+                className="p-8 rounded-2xl border border-gray-200/50"
               >
                 <h3 className="font-semibold text-gray-900 mb-6 flex items-center gap-3">
                   <div className="w-2 h-6 bg-[#94c43d] rounded-full" />
@@ -225,7 +225,7 @@ const ServiceDetail = () => {
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-2xl border border-gray-200/50" style={{ backgroundColor: '#f0ede8' }}
+                className="p-8 rounded-2xl border border-gray-200/50"
               >
                 <h3 className="font-semibold text-gray-900 mb-6 flex items-center gap-3">
                   <div className="w-2 h-6 bg-red-500/60 rounded-full" />
@@ -246,7 +246,7 @@ const ServiceDetail = () => {
       </section>
 
       {/* Deliverables */}
-      <section className="py-20 relative overflow-hidden" style={{ backgroundColor: '#f0ede8' }}>
+      <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-lime/3 blur-[150px] rounded-full" />
         </div>
@@ -278,7 +278,7 @@ const ServiceDetail = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="flex items-start gap-4 p-5 rounded-xl border border-gray-200/50 text-left" style={{ backgroundColor: '#e8e5e0' }}
+                    className="flex items-start gap-4 p-5 rounded-xl border border-gray-200/50 text-left"
                   >
                     <span className="font-display text-sm font-bold text-lime/50 mt-0.5 flex-shrink-0">
                       {(index + 1).toString().padStart(2, '0')}
@@ -353,7 +353,7 @@ const ServiceDetail = () => {
       </ParallaxSection>
 
       {/* Case Study */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="py-24 relative overflow-hidden">
         
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div
@@ -379,7 +379,7 @@ const ServiceDetail = () => {
       </section>
 
       {/* CTA Section - consistent style */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-lime/8 blur-[150px] rounded-full" />
         </div>

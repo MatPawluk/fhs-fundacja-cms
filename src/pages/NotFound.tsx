@@ -12,7 +12,7 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#f5f3ef' }}>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
       
       <main className="flex-1 flex items-center justify-center pt-32 pb-16 px-6">

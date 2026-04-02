@@ -44,11 +44,11 @@ const BazaWiedzy = () => {
     : articles.filter(article => article.category === categories[activeCategoryIndex]);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
+    <div className="min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative pt-28 pb-12 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="relative pt-28 pb-12 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#94c43d]/5 blur-[150px] rounded-full" />
         </div>
@@ -69,7 +69,7 @@ const BazaWiedzy = () => {
       </section>
 
       {/* Articles Section */}
-      <section className="py-12 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="py-12 relative overflow-hidden">
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           {/* Categories */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="flex flex-wrap gap-3 mb-10">
@@ -106,7 +106,7 @@ const BazaWiedzy = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   className="group relative rounded-2xl overflow-hidden border border-gray-200/50 hover:border-[#94c43d]/30 hover:shadow-xl hover:shadow-[#94c43d]/5 transition-all duration-500"
-                  style={{ backgroundColor: '#f0ede8' }}
+                 
                 >
                   <Link to={`/baza-wiedzy/${article.slug}`}>
                     <div className="relative aspect-[4/3] overflow-hidden">
@@ -146,7 +146,7 @@ const BazaWiedzy = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#94c43d]/10 blur-[150px] rounded-full" />
         </div>

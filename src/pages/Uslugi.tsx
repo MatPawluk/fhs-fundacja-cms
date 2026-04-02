@@ -110,7 +110,7 @@ function HowItWorksVerticalTabs() {
   };
 
   return (
-    <section className="py-24" style={{ backgroundColor: '#f5f3ef' }}>
+    <section className="py-24">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
@@ -392,7 +392,7 @@ function ChildDetailPopup({
 
               {/* Bottom: Support info + CTA */}
               <div className="border-t border-gray-100 pt-6 mt-auto">
-                <div className="flex items-center justify-between mb-4 p-4 rounded-2xl bg-[#f5f3ef]">
+                <div className="flex items-center justify-between mb-4 p-4 rounded-2xl bg-gray-50/50 backdrop-blur-sm">
                   <div>
                     <p className="text-gray-400 text-[10px] uppercase tracking-widest font-medium">Miesięczne wsparcie</p>
                     <p className="font-display font-bold text-2xl text-gray-900">{child.monthlySupport} <span className="text-sm font-semibold text-gray-500">zł/mies.</span></p>
@@ -450,7 +450,7 @@ const Uslugi = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
+    <div className="min-h-screen">
       <Navbar />
 
       {isLoading ? (
@@ -461,7 +461,7 @@ const Uslugi = () => {
       ) : (
         <>
           {/* Hero Section */}
-      <section className="relative pt-28 pb-16 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="relative pt-28 pb-16 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-[#94c43d]/5 blur-[150px] rounded-full" />
         </div>
@@ -484,7 +484,7 @@ const Uslugi = () => {
       </section>
 
       {/* Children Grid — 3 columns, 6 per page */}
-      <section id="children-grid" className="py-16 scroll-mt-8" style={{ backgroundColor: '#f5f3ef' }}>
+      <section id="children-grid" className="py-16 scroll-mt-8">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {children.slice((currentPage - 1) * CHILDREN_PER_PAGE, currentPage * CHILDREN_PER_PAGE).map((child, index) => {
@@ -597,7 +597,7 @@ const Uslugi = () => {
       <HowItWorksVerticalTabs />
 
       {/* FAQ Section */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[#94c43d]/5 blur-[150px] rounded-full" />
         </div>
@@ -640,7 +640,7 @@ const Uslugi = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#94c43d]/10 blur-[150px] rounded-full" />
         </div>

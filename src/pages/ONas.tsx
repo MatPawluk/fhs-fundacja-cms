@@ -11,9 +11,10 @@ import { oNasTranslations } from '@/i18n/pageTranslations';
 import { PartnersSection } from '@/components/PartnersSection';
 import { ArrowRight } from 'lucide-react';
 
-import teamDarek from '@/assets/team-darek.jpg';
-import teamAdrian from '@/assets/team-adrian.jpg';
-import teamAdrian2 from '@/assets/team-adrian-2.jpg';
+import teamDarek1 from '@/assets/team-darek.jpg';
+import teamDarek from '@/assets/onas1.jpg';
+import teamAdrian from '@/assets/onas3.jpg';
+import teamAdrian2 from '@/assets/onas2.jpg';
 import teamOlga from '@/assets/team-olga.jpg';
 import teamAgata from '@/assets/team-agata.jpg';
 import teamMaya from '@/assets/team-maya.jpg';
@@ -23,7 +24,7 @@ import teamAdrianNew from '@/assets/Adrian-2-e1753411695887.jpg';
 
 const teamData = {
   pl: [
-    { name: 'Dariusz Andrzejczak', role: 'Współzałożyciel, koordynacja lokalna', image: teamDarek },
+    { name: 'Dariusz Andrzejczak', role: 'Współzałożyciel, koordynacja lokalna', image: teamDarek1 },
     { name: 'Olga Dąbrowska', role: 'Wsparcie projektowe', image: teamOlga },
     { name: 'Adrian Nkwamu', role: 'Współzałożyciel, marketing i komunikacja', image: teamAdrian },
     { name: 'Agata Wysocka', role: 'Koordynacja lokalna', image: teamAgata },
@@ -33,7 +34,7 @@ const teamData = {
     { name: 'Che', role: 'Wsparcie operacyjne', image: teamChe },
   ],
   en: [
-    { name: 'Dariusz Andrzejczak', role: 'Co-founder, local coordination', image: teamDarek },
+    { name: 'Dariusz Andrzejczak', role: 'Co-founder, local coordination', image: teamDarek1 },
     { name: 'Olga Dąbrowska', role: 'Project support', image: teamOlga },
     { name: 'Adrian Nkwamu', role: 'Co-founder, marketing & communication', image: teamAdrian },
     { name: 'Agata Wysocka', role: 'Local coordination', image: teamAgata },
@@ -43,7 +44,7 @@ const teamData = {
     { name: 'Che', role: 'Operational support', image: teamChe },
   ],
   nl: [
-    { name: 'Dariusz Andrzejczak', role: 'Medeoprichter, lokale coördinatie', image: teamDarek },
+    { name: 'Dariusz Andrzejczak', role: 'Medeoprichter, lokale coördinatie', image: teamDarek1 },
     { name: 'Olga Dąbrowska', role: 'Projectondersteuning', image: teamOlga },
     { name: 'Adrian Nkwamu', role: 'Medeoprichter, marketing & communicatie', image: teamAdrian },
     { name: 'Agata Wysocka', role: 'Lokale coördinatie', image: teamAgata },
@@ -106,11 +107,11 @@ const ONas = () => {
   const team = teamData[language];
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#f5f3ef' }}>
+    <div className="min-h-screen">
       <Navbar />
 
       {/* Hero / Kim jesteśmy */}
-      <section className="relative pt-28 pb-20 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="relative pt-28 pb-20 overflow-hidden">
         <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#94c43d]/5 blur-[150px] rounded-full pointer-events-none" />
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
@@ -184,7 +185,7 @@ const ONas = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="py-24 relative overflow-hidden">
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <div className="flex items-center justify-center gap-3 mb-4">
@@ -216,7 +217,7 @@ const ONas = () => {
       <PartnersSection />
 
       {/* Globe Section */}
-      <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="py-16 relative overflow-hidden">
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-4">
@@ -236,7 +237,7 @@ const ONas = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
+      <section className="relative py-24 overflow-hidden">
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
             <div className="flex items-center justify-center gap-3 mb-4">
