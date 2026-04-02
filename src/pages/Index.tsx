@@ -408,14 +408,18 @@ const Index = () => {
       <section ref={carouselRef} className="relative py-24 overflow-hidden" style={{ backgroundColor: '#040404' }}>
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#94c43d]/5 blur-[150px] rounded-full pointer-events-none" />
 
-        <div className="container mx-auto px-6 lg:px-12">
+        <div className="w-full pl-6 lg:pl-[calc(max(1.5rem,(100vw-1400px)/2+3rem))]">
           <div className="flex flex-col lg:flex-row gap-12 items-start">
-            {/* Left Column: Heading & Navigation */}
-            <div className="lg:w-1/3 lg:sticky lg:top-32">
+            {/* Left Column: Heading & Navigation - YinYang Gradient Overlay */}
+            <div className="lg:w-1/3 flex-shrink-0 pr-6 lg:pr-12 lg:sticky lg:top-32 lg:pb-12 z-30 pointer-events-none">
+              {/* Solid-to-transparent fade protection for text */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#040404] via-[#040404] to-transparent z-0 lg:-ml-24 lg:-my-24 pointer-events-none" />
+              
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
+                className="relative z-10 pointer-events-auto"
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-8 h-px bg-[#94c43d]" />
@@ -461,11 +465,17 @@ const Index = () => {
               </motion.div>
             </div>
 
-            {/* Right Column: Cards Slider */}
-            <div className="lg:w-2/3 w-full overflow-hidden">
+            {/* Right Column: Cards Slider - Now with cinematic YinYang Masking */}
+            <div 
+              className="flex-1 w-full overflow-visible"
+              style={{
+                maskImage: 'linear-gradient(to right, transparent, black 150px)',
+                WebkitMaskImage: 'linear-gradient(to right, transparent, black 150px)'
+              }}
+            >
               <div className="relative">
                 <motion.div
-                  className="flex gap-6"
+                  className="flex gap-6 pr-12"
                   animate={{ x: -currentIndex * stepWidth }}
                   transition={transition}
                   onAnimationComplete={handleAnimationComplete}
