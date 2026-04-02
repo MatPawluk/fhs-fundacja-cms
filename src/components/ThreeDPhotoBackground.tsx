@@ -56,7 +56,7 @@ export const ThreeDPhotoBackground = ({ images }: ThreeDPhotoBackgroundProps) =>
   const boardWidth = isMobile ? '140%' : '120%';
   const boardLeft = isMobile ? '-20%' : '-10%';
   const boardTop = isMobile ? '-10%' : '-5%';
-  const colGap = isMobile ? '10px' : '3rem';
+  const colGap = isMobile ? '10px' : '24px';
   const animDurationEven = isMobile ? 80 : 130;
   const animDurationOdd = isMobile ? 86 : 136;
 
@@ -121,7 +121,7 @@ export const ThreeDPhotoBackground = ({ images }: ThreeDPhotoBackgroundProps) =>
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: isMobile ? '8px' : '12px',
+                  gap: colGap,
                   animation: `${isEven ? 'scrollUp' : 'scrollDown'} ${isEven ? animDurationEven : animDurationOdd}s linear infinite`,
                 }}
               >
@@ -164,7 +164,8 @@ export const ThreeDPhotoBackground = ({ images }: ThreeDPhotoBackgroundProps) =>
       <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: isMobile ? '10%' : '18%', background: 'linear-gradient(to right, #080808, transparent)', zIndex: 3 }} />
       <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: isMobile ? '10%' : '18%', background: 'linear-gradient(to left, #080808, transparent)', zIndex: 3 }} />
 
-      {/* Vignette */}
+      {/* Vignette & Overlay for text readability */}
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.45)', zIndex: 4 }} />
       <div style={{ position: 'absolute', inset: 0, boxShadow: 'inset 0 0 140px 40px rgba(0,0,0,0.85)', zIndex: 2 }} />
     </div>
   );
