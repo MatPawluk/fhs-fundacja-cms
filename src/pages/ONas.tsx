@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { CobeGlobe } from '@/components/ui/cobe-globe';
+import { WorldDotMap } from '@/components/WorldDotMap';
 import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
@@ -215,8 +215,8 @@ const ONas = () => {
             <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">{hero.globeTitle} <GradientText>{hero.globeHighlight}</GradientText></h2>
             <p className="text-gray-500 mt-3 max-w-lg mx-auto">{hero.globeDesc}</p>
           </motion.div>
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-            <CobeGlobe className="max-w-lg mx-auto" />
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative">
+            <WorldDotMap className="max-w-4xl mx-auto" />
           </motion.div>
         </div>
       </section>
