@@ -414,7 +414,7 @@ const Index = () => {
             <div className="lg:w-1/3 flex-shrink-0 pr-6 lg:pr-12 lg:sticky lg:top-32 lg:pb-12 z-30 pointer-events-none">
               {/* Solid-to-transparent fade protection for text */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#040404] via-[#040404] to-transparent z-0 lg:-ml-24 lg:-my-24 pointer-events-none" />
-              
+
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -466,11 +466,11 @@ const Index = () => {
             </div>
 
             {/* Right Column: Cards Slider - Now with cinematic YinYang Masking */}
-            <div 
+            <div
               className="flex-1 w-full overflow-visible"
               style={{
-                maskImage: 'linear-gradient(to right, transparent, black 150px)',
-                WebkitMaskImage: 'linear-gradient(to right, transparent, black 150px)'
+                maskImage: 'linear-gradient(to right, transparent, black 2px)',
+                WebkitMaskImage: 'linear-gradient(to right, transparent, black 2px)'
               }}
             >
               <div className="relative">
@@ -679,8 +679,8 @@ const Index = () => {
                       key={amount}
                       onClick={() => handleAmountSelect(amount)}
                       className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${selectedAmount === amount
-                          ? 'bg-[#94c43d] text-white shadow-md'
-                          : 'bg-white border border-gray-200 text-gray-700 hover:border-[#94c43d]/50'
+                        ? 'bg-[#94c43d] text-white shadow-md'
+                        : 'bg-white border border-gray-200 text-gray-700 hover:border-[#94c43d]/50'
                         }`}
                     >
                       {amount} zł
