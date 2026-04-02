@@ -276,13 +276,15 @@ const PolitykaPrywatnosci = () => {
             animate={{ opacity: 1, y: 0 }}
             className="mb-12 text-center"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#94c43d]/10 text-[#94c43d] mb-6">
-              <Shield size={32} />
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-8 h-px bg-[#94c43d]" />
+              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Prywatność</span>
+              <div className="w-8 h-px bg-[#94c43d]" />
             </div>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              {t.title}
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              {t.title.split(' ').slice(0, -1).join(' ')} <span className="text-[#94c43d]">{t.title.split(' ').slice(-1)}</span>
             </h1>
-            <p className="text-gray-500 italic">{t.lastUpdate}</p>
+            <p className="text-gray-500 italic text-sm">{t.lastUpdate}</p>
           </motion.div>
 
           <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-200/50 space-y-12 text-gray-700 leading-relaxed">

@@ -84,9 +84,13 @@ const Kontakt = () => {
             {/* Left side */}
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
               <div className="mb-8">
-                <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">{pt.badge}</span>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-px bg-[#94c43d]" />
+                  <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{pt.badge}</span>
+                </div>
                 <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-                  Masz pytania? Chcesz zostać wolontariuszem?<br /><GradientText>Napisz do nas!</GradientText>
+                  {pt.title || 'Masz pytania?'} <br />
+                  <span className="text-[#94c43d]">{pt.titleHighlight || 'Napisz do nas!'}</span>
                 </h1>
               </div>
 
@@ -149,8 +153,12 @@ const Kontakt = () => {
       <section className="py-16" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
-            <h3 className="font-display font-semibold text-2xl text-gray-900 mb-6">
-              {pt.locationsTitle} <GradientText>{pt.locationsTitleHighlight}</GradientText>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-px bg-[#94c43d]" />
+              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Biura</span>
+            </div>
+            <h3 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-6">
+              {pt.locationsTitle} <span className="text-[#94c43d]">{pt.locationsTitleHighlight}</span>
             </h3>
 
             <div className="grid sm:grid-cols-2 gap-4 mb-8">

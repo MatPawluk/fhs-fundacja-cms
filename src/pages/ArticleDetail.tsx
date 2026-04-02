@@ -144,7 +144,10 @@ const ArticleDetail = () => {
             Wróć do aktualności
           </Link>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-4xl">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d] text-white text-sm font-semibold mb-6">{displayArticle.category}</span>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-px bg-[#94c43d]" />
+              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{displayArticle.category}</span>
+            </div>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-8">{displayArticle.title}</h1>
             <div className="flex flex-wrap items-center gap-6 text-gray-500">
               <div className="flex items-center gap-2"><Calendar className="w-4 h-4" /><span>{displayArticle.date}</span></div>
@@ -163,7 +166,10 @@ const ArticleDetail = () => {
             <aside className="lg:col-span-1 order-2 lg:order-1">
               <div className="sticky top-28 space-y-6">
                 <div className="p-6 bg-white rounded-2xl border border-gray-200 shadow-sm">
-                  <h3 className="font-semibold text-gray-900 mb-4">Udostępnij</h3>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-4 h-px bg-[#94c43d]" />
+                    <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wider">Udostępnij</h3>
+                  </div>
                   <div className="flex gap-3">
                     <button
                       onClick={handleShare}
@@ -182,7 +188,10 @@ const ArticleDetail = () => {
                 </div>
 
                 <div className="p-6 bg-[#94c43d]/10 rounded-2xl border border-[#94c43d]/20">
-                  <h3 className="font-semibold text-gray-900 mb-3">Chcesz pomóc?</h3>
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-4 h-px bg-[#94c43d]" />
+                    <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wider">Chcesz pomóc?</h3>
+                  </div>
                   <p className="text-gray-600 text-sm mb-4">Wesprzyj naszą misję i pomagaj dzieciom w Afryce.</p>
                   <Link to="/kontakt" className="block w-full text-center px-4 py-3 bg-[#94c43d] text-white rounded-xl font-semibold text-sm hover:scale-105 transition-transform duration-300">
                     Skontaktuj się
@@ -226,7 +235,12 @@ const ArticleDetail = () => {
 
               {/* Powiązane artykuły */}
               <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-16">
-                <h3 className="font-display font-bold text-2xl text-gray-900 mb-8">Powiązane <GradientText>artykuły</GradientText></h3>
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-8 h-px bg-[#94c43d]" />
+                  <h3 className="font-display font-bold text-2xl text-gray-900">
+                    Powiązane <span className="text-[#94c43d]">artykuły</span>
+                  </h3>
+                </div>
                 <div className="grid sm:grid-cols-2 gap-6">
                   {relatedArticles.map((related) => (
                     <Link key={related.slug} to={`/baza-wiedzy/${related.slug}`} className="group relative rounded-2xl overflow-hidden aspect-video shadow-md">

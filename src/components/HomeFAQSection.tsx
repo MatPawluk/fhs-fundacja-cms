@@ -25,8 +25,15 @@ export const HomeFAQSection = () => {
       </div>
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-          <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">{t.faq.badge}</span>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900">{t.faq.title} <GradientText>{t.faq.titleHighlight}</GradientText></h2>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-8 h-px bg-[#94c43d]" />
+            <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{t.faq.badge}</span>
+            <div className="w-8 h-px bg-[#94c43d]" />
+          </div>
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+            {t.faq.title} <br />
+            <span className="text-[#94c43d]">{t.faq.titleHighlight}</span>
+          </h2>
         </motion.div>
         <div className="max-w-4xl mx-auto space-y-0">
           {faqs.map((faq, index) => (

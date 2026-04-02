@@ -16,20 +16,17 @@ const Dziekujemy = () => {
       
       <main className="flex-1 flex items-center justify-center pt-32 pb-16 px-6">
         <div className="max-w-2xl w-full text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="w-24 h-24 rounded-full bg-[#94c43d]/10 flex items-center justify-center mx-auto mb-8"
-          >
-            <CheckCircle2 className="w-12 h-12 text-[#94c43d]" />
-          </motion.div>
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="w-8 h-px bg-[#94c43d]" />
+            <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Dziękujemy!</span>
+            <div className="w-8 h-px bg-[#94c43d]" />
+          </div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight"
           >
             {t.thankYou.title} <span className="text-[#94c43d]">{t.thankYou.titleHighlight}</span>
           </motion.h1>

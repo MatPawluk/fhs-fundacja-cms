@@ -52,11 +52,13 @@ const ServiceDetail = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-lime/20 text-lime text-sm font-medium mb-4">
-              {service.subtitle}
-            </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-              <GradientText>{displayTitle}</GradientText>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-px bg-[#94c43d]" />
+              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{service.subtitle}</span>
+            </div>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 leading-tight">
+              <span className="text-[#94c43d] block mb-2">{displayTitle.split(' ').slice(0, -1).join(' ')}</span>
+              {displayTitle.split(' ').slice(-1)}
             </h1>
           </motion.div>
         </div>
@@ -86,10 +88,12 @@ const ServiceDetail = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <div className="w-1 h-8 bg-[#94c43d] rounded-full" />
-                {t.serviceDetail.serviceDescription}
-              </h2>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-px bg-[#94c43d]" />
+                <h2 className="font-display text-2xl font-bold text-gray-900 uppercase tracking-widest text-sm">
+                  {t.serviceDetail.serviceDescription}
+                </h2>
+              </div>
               <p className="text-gray-500 text-lg leading-relaxed">
                 {service.description}
               </p>
@@ -107,9 +111,15 @@ const ServiceDetail = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-2xl font-bold text-gray-900 mb-8">
-                {t.serviceDetail.whenMakesSense} <GradientText>{t.serviceDetail.whenMakesSenseHighlight}</GradientText>
-              </h2>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-px bg-[#94c43d]" />
+                <h2 className="font-display text-gray-900 font-bold uppercase tracking-widest text-sm">
+                  {t.serviceDetail.whenMakesSense}
+                </h2>
+              </div>
+              <h3 className="font-display text-3xl font-bold text-gray-900 mb-8 leading-tight">
+                {t.serviceDetail.whenMakesSenseHighlight}
+              </h3>
               <div className="space-y-4">
                 {service.whenItMakesSense.map((item, index) => (
                   <motion.div
@@ -137,9 +147,15 @@ const ServiceDetail = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <h2 className="font-display text-2xl font-bold text-gray-900 mb-8">
-                {t.serviceDetail.problemSolved} <GradientText>{t.serviceDetail.problemSolvedHighlight}</GradientText>
-              </h2>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-px bg-[#94c43d]" />
+                <h2 className="font-display text-gray-900 font-bold uppercase tracking-widest text-sm">
+                  {t.serviceDetail.problemSolved}
+                </h2>
+              </div>
+              <h3 className="font-display text-3xl font-bold text-gray-900 mb-8 leading-tight">
+                {t.serviceDetail.problemSolvedHighlight}
+              </h3>
               <div className="space-y-4">
                 {service.problemsSolved.map((problem, index) => (
                   <motion.div
@@ -170,11 +186,18 @@ const ServiceDetail = () => {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-10"
+              className="text-center mb-16"
             >
-              <h2 className="font-display text-2xl font-bold text-gray-900">
-                {t.serviceDetail.scopeTitle} <GradientText>{t.serviceDetail.scopeHighlight}</GradientText>
-              </h2>
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="w-8 h-px bg-[#94c43d]" />
+                <h2 className="font-display text-gray-900 font-bold uppercase tracking-widest text-sm">
+                  {t.serviceDetail.scopeTitle}
+                </h2>
+                <div className="w-8 h-px bg-[#94c43d]" />
+              </div>
+              <h3 className="font-display text-4xl lg:text-5xl font-bold text-center text-gray-900 leading-tight">
+                {t.serviceDetail.scopeHighlight}
+              </h3>
             </motion.div>
             
             <div className="grid md:grid-cols-2 gap-8">
@@ -236,9 +259,17 @@ const ServiceDetail = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-2xl font-bold text-gray-900 mb-8">
-                Output / <GradientText>{t.serviceDetail.deliverables}</GradientText>
-              </h2>
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="w-8 h-px bg-[#94c43d]" />
+                <h2 className="font-display text-gray-900 font-bold uppercase tracking-widest text-sm">
+                  Output / {t.serviceDetail.deliverables}
+                </h2>
+                <div className="w-8 h-px bg-[#94c43d]" />
+              </div>
+              <h3 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-12 leading-tight">
+                Co otrzymasz w ramach <br />
+                <span className="text-[#94c43d]">współpracy?</span>
+              </h3>
               <div className="space-y-4">
                 {service.deliverables.map((item, index) => (
                   <motion.div
@@ -274,9 +305,16 @@ const ServiceDetail = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-display text-2xl font-bold text-gray-900 mb-10">
-                {t.serviceDetail.workModelTitle} <GradientText>{t.serviceDetail.workModelHighlight}</GradientText>
-              </h2>
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="w-8 h-px bg-[#94c43d]" />
+                <h2 className="font-display text-gray-900 font-bold uppercase tracking-widest text-sm">
+                  {t.serviceDetail.workModelTitle}
+                </h2>
+                <div className="w-8 h-px bg-[#94c43d]" />
+              </div>
+              <h3 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-12 leading-tight">
+                {t.serviceDetail.workModelHighlight}
+              </h3>
               
               <div className="grid md:grid-cols-3 gap-6">
                 <motion.div
@@ -324,12 +362,16 @@ const ServiceDetail = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 backdrop-blur-sm text-gray-900/80 text-sm font-medium mb-4">
-              {t.serviceDetail.caseStudyBadge}
-            </span>
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">
-              {t.serviceDetail.caseStudyTitle} <GradientText>{t.serviceDetail.caseStudyHighlight}</GradientText>
-            </h2>
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-8 h-px bg-[#94c43d]" />
+              <h2 className="font-display text-gray-900 font-bold uppercase tracking-widest text-sm">
+                Case study
+              </h2>
+              <div className="w-8 h-px bg-[#94c43d]" />
+            </div>
+            <h3 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-16 leading-tight">
+              {t.serviceDetail.caseStudyTitle} <span className="text-[#94c43d]">{t.serviceDetail.caseStudyHighlight}</span>
+            </h3>
           </motion.div>
 
           <InteractiveCaseStudy data={service.caseStudy} image={service.caseStudyImage} />
@@ -352,8 +394,14 @@ const ServiceDetail = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              {t.serviceDetail.ctaTitle} <GradientText>{t.serviceDetail.ctaHighlight}</GradientText>
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-8 h-px bg-[#94c43d]" />
+              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Zacznij pomagać</span>
+              <div className="w-8 h-px bg-[#94c43d]" />
+            </div>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
+              {t.serviceDetail.ctaTitle} <br />
+              <span className="text-[#94c43d]">{t.serviceDetail.ctaHighlight}</span>
             </h2>
             <p className="text-gray-500 mb-8 max-w-lg mx-auto">
               {t.serviceDetail.ctaSubtitle}

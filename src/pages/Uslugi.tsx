@@ -118,9 +118,13 @@ function HowItWorksVerticalTabs() {
             <div className="flex flex-col">
               <div className="flex items-center justify-between mb-8">
                 <div>
-                  <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-3">Jak to działa</span>
-                  <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">
-                    Cztery proste <GradientText>kroki</GradientText>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-8 h-px bg-[#94c43d]" />
+                    <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Jak to działa</span>
+                  </div>
+                  <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+                    Cztery proste <br />
+                    <span className="text-[#94c43d]">kroki</span>
                   </h2>
                 </div>
                 <span className="text-gray-300 font-display text-sm tracking-wider hidden md:block">({String(activeIndex + 1).padStart(2, '0')}/{String(STEPS.length).padStart(2, '0')})</span>
@@ -464,9 +468,13 @@ const Uslugi = () => {
 
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-4xl text-center mx-auto">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-semibold uppercase tracking-wider mb-6">Wirtualna adopcja</span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-              Zmień życie <GradientText>dziecka</GradientText>
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-8 h-px bg-[#94c43d]" />
+              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Wirtualna adopcja</span>
+              <div className="w-8 h-px bg-[#94c43d]" />
+            </div>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
+              Zmień życie <span className="text-[#94c43d]">dziecka</span>
             </h1>
             <p className="text-xl text-gray-500 max-w-2xl mx-auto">
               Wybierz dziecko, które chcesz wesprzeć. Twoja regularna pomoc zapewni mu edukację, posiłki i opiekę medyczną.
@@ -595,9 +603,14 @@ const Uslugi = () => {
         </div>
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">FAQ</span>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900">
-              Najczęściej zadawane <GradientText>pytania</GradientText>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-px bg-[#94c43d]" />
+              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">FAQ</span>
+              <div className="w-8 h-px bg-[#94c43d]" />
+            </div>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              Najczęściej zadawane <br />
+              <span className="text-[#94c43d]">pytania</span>
             </h2>
           </motion.div>
           <div className="max-w-4xl mx-auto space-y-0">
@@ -633,8 +646,14 @@ const Uslugi = () => {
         </div>
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              Twoja pomoc może <GradientText>zacząć się dziś</GradientText>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-px bg-[#94c43d]" />
+              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Zacznij pomagać</span>
+              <div className="w-8 h-px bg-[#94c43d]" />
+            </div>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+              Twoja pomoc może <br />
+              <span className="text-[#94c43d]">zacząć się dziś</span>
             </h2>
             <p className="text-gray-500 mb-8 max-w-lg mx-auto">Wystarczy jeden krok, aby realnie zmienić czyjeś życie.</p>
             <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">

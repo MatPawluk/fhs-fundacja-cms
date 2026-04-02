@@ -529,10 +529,14 @@ const Index = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row items-start gap-12 max-w-5xl mx-auto">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex-shrink-0">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-8 h-px bg-gray-900" />
-                <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">{ix.poznajTitle}</h2>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-px bg-[#94c43d]" />
+                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">O fundacji</span>
               </div>
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+                Poznaj <br />
+                <span className="text-[#94c43d]">Fundację</span>
+              </h2>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex-1">
               <p className="text-gray-600 leading-relaxed mb-4">
@@ -556,9 +560,15 @@ const Index = () => {
       <section className="py-20" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 gap-4">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-px bg-gray-900" />
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">{ix.aktualnosci}</h2>
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-px bg-[#94c43d]" />
+                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Baza wiedzy</span>
+              </div>
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Nasze <br />
+                <span className="text-[#94c43d]">Aktualności</span>
+              </h2>
             </div>
             <Link to="/baza-wiedzy" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-300 text-gray-700 hover:border-[#94c43d] hover:text-[#94c43d] transition-all duration-300 text-sm font-medium">
               {ix.aktWszystkie} <ArrowRight className="w-4 h-4" />
@@ -598,9 +608,13 @@ const Index = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">{ix.wsprzyjBadge}</span>
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                {ix.wsprzyjTitle} <GradientText>{ix.wsprzyjHighlight}</GradientText>?
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-px bg-[#94c43d]" />
+                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{ix.wsprzyjBadge}</span>
+              </div>
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                {ix.wsprzyjTitle} <br />
+                <span className="text-[#94c43d]">{ix.wsprzyjHighlight}</span>
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
                 {ix.wsprzyjDesc}
@@ -754,9 +768,13 @@ const Index = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto w-full">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">{ix.domPolskiBadge}</span>
-              <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                {ix.domPolskiTitle}
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-px bg-[#94c43d]" />
+                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Gambia</span>
+              </div>
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                Nasz dom <br />
+                <span className="text-[#94c43d]">w Gambii</span>
               </h2>
               <p className="text-gray-600 leading-relaxed mb-8">
                 {ix.domPolskiDesc}

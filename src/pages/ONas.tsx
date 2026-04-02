@@ -120,9 +120,12 @@ const ONas = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-6">{hero.badge}</span>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-px bg-[#94c43d]" />
+                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{hero.badge}</span>
+              </div>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                {hero.title} <GradientText>{hero.titleHighlight}</GradientText>{hero.titleEnd}
+                {hero.title} <span className="text-[#94c43d]">{hero.titleHighlight}</span>{hero.titleEnd}
               </h1>
               <p className="text-gray-600 text-lg leading-relaxed mb-4">{hero.p1}</p>
               <p className="text-gray-600 text-lg leading-relaxed mb-4">{hero.p2}</p>
@@ -184,9 +187,13 @@ const ONas = () => {
       <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-[#94c43d]/10 text-[#94c43d] text-sm font-medium mb-4">{pt.teamBadge}</span>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900">
-              {pt.teamTitle || 'Poznaj'} <GradientText>{pt.teamTitleHighlight || 'nas'}</GradientText>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-px bg-[#94c43d]" />
+              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{pt.teamBadge}</span>
+              <div className="w-8 h-px bg-[#94c43d]" />
+            </div>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              {pt.teamTitle || 'Poznaj'} <span className="text-[#94c43d]">{pt.teamTitleHighlight || 'nas'}</span>
             </h2>
           </motion.div>
 
@@ -212,7 +219,14 @@ const ONas = () => {
       <section className="py-16 relative overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-8">
-            <h2 className="font-display text-3xl lg:text-4xl font-bold text-gray-900">{hero.globeTitle} <GradientText>{hero.globeHighlight}</GradientText></h2>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-px bg-[#94c43d]" />
+              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Gambia</span>
+              <div className="w-8 h-px bg-[#94c43d]" />
+            </div>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              {hero.globeTitle} <span className="text-[#94c43d]">{hero.globeHighlight}</span>
+            </h2>
             <p className="text-gray-500 mt-3 max-w-lg mx-auto">{hero.globeDesc}</p>
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative">
@@ -225,7 +239,14 @@ const ONas = () => {
       <section className="relative py-24 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-6">{t.cta.title} <GradientText>{t.cta.titleHighlight}</GradientText></h2>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-px bg-[#94c43d]" />
+              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Dołącz do nas</span>
+              <div className="w-8 h-px bg-[#94c43d]" />
+            </div>
+            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              {t.cta.title} <span className="text-[#94c43d]">{t.cta.titleHighlight}</span>
+            </h2>
             <p className="text-gray-500 text-lg mb-10 max-w-xl mx-auto">{t.cta.subtitle}</p>
             <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
               {t.cta.button}
