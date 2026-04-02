@@ -1,9 +1,10 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ArrowLeft, ArrowRight, Camera } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Camera, X } from 'lucide-react';
 import { serviceSlugMap, defaultServiceData, getLocalizedServicesData } from '@/data/servicesData';
 
 const ServiceDetail = () => {
@@ -12,9 +13,36 @@ const ServiceDetail = () => {
   
   const localizedServices = getLocalizedServicesData(language);
   const mainSlug = serviceSlug || '';
-  const service = localizedServices[mainSlug] || defaultServiceData;
   
+  const service = localizedServices[mainSlug] || defaultServiceData;
   const displayTitle = service.title;
+
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  // Handle Escape key to close lightbox
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedImage(null);
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, []);
+
+  // Helper to determine grid item classes for a "Full Rectangle" Bento Grid
+  const getGridItemClasses = (index: number, total: number) => {
+    // Desktop layout (4 columns)
+    const targetWeight = Math.ceil(total / 4) * 4;
+    const extraSpansNeeded = targetWeight - total;
+    
+    // Distribute spans (using a modulo-based pattern for variety)
+    const specialIndices = [0, 3, 5, 2, 6, 1].slice(0, extraSpansNeeded);
+    const isSpecial = specialIndices.includes(index % total);
+
+    if (isSpecial) {
+      return 'md:col-span-2 md:aspect-[2.1/1]';
+    }
+    return 'md:col-span-1 aspect-square';
+  };
 
   return (
     <div className="min-h-screen bg-[#f8f7f4]">
@@ -145,7 +173,8 @@ const ServiceDetail = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
-                  className={`relative rounded-3xl overflow-hidden bg-gray-100 shadow-xl group cursor-pointer ${i % 5 === 0 ? 'md:col-span-2 md:aspect-[21/9]' : 'aspect-square'}`}
+                  onClick={() => setSelectedImage(img)}
+                  className={`relative rounded-3xl overflow-hidden bg-gray-100 shadow-xl group cursor-pointer ${getGridItemClasses(i, service.gallery!.length)}`}
                 >
                   <img src={img} alt={`${service.title} gallery ${i}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-[#94c43d]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
@@ -158,6 +187,43 @@ const ServiceDetail = () => {
           </div>
         </section>
       )}
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md p-4 md:p-10"
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.button
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2"
+              onClick={() => setSelectedImage(null)}
+            >
+              <X className="w-10 h-10" />
+            </motion.button>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="relative max-w-7xl max-h-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img 
+                src={selectedImage} 
+                alt="Enlarged gallery view" 
+                className="rounded-2xl shadow-2xl max-h-[85vh] w-auto object-contain"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* CTA Section */}
       <section className="relative py-32 bg-gray-900 overflow-hidden">

@@ -178,7 +178,7 @@ const Index = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [stepWidth, setStepWidth] = useState(364);
   const [transition, setTransition] = useState<any>({ type: 'spring', damping: 25, stiffness: 120 });
-  
+
   useEffect(() => {
     const updateStep = () => {
       const width = window.innerWidth < 640 ? 300 : 340;
@@ -197,7 +197,7 @@ const Index = () => {
   const stats = statsTranslations[language];
   const { articles: allArticles } = useArtykuly(language);
   const articles = allArticles.slice(0, 3);
-  
+
   const baseServices = carouselServicesTranslations[language].map((s, i) => ({
     ...s,
     image: carouselImages[i],
@@ -273,7 +273,7 @@ const Index = () => {
     const params = new URLSearchParams(window.location.search);
     const urlAmount = params.get('amount');
     const donateTo = params.get('donateTo');
-    
+
     if (urlAmount) {
       const numAmount = parseFloat(urlAmount);
       if (!isNaN(numAmount)) {
@@ -300,7 +300,7 @@ const Index = () => {
   const handleDonation = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Initiating donation process...', { donorEmail, customAmount });
-    
+
     if (!donorEmail || !donorEmail.includes('@')) {
       toast.error('Proszę podać poprawny adres e-mail');
       return;
@@ -363,9 +363,9 @@ const Index = () => {
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen overflow-hidden bg-[#0a0a0a] w-full max-w-full">
         <AnimatePresence>
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
             className="absolute inset-0"
           >
@@ -405,16 +405,16 @@ const Index = () => {
       </section>
 
       {/* Services Carousel Section */}
-      <section ref={carouselRef} className="relative py-24 overflow-hidden" style={{ backgroundColor: '#0a0a0a' }}>
+      <section ref={carouselRef} className="relative py-24 overflow-hidden" style={{ backgroundColor: '#040404' }}>
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#94c43d]/5 blur-[150px] rounded-full pointer-events-none" />
-        
+
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col lg:flex-row gap-12 items-start">
             {/* Left Column: Heading & Navigation */}
             <div className="lg:w-1/3 lg:sticky lg:top-32">
-              <motion.div 
-                initial={{ opacity: 0, x: -30 }} 
-                whileInView={{ opacity: 1, x: 0 }} 
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
                 <div className="flex items-center gap-3 mb-4">
@@ -430,13 +430,13 @@ const Index = () => {
                 </p>
 
                 <div className="flex items-center gap-4">
-                  <button 
+                  <button
                     onClick={handlePrev}
                     className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#94c43d] hover:border-[#94c43d] transition-all duration-300 group"
                   >
                     <ChevronLeft className="w-6 h-6 transition-transform group-hover:-translate-x-0.5" />
                   </button>
-                  <button 
+                  <button
                     onClick={handleNext}
                     className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#94c43d] hover:border-[#94c43d] transition-all duration-300 group"
                   >
@@ -447,13 +447,13 @@ const Index = () => {
                 <div className="mt-12">
                   <div className="flex gap-2">
                     {baseServices.map((_, index) => (
-                      <button 
-                        key={index} 
+                      <button
+                        key={index}
                         onClick={() => {
                           setTransition({ type: 'spring', damping: 25, stiffness: 120 });
                           setCurrentIndex(index + 1);
-                        }} 
-                        className={`h-1 rounded-full transition-all duration-500 ${index === logicalIndex ? 'w-12 bg-[#94c43d]' : 'w-2 bg-white/20 hover:bg-white/40'}`} 
+                        }}
+                        className={`h-1 rounded-full transition-all duration-500 ${index === logicalIndex ? 'w-12 bg-[#94c43d]' : 'w-2 bg-white/20 hover:bg-white/40'}`}
                       />
                     ))}
                   </div>
@@ -464,7 +464,7 @@ const Index = () => {
             {/* Right Column: Cards Slider */}
             <div className="lg:w-2/3 w-full overflow-hidden">
               <div className="relative">
-                <motion.div 
+                <motion.div
                   className="flex gap-6"
                   animate={{ x: -currentIndex * stepWidth }}
                   transition={transition}
@@ -473,7 +473,7 @@ const Index = () => {
                   {carouselServices.map((service, index) => {
                     // Simplified number calculation for triple buffer
                     const displayNum = (index % baseServices.length) + 1;
-                    
+
                     return (
                       <motion.div
                         key={`${index}-${service.slug}`}
@@ -481,10 +481,10 @@ const Index = () => {
                       >
                         {/* Image Layer */}
                         <div className="absolute inset-0">
-                          <img 
-                            src={service.image} 
-                            alt={service.title} 
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60" 
+                          <img
+                            src={service.image}
+                            alt={service.title}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
                         </div>
@@ -505,8 +505,8 @@ const Index = () => {
                             <p className="text-gray-400 text-sm mb-8 line-clamp-3 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                               {service.description}
                             </p>
-                            <Link 
-                              to={`/uslugi/${service.slug}`} 
+                            <Link
+                              to={`/uslugi/${service.slug}`}
                               className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold text-sm hover:bg-[#94c43d] hover:border-[#94c43d] hover:text-white transition-all duration-300 uppercase tracking-wide group/btn"
                             >
                               <span>Dowiedz się więcej</span>
@@ -646,10 +646,10 @@ const Index = () => {
                   <div className="w-14 h-14 rounded-2xl bg-[#94c43d]/10 flex items-center justify-center mx-auto mb-4">
                     <CreditCard className="w-7 h-7 text-[#94c43d]" />
                   </div>
-                  
+
                   {/* "Supporting" badge */}
                   {donateToName && (
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#94c43d] text-white text-xs font-bold mb-4 shadow-sm"
@@ -668,11 +668,10 @@ const Index = () => {
                     <button
                       key={amount}
                       onClick={() => handleAmountSelect(amount)}
-                      className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                        selectedAmount === amount
+                      className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${selectedAmount === amount
                           ? 'bg-[#94c43d] text-white shadow-md'
                           : 'bg-white border border-gray-200 text-gray-700 hover:border-[#94c43d]/50'
-                      }`}
+                        }`}
                     >
                       {amount} zł
                     </button>
@@ -707,7 +706,7 @@ const Index = () => {
                     />
                   </div>
 
-                  <button 
+                  <button
                     type="submit"
                     disabled={isPaymentLoading}
                     className="w-full py-4 bg-[#94c43d] text-white rounded-2xl font-semibold text-lg flex items-center justify-center gap-2 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
