@@ -175,7 +175,19 @@ const Index = () => {
 
   const heroRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [stepWidth, setStepWidth] = useState(364);
+  const [transition, setTransition] = useState<any>({ type: 'spring', damping: 25, stiffness: 120 });
+  
+  useEffect(() => {
+    const updateStep = () => {
+      const width = window.innerWidth < 640 ? 300 : 340;
+      setStepWidth(width + 24); // width + gap-6
+    };
+    updateStep();
+    window.addEventListener('resize', updateStep);
+    return () => window.removeEventListener('resize', updateStep);
+  }, []);
   const [selectedAmount, setSelectedAmount] = useState<number | null>(20);
   const [customAmount, setCustomAmount] = useState('20,00');
   const [isPaymentLoading, setIsPaymentLoading] = useState(false);
@@ -185,11 +197,22 @@ const Index = () => {
   const stats = statsTranslations[language];
   const { articles: allArticles } = useArtykuly(language);
   const articles = allArticles.slice(0, 3);
-  const carouselServices = carouselServicesTranslations[language].map((s, i) => ({
+  
+  const baseServices = carouselServicesTranslations[language].map((s, i) => ({
     ...s,
     image: carouselImages[i],
     slug: carouselSlugs[i],
   }));
+
+  // Triple buffer for infinite loop
+  const carouselServices = [...baseServices, ...baseServices, ...baseServices];
+
+  useEffect(() => {
+    // Start in the middle set
+    setCurrentIndex(baseServices.length);
+  }, [baseServices.length]);
+
+  const logicalIndex = currentIndex % baseServices.length;
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -204,9 +227,9 @@ const Index = () => {
   const resetAutoplay = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % carouselServices.length);
+      handleNext();
     }, 12000);
-  }, [carouselServices.length]);
+  }, [baseServices.length]);
 
   useEffect(() => {
     if (!isCarouselInView) {
@@ -217,18 +240,28 @@ const Index = () => {
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
   }, [isCarouselInView, resetAutoplay]);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % carouselServices.length);
+  const handleNext = () => {
+    setTransition({ type: 'spring', damping: 25, stiffness: 120 });
+    setCurrentIndex((prev) => prev + 1);
     resetAutoplay();
   };
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + carouselServices.length) % carouselServices.length);
+  const handlePrev = () => {
+    setTransition({ type: 'spring', damping: 25, stiffness: 120 });
+    setCurrentIndex((prev) => prev - 1);
     resetAutoplay();
   };
 
-  const getPrevIndex = () => (currentSlide - 1 + carouselServices.length) % carouselServices.length;
-  const getNextIndex = () => (currentSlide + 1) % carouselServices.length;
+  const handleAnimationComplete = () => {
+    // If we're in the first set or the third set, jump back to middle set silently
+    if (currentIndex < baseServices.length) {
+      setTransition({ duration: 0 });
+      setCurrentIndex(currentIndex + baseServices.length);
+    } else if (currentIndex >= baseServices.length * 2) {
+      setTransition({ duration: 0 });
+      setCurrentIndex(currentIndex - baseServices.length);
+    }
+  };
 
   const handleAmountSelect = (amount: number) => {
     setSelectedAmount(amount);
@@ -372,69 +405,120 @@ const Index = () => {
       </section>
 
       {/* Services Carousel Section */}
-      <section ref={carouselRef} className="relative pt-16 pb-24 z-10" style={{ backgroundColor: '#f5f3ef' }}>
+      <section ref={carouselRef} className="relative py-24 overflow-hidden" style={{ backgroundColor: '#0a0a0a' }}>
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#94c43d]/5 blur-[150px] rounded-full pointer-events-none" />
+        
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="relative">
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="relative">
-              <div className="flex items-center justify-center gap-4 lg:gap-8 perspective-[1500px]">
-                <motion.div key={`prev-${getPrevIndex()}`} className="hidden lg:block flex-shrink-0 cursor-pointer" onClick={prevSlide} whileHover={{ scale: 1.02 }} style={{ transform: 'perspective(1000px) rotateY(15deg) scale(0.85)', transformOrigin: 'right center' }}>
-                  <div className="relative w-[220px] rounded-2xl overflow-hidden aspect-[3/4] opacity-40 hover:opacity-60 transition-opacity border border-gray-300/30">
-                    <img src={carouselServices[getPrevIndex()].image} alt="" className="w-full h-full object-cover grayscale" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/40 to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4"><p className="text-white/60 text-sm font-medium truncate">{carouselServices[getPrevIndex()].title}</p></div>
-                  </div>
-                </motion.div>
+          <div className="flex flex-col lg:flex-row gap-12 items-start">
+            {/* Left Column: Heading & Navigation */}
+            <div className="lg:w-1/3 lg:sticky lg:top-32">
+              <motion.div 
+                initial={{ opacity: 0, x: -30 }} 
+                whileInView={{ opacity: 1, x: 0 }} 
+                viewport={{ once: true }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-px bg-[#94c43d]" />
+                  <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{t.services.viewAll}</span>
+                </div>
+                <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                  Nasze działania <br />
+                  <span className="text-[#94c43d]">w Afryce</span>
+                </h2>
+                <p className="text-gray-400 text-lg mb-12 max-w-sm leading-relaxed">
+                  Realizujemy projekty, które realnie zmieniają przyszłość lokalnych społeczności w Gambii.
+                </p>
 
-                <div className="flex-shrink-0 w-full max-w-3xl overflow-hidden">
-                  <AnimatePresence mode="popLayout">
-                    <motion.div key={currentSlide} initial={{ x: 300, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -300, opacity: 0 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} className="relative rounded-3xl overflow-hidden aspect-[16/10] lg:aspect-[2/1] border border-gray-300/30 shadow-2xl group">
-                      <motion.img initial={{ scale: 1.05 }} animate={{ scale: 1 }} transition={{ duration: 0.6 }} src={carouselServices[currentSlide].image} alt={carouselServices[currentSlide].title} className="absolute inset-0 w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/70 to-transparent" />
-                      <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#94c43d] via-[#94c43d]/50 to-transparent" />
-                      <div className="absolute inset-0 flex items-center p-8 sm:p-12 lg:p-16">
-                        <motion.div key={`content-${currentSlide}`} initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4, delay: 0.1 }} className="max-w-xl">
-                          <span className="inline-block px-3 py-1 rounded-full bg-[#94c43d]/20 text-[#94c43d] text-xs font-medium mb-4">{currentSlide + 1} / {carouselServices.length}</span>
-                          <h3 className="font-display text-2xl sm:text-3xl lg:text-5xl font-bold text-white mb-4 leading-tight">{carouselServices[currentSlide].title}</h3>
-                          <p className="text-gray-400 text-base lg:text-lg mb-8 hidden sm:block leading-relaxed">{carouselServices[currentSlide].description}</p>
-                          <Link to={`/uslugi#${carouselServices[currentSlide].slug}`} className="inline-flex items-center gap-2 px-6 py-3 bg-[#94c43d] text-white rounded-full font-semibold text-sm hover:scale-105 transition-transform duration-300">
-                            <span>{t.services.learnMore}</span>
-                            <ArrowRight className="w-4 h-4" />
-                          </Link>
-                        </motion.div>
-                      </div>
-                    </motion.div>
-                  </AnimatePresence>
+                <div className="flex items-center gap-4">
+                  <button 
+                    onClick={handlePrev}
+                    className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#94c43d] hover:border-[#94c43d] transition-all duration-300 group"
+                  >
+                    <ChevronLeft className="w-6 h-6 transition-transform group-hover:-translate-x-0.5" />
+                  </button>
+                  <button 
+                    onClick={handleNext}
+                    className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#94c43d] hover:border-[#94c43d] transition-all duration-300 group"
+                  >
+                    <ChevronRight className="w-6 h-6 transition-transform group-hover:translate-x-0.5" />
+                  </button>
                 </div>
 
-                <motion.div key={`next-${getNextIndex()}`} className="hidden lg:block flex-shrink-0 cursor-pointer" onClick={nextSlide} whileHover={{ scale: 1.02 }} style={{ transform: 'perspective(1000px) rotateY(-15deg) scale(0.85)', transformOrigin: 'left center' }}>
-                  <div className="relative w-[220px] rounded-2xl overflow-hidden aspect-[3/4] opacity-40 hover:opacity-60 transition-opacity border border-gray-300/30">
-                    <img src={carouselServices[getNextIndex()].image} alt="" className="w-full h-full object-cover grayscale" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-[#1a1a1a]/40 to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4"><p className="text-white/60 text-sm font-medium truncate">{carouselServices[getNextIndex()].title}</p></div>
+                <div className="mt-12">
+                  <div className="flex gap-2">
+                    {baseServices.map((_, index) => (
+                      <button 
+                        key={index} 
+                        onClick={() => {
+                          setTransition({ type: 'spring', damping: 25, stiffness: 120 });
+                          setCurrentIndex(index + 1);
+                        }} 
+                        className={`h-1 rounded-full transition-all duration-500 ${index === logicalIndex ? 'w-12 bg-[#94c43d]' : 'w-2 bg-white/20 hover:bg-white/40'}`} 
+                      />
+                    ))}
                   </div>
-                </motion.div>
-              </div>
-            </motion.div>
-
-            <div className="flex items-center justify-center mt-10 gap-4 sm:gap-6">
-              <button onClick={prevSlide} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:border-[#94c43d]/50 hover:bg-gray-50 transition-all duration-300 group">
-                <ChevronLeft className="w-5 h-5 text-gray-400 group-hover:text-[#94c43d]" />
-              </button>
-              <div className="flex gap-2">
-                {carouselServices.map((_, index) => (
-                  <button key={index} onClick={() => setCurrentSlide(index)} className={`h-1.5 rounded-full transition-all duration-300 ${index === currentSlide ? 'w-8 bg-[#94c43d]' : 'w-1.5 bg-gray-300 hover:bg-gray-400'}`} />
-                ))}
-              </div>
-              <button onClick={nextSlide} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:border-[#94c43d]/50 hover:bg-gray-50 transition-all duration-300 group">
-                <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-[#94c43d]" />
-              </button>
+                </div>
+              </motion.div>
             </div>
 
-            <div className="text-center mt-8">
-              <Link to="/uslugi" className="inline-flex items-center gap-2 text-gray-500 hover:text-[#94c43d] transition-colors duration-300 text-sm">
-                {t.services.viewAll}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+            {/* Right Column: Cards Slider */}
+            <div className="lg:w-2/3 w-full overflow-hidden">
+              <div className="relative">
+                <motion.div 
+                  className="flex gap-6"
+                  animate={{ x: -currentIndex * stepWidth }}
+                  transition={transition}
+                  onAnimationComplete={handleAnimationComplete}
+                >
+                  {carouselServices.map((service, index) => {
+                    // Simplified number calculation for triple buffer
+                    const displayNum = (index % baseServices.length) + 1;
+                    
+                    return (
+                      <motion.div
+                        key={`${index}-${service.slug}`}
+                        className="group relative flex-shrink-0 w-[300px] sm:w-[340px] h-[480px] rounded-[2.5rem] overflow-hidden border border-white/5 bg-gray-900 shadow-2xl"
+                      >
+                        {/* Image Layer */}
+                        <div className="absolute inset-0">
+                          <img 
+                            src={service.image} 
+                            alt={service.title} 
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60" 
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
+                        </div>
+
+                        {/* Large background number */}
+                        <div className="absolute top-8 left-8 select-none">
+                          <span className="font-display font-black text-8xl text-white/5 tracking-tighter leading-none inline-block transform -translate-x-2 -translate-y-2">
+                            {String(displayNum).padStart(2, '0')}
+                          </span>
+                        </div>
+
+                        {/* Content Layer */}
+                        <div className="relative h-full flex flex-col justify-end p-8 sm:p-10">
+                          <div>
+                            <h3 className="font-display text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight group-hover:text-[#94c43d] transition-colors duration-300">
+                              {service.title}
+                            </h3>
+                            <p className="text-gray-400 text-sm mb-8 line-clamp-3 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              {service.description}
+                            </p>
+                            <Link 
+                              to={`/uslugi#${service.slug}`} 
+                              className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold text-sm hover:bg-[#94c43d] hover:border-[#94c43d] hover:text-white transition-all duration-300 uppercase tracking-wide group/btn"
+                            >
+                              <span>Dowiedz się więcej</span>
+                              <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                            </Link>
+                          </div>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>
