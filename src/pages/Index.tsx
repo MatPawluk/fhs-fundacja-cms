@@ -396,10 +396,10 @@ const Index = () => {
               {t.hero.subtitle}
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="flex flex-col items-center gap-4">
-              <Link to="/kontakt" className="group inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-[#94c43d] text-white rounded-full font-semibold text-sm sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
+              <a href="#poznaj" className="group inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-[#94c43d] text-white rounded-full font-semibold text-sm sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
                 {t.hero.cta}
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+              </a>
             </motion.div>
           </div>
         </motion.div>
@@ -555,7 +555,7 @@ const Index = () => {
       </section>
 
       {/* Poznaj Fundację Section */}
-      <section className="py-20">
+      <section id="poznaj" className="py-20">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row items-start gap-12 max-w-5xl mx-auto">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex-shrink-0">

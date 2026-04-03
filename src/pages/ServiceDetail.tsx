@@ -61,11 +61,11 @@ const ServiceDetail = () => {
         
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <Link 
-            to="/projekty"
+            to="/"
             className="inline-flex items-center gap-2 text-gray-500 hover:text-[#94c43d] transition-colors duration-300 mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
-            Powrót do projektów
+            Powrót
           </Link>
 
           <motion.div

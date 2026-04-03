@@ -5,7 +5,7 @@ import { projectDetailTranslations } from '@/i18n/contentTranslations';
 import imgVolunteersMain from '@/assets/projects/wyjazdy-wolontariackie-okladka.jpg';
 import imgMissionaryMain from '@/assets/projects/wolontariat-misyjny2.jpg';
 import imgCharityMain from '@/assets/projects/zbiorki-charytatywne-1.jpg';
-import imgEducationMain from '@/assets/u-szkolenia-system.png';
+import imgEducationMain from '@/assets/projects/wsparcie-edukacyjne-okladka.jpg';
 import imgMinistryMain from '@/assets/u-wsparcie-formalne.png';
 
 // Gallery Imports - Volunteers
@@ -16,6 +16,13 @@ import v4 from '@/assets/projects/wyjazdy-wolontariackie4.jpg';
 import v5 from '@/assets/projects/wyjazdy-wolontariackie5.jpg';
 import v6 from '@/assets/projects/wyjazdy-wolontariackie6.jpg';
 import v7 from '@/assets/projects/wyjazdy-wolontariackie7.jpg';
+
+// Gallery Imports - Education
+import e1 from '@/assets/projects/wsparcie-edukacyjne1.jpg';
+import e2 from '@/assets/projects/wsparcie-edukacyjne2.jpg';
+import e3 from '@/assets/projects/wsparcie-edukacyjne3.jpg';
+import e4 from '@/assets/projects/wsparcie-edukacyjne4.jpg';
+import e5 from '@/assets/projects/wsparcie-edukacyjne5.jpg';
 
 // Gallery Imports - Missionary
 import m2 from '@/assets/projects/wolontariat-misyjny2.jpg';
@@ -77,7 +84,7 @@ export const getLocalizedServicesData = (lang: Language): Record<string, Service
       description: details['wsparcie-edukacyjne'].fullDescription,
       fullDescription: details['wsparcie-edukacyjne'].fullDescription,
       image: imgEducationMain,
-      gallery: []
+      gallery: [e1, e2, e3, e4, e5]
     },
     'wolontariat-misyjny': {
       title: lang === 'pl' ? 'Wolontariat Misyjny' : lang === 'en' ? 'Missionary Volunteering' : 'Missionair vrijwilligerswerk',
