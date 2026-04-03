@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { amount, description, email, childId } = req.body;
+  const { amount, description, email } = req.body;
 
   const merchantId = process.env.P24_MERCHANT_ID;
   const posId = process.env.P24_POS_ID || merchantId;
@@ -13,76 +13,118 @@ export default async function handler(req, res) {
   const apiKey = process.env.P24_API_KEY;
   const isSandbox = process.env.P24_SANDBOX === 'true';
 
+  // 🔍 DEBUG ENV
+  console.log('--- ENV DEBUG ---');
+  console.log({
+    merchantId,
+    posId,
+    crc,
+    apiKey,
+    isSandbox
+  });
+
   if (!merchantId || !crc || !apiKey) {
+    console.error('❌ BRAK ENV!');
     return res.status(500).json({ error: 'Missing Przelewy24 configuration' });
   }
 
   const sessionId = crypto.randomBytes(16).toString('hex');
-  const p24Amount = Math.round(amount * 100); // P24 uses grosz/cents
+  const p24Amount = Math.round(amount * 100);
   const currency = 'PLN';
   const country = 'PL';
   const language = 'pl';
 
-  // Sign formula: SHA384(JSON.stringify({sessionId, merchantId, amount, currency, crc}))
-  const signPayload = JSON.stringify({
-    sessionId,
-    merchantId: parseInt(merchantId),
-    amount: p24Amount,
-    currency,
-    crc
-  });
+  // 🔐 SIGN (REST API v1 requires SHA-384 and JSON structure)
+  const mIdNum = parseInt(merchantId);
+  const p24AmountNum = parseInt(p24Amount);
   
+  // Signature payload MUST be numeric for merchantId and amount in v1
+  const signPayload = `{"sessionId":"${sessionId}","merchantId":${mIdNum},"amount":${p24AmountNum},"currency":"${currency}","crc":"${crc}"}`;
   const sign = crypto.createHash('sha384').update(signPayload).digest('hex');
 
+  console.log('--- SIGN DEBUG ---');
+  console.log('Sign Payload:', signPayload);
+  console.log('Generated sign:', sign);
+
   const p24Payload = {
-    merchantId: parseInt(merchantId),
-    posId: parseInt(posId),
+    merchantId: mIdNum,
+    posId: mIdNum, // Default POS ID to Merchant ID
     sessionId,
-    amount: p24Amount,
+    amount: p24AmountNum,
     currency,
     description: description || 'Darowizna dla Fundacji FHS',
     email,
-    client: '', // Optional
-    address: '', // Optional
-    zip: '', // Optional
-    city: '', // Optional
+    client: '',
+    address: '',
+    zip: '',
+    city: '',
     country,
     language,
     urlReturn: `${req.headers.origin}/dziekujemy`,
-    urlStatus: `${req.headers.origin}/api/payment-status`, // Webhook
+    urlStatus: `${req.headers.origin}/api/payment-status`,
     sign,
   };
 
-  const baseUrl = isSandbox 
-    ? 'https://sandbox.przelewy24.pl/api/v1' 
+  console.log('--- PAYLOAD DEBUG ---');
+  console.log(JSON.stringify(p24Payload, null, 2));
+
+  const baseUrl = isSandbox
+    ? 'https://sandbox.przelewy24.pl/api/v1'
     : 'https://secure.przelewy24.pl/api/v1';
 
   try {
-    const auth = Buffer.from(`${merchantId}:${apiKey}`).toString('base64');
-    
+    // 🔐 AUTH DEBUG
+    const authString = `${merchantId}:${apiKey}`;
+    const auth = Buffer.from(authString).toString('base64');
+
+    console.log('--- AUTH DEBUG ---');
+    console.log('Auth string:', authString);
+    console.log('Auth base64:', auth);
+
     const response = await fetch(`${baseUrl}/transaction/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Basic ${auth}`
+        'Authorization': `Basic ${auth}`,
       },
-      body: JSON.stringify(p24Payload)
+      body: JSON.stringify(p24Payload),
     });
 
-    const data = await response.json();
+    const text = await response.text();
+
+    console.log('--- RAW RESPONSE ---');
+    console.log(text);
+
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
+      console.error('❌ JSON PARSE ERROR');
+      return res.status(500).json({ error: 'Invalid JSON response from P24' });
+    }
 
     if (data.data && data.data.token) {
       const redirectUrl = isSandbox
         ? `https://sandbox.przelewy24.pl/trnRequest/${data.data.token}`
         : `https://secure.przelewy24.pl/trnRequest/${data.data.token}`;
-      
-      return res.status(200).json({ redirectUrl, token: data.data.token });
+
+      console.log('✅ SUCCESS - TOKEN:', data.data.token);
+
+      return res.status(200).json({
+        redirectUrl,
+        token: data.data.token,
+      });
     } else {
-      console.error('P24 Error:', data);
-      return res.status(400).json({ error: 'Failed to register transaction', detail: data });
+      console.error('❌ P24 ERROR:', JSON.stringify(data, null, 2));
+
+      return res.status(400).json({
+        error: 'Płatność nie mogła zostać zarejestrowana',
+        detail: data.error || data.message || 'Unknown error',
+        fullError: data,
+      });
     }
   } catch (err) {
-    console.error('P24 Catch Error:', err);
+    console.error('❌ FETCH ERROR:', err);
     return res.status(500).json({ error: 'Internal server error' });
   }
 }

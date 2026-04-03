@@ -3,6 +3,7 @@ import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {artykulSchema} from './schemas/artykul'
 import {dzieckoSchema} from './schemas/dziecko'
+import {projektSchema} from './schemas/projekt'
 
 export default defineConfig({
   name: 'fhs-fundacja',
@@ -17,6 +18,6 @@ export default defineConfig({
   ],
 
   schema: {
-    types: [artykulSchema, dzieckoSchema],
+    types: [artykulSchema, dzieckoSchema, projektSchema],
   },
 })

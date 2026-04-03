@@ -6,6 +6,8 @@ import { Footer } from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ArrowLeft, ArrowRight, Camera, X } from 'lucide-react';
 import { serviceSlugMap, defaultServiceData, getLocalizedServicesData } from '@/data/servicesData';
+import { useProjekty } from '@/hooks/useProjekty';
+import { urlFor } from '@/lib/sanityClient';
 
 const ServiceDetail = () => {
   const { serviceSlug } = useParams();
@@ -14,7 +16,23 @@ const ServiceDetail = () => {
   const localizedServices = getLocalizedServicesData(language);
   const mainSlug = serviceSlug || '';
 
-  const service = localizedServices[mainSlug] || defaultServiceData;
+  const { getProjektBySlug } = useProjekty(language);
+  const cmsProjekt = getProjektBySlug(mainSlug);
+
+  const fallbackService = localizedServices[mainSlug] || defaultServiceData;
+
+  const service = cmsProjekt
+    ? {
+      title: cmsProjekt.title,
+      subtitle: cmsProjekt.subtitle,
+      description: cmsProjekt.description,
+      fullDescription: cmsProjekt.fullDescription,
+      sections: cmsProjekt.sections,
+      image: urlFor(cmsProjekt.mainImage).url(),
+      gallery: cmsProjekt.gallery?.map(img => urlFor(img).url()) || []
+    }
+    : fallbackService;
+
   const displayTitle = service.title;
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -100,10 +118,10 @@ const ServiceDetail = () => {
             transition={{ duration: 1 }}
             className="relative rounded-[2.5rem] overflow-hidden shadow-2xl w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
           >
-            <img 
-              src={service.image} 
+            <img
+              src={service.image}
               alt={service.title}
-              className="w-full h-full object-cover object-[center_20%]"
+              className="w-full h-full object-cover object-[center_40%]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           </motion.div>

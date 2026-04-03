@@ -34,6 +34,12 @@ export const Footer = () => {
             <p className="text-gray-600 text-sm leading-relaxed">
               {t.footer.description}
             </p>
+            <div className="flex justify-start mt-4">
+              <div className="inline-flex items-center gap-2 text-gray-500 text-[11px] font-medium opacity-80 uppercase tracking-wider">
+                <span className="text-[#94c43d] font-bold">KRS</span>
+                0001104851
+              </div>
+            </div>
 
             {/* Social icons */}
             <div className="flex items-center gap-3 mt-6">
@@ -76,10 +82,6 @@ export const Footer = () => {
               <div className="flex items-center gap-3 text-gray-600 text-sm">
                 <MapPin size={18} className="text-[#94c43d] flex-shrink-0" />
                 Nowogrodzka 31, 00-511, Warszawa
-              </div>
-              <div className="flex items-center gap-3 text-gray-600 text-sm font-medium">
-                <span className="text-[#94c43d] w-[18px] text-center font-bold text-[10px]">KRS</span>
-                0001104851
               </div>
             </div>
           </div>

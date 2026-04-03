@@ -11,6 +11,7 @@ import { PhotoCarousel } from '@/components/PhotoCarousel';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { statsTranslations, carouselServicesTranslations } from '@/i18n/contentTranslations';
 import { useArtykuly } from '@/hooks/useArtykuly';
+import { useProjekty } from '@/hooks/useProjekty';
 import { urlFor } from '@/lib/sanityClient';
 import { PartnersSection } from '@/components/PartnersSection';
 import { ThreeDPhotoBackground } from '@/components/ThreeDPhotoBackground';
@@ -88,9 +89,9 @@ const Index = () => {
       aktWszystkie: 'Wszystkie aktualności',
       wsprzyjBadge: 'Wesprzyj',
       wsprzyjTitle: 'Jak możesz',
-      wsprzyjHighlight: 'pomóc',
-      wsprzyjDesc: 'Twoje wsparcie zmienia życie dzieci w Afryce. Każda wpłata, nawet najmniejsza, trafia bezpośrednio tam, gdzie jest najbardziej potrzebna — na edukację, posiłki i opiekę medyczną.',
-      wsprzyjAdopcja: 'Wirtualna adopcja — od 150 zł/mies.',
+      wsprzyjHighlight: 'pomóc?',
+      wsprzyjDesc: 'Twoje wsparcie zmienia życie dzieci w Afryce. Każda wpłata, nawet najmniejsza, trafia bezpośrednio tam, gdzie jest najbardziej potrzebna - na edukację, posiłki i opiekę medyczną.',
+      wsprzyjAdopcja: 'Wirtualna adopcja - od 150 zł/mies.',
       wsprzyjJednorazowa: 'Jednorazowa darowizna',
       wsprzyjWolontariat: 'Wolontariat w Gambii',
       wsprzyjCta: 'Wesprzyj misję',
@@ -120,9 +121,9 @@ const Index = () => {
       aktWszystkie: 'All news',
       wsprzyjBadge: 'Support',
       wsprzyjTitle: 'How you can',
-      wsprzyjHighlight: 'help',
-      wsprzyjDesc: 'Your support changes children\'s lives in Africa. Every donation, even the smallest, goes directly where it\'s needed most — education, meals and medical care.',
-      wsprzyjAdopcja: 'Virtual adoption — from 150 PLN/month',
+      wsprzyjHighlight: 'help?',
+      wsprzyjDesc: 'Your support changes children\'s lives in Africa. Every donation, even the smallest, goes directly where it\'s needed most - education, meals and medical care.',
+      wsprzyjAdopcja: 'Virtual adoption - from 150 PLN/month',
       wsprzyjJednorazowa: 'One-time donation',
       wsprzyjWolontariat: 'Volunteering in The Gambia',
       wsprzyjCta: 'Support the mission',
@@ -139,7 +140,7 @@ const Index = () => {
       ],
       domPolskiBadge: 'Polish House',
       domPolskiTitle: 'Our meeting place of culture and rest',
-      domPolskiDesc: 'The Polish House in The Gambia is the heart of FHS Foundation — a unique space where Polish hospitality meets African sun and local community. A place created for volunteers, travelers with a mission and everyone who wants to experience real community, rest and feel at home. With a pool, lush greenery and atmospheric accommodation.',
+      domPolskiDesc: 'The Polish House in The Gambia is the heart of FHS Foundation - a unique space where Polish hospitality meets African sun and local community. A place created for volunteers, travelers with a mission and everyone who wants to experience real community, rest and feel at home. With a pool, lush greenery and atmospheric accommodation.',
       domPolskiCta: 'Check availability!',
     },
     nl: {
@@ -153,8 +154,8 @@ const Index = () => {
       wsprzyjBadge: 'Steun',
       wsprzyjTitle: 'Hoe u kunt',
       wsprzyjHighlight: 'helpen',
-      wsprzyjDesc: 'Uw steun verandert het leven van kinderen in Afrika. Elke donatie, zelfs de kleinste, gaat direct waar het het meest nodig is — onderwijs, maaltijden en medische zorg.',
-      wsprzyjAdopcja: 'Virtuele adoptie — vanaf 150 PLN/maand',
+      wsprzyjDesc: 'Uw steun verandert het leven van kinderen in Afrika. Elke donatie, zelfs de kleinste, gaat direct waar het het meest nodig is - onderwijs, maaltijden en medische zorg.',
+      wsprzyjAdopcja: 'Virtuele adoptie - vanaf 150 PLN/maand',
       wsprzyjJednorazowa: 'Eenmalige donatie',
       wsprzyjWolontariat: 'Vrijwilligerswerk in Gambia',
       wsprzyjCta: 'Steun de missie',
@@ -171,7 +172,7 @@ const Index = () => {
       ],
       domPolskiBadge: 'Pools Huis',
       domPolskiTitle: 'Onze ontmoetingsplek van cultuur en rust',
-      domPolskiDesc: 'Het Poolse Huis in Gambia is het hart van de FHS Foundation — een unieke ruimte waar Poolse gastvrijheid de Afrikaanse zon en de lokale gemeenschap ontmoet. Een plek gemaakt voor vrijwilligers, reizigers met een missie en iedereen die echte gemeenschap wil ervaren.',
+      domPolskiDesc: 'Het Poolse Huis in Gambia is het hart van de FHS Foundation - een unieke ruimte waar Poolse gastvrijheid de Afrikaanse zon en de lokale gemeenschap ontmoet. Een plek gemaakt voor vrijwilligers, reizigers met een missie en iedereen die echte gemeenschap wil ervaren.',
       domPolskiCta: 'Controleer beschikbaarheid!',
     },
   };
@@ -205,11 +206,20 @@ const Index = () => {
   const { articles: allArticles } = useArtykuly(language);
   const articles = allArticles.slice(0, 3);
 
-  const baseServices = carouselServicesTranslations[language].map((s, i) => ({
-    ...s,
-    image: carouselImages[i],
-    slug: carouselSlugs[i],
-  }));
+  const { projekty } = useProjekty(language);
+
+  const baseServices = projekty.length > 0
+    ? projekty.map(p => ({
+      title: p.title,
+      description: p.description,
+      slug: p.slug,
+      image: urlFor(p.mainImage).url(),
+    }))
+    : carouselServicesTranslations[language].map((s, i) => ({
+      ...s,
+      image: carouselImages[i],
+      slug: carouselSlugs[i],
+    }));
 
   // Triple buffer for infinite loop
   const carouselServices = [...baseServices, ...baseServices, ...baseServices];
