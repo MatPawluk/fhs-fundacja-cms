@@ -77,6 +77,10 @@ export const Footer = () => {
                 <MapPin size={18} className="text-[#94c43d] flex-shrink-0" />
                 Nowogrodzka 31, 00-511, Warszawa
               </div>
+              <div className="flex items-center gap-3 text-gray-600 text-sm font-medium">
+                <span className="text-[#94c43d] w-[18px] text-center font-bold text-[10px]">KRS</span>
+                0001104851
+              </div>
             </div>
           </div>
 
