@@ -27,7 +27,7 @@ import teamJakub from '@/assets/Zespol_Jakub Ostrowski-Operator kamery i montaż
 const teamData = {
   pl: [
     { name: 'Dariusz Andrzejczak', role: 'Współzałożyciel, koordynacja lokalna', image: teamDarek1 },
-    { name: 'Adrian Nkwamu', role: 'Współzałożyciel, marketing i komunikacja', image: teamAdrian },
+    { name: 'Adrian Nkwamu', role: 'Współzałożyciel, strategia i rozwój projektów', image: teamAdrian },
     { name: 'Jakub Ostrowski', role: 'Operator kamery i montażysta', image: teamJakub },
     { name: 'Olga Dąbrowska', role: 'Wsparcie projektowe', image: teamOlga },
     { name: 'Agata Wysocka', role: 'Koordynacja lokalna', image: teamAgata },
@@ -39,7 +39,7 @@ const teamData = {
   ],
   en: [
     { name: 'Dariusz Andrzejczak', role: 'Co-founder, local coordination', image: teamDarek1 },
-    { name: 'Adrian Nkwamu', role: 'Co-founder, marketing & communication', image: teamAdrian },
+    { name: 'Adrian Nkwamu', role: 'Co-founder, strategy & project development', image: teamAdrian },
     { name: 'Jakub Ostrowski', role: 'Camera operator and video editor', image: teamJakub },
     { name: 'Olga Dąbrowska', role: 'Project support', image: teamOlga },
     { name: 'Agata Wysocka', role: 'Local coordination', image: teamAgata },
@@ -51,7 +51,7 @@ const teamData = {
   ],
   nl: [
     { name: 'Dariusz Andrzejczak', role: 'Medeoprichter, lokale coördinatie', image: teamDarek1 },
-    { name: 'Adrian Nkwamu', role: 'Medeoprichter, marketing & communicatie', image: teamAdrian },
+    { name: 'Adrian Nkwamu', role: 'Medeoprichter, strategie & projectontwikkeling', image: teamAdrian },
     { name: 'Jakub Ostrowski', role: 'Camera-operator en video-editor', image: teamJakub },
     { name: 'Olga Dąbrowska', role: 'Projectondersteuning', image: teamOlga },
     { name: 'Agata Wysocka', role: 'Lokale coördinatie', image: teamAgata },
