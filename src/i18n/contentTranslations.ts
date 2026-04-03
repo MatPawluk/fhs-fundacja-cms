@@ -179,10 +179,18 @@ export const projectDetailTranslations: Record<Language, Record<string, { fullDe
       ]
     },
     'wsparcie-edukacyjne': {
-      fullDescription: 'Ten projekt opiera się obecnie głównie na dokumentacji wizualnej naszych działań terenowych. Zapraszamy do obejrzenia galerii zdjęć reprezentującej nasze wsparcie dla szkół i uczniów w Gambii.',
+      fullDescription: 'Program wsparcia edukacyjnego obejmuje kompleksową pomoc dla dzieci z rodzin w trudnej sytuacji materialnej. Zapewniamy podręczniki, zeszyty, przybory szkolne, mundurki szkolne oraz opłacamy czesne. Nasz program stypendialny umożliwia utalentowanym dzieciom kontynuację nauki na wyższych poziomach edukacji. Do tej pory wsparliśmy ponad 370 dzieci w ich edukacyjnej drodze.',
+      sections: [
+        { title: 'O projekcie', content: 'Celem projektu jest stworzenie trwałej zmiany w życiu lokalnych społeczności poprzez zapewnienie dostępu do edukacji, opieki zdrowotnej i możliwości rozwoju.' },
+        { title: 'Jak możesz pomóc?', content: 'Każde wsparcie ma znaczenie. Możesz zaangażować się jako wolontariusz, przekazać darowiznę lub podzielić się informacją o naszym projekcie w mediach społecznościowych.' }
+      ]
     },
     'zbiorki-charytatywne': {
-      fullDescription: 'Ten projekt opiera się obecnie głównie na dokumentacji wizualnej naszych działań terenowych. Zapraszamy do obejrzenia galerii zdjęć reprezentującej przebieg i efekty naszych zbiórek.',
+      fullDescription: 'Organizujemy różnorodne akcje fundraisingowe – od tradycyjnych zbiórek, przez kiermasze i wydarzenia charytatywne, po akcje w parafiach, szkołach i wspólnotach. Każda z nich ma konkretny cel – wspiera budowę szkół, zakup leków, stypendia dla dzieci oraz pomoc rodzinom w kryzysie.\n\nProwadzimy również zbiórki rzeczowe – odzieży, zabawek, książek i artykułów szkolnych, które trafiają bezpośrednio do potrzebujących w Gambii.\n\nW FHS Foundation dbamy o pełną przejrzystość – każda złotówka i każdy dar są dokładnie rozliczane. Wierzymy, że dobro nabiera mocy wtedy, gdy widać jego realne owoce.',
+      sections: [
+        { title: 'O projekcie', content: 'Celem projektu jest stworzenie trwałej zmiany w życiu lokalnych społeczności poprzez zapewnienie dostępu do edukacji, opieki zdrowotnej i możliwości rozwoju.' },
+        { title: 'Jak możesz pomóc?', content: 'Każde wsparcie ma znaczenie. Możesz zaangażować się jako wolontariusz, przekazać darowiznę lub podzielić się informacją o naszym projekcie w mediach społecznościowych.' }
+      ]
     }
   },
   en: {
@@ -209,10 +217,18 @@ export const projectDetailTranslations: Record<Language, Record<string, { fullDe
       ]
     },
     'wsparcie-edukacyjne': {
-      fullDescription: 'This project currently focuses on visual documentation. Please see our gallery for photos of our work with schools and students.',
+      fullDescription: 'The educational support program includes comprehensive assistance for children from families in difficult financial situations. We provide textbooks, notebooks, school supplies, school uniforms, and pay tuition fees. Our scholarship program enables talented children to continue their education at higher levels. So far, we have supported over 370 children on their educational journey.',
+      sections: [
+        { title: 'About the project', content: 'The goal of the project is to create lasting change in the lives of local communities by providing access to education, healthcare and development opportunities.' },
+        { title: 'How can you help?', content: 'Every support matters. You can get involved as a volunteer, donate or share information about our project on social media.' }
+      ]
     },
     'zbiorki-charytatywne': {
-      fullDescription: 'This project currently focuses on visual documentation. Please see our gallery for photos of our fundraising results and aid distribution.',
+      fullDescription: 'We organize various fundraising actions – from traditional collections, through bazaars and charity events, to actions in parishes, schools and communities. Each of them has a specific goal – supporting school construction, medicine purchases, scholarships for children and help for families in crisis.\n\nWe also conduct material collections – clothing, toys, books and school supplies, which go directly to those in need in The Gambia.\n\nAt FHS Foundation, we take care of full transparency – every donation and every gift is accurately accounted for. We believe that good gains power when its real fruits are visible.',
+      sections: [
+        { title: 'About the project', content: 'The goal of the project is to create lasting change in the lives of local communities by providing access to education, healthcare and development opportunities.' },
+        { title: 'How can you help?', content: 'Every support matters. You can get involved as a volunteer, donate or share information about our project on social media.' }
+      ]
     }
   },
   nl: {
@@ -236,10 +252,18 @@ export const projectDetailTranslations: Record<Language, Record<string, { fullDe
       ]
     },
     'wsparcie-edukacyjne': {
-      fullDescription: 'Dit project richt zich momenteel op visuele documentatie. Bekijk onze galerij voor foto\'s van onze steun aan scholen.',
+      fullDescription: 'Het educatieve ondersteuningsprogramma omvat uitgebreide hulp aan kinderen uit gezinnen in moeilijke financiële situaties. We bieden leerboeken, schriftjes, schoolbenodigdheden, schooluniformen en betalen het lesgeld. Ons beurzenprogramma stelt getalenteerde kinderen in staat hun opleiding op een hoger niveau voort te zetten. Tot nu toe hebben we meer dan 370 kinderen ondersteund in hun educatieve traject.',
+      sections: [
+        { title: 'Over het project', content: 'Het doel van het project is om blijvende verandering te creëren in de levens van lokale gemeenschappen door toegang te bieden tot onderwijs, gezondheidszorg en ontwikkelingsmogelijkheden.' },
+        { title: 'Hoe kun je helpen?', content: 'Elke steun telt. Je kunt betrokken raken als vrijwilliger, een donatie doen of informatie over ons project delen op sociale media.' }
+      ]
     },
     'zbiorki-charytatywne': {
-      fullDescription: 'Dit project richt się momenteel op visuele documentatie. Bekijk onze galerij voor foto\'s van onze inzamelingen.',
+      fullDescription: 'Wij organiseren diverse fondsenwervende acties – van traditionele inzamelingen, via braderieën en weldadigheidsevenementen, tot acties in parochies, scholen en gemeenschappen. Elk van hen heeft een specifiek doel – het ondersteunen van de bouw van scholen, aankoop van medicijnen, studiebeurzen voor kinderen en hulp aan gezinnen in crisis.\n\nWe voeren ook materiële inzamelingen uit – kleding, speelgoed, boeken en schoolbenodigdheden, die rechtstreeks naar de behoeftigen in Gambia gaan.\n\nBij de FHS Foundation zorgen we voor volledige transparantie – elke donatie en elk geschenk wordt nauwkeurig verantwoord. Wij geloven dat het goede kracht krijgt wanneer de werkelijke vruchten zichtbaar zijn.',
+      sections: [
+        { title: 'Over het project', content: 'Het doel van het project is om blijvende verandering te creëren in de levens van lokale gemeenschappen door toegang te bieden tot onderwijs, gezondheidszorg en ontwikkelingsmogelijkheden.' },
+        { title: 'Hoe kun je helpen?', content: 'Elke steun telt. Je kunt betrokken raken als vrijwilliger, een donatie doen of informatie over ons project delen op sociale media.' }
+      ]
     }
   }
 };
