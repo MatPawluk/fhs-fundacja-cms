@@ -495,7 +495,8 @@ const Index = () => {
                     return (
                       <motion.div
                         key={`${index}-${service.slug}`}
-                        className="group relative flex-shrink-0 w-[300px] sm:w-[340px] h-[480px] rounded-[2.5rem] overflow-hidden border border-white/5 bg-gray-900 shadow-2xl"
+                        className="group relative flex-shrink-0 h-[480px] rounded-[2.5rem] overflow-hidden border border-white/5 bg-gray-900 shadow-2xl"
+                        style={{ width: stepWidth - 24 }}
                       >
                         {/* Image Layer */}
                         <div className="absolute inset-0">
