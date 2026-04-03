@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import logoImg from '@/assets/logo/FHS Foundation Logo green.png';
 
 export const Footer = () => {
   const { t } = useLanguage();
@@ -20,8 +21,13 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10 mb-12">
           {/* Brand & description */}
           <div>
-            <Link to="/" className="inline-block mb-4">
-              <span className="font-display font-bold text-2xl text-gray-900">
+            <Link to="/" className="inline-flex items-center gap-3 mb-4 group">
+              <img
+                src={logoImg}
+                alt=""
+                className="h-10 w-auto object-contain"
+              />
+              <span className="font-display font-bold text-2xl text-gray-900 italic tracking-tight">
                 <span className="text-[#94c43d]">FHS</span> Foundation
               </span>
             </Link>

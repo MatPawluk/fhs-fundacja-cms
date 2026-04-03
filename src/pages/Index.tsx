@@ -181,7 +181,9 @@ const Index = () => {
 
   useEffect(() => {
     const updateStep = () => {
-      const width = window.innerWidth < 640 ? 300 : 340;
+      let width = 340;
+      if (window.innerWidth < 480) width = 280;
+      else if (window.innerWidth < 640) width = 300;
       setStepWidth(width + 24); // width + gap-6
     };
     updateStep();
@@ -412,8 +414,8 @@ const Index = () => {
           <div className="flex flex-col lg:flex-row gap-12 items-start">
             {/* Left Column: Heading & Navigation - YinYang Gradient Overlay */}
             <div className="lg:w-1/3 flex-shrink-0 pr-6 lg:pr-12 lg:sticky lg:top-32 lg:pb-12 z-30 pointer-events-none">
-              {/* Solid-to-transparent fade protection for text */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#040404] via-[#040404] to-transparent z-0 lg:-ml-24 lg:-my-24 pointer-events-none" />
+              {/* Solid-to-transparent fade protection for text - purely for depth now */}
+              <div className="absolute inset-0 z-0 lg:-ml-24 lg:-my-24 pointer-events-none" />
 
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
@@ -469,8 +471,8 @@ const Index = () => {
             <div
               className="flex-1 w-full overflow-visible"
               style={{
-                maskImage: 'linear-gradient(to right, transparent, black 2px)',
-                WebkitMaskImage: 'linear-gradient(to right, transparent, black 2px)'
+                maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 150px, rgba(0,0,0,1) 100%)',
+                WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 150px, rgba(0,0,0,1) 100%)'
               }}
             >
               <div className="relative">

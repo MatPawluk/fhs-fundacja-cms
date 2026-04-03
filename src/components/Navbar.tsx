@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { LanguageSelector } from './LanguageSelector';
 import { useLanguage } from '@/contexts/LanguageContext';
+import logoImg from '@/assets/logo/FHS Foundation Logo green.png';
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,7 +51,12 @@ export const Navbar = () => {
 
             {/* Logo */}
             <Link to="/" className="relative z-10 flex items-center gap-3 group">
-              <span className="font-display font-bold text-xl italic">
+              <img
+                src={logoImg}
+                alt=""
+                className={`h-10 w-auto object-contain transition-all duration-300 ${isHeroMode ? 'brightness-0 invert' : ''}`}
+              />
+              <span className="font-display font-bold text-xl italic tracking-tight">
                 <span className="text-[#94c43d]">FHS</span>{' '}
                 <span className={`transition-colors duration-300 ${isHeroMode ? 'text-white' : 'text-gray-900'}`}>
                   Foundation

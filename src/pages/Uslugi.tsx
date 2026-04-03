@@ -10,10 +10,10 @@ import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, X, Heart, MapPin, G
 import { cn } from '@/lib/utils';
 import { sanityClient, urlFor } from '@/lib/sanityClient';
 
-import stepChoose from '@/assets/step-choose.jpg';
-import stepDeclare from '@/assets/step-declare.jpg';
-import stepProgress from '@/assets/step-progress.jpg';
-import stepChange from '@/assets/step-change.jpg';
+import stepChoose from '@/assets/jak-to-dziala/Wybierz dziecko.jpeg';
+import stepDeclare from '@/assets/jak-to-dziala/Zadeklaruj wsparcie.JPG';
+import stepProgress from '@/assets/jak-to-dziala/Obserwuj postępy.JPG';
+import stepChange from '@/assets/jak-to-dziala/Zmieniaj życie.jpg';
 
 interface Child {
   _id: string;
