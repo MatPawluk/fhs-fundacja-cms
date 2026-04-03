@@ -808,13 +808,31 @@ const Index = () => {
       {/* CTA Section */}
       <section className="relative py-16 overflow-hidden">
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
-          <div className="relative max-w-5xl mx-auto rounded-[1.5rem] overflow-hidden border border-gray-200/50" style={{ background: 'linear-gradient(135deg, #2a2a2a 0%, #333333 50%, rgba(148,196,61,0.15) 100%)' }}>
-            <div className="absolute bottom-0 right-0 w-[300px] h-[250px] bg-[#94c43d]/10 blur-[100px] rounded-full pointer-events-none" />
-            <div className="relative p-8 lg:p-12 text-center">
-              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 leading-tight">{t.cta.title}</h2>
-              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold mb-5 leading-tight"><GradientText>{t.cta.titleHighlight}</GradientText></h2>
-              <p className="text-gray-300 text-base mb-8 max-w-md mx-auto">{t.cta.subtitle}</p>
-              <Link to="/kontakt" className="group inline-flex items-center gap-3 px-8 py-4 bg-[#94c43d] text-white rounded-full font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
+          <div className="relative max-w-5xl mx-auto rounded-[2rem] overflow-hidden border border-white/10" style={{ background: '#0e0e0e' }}>
+
+            {/* Grid texture overlay - like reference */}
+            <div className="absolute inset-0 opacity-[0.04]" style={{
+              backgroundImage: `linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)`,
+              backgroundSize: '40px 40px'
+            }} />
+
+            {/* Radial green glow from bottom-center - like reference's blue glow */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[350px] pointer-events-none"
+              style={{ background: 'radial-gradient(ellipse at center bottom, rgba(148,196,61,0.5) 0%, rgba(148,196,61,0.2) 45%, transparent 75%)' }}
+            />
+
+            {/* Content */}
+            <div className="relative z-10 px-8 py-14 lg:py-20 text-center">
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+                {t.cta.title} <span className="text-[#94c43d]">{t.cta.titleHighlight}</span>
+              </h2>
+              <p className="text-gray-400 text-base mb-10 max-w-md mx-auto leading-relaxed">
+                {t.cta.subtitle}
+              </p>
+              <Link
+                to="/kontakt"
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 rounded-full font-semibold text-base transition-all duration-300 hover:bg-[#94c43d] hover:text-white hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.6)] hover:scale-105"
+              >
                 {t.cta.button}
                 <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>

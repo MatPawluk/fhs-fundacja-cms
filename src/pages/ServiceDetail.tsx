@@ -45,7 +45,7 @@ const ServiceDetail = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8f7f4]">
+    <div className="min-h-screen">
       <Navbar />
       
       {/* Hero Header */}
@@ -56,7 +56,7 @@ const ServiceDetail = () => {
             alt="" 
             className="w-full h-full object-cover opacity-5 grayscale"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#f8f7f4] via-[#f8f7f4]/90 to-[#f8f7f4]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent" />
         </div>
         
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
@@ -112,7 +112,7 @@ const ServiceDetail = () => {
 
       {/* Structured Sections (Dynamic) */}
       {service.sections && service.sections.length > 0 && (
-        <section className="py-24 bg-white relative">
+        <section className="py-24 relative">
           <div className="container mx-auto px-6 lg:px-12">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
               {service.sections.map((section, index) => (
@@ -225,45 +225,8 @@ const ServiceDetail = () => {
         )}
       </AnimatePresence>
 
-      {/* CTA Section */}
-      <section className="relative py-32 bg-gray-900 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#94c43d]/10 blur-[150px] rounded-full" />
-        </div>
-        
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="font-display text-4xl lg:text-7xl font-bold text-white mb-8">
-              Chcesz wesprzeć <br />
-              ten <span className="text-[#94c43d]">projekt?</span>
-            </h2>
-            <p className="text-gray-400 mb-12 max-w-2xl mx-auto text-lg md:text-xl font-light">
-              Każda wpłata, godzina wolontariatu lub udostępnienie naszej misji przybliża nas do realizacji celów w Afryce.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Link
-                to="/kontakt"
-                className="group relative inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-white rounded-full font-bold text-lg overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-[0_0_50px_-12px_rgba(148,196,61,0.5)]"
-              >
-                <span className="relative z-10">Zacznij działać</span>
-                <ArrowRight className="w-5 h-5 relative z-10 transition-transform duration-500 group-hover:translate-x-1" />
-                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity" />
-              </Link>
-              <Link
-                to="/projekty"
-                className="text-white/60 hover:text-white transition-colors duration-300 font-display font-medium tracking-widest text-sm uppercase flex items-center gap-2"
-              >
-                Inne projekty
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+
+
 
       <Footer />
     </div>
