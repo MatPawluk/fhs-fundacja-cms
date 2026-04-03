@@ -98,12 +98,12 @@ const ServiceDetail = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
-            className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[21/9]"
+            className="relative rounded-[2.5rem] overflow-hidden shadow-2xl w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]"
           >
-            <img
-              src={service.image}
+            <img 
+              src={service.image} 
               alt={service.title}
-              className="w-full h-full object-cover object-center top-0"
+              className="w-full h-full object-cover object-[center_20%]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           </motion.div>
