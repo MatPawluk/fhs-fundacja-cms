@@ -429,8 +429,9 @@ const Index = () => {
                 className="relative z-10 pointer-events-auto"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-px bg-[#94c43d]" />
-                  <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{t.services.viewAll}</span>
+                  <div className="w-8 h-0.5 bg-[#94c43d]" />
+                  <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">{t.services.viewAll}</span>
+                  <div className="w-8 h-0.5 bg-[#94c43d]" />
                 </div>
                 <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
                   Nasze działania <br />
@@ -547,8 +548,9 @@ const Index = () => {
           <div className="flex flex-col md:flex-row items-start gap-12 max-w-5xl mx-auto">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex-shrink-0">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-px bg-[#94c43d]" />
-                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{ix.poznajBadge}</span>
+                <div className="w-8 h-0.5 bg-[#94c43d]" />
+                <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">{ix.poznajBadge}</span>
+                <div className="w-8 h-0.5 bg-[#94c43d]" />
               </div>
               <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
                 Poznaj <br />
@@ -579,8 +581,9 @@ const Index = () => {
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-12 gap-4">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-px bg-[#94c43d]" />
-                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{ix.aktualnosci}</span>
+                <div className="w-8 h-0.5 bg-[#94c43d]" />
+                <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">{ix.aktualnosci}</span>
+                <div className="w-8 h-0.5 bg-[#94c43d]" />
               </div>
               <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 Nasze <br />
@@ -626,8 +629,9 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-px bg-[#94c43d]" />
-                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{ix.wsprzyjBadge}</span>
+                <div className="w-8 h-0.5 bg-[#94c43d]" />
+                <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">{ix.wsprzyjBadge}</span>
+                <div className="w-8 h-0.5 bg-[#94c43d]" />
               </div>
               <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 {ix.wsprzyjTitle} <br />
@@ -748,7 +752,7 @@ const Index = () => {
                 </form>
 
                 <div className="flex flex-wrap items-center justify-center gap-6 mt-8 p-4 rounded-2xl bg-gray-50/50 border border-gray-200/30">
-                  <img src={logoP24} alt="Przelewy24" className="h-16 w-auto grayscale contrast-125 opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
+                  <img src={logoP24} alt="Przelewy24" className="h-8 w-auto grayscale contrast-125 opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
                   <img src={logoBlik} alt="BLIK" className="h-16 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
                   <img src={logoVisa} alt="VISA" className="h-16 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
                   <img src={logoMastercard} alt="Mastercard" className="h-16 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
@@ -795,8 +799,9 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto w-full">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-px bg-[#94c43d]" />
-                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{ix.domPolskiBadge}</span>
+                <div className="w-8 h-0.5 bg-[#94c43d]" />
+                <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">{ix.domPolskiBadge}</span>
+                <div className="w-8 h-0.5 bg-[#94c43d]" />
               </div>
               <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 Nasz dom <br />

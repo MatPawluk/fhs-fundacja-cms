@@ -46,9 +46,9 @@ export const PartnersSection = () => {
           className="text-center"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-8 h-px bg-[#94c43d]" />
-            <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Zaufali nam</span>
-            <div className="w-8 h-px bg-[#94c43d]" />
+            <div className="w-8 h-0.5 bg-[#94c43d]" />
+            <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">Zaufali nam</span>
+            <div className="w-8 h-0.5 bg-[#94c43d]" />
           </div>
           <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
             {title.our} <span className="text-[#94c43d]">{title.highlight}</span>
