@@ -48,6 +48,7 @@ import misjaOkladka from '@/assets/projects/misja-okladka.jpg';
 import zbiorkiOkladka from '@/assets/projects/zbiorki-okladka.jpg';
 import ministerstwoOkladka from '@/assets/projects/ministerstwo-okladka.jpg';
 import wsprzyjNas from '@/assets/wesprzyj-nas.jpg';
+import wsprzyjNas2 from '@/assets/wesprzyj-bg-news.jpg';
 import { DomPolskiGallery } from '@/components/DomPolskiGallery';
 import articleCompetition from '@/assets/article-competition.jpg';
 import articleInnovation from '@/assets/article-china-innovation.jpg';
@@ -475,8 +476,8 @@ const Index = () => {
             <div
               className="flex-1 w-full overflow-visible"
               style={{
-                maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 150px, rgba(0,0,0,1) 100%)',
-                WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 150px, rgba(0,0,0,1) 100%)'
+                maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 1px, rgba(0,0,0,1) 100%)',
+                WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 1px, rgba(0,0,0,1) 100%)'
               }}
             >
               <div className="relative">
@@ -635,27 +636,27 @@ const Index = () => {
               <p className="text-gray-600 leading-relaxed mb-6">
                 {ix.wsprzyjDesc}
               </p>
-              <div className="mb-8">
-                <p className="text-gray-900 font-display font-bold text-xl mb-2">Wesprzyj nas i przekaż 1.5% podatku</p>
-                <div className="inline-flex items-center gap-3 px-6 py-3 bg-gray-100 rounded-2xl border border-gray-200/50">
-                  <span className="text-gray-500 font-display font-medium uppercase tracking-widest text-xs">KRS</span>
-                  <span className="text-[#94c43d] font-display font-bold text-2xl tracking-wider">0001104851</span>
+              <div className="mb-6">
+                <p className="text-gray-500 font-display font-medium text-sm mb-3 uppercase tracking-wider">Wesprzyj nas i przekaż 1.5% podatku</p>
+                <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-gray-100 rounded-2xl border border-gray-200/50">
+                  <span className="text-gray-400 font-display font-medium uppercase tracking-widest text-[10px]">KRS</span>
+                  <span className="text-[#94c43d] font-display font-bold text-xl tracking-wider">0001104851</span>
                 </div>
               </div>
 
-              <div className="relative mb-10 group">
+              <div className="relative mb-16 group">
                 <div className="absolute -inset-4 bg-[#94c43d]/5 rounded-[2.5rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative">
-                  <span className="block font-display font-black text-[10rem] lg:text-[14rem] leading-none tracking-tighter text-transparent bg-clip-text bg-cover bg-center select-none"
-                        style={{ 
-                          backgroundImage: `url(${wsprzyjNas})`,
-                          WebkitBackgroundClip: 'text',
-                          filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.1))'
-                        }}>
+                  <span className="block font-display font-black text-[12rem] lg:text-[15rem] leading-[1.1] tracking-tighter text-transparent bg-clip-text bg-cover bg-center select-none pb-4"
+                    style={{
+                      backgroundImage: `url(${wsprzyjNas})`,
+                      WebkitBackgroundClip: 'text',
+                      filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.1))'
+                    }}>
                     1.5%
                   </span>
-                  <div className="absolute -bottom-2 right-4 lg:right-12">
-                    <div className="px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-gray-200/50 shadow-xl">
+                  <div className="absolute -bottom-6 right-4 lg:right-30">
+                    <div className="px-4 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-gray-200/50 shadow-xl">
                       <span className="text-gray-900 font-display font-bold text-sm tracking-wide uppercase">Możesz nam pomóc</span>
                     </div>
                   </div>
@@ -740,17 +741,17 @@ const Index = () => {
                       <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
                     ) : (
                       <>
-                        {ix.donacjaCta} <span className="text-xl">🤍</span>
+                        {ix.donacjaCta} <span className="text-xl"></span>
                       </>
                     )}
                   </button>
                 </form>
 
                 <div className="flex flex-wrap items-center justify-center gap-6 mt-8 p-4 rounded-2xl bg-gray-50/50 border border-gray-200/30">
-                  <img src={logoP24} alt="Przelewy24" className="h-6 w-auto grayscale contrast-125 opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
-                  <img src={logoBlik} alt="BLIK" className="h-6 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
-                  <img src={logoVisa} alt="VISA" className="h-4 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
-                  <img src={logoMastercard} alt="Mastercard" className="h-8 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
+                  <img src={logoP24} alt="Przelewy24" className="h-16 w-auto grayscale contrast-125 opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
+                  <img src={logoBlik} alt="BLIK" className="h-16 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
+                  <img src={logoVisa} alt="VISA" className="h-16 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
+                  <img src={logoMastercard} alt="Mastercard" className="h-16 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
                 </div>
               </div>
             </motion.div>
@@ -761,7 +762,7 @@ const Index = () => {
       {/* Twoja pomoc realnie zmienia życie - Parallax */}
       <section className="relative py-24 overflow-hidden" style={{ clipPath: 'inset(0)' }}>
         <div className="fixed inset-0 -z-10">
-          <img src={wsprzyjNas} alt="" className="w-full h-full object-cover" />
+          <img src={wsprzyjNas2} alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gray-900/70" />
         </div>
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
@@ -824,31 +825,30 @@ const Index = () => {
       {/* CTA Section */}
       <section className="relative py-16 overflow-hidden">
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
-          <div className="relative max-w-5xl mx-auto rounded-[2rem] overflow-hidden border border-gray-200" 
-               style={{ background: 'linear-gradient(to bottom, transparent, rgba(148,196,61,0.05))' }}>
+          <div className="relative max-w-5xl mx-auto rounded-[2rem] overflow-hidden border border-white/10" style={{ background: '#0e0e0e' }}>
 
-            {/* Grid texture overlay - subtle for light version */}
-            <div className="absolute inset-0 opacity-[0.03]" style={{
-              backgroundImage: `linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)`,
+            {/* Grid texture overlay - like reference */}
+            <div className="absolute inset-0 opacity-[0.04]" style={{
+              backgroundImage: `linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)`,
               backgroundSize: '40px 40px'
             }} />
 
-            {/* Radial green glow from bottom-center */}
+            {/* Radial green glow from bottom-center - like reference's blue glow */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[350px] pointer-events-none"
-              style={{ background: 'radial-gradient(ellipse at center bottom, rgba(148,196,61,0.2) 0%, rgba(148,196,61,0.05) 45%, transparent 75%)' }}
+              style={{ background: 'radial-gradient(ellipse at center bottom, rgba(148,196,61,0.5) 0%, rgba(148,196,61,0.2) 45%, transparent 75%)' }}
             />
 
             {/* Content */}
             <div className="relative z-10 px-8 py-14 lg:py-20 text-center">
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
                 {t.cta.title} <span className="text-[#94c43d]">{t.cta.titleHighlight}</span>
               </h2>
-              <p className="text-gray-600 text-base mb-10 max-w-md mx-auto leading-relaxed">
+              <p className="text-gray-400 text-base mb-10 max-w-md mx-auto leading-relaxed">
                 {t.cta.subtitle}
               </p>
               <Link
                 to="/kontakt"
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-[#94c43d] text-white rounded-full font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.4)]"
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 rounded-full font-semibold text-base transition-all duration-300 hover:bg-[#94c43d] hover:text-white hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.6)] hover:scale-105"
               >
                 {t.cta.button}
                 <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
