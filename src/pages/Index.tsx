@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform, AnimatePresence, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useRef, useState, useEffect, useCallback } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import { Navbar } from '@/components/Navbar';
 import { toast } from 'sonner';
 import { Footer } from '@/components/Footer';
@@ -181,21 +182,30 @@ const Index = () => {
 
   const heroRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [stepWidth, setStepWidth] = useState(364);
-  const [transition, setTransition] = useState<any>({ type: 'spring', damping: 25, stiffness: 120 });
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: 'start',
+    skipSnaps: false,
+    dragFree: true
+  });
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((index: number) => emblaApi && emblaApi.scrollTo(index), [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi, setSelectedIndex]);
 
   useEffect(() => {
-    const updateStep = () => {
-      let width = 340;
-      if (window.innerWidth < 480) width = 280;
-      else if (window.innerWidth < 640) width = 300;
-      setStepWidth(width + 24); // width + gap-6
-    };
-    updateStep();
-    window.addEventListener('resize', updateStep);
-    return () => window.removeEventListener('resize', updateStep);
-  }, []);
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+  }, [emblaApi, onSelect]);
   const [selectedAmount, setSelectedAmount] = useState<number | null>(20);
   const [customAmount, setCustomAmount] = useState('20,00');
   const [isPaymentLoading, setIsPaymentLoading] = useState(false);
@@ -221,15 +231,8 @@ const Index = () => {
       slug: carouselSlugs[i],
     }));
 
-  // Triple buffer for infinite loop
-  const carouselServices = [...baseServices, ...baseServices, ...baseServices];
-
-  useEffect(() => {
-    // Start in the middle set
-    setCurrentIndex(baseServices.length);
-  }, [baseServices.length]);
-
-  const logicalIndex = currentIndex % baseServices.length;
+  // Carousel state
+  const logicalIndex = selectedIndex;
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -241,44 +244,16 @@ const Index = () => {
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const resetAutoplay = useCallback(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
-      handleNext();
-    }, 12000);
-  }, [baseServices.length]);
-
   useEffect(() => {
-    if (!isCarouselInView) {
+    if (!isCarouselInView || !emblaApi) {
       if (intervalRef.current) clearInterval(intervalRef.current);
       return;
     }
-    resetAutoplay();
+    intervalRef.current = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 8000);
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  }, [isCarouselInView, resetAutoplay]);
-
-  const handleNext = () => {
-    setTransition({ type: 'spring', damping: 25, stiffness: 120 });
-    setCurrentIndex((prev) => prev + 1);
-    resetAutoplay();
-  };
-
-  const handlePrev = () => {
-    setTransition({ type: 'spring', damping: 25, stiffness: 120 });
-    setCurrentIndex((prev) => prev - 1);
-    resetAutoplay();
-  };
-
-  const handleAnimationComplete = () => {
-    // If we're in the first set or the third set, jump back to middle set silently
-    if (currentIndex < baseServices.length) {
-      setTransition({ duration: 0 });
-      setCurrentIndex(currentIndex + baseServices.length);
-    } else if (currentIndex >= baseServices.length * 2) {
-      setTransition({ duration: 0 });
-      setCurrentIndex(currentIndex - baseServices.length);
-    }
-  };
+  }, [isCarouselInView, emblaApi]);
 
   const handleAmountSelect = (amount: number) => {
     setSelectedAmount(amount);
@@ -453,13 +428,13 @@ const Index = () => {
 
                 <div className="flex items-center gap-4">
                   <button
-                    onClick={handlePrev}
+                    onClick={scrollPrev}
                     className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#94c43d] hover:border-[#94c43d] transition-all duration-300 group"
                   >
                     <ChevronLeft className="w-6 h-6 transition-transform group-hover:-translate-x-0.5" />
                   </button>
                   <button
-                    onClick={handleNext}
+                    onClick={scrollNext}
                     className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#94c43d] hover:border-[#94c43d] transition-all duration-300 group"
                   >
                     <ChevronRight className="w-6 h-6 transition-transform group-hover:translate-x-0.5" />
@@ -471,10 +446,7 @@ const Index = () => {
                     {baseServices.map((_, index) => (
                       <button
                         key={index}
-                        onClick={() => {
-                          setTransition({ type: 'spring', damping: 25, stiffness: 120 });
-                          setCurrentIndex(index + 1);
-                        }}
+                        onClick={() => scrollTo(index)}
                         className={`h-1 rounded-full transition-all duration-500 ${index === logicalIndex ? 'w-12 bg-[#94c43d]' : 'w-2 bg-white/20 hover:bg-white/40'}`}
                       />
                     ))}
@@ -483,42 +455,20 @@ const Index = () => {
               </motion.div>
             </div>
 
-            {/* Right Column: Cards Slider - Now with cinematic YinYang Masking */}
             <div
-              className="flex-1 w-full overflow-visible"
-              style={{
-                maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 1px, rgba(0,0,0,1) 100%)',
-                WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 1px, rgba(0,0,0,1) 100%)'
-              }}
+              className="flex-1 w-full overflow-hidden"
+              ref={emblaRef}
             >
-              <div className="relative">
-                <motion.div
-                  className="flex gap-6 pr-12 cursor-grab active:cursor-grabbing"
-                  drag="x"
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.7}
-                  onDragEnd={(_e, info) => {
-                    const threshold = stepWidth / 4;
-                    if (info.offset.x < -threshold || info.velocity.x < -500) {
-                      handleNext();
-                    } else if (info.offset.x > threshold || info.velocity.x > 500) {
-                      handlePrev();
-                    }
-                  }}
-                  animate={{ x: -currentIndex * stepWidth }}
-                  transition={transition}
-                  onAnimationComplete={handleAnimationComplete}
-                >
-                  {carouselServices.map((service, index) => {
-                    // Simplified number calculation for triple buffer
-                    const displayNum = (index % baseServices.length) + 1;
+              <div className="flex ml-[-24px]">
+                {baseServices.map((service, index) => {
+                  const displayNum = index + 1;
 
-                    return (
-                      <motion.div
-                        key={`${index}-${service.slug}`}
-                        className="group relative flex-shrink-0 h-[480px] rounded-[2.5rem] overflow-hidden border border-white/5 bg-gray-900 shadow-2xl"
-                        style={{ width: stepWidth - 24 }}
-                      >
+                  return (
+                    <div
+                      key={`${index}-${service.slug}`}
+                      className="flex-[0_0_280px] sm:flex-[0_0_340px] pl-6"
+                    >
+                      <div className="group relative h-[480px] rounded-[2.5rem] overflow-hidden border border-white/5 bg-gray-900 shadow-2xl">
                         {/* Image Layer */}
                         <div className="absolute inset-0">
                           <img
@@ -554,10 +504,10 @@ const Index = () => {
                             </Link>
                           </div>
                         </div>
-                      </motion.div>
-                    );
-                  })}
-                </motion.div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -565,7 +515,7 @@ const Index = () => {
       </section>
 
       {/* Poznaj Fundację Section */}
-      <section id="poznaj" className="py-20">
+      <section id="poznaj" className="py-20 scroll-mt-32">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row items-start gap-12 max-w-5xl mx-auto">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex-shrink-0">
