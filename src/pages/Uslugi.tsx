@@ -508,7 +508,7 @@ const Uslugi = () => {
                     </div>
                   )}
 
-                  <div className="relative aspect-[9/16] overflow-hidden">
+                  <div className="relative aspect-[3/4] overflow-hidden">
                     <img
                       src={urlFor(child.image).url()}
                       alt={child.name}
