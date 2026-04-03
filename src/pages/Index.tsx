@@ -181,6 +181,7 @@ const Index = () => {
   const ix = indexTranslations[language];
 
   const heroRef = useRef<HTMLDivElement>(null);
+  const taxSectionRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -241,6 +242,13 @@ const Index = () => {
 
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  const { scrollYProgress: taxScrollY } = useScroll({
+    target: taxSectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  const taxBgY = useTransform(taxScrollY, [0, 1], ["60%", "40%"]);
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -620,21 +628,20 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="relative mb-16 group">
+              <div ref={taxSectionRef} className="relative mb-16 group">
                 <div className="absolute -inset-4 bg-[#94c43d]/5 rounded-[2.5rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative">
-                  <span className="block font-display font-black text-[12rem] lg:text-[15rem] leading-[1.1] tracking-tighter text-transparent bg-clip-text bg-cover bg-center select-none pb-4"
+                  <motion.span className="block font-display font-black text-[12rem] lg:text-[15rem] leading-[1.1] tracking-tighter text-transparent bg-clip-text bg-cover bg-center select-none pb-4"
                     style={{
                       backgroundImage: `url(${wsprzyjNas})`,
                       WebkitBackgroundClip: 'text',
+                      backgroundPositionY: taxBgY,
                       filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.1))'
                     }}>
                     1.5%
-                  </span>
+                  </motion.span>
                   <div className="absolute -bottom-6 right-4 lg:right-30">
-                    <div className="px-4 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-gray-200/50 shadow-xl">
-                      <span className="text-gray-900 font-display font-bold text-sm tracking-wide uppercase">Możesz nam pomóc</span>
-                    </div>
+
                   </div>
                 </div>
               </div>
