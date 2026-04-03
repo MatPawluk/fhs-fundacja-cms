@@ -52,6 +52,10 @@ import { DomPolskiGallery } from '@/components/DomPolskiGallery';
 import articleCompetition from '@/assets/article-competition.jpg';
 import articleInnovation from '@/assets/article-china-innovation.jpg';
 import serviceStrategy from '@/assets/service-strategy.jpg';
+import logoP24 from '@/assets/logo-p24.png';
+import logoMastercard from '@/assets/logo-mastercard.png';
+import logoVisa from '@/assets/logo-visa.png';
+import logoBlik from '@/assets/logo-blik.png';
 
 const articleImages: Record<string, string> = {
   'gdzie-znika-twoja-marza': articleCompetition,
@@ -631,24 +635,33 @@ const Index = () => {
               <p className="text-gray-600 leading-relaxed mb-6">
                 {ix.wsprzyjDesc}
               </p>
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center gap-3">
-                  <Heart className="w-5 h-5 text-[#94c43d]" />
-                  <span className="text-gray-700">{ix.wsprzyjAdopcja}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Heart className="w-5 h-5 text-[#94c43d]" />
-                  <span className="text-gray-700">{ix.wsprzyjJednorazowa}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Heart className="w-5 h-5 text-[#94c43d]" />
-                  <span className="text-gray-700">{ix.wsprzyjWolontariat}</span>
+              <div className="mb-8">
+                <p className="text-gray-900 font-display font-bold text-xl mb-2">Wesprzyj nas i przekaż 1.5% podatku</p>
+                <div className="inline-flex items-center gap-3 px-6 py-3 bg-gray-100 rounded-2xl border border-gray-200/50">
+                  <span className="text-gray-500 font-display font-medium uppercase tracking-widest text-xs">KRS</span>
+                  <span className="text-[#94c43d] font-display font-bold text-2xl tracking-wider">0001104851</span>
                 </div>
               </div>
-              <Link to="/uslugi" className="group inline-flex items-center gap-3 px-8 py-4 bg-[#94c43d] text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
-                {ix.wsprzyjCta}
-                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+
+              <div className="relative mb-10 group">
+                <div className="absolute -inset-4 bg-[#94c43d]/5 rounded-[2.5rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative">
+                  <span className="block font-display font-black text-[10rem] lg:text-[14rem] leading-none tracking-tighter text-transparent bg-clip-text bg-cover bg-center select-none"
+                        style={{ 
+                          backgroundImage: `url(${wsprzyjNas})`,
+                          WebkitBackgroundClip: 'text',
+                          filter: 'drop-shadow(0 20px 50px rgba(0,0,0,0.1))'
+                        }}>
+                    1.5%
+                  </span>
+                  <div className="absolute -bottom-2 right-4 lg:right-12">
+                    <div className="px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-gray-200/50 shadow-xl">
+                      <span className="text-gray-900 font-display font-bold text-sm tracking-wide uppercase">Możesz nam pomóc</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </motion.div>
 
             {/* Payment Gateway Placeholder */}
@@ -727,16 +740,17 @@ const Index = () => {
                       <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
                     ) : (
                       <>
-                        {ix.donacjaCta} <span className="text-xl">💚</span>
+                        {ix.donacjaCta} <span className="text-xl">🤍</span>
                       </>
                     )}
                   </button>
                 </form>
 
-                <div className="flex flex-wrap items-center justify-center gap-3 mt-5 opacity-50">
-                  {['Przelewy24', 'Mastercard', 'VISA', 'BLIK'].map((method) => (
-                    <span key={method} className="text-xs font-medium text-gray-500 px-2 py-1 rounded bg-white/60">{method}</span>
-                  ))}
+                <div className="flex flex-wrap items-center justify-center gap-6 mt-8 p-4 rounded-2xl bg-gray-50/50 border border-gray-200/30">
+                  <img src={logoP24} alt="Przelewy24" className="h-6 w-auto grayscale contrast-125 opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
+                  <img src={logoBlik} alt="BLIK" className="h-6 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
+                  <img src={logoVisa} alt="VISA" className="h-4 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
+                  <img src={logoMastercard} alt="Mastercard" className="h-8 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
                 </div>
               </div>
             </motion.div>

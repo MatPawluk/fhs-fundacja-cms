@@ -12,8 +12,8 @@ import { sanityClient, urlFor } from '@/lib/sanityClient';
 
 import stepChoose from '@/assets/jak-to-dziala/wybierz-dziecko.jpg';
 import stepDeclare from '@/assets/jak-to-dziala/zadeklaruj-wsparcie.jpg';
-import stepProgress from '@/assets/jak-to-dziala/Obserwuj postępy.JPG';
-import stepChange from '@/assets/jak-to-dziala/Zmieniaj życie.jpg';
+import stepProgress from '@/assets/jak-to-dziala/obserwuj-postepy.jpg';
+import stepChange from '@/assets/jak-to-dziala/zmieniaj-zycie.jpg';
 
 interface Child {
   _id: string;
