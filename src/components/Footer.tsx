@@ -35,8 +35,8 @@ export const Footer = () => {
               {t.footer.description}
             </p>
             <div className="flex justify-start mt-4">
-              <div className="inline-flex items-center gap-2 text-gray-500 text-[11px] font-medium opacity-80 uppercase tracking-wider">
-                <span className="text-[#94c43d] font-bold">KRS</span>
+              <div className="inline-flex items-center gap-2 text-gray-900 text-sm font-bold uppercase tracking-wider">
+                <span className="text-[#94c43d]">KRS</span>
                 0001104851
               </div>
             </div>
