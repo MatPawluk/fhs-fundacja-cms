@@ -766,7 +766,7 @@ const Index = () => {
       {/* Twoja pomoc realnie zmienia życie - Parallax */}
       <section className="relative py-24 overflow-hidden" style={{ clipPath: 'inset(0)' }}>
         <div className="fixed inset-0 -z-10">
-          <img src={wsprzyjNas2} alt="" className="w-full h-full object-cover" />
+          <img src={wsprzyjNas2} alt="" className="w-full h-full object-cover object-top" />
           <div className="absolute inset-0 bg-gray-900/70" />
         </div>
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
