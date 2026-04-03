@@ -13,7 +13,7 @@ import { ArrowRight } from 'lucide-react';
 
 import teamDarek1 from '@/assets/team-darek.jpg';
 import teamDarek from '@/assets/onas1.jpg';
-import teamAdrian from '@/assets/onas3.jpg';
+import teamAdrian from '@/assets/Zespol_Adrian.JPG';
 import teamAdrian2 from '@/assets/onas2.jpg';
 import teamOlga from '@/assets/team-olga.jpg';
 import teamAgata from '@/assets/team-agata.jpg';
@@ -22,11 +22,13 @@ import teamKebba from '@/assets/team-kebba.jpg';
 import teamChe from '@/assets/team-che.jpg';
 import teamAdrianNew from '@/assets/Adrian-2-e1753411695887.jpg';
 import teamPiotr from '@/assets/Piotr Biedrzycki.jpeg';
+import teamJakub from '@/assets/Zespol_Jakub Ostrowski-Operator kamery i montażysta.png';
 
 const teamData = {
   pl: [
     { name: 'Dariusz Andrzejczak', role: 'Współzałożyciel, koordynacja lokalna', image: teamDarek1 },
     { name: 'Adrian Nkwamu', role: 'Współzałożyciel, marketing i komunikacja', image: teamAdrian },
+    { name: 'Jakub Ostrowski', role: 'Operator kamery i montażysta', image: teamJakub },
     { name: 'Olga Dąbrowska', role: 'Wsparcie projektowe', image: teamOlga },
     { name: 'Agata Wysocka', role: 'Koordynacja lokalna', image: teamAgata },
     { name: 'Piotr Biedrzycki', role: 'Opiekun społeczności lokalnej', image: teamPiotr },
@@ -38,6 +40,7 @@ const teamData = {
   en: [
     { name: 'Dariusz Andrzejczak', role: 'Co-founder, local coordination', image: teamDarek1 },
     { name: 'Adrian Nkwamu', role: 'Co-founder, marketing & communication', image: teamAdrian },
+    { name: 'Jakub Ostrowski', role: 'Camera operator and video editor', image: teamJakub },
     { name: 'Olga Dąbrowska', role: 'Project support', image: teamOlga },
     { name: 'Agata Wysocka', role: 'Local coordination', image: teamAgata },
     { name: 'Piotr Biedrzycki', role: 'Local community caretaker', image: teamPiotr },
@@ -49,6 +52,7 @@ const teamData = {
   nl: [
     { name: 'Dariusz Andrzejczak', role: 'Medeoprichter, lokale coördinatie', image: teamDarek1 },
     { name: 'Adrian Nkwamu', role: 'Medeoprichter, marketing & communicatie', image: teamAdrian },
+    { name: 'Jakub Ostrowski', role: 'Camera-operator en video-editor', image: teamJakub },
     { name: 'Olga Dąbrowska', role: 'Projectondersteuning', image: teamOlga },
     { name: 'Agata Wysocka', role: 'Lokale coördinatie', image: teamAgata },
     { name: 'Piotr Biedrzycki', role: 'Lokale gemeenschapsbeheerder', image: teamPiotr },
