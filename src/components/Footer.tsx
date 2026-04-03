@@ -77,13 +77,21 @@ export const Footer = () => {
           {/* Bank account */}
           <div>
             <h4 className="font-display font-semibold text-lg mb-6 text-gray-900">{t.footer.bankAccountLabel}</h4>
-            <div className="space-y-3 text-sm text-gray-600">
-              <p>FHS Foundation</p>
-              <div>
-                <p className="text-gray-500">{t.footer.accountNumberLabel}</p>
-                <p className="font-bold text-gray-900 mt-1">PL 50 1020 3802 0000 1002 0319 5856</p>
+            <div className="space-y-4 text-sm text-gray-600">
+              <p className="font-medium text-gray-900 italic">FHS Foundation</p>
+              
+              <div className="space-y-1">
+                <p className="text-gray-500 text-xs uppercase tracking-wider">{t.footer.mainAccountLabel}</p>
+                <p className="font-bold text-gray-900 font-mono">PL 50 1020 3802 0000 1002 0319 5856</p>
               </div>
-              <p className="mt-4 leading-relaxed">
+
+              <div className="space-y-1">
+                <p className="text-gray-500 text-xs uppercase tracking-wider">{t.footer.eurAccountLabel}</p>
+                <p className="font-bold text-gray-900 font-mono">PL 29 1020 3802 0000 1302 0352 9476</p>
+                <p className="text-[10px] text-gray-400 mt-0.5">SWIFT/BIC: <span className="text-gray-600 font-medium">BPKOPLPW</span></p>
+              </div>
+
+              <p className="mt-4 leading-relaxed opacity-80 italic">
                 {t.footer.supportNote}
               </p>
             </div>
