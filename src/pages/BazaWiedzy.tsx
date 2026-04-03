@@ -147,26 +147,36 @@ const BazaWiedzy = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative pt-40 pb-32">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#94c43d]/10 blur-[150px] rounded-full" />
         </div>
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="w-8 h-0.5 bg-[#94c43d]" />
-              <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">Zostań z nami</span>
-              <div className="w-8 h-0.5 bg-[#94c43d]" />
-            </div>
-            <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-              {pt.ctaTitle} <span className="text-[#94c43d]">{pt.ctaTitleHighlight}</span>
-            </h2>
-            <p className="text-gray-500 mb-8 max-w-lg mx-auto">{pt.ctaSubtitle}</p>
-            <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
-              {pt.ctaButton}
-              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-          </motion.div>
+        <div className="relative z-10 container mx-auto px-6 lg:px-12">
+          <div className="relative mt-12 p-12 lg:p-20 rounded-[4rem] bg-[#94c43d]/5 border border-[#94c43d]/10 overflow-hidden">
+            {/* Blurry glow inside the card */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#94c43d]/15 blur-[100px] rounded-full pointer-events-none" />
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }} 
+              whileInView={{ opacity: 1, scale: 1 }} 
+              viewport={{ once: true }}
+              className="relative z-10 text-center"
+            >
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="w-8 h-0.5 bg-[#94c43d]" />
+                <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">Zostań z nami</span>
+                <div className="w-8 h-0.5 bg-[#94c43d]" />
+              </div>
+              <h2 className="font-display text-4xl lg:text-6xl font-bold text-gray-900 mb-8 leading-tight">
+                {pt.ctaTitle} <span className="text-[#94c43d]">{pt.ctaTitleHighlight}</span>
+              </h2>
+              <p className="text-gray-600 text-lg mb-10 max-w-lg mx-auto leading-relaxed">{pt.ctaSubtitle}</p>
+              <Link to="/kontakt" className="group inline-flex items-center gap-3 px-10 py-5 bg-[#94c43d] text-white rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
+                {pt.ctaButton}
+                <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
 
