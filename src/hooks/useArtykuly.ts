@@ -4,92 +4,86 @@ import { articlesTranslations } from '@/i18n/contentTranslations';
 import type { Language } from '@/i18n/translations';
 import type { SanityArtykul, Artykul } from '@/types/sanity';
 
-// GROQ query — pobiera wszystkie artykuły posortowane od najnowszych
-const ARTYKULY_QUERY = `*[_type == "artykul"] | order(date desc) {
+// GROQ query — pobiera wszystkie artykuły i projekty posortowane od najnowszych
+const ARTYKULY_QUERY = `*[_type in ["artykul", "projekt"]] | order(coalesce(date, _createdAt) desc) {
   _id,
+  _type,
   slug,
   kategoria,
-  titlePl,
-  titleEn,
-  titleNl,
-  descriptionPl,
-  descriptionEn,
-  descriptionNl,
+  titlePl, titleEn, titleNl,
+  descriptionPl, descriptionEn, descriptionNl,
+  subtitlePl, subtitleEn, subtitleNl,
   date,
+  _createdAt,
   readTime,
   featured,
   mainImage
 }`;
 
-// Pojedynczy artykuł po slug + treść
-const ARTYKUL_QUERY = `*[_type == "artykul" && slug.current == $slug][0] {
+// Pojedynczy artykuł/projekt po slug + treść
+const ARTYKUL_QUERY = `*[_type in ["artykul", "projekt"] && slug.current == $slug][0] {
   _id,
+  _type,
   slug,
   kategoria,
-  titlePl,
-  titleEn,
-  titleNl,
-  descriptionPl,
-  descriptionEn,
-  descriptionNl,
-  contentPl,
-  contentEn,
-  contentNl,
+  titlePl, titleEn, titleNl,
+  descriptionPl, descriptionEn, descriptionNl,
+  subtitlePl, subtitleEn, subtitleNl,
+  contentPl, contentEn, contentNl,
+  sectionsPl, sectionsEn, sectionsNl,
   date,
+  _createdAt,
   readTime,
   featured,
   mainImage
 }`;
 
-// Normalizacja SanityArtykul → Artykul (w zależności od języka)
+// Normalizacja SanityArtykul / Projekt → Artykul (w zależności od języka)
 export function normalizeSanityArtykul(
-  raw: SanityArtykul,
+  raw: any,
   language: Language
 ): Artykul {
-  const langMap: Record<Language, { title: string; description: string; content?: unknown[] }> = {
-    pl: {
-      title: raw.titlePl,
-      description: raw.descriptionPl,
-      content: raw.contentPl,
-    },
-    en: {
-      title: raw.titleEn || raw.titlePl,
-      description: raw.descriptionEn || raw.descriptionPl,
-      content: raw.contentEn || raw.contentPl,
-    },
-    nl: {
-      title: raw.titleNl || raw.titlePl,
-      description: raw.descriptionNl || raw.descriptionPl,
-      content: raw.contentNl || raw.contentPl,
-    },
-  };
+  const isProjekt = raw._type === 'projekt';
+  const suffix = language.charAt(0).toUpperCase() + language.slice(1); // Pl, En, Nl
 
-  // Kategorie w językach
+  const title = raw[`title${suffix}`] || raw.titlePl || '';
+  
+  // Dla projektów 'description' to 'subtitle', dla artykułów to 'description'
+  const description = isProjekt 
+    ? (raw[`subtitle${suffix}`] || raw.subtitlePl || '') 
+    : (raw[`description${suffix}`] || raw.descriptionPl || '');
+
+  // Treść — dla projektów to 'sections', dla artykułów to 'content'
+  const content = isProjekt
+    ? (raw[`sections${suffix}`] || raw.sectionsPl || [])
+    : (raw[`content${suffix}`] || raw.contentPl || []);
+
   const categoryMap: Record<string, Record<Language, string>> = {
     'Aktualności': { pl: 'Aktualności', en: 'News', nl: 'Nieuws' },
     'Nasze projekty': { pl: 'Nasze projekty', en: 'Our projects', nl: 'Onze projecten' },
     'Poradniki': { pl: 'Poradniki', en: 'Guides', nl: 'Gidsen' },
   };
 
-  const lang = langMap[language];
-  const category = categoryMap[raw.kategoria]?.[language] || raw.kategoria;
+  const rawKategoria = isProjekt ? 'Nasze projekty' : raw.kategoria;
+  const category = categoryMap[rawKategoria]?.[language] || rawKategoria;
+
+  const dateValue = raw.date || raw._createdAt;
 
   return {
     _id: raw._id,
     slug: raw.slug.current,
     category,
-    title: lang.title,
-    description: lang.description,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    content: lang.content as any,
-    date: raw.date
-      ? new Date(raw.date).toLocaleDateString('pl-PL', {
+    title,
+    description,
+    content,
+    date: dateValue
+      ? new Date(dateValue).toLocaleDateString('pl-PL', {
           day: 'numeric',
           month: 'numeric',
           year: 'numeric',
         }).replace(/\//g, '.')
       : '',
-    readTime: raw.readTime,
+    readTime: raw.readTime || (isProjekt ? '15 min' : ''),
     featured: raw.featured,
     mainImage: raw.mainImage,
   };
@@ -107,18 +101,9 @@ export function useArtykuly(language: Language) {
   });
 
   // Jeśli są dane z Sanity — normalizuj je
-  const articles: Artykul[] = data && data.length > 0
+  const articles: Artykul[] = data 
     ? data.map((raw) => normalizeSanityArtykul(raw, language))
-    : fallback.map((a, i) => ({
-        _id: `static-${i}`,
-        slug: a.slug,
-        category: a.category,
-        title: a.title,
-        description: a.description,
-        date: a.date,
-        readTime: a.readTime,
-        featured: a.featured,
-      }));
+    : [];
 
   return { articles, isLoading, error, hasSanityData: !!data && data.length > 0 };
 }

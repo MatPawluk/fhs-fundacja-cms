@@ -622,9 +622,9 @@ const Index = () => {
               </p>
               <div className="mb-6">
                 <p className="text-gray-500 font-display font-medium text-sm mb-3 uppercase tracking-wider">Wesprzyj nas i przekaż 1.5% podatku</p>
-                <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-gray-100 rounded-2xl border border-gray-200/50">
-                  <span className="text-gray-400 font-display font-medium uppercase tracking-widest text-[10px]">KRS</span>
-                  <span className="text-[#94c43d] font-display font-bold text-xl tracking-wider">0001104851</span>
+                <div className="flex items-center gap-3 text-gray-500 font-display font-medium text-sm uppercase tracking-wider">
+                  <span className="opacity-70">KRS</span>
+                  <span>0001104851</span>
                 </div>
               </div>
 

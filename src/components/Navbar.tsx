@@ -42,19 +42,19 @@ export const Navbar = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-            ? 'bg-[#f5f3ef]/95 backdrop-blur-xl border-b border-black/5 shadow-sm'
-            : 'bg-transparent'
+          ? 'bg-[#f5f3ef]/95 backdrop-blur-xl border-b border-black/5 shadow-sm'
+          : 'bg-transparent'
           }`}
       >
         <nav className="container mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
 
             {/* Logo */}
-            <Link to="/" className="relative z-10 flex items-center gap-3 group">
+            <Link to="/" className="relative z-10 flex items-center group">
               <img
                 src={logoImg}
                 alt=""
-                className={`h-10 w-auto object-contain transition-all duration-300 ${isHeroMode ? 'brightness-0 invert' : ''}`}
+                className={`h-10 w-auto object-contain transition-all duration-300 ${isHeroMode ? '' : ''}`}
               />
               <span className="font-display font-bold text-xl italic tracking-tight">
                 <span className="text-[#94c43d]">FHS</span>{' '}
@@ -73,10 +73,10 @@ export const Navbar = () => {
                     key={link.href}
                     to={link.href}
                     className={`relative text-sm font-medium transition-colors duration-300 ${isActive
-                        ? 'text-[#94c43d]'
-                        : isHeroMode
-                          ? 'text-white/80 hover:text-white'
-                          : 'text-gray-600 hover:text-[#94c43d]'
+                      ? 'text-[#94c43d]'
+                      : isHeroMode
+                        ? 'text-white/80 hover:text-white'
+                        : 'text-gray-600 hover:text-[#94c43d]'
                       }`}
                   >
                     {link.name}
@@ -137,8 +137,8 @@ export const Navbar = () => {
                     <Link
                       to={link.href}
                       className={`text-2xl font-display font-semibold transition-colors duration-300 ${location.pathname === link.href
-                          ? 'text-[#94c43d]'
-                          : 'text-gray-900 hover:text-[#94c43d]'
+                        ? 'text-[#94c43d]'
+                        : 'text-gray-900 hover:text-[#94c43d]'
                         }`}
                     >
                       {link.name}

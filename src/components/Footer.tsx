@@ -34,12 +34,6 @@ export const Footer = () => {
             <p className="text-gray-600 text-sm leading-relaxed">
               {t.footer.description}
             </p>
-            <div className="flex justify-start mt-4">
-              <div className="inline-flex items-center gap-2 text-gray-900 text-sm font-bold uppercase tracking-wider">
-                <span className="text-[#94c43d]">KRS</span>
-                0001104851
-              </div>
-            </div>
 
             {/* Social icons */}
             <div className="flex items-center gap-3 mt-6">
@@ -103,8 +97,8 @@ export const Footer = () => {
                 <p className="text-[10px] text-gray-400 mt-0.5">SWIFT/BIC: <span className="text-gray-600 font-medium">BPKOPLPW</span></p>
               </div>
 
-              <p className="mt-4 leading-relaxed opacity-80 italic">
-                {t.footer.supportNote}
+              <p className="mt-4 leading-relaxed opacity-80 text-gray-500 text-sm">
+                KRS 0001104851
               </p>
             </div>
           </div>

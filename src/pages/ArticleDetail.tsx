@@ -6,7 +6,7 @@ import { Footer } from '@/components/Footer';
 import { GradientText } from '@/components/GradientText';
 import { ArrowLeft, Clock, Calendar, Share2, Bookmark, ArrowRight, Loader2 } from 'lucide-react';
 import { PortableText } from '@portabletext/react';
-import { useArtykul } from '@/hooks/useArtykuly';
+import { useArtykul, useArtykuly } from '@/hooks/useArtykuly';
 import { urlFor } from '@/lib/sanityClient';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { articlesTranslations } from '@/i18n/contentTranslations';
@@ -65,20 +65,43 @@ const ArticleDetail = () => {
   const [shareSuccess, setShareSuccess] = useState(false);
 
   const { article, isLoading } = useArtykul(articleSlug || '', language);
+  const { articles: allArticles } = useArtykuly(language);
 
   // Fallback — statyczny artykuł ze statycznych danych
   const staticArticles = articlesTranslations[language];
   const staticMatch = staticArticles.find(a => a.slug === articleSlug);
 
-  // Powiązane artykuły — pierwsze 2 z tego samego slug'u (static)
-  const relatedArticles = staticArticles
+  // Scal dane Sanity z fallback static dla bieżącego artykułu
+  const displayArticle = article || (staticMatch ? {
+    _id: staticMatch.slug,
+    slug: staticMatch.slug,
+    category: staticMatch.category,
+    title: staticMatch.title,
+    description: staticMatch.description,
+    date: staticMatch.date,
+    readTime: staticMatch.readTime,
+    featured: staticMatch.featured,
+    content: undefined,
+    mainImage: undefined,
+  } : null);
+
+  // Powiązane artykuły — dynamicznie z Sanity (lub fallbacku useArtykuly)
+  let relatedDynamic = allArticles
     .filter(a => a.slug !== articleSlug)
-    .slice(0, 2)
-    .map(a => ({
-      title: a.title,
-      slug: a.slug,
-      image: staticImages[a.slug] || articleCompetition,
-    }));
+    .sort((a, b) => {
+      // Priorytetyzacja tej samej kategorii
+      if (displayArticle && a.category === displayArticle.category && b.category !== displayArticle.category) return -1;
+      if (displayArticle && a.category !== displayArticle.category && b.category === displayArticle.category) return 1;
+      return 0;
+    });
+
+  let relatedArticles = relatedDynamic.slice(0, 2).map(a => ({
+    title: a.title,
+    slug: a.slug,
+    image: a.mainImage?.asset?._ref 
+      ? urlFor(a.mainImage).width(600).height(400).fit('crop').auto('format').url()
+      : staticImages[a.slug] || articleCompetition,
+  }));
 
   const handleShare = async () => {
     try {
@@ -100,19 +123,7 @@ const ArticleDetail = () => {
     );
   }
 
-  // Scal dane Sanity z fallback static
-  const displayArticle = article || (staticMatch ? {
-    _id: staticMatch.slug,
-    slug: staticMatch.slug,
-    category: staticMatch.category,
-    title: staticMatch.title,
-    description: staticMatch.description,
-    date: staticMatch.date,
-    readTime: staticMatch.readTime,
-    featured: staticMatch.featured,
-    content: undefined,
-    mainImage: undefined,
-  } : null);
+  // displayArticle jest już obliczony powyżej, aby móc go użyć w relatedArticles logic
 
   if (!displayArticle) {
     return (
@@ -218,11 +229,26 @@ const ArticleDetail = () => {
                 className="prose prose-lg max-w-none"
               >
                 {/* Jeśli jest Portable Text z Sanity */}
-                {displayArticle.content && displayArticle.content.length > 0 ? (
-                  <PortableText
-                    value={displayArticle.content}
-                    components={portableTextComponents}
-                  />
+                {displayArticle.content && Array.isArray(displayArticle.content) && displayArticle.content.length > 0 ? (
+                  // Sprawdź czy to sekcje projektu (projekt) czy PortableText (artykuł)
+                  typeof displayArticle.content[0] === 'object' && 'title' in displayArticle.content[0] ? (
+                    <div className="space-y-10">
+                      {(displayArticle.content as unknown as { title: string; content: string }[]).map((section, idx) => (
+                        <div key={idx} className="group">
+                          <h2 className="font-display text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                            <span className="w-1.5 h-6 bg-[#94c43d] rounded-full" />
+                            {section.title}
+                          </h2>
+                          <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">{section.content}</p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <PortableText
+                      value={displayArticle.content as any}
+                      components={portableTextComponents}
+                    />
+                  )
                 ) : (
                   /* Fallback — opis statyczny */
                   <div>
