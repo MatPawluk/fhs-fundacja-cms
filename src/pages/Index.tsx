@@ -825,17 +825,16 @@ const Index = () => {
       {/* CTA Section */}
       <section className="relative py-16 overflow-hidden">
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
-          <div className="relative max-w-5xl mx-auto rounded-[2rem] overflow-hidden border border-white/10" style={{ background: '#0e0e0e' }}>
-
-            {/* Grid texture overlay - like reference */}
-            <div className="absolute inset-0 opacity-[0.04]" style={{
-              backgroundImage: `linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)`,
-              backgroundSize: '40px 40px'
+          <div className="relative max-w-5xl mx-auto rounded-[2rem] overflow-hidden border border-[#94c43d]/30 shadow-[0_32px_64px_-16px_rgba(148,196,61,0.2)]" >
+            {/* Subtle animal pattern reinforcement in green */}
+            <div className="absolute inset-0 opacity-[0.15] mix-blend-overlay pointer-events-none" style={{
+              backgroundImage: `url('/assets/pattern-bg.png')`,
+              backgroundSize: '400px'
             }} />
 
-            {/* Radial green glow from bottom-center - like reference's blue glow */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[350px] pointer-events-none"
-              style={{ background: 'radial-gradient(ellipse at center bottom, rgba(148,196,61,0.5) 0%, rgba(148,196,61,0.2) 45%, transparent 75%)' }}
+            {/* Radial green glow from bottom-center - prominent foundation color */}
+            <div className="absolute left-1/2 -translate-x-1/2 w-[130%] h-[400px] pointer-events-none opacity-80"
+              style={{ background: 'radial-gradient(ellipse at center bottom, rgba(148, 196, 61, 0.7) 0%, rgba(148, 196, 61, 0.3) 50%, transparent 80%)' }}
             />
 
             {/* Content */}
@@ -848,7 +847,7 @@ const Index = () => {
               </p>
               <Link
                 to="/kontakt"
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 rounded-full font-semibold text-base transition-all duration-300 hover:bg-[#94c43d] hover:text-white hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.6)] hover:scale-105"
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-[#94c43d] text-white rounded-full font-semibold text-base transition-all duration-300 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.6)] hover:scale-105"
               >
                 {t.cta.button}
                 <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
