@@ -96,7 +96,7 @@ export const Navbar = () => {
               {/* LanguageSelector powinien też przyjmować prop `light` jeśli chcesz biały tekst */}
               <LanguageSelector />
               <Link
-                to="/kontakt"
+                to="/#wesprzyj"
                 className="relative inline-flex items-center justify-center px-6 py-3 text-sm font-semibold bg-[#94c43d] text-white rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_32px_-8px_rgba(148,196,61,0.4)]"
               >
                 {t.nav.consultation}
@@ -153,7 +153,7 @@ export const Navbar = () => {
                 >
                   <LanguageSelector />
                   <Link
-                    to="/kontakt"
+                    to="/#wesprzyj"
                     className="mt-4 inline-flex items-center justify-center px-8 py-4 text-base font-semibold bg-[#94c43d] text-white rounded-full"
                   >
                     {t.nav.consultation}
