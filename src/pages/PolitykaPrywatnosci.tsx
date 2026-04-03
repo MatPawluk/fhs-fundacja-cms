@@ -74,13 +74,13 @@ const PolitykaPrywatnosci = () => {
           num: '6',
           title: 'Prawa użytkownika',
           body: (
-            <div className="bg-gray-900 text-white p-6 md:p-8 rounded-2xl">
-              <p className="mb-6 opacity-80">Przysługuje Ci prawo do:</p>
+            <div className="bg-gray-50 text-gray-900 p-6 md:p-8 rounded-2xl border border-gray-100">
+              <p className="mb-6 text-gray-600">Przysługuje Ci prawo do:</p>
               <div className="grid grid-cols-2 gap-4 text-sm font-medium">
-                <div className="flex items-center gap-3 border-b border-white/20 pb-2"><Eye size={16} className="text-[#94c43d]" /> Dostępu</div>
-                <div className="flex items-center gap-3 border-b border-white/20 pb-2"><FileText size={16} className="text-[#94c43d]" /> Sprostowania</div>
-                <div className="flex items-center gap-3 border-b border-white/20 pb-2"><Lock size={16} className="text-[#94c43d]" /> Usunięcia</div>
-                <div className="flex items-center gap-3 border-b border-white/20 pb-2"><Shield size={16} className="text-[#94c43d]" /> Sprzeciwu</div>
+                <div className="flex items-center gap-3 border-b border-gray-200 pb-2"><Eye size={16} className="text-[#94c43d]" /> Dostępu</div>
+                <div className="flex items-center gap-3 border-b border-gray-200 pb-2"><FileText size={16} className="text-[#94c43d]" /> Sprostowania</div>
+                <div className="flex items-center gap-3 border-b border-gray-200 pb-2"><Lock size={16} className="text-[#94c43d]" /> Usunięcia</div>
+                <div className="flex items-center gap-3 border-b border-gray-200 pb-2"><Shield size={16} className="text-[#94c43d]" /> Sprzeciwu</div>
               </div>
             </div>
           )
@@ -158,13 +158,13 @@ const PolitykaPrywatnosci = () => {
           num: '6',
           title: 'User Rights',
           body: (
-            <div className="bg-gray-900 text-white p-6 md:p-8 rounded-2xl">
-              <p className="mb-6 opacity-80">You have the right to:</p>
+            <div className="bg-gray-50 text-gray-900 p-6 md:p-8 rounded-2xl border border-gray-100">
+              <p className="mb-6 text-gray-600">You have the right to:</p>
               <div className="grid grid-cols-2 gap-4 text-sm font-medium">
-                <div className="flex items-center gap-3 border-b border-white/20 pb-2"><Eye size={16} className="text-[#94c43d]" /> Access</div>
-                <div className="flex items-center gap-3 border-b border-white/20 pb-2"><FileText size={16} className="text-[#94c43d]" /> Rectification</div>
-                <div className="flex items-center gap-3 border-b border-white/20 pb-2"><Lock size={16} className="text-[#94c43d]" /> Deletion</div>
-                <div className="flex items-center gap-3 border-b border-white/20 pb-2"><Shield size={16} className="text-[#94c43d]" /> Objection</div>
+                <div className="flex items-center gap-3 border-b border-gray-200 pb-2"><Eye size={16} className="text-[#94c43d]" /> Access</div>
+                <div className="flex items-center gap-3 border-b border-gray-200 pb-2"><FileText size={16} className="text-[#94c43d]" /> Rectification</div>
+                <div className="flex items-center gap-3 border-b border-gray-200 pb-2"><Lock size={16} className="text-[#94c43d]" /> Deletion</div>
+                <div className="flex items-center gap-3 border-b border-gray-200 pb-2"><Shield size={16} className="text-[#94c43d]" /> Objection</div>
               </div>
             </div>
           )
@@ -242,13 +242,13 @@ const PolitykaPrywatnosci = () => {
           num: '6',
           title: 'Rechten van de gebruiker',
           body: (
-            <div className="bg-gray-900 text-white p-6 md:p-8 rounded-2xl">
-              <p className="mb-6 opacity-80">U heeft het recht op:</p>
+            <div className="bg-gray-50 text-gray-900 p-6 md:p-8 rounded-2xl border border-gray-100">
+              <p className="mb-6 text-gray-600">U heeft het recht op:</p>
               <div className="grid grid-cols-2 gap-4 text-sm font-medium">
-                <div className="flex items-center gap-3 border-b border-white/20 pb-2"><Eye size={16} className="text-[#94c43d]" /> Toegang</div>
-                <div className="flex items-center gap-3 border-b border-white/20 pb-2"><FileText size={16} className="text-[#94c43d]" /> Rectificatie</div>
-                <div className="flex items-center gap-3 border-b border-white/20 pb-2"><Lock size={16} className="text-[#94c43d]" /> Verwijdering</div>
-                <div className="flex items-center gap-3 border-b border-white/20 pb-2"><Shield size={16} className="text-[#94c43d]" /> Bezwaar</div>
+                <div className="flex items-center gap-3 border-b border-gray-200 pb-2"><Eye size={16} className="text-[#94c43d]" /> Toegang</div>
+                <div className="flex items-center gap-3 border-b border-gray-200 pb-2"><FileText size={16} className="text-[#94c43d]" /> Rectificatie</div>
+                <div className="flex items-center gap-3 border-b border-gray-200 pb-2"><Lock size={16} className="text-[#94c43d]" /> Verwijdering</div>
+                <div className="flex items-center gap-3 border-b border-gray-200 pb-2"><Shield size={16} className="text-[#94c43d]" /> Bezwaar</div>
               </div>
             </div>
           )
