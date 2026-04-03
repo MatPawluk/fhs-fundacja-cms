@@ -10,10 +10,10 @@ import { serviceSlugMap, defaultServiceData, getLocalizedServicesData } from '@/
 const ServiceDetail = () => {
   const { serviceSlug } = useParams();
   const { t, language } = useLanguage();
-  
+
   const localizedServices = getLocalizedServicesData(language);
   const mainSlug = serviceSlug || '';
-  
+
   const service = localizedServices[mainSlug] || defaultServiceData;
   const displayTitle = service.title;
 
@@ -33,7 +33,7 @@ const ServiceDetail = () => {
     // Desktop layout (4 columns)
     const targetWeight = Math.ceil(total / 4) * 4;
     const extraSpansNeeded = targetWeight - total;
-    
+
     // Distribute spans (using a modulo-based pattern for variety)
     const specialIndices = [0, 3, 5, 2, 6, 1].slice(0, extraSpansNeeded);
     const isSpecial = specialIndices.includes(index % total);
@@ -47,20 +47,20 @@ const ServiceDetail = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      
+
       {/* Hero Header */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <img 
-            src={service.image} 
-            alt="" 
+          <img
+            src={service.image}
+            alt=""
             className="w-full h-full object-cover opacity-5 grayscale"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent" />
         </div>
-        
+
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
-          <Link 
+          <Link
             to="/"
             className="inline-flex items-center gap-2 text-gray-500 hover:text-[#94c43d] transition-colors duration-300 mb-8"
           >
@@ -82,7 +82,7 @@ const ServiceDetail = () => {
               <span className="text-[#94c43d] block">{displayTitle.split(' ').slice(0, 2).join(' ')}</span>
               {displayTitle.split(' ').slice(2).join(' ')}
             </h1>
-            
+
             <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-3xl font-light">
               {service.fullDescription}
             </p>
@@ -100,10 +100,10 @@ const ServiceDetail = () => {
             transition={{ duration: 1 }}
             className="relative rounded-[2.5rem] overflow-hidden shadow-2xl aspect-[21/9]"
           >
-            <img 
-              src={service.image} 
+            <img
+              src={service.image}
               alt={service.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-center top-0"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           </motion.div>
@@ -215,9 +215,9 @@ const ServiceDetail = () => {
               className="relative max-w-7xl max-h-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <img 
-                src={selectedImage} 
-                alt="Enlarged gallery view" 
+              <img
+                src={selectedImage}
+                alt="Enlarged gallery view"
                 className="rounded-2xl shadow-2xl max-h-[85vh] w-auto object-contain"
               />
             </motion.div>

@@ -6,7 +6,7 @@ import imgVolunteersMain from '@/assets/projects/wyjazdy-wolontariackie-okladka.
 import imgMissionaryMain from '@/assets/projects/wolontariat-misyjny2.jpg';
 import imgCharityMain from '@/assets/projects/zbiorki-charytatywne-1.jpg';
 import imgEducationMain from '@/assets/projects/wsparcie-edukacyjne-okladka.jpg';
-import imgMinistryMain from '@/assets/u-wsparcie-formalne.png';
+import imgMinistryMain from '@/assets/projects/ministerstwo-okladka.jpg';
 
 // Gallery Imports - Volunteers
 import v1 from '@/assets/projects/wyjazdy-wolontariackie1.jpg';
@@ -31,6 +31,14 @@ import m4 from '@/assets/projects/wolontariat-misyjny4.jpg';
 import m5 from '@/assets/projects/wolontariat-misyjny5.jpg';
 import m6 from '@/assets/projects/wolontariat-misyjny6.jpg';
 import m7 from '@/assets/projects/wolontariat-misyjny7.jpg';
+
+// Gallery Imports - Ministry
+import min1 from '@/assets/projects/ministerstwo-1.jpg';
+import min2 from '@/assets/projects/ministerstwo-2.jpg';
+import min3 from '@/assets/projects/ministerstwo-3.jpg';
+import min4 from '@/assets/projects/ministerstwo-4.jpg';
+import min5 from '@/assets/projects/ministerstwo-5.jpg';
+import min6 from '@/assets/projects/ministerstwo-6.jpg';
 
 // Gallery Imports - Charity
 import c1 from '@/assets/projects/zbiorki-charytatywne-1.jpg';
@@ -110,7 +118,7 @@ export const getLocalizedServicesData = (lang: Language): Record<string, Service
       fullDescription: details['wspolpraca-z-ministerstwami'].fullDescription,
       sections: details['wspolpraca-z-ministerstwami'].sections,
       image: imgMinistryMain,
-      gallery: []
+      gallery: [min1, min2, min3, min4, min5, min6]
     }
   };
 };
