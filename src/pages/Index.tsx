@@ -430,7 +430,7 @@ const Index = () => {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-8 h-0.5 bg-[#94c43d]" />
-                  <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">{t.services.viewAll}</span>
+                  <span className="text-white font-display font-medium tracking-wider uppercase text-sm">{t.services.viewAll}</span>
                   <div className="w-8 h-0.5 bg-[#94c43d]" />
                 </div>
                 <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
@@ -753,7 +753,7 @@ const Index = () => {
 
                 <div className="flex flex-wrap items-center justify-center gap-6 mt-8 p-4 rounded-2xl bg-gray-50/50 border border-gray-200/30">
                   <img src={logoP24} alt="Przelewy24" className="h-8 w-auto grayscale contrast-125 opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
-                  <img src={logoBlik} alt="BLIK" className="h-16 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
+                  <img src={logoBlik} alt="BLIK" className="h-12 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
                   <img src={logoVisa} alt="VISA" className="h-16 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
                   <img src={logoMastercard} alt="Mastercard" className="h-16 w-auto grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-300" />
                 </div>
