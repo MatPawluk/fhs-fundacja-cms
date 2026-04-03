@@ -483,7 +483,18 @@ const Index = () => {
             >
               <div className="relative">
                 <motion.div
-                  className="flex gap-6 pr-12"
+                  className="flex gap-6 pr-12 cursor-grab active:cursor-grabbing"
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.7}
+                  onDragEnd={(_e, info) => {
+                    const threshold = stepWidth / 4;
+                    if (info.offset.x < -threshold || info.velocity.x < -500) {
+                      handleNext();
+                    } else if (info.offset.x > threshold || info.velocity.x > 500) {
+                      handlePrev();
+                    }
+                  }}
                   animate={{ x: -currentIndex * stepWidth }}
                   transition={transition}
                   onAnimationComplete={handleAnimationComplete}
