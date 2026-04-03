@@ -838,16 +838,16 @@ const Index = () => {
             }} />
 
             {/* Radial green glow from bottom-center - prominent foundation color */}
-            <div className="absolute left-1/2 -translate-x-1/2 w-[130%] h-[400px] pointer-events-none opacity-80"
-              style={{ background: 'radial-gradient(ellipse at center bottom, rgba(148, 196, 61, 0.7) 0%, rgba(148, 196, 61, 0.3) 50%, transparent 80%)' }}
+            <div className="absolute left-1/2 -translate-x-1/2 w-[130%] h-[350px] bottom-0 pointer-events-none opacity-60"
+              style={{ background: 'radial-gradient(ellipse at center bottom, rgba(148, 196, 61, 0.5) 0%, rgba(148, 196, 61, 0.2) 60%, transparent 85%)' }}
             />
 
             {/* Content */}
             <div className="relative z-10 px-8 py-14 lg:py-20 text-center">
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
                 {t.cta.title} <span className="text-[#94c43d]">{t.cta.titleHighlight}</span>
               </h2>
-              <p className="text-gray-400 text-base mb-10 max-w-md mx-auto leading-relaxed">
+              <p className="text-gray-600 text-base mb-10 max-w-md mx-auto leading-relaxed">
                 {t.cta.subtitle}
               </p>
               <Link
