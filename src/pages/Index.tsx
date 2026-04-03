@@ -48,7 +48,7 @@ import misjaOkladka from '@/assets/projects/misja-okladka.jpg';
 import zbiorkiOkladka from '@/assets/projects/zbiorki-okladka.jpg';
 import ministerstwoOkladka from '@/assets/projects/ministerstwo-okladka.jpg';
 import wsprzyjNas from '@/assets/wesprzyj-nas.jpg';
-import wsprzyjNas2 from '@/assets/wesprzyj-bg-news.jpg';
+import wsprzyjNas2 from '@/assets/Karuzela 19.JPG';
 import { DomPolskiGallery } from '@/components/DomPolskiGallery';
 import articleCompetition from '@/assets/article-competition.jpg';
 import articleInnovation from '@/assets/article-china-innovation.jpg';
