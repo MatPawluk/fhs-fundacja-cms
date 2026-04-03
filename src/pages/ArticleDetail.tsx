@@ -145,8 +145,9 @@ const ArticleDetail = () => {
           </Link>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-4xl">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-px bg-[#94c43d]" />
-              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{displayArticle.category}</span>
+              <div className="w-8 h-0.5 bg-[#94c43d]" />
+              <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">{displayArticle.category}</span>
+              <div className="w-8 h-0.5 bg-[#94c43d]" />
             </div>
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-8">{displayArticle.title}</h1>
             <div className="flex flex-wrap items-center gap-6 text-gray-500">
@@ -167,8 +168,9 @@ const ArticleDetail = () => {
               <div className="sticky top-28 space-y-6">
                 <div className="p-6 bg-white rounded-2xl border border-gray-200 shadow-sm">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-4 h-px bg-[#94c43d]" />
+                    <div className="w-4 h-0.5 bg-[#94c43d]" />
                     <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wider">Udostępnij</h3>
+                    <div className="w-4 h-0.5 bg-[#94c43d]" />
                   </div>
                   <div className="flex gap-3">
                     <button
@@ -189,8 +191,9 @@ const ArticleDetail = () => {
 
                 <div className="p-6 bg-[#94c43d]/10 rounded-2xl border border-[#94c43d]/20">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-4 h-px bg-[#94c43d]" />
+                    <div className="w-4 h-0.5 bg-[#94c43d]" />
                     <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wider">Chcesz pomóc?</h3>
+                    <div className="w-4 h-0.5 bg-[#94c43d]" />
                   </div>
                   <p className="text-gray-600 text-sm mb-4">Wesprzyj naszą misję i pomagaj dzieciom w Afryce.</p>
                   <Link to="/kontakt" className="block w-full text-center px-4 py-3 bg-[#94c43d] text-white rounded-xl font-semibold text-sm hover:scale-105 transition-transform duration-300">
@@ -236,10 +239,11 @@ const ArticleDetail = () => {
               {/* Powiązane artykuły */}
               <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-16">
                 <div className="flex items-center gap-3 mb-8">
-                  <div className="w-8 h-px bg-[#94c43d]" />
+                  <div className="w-8 h-0.5 bg-[#94c43d]" />
                   <h3 className="font-display font-bold text-2xl text-gray-900">
                     Powiązane <span className="text-[#94c43d]">artykuły</span>
                   </h3>
+                  <div className="w-8 h-0.5 bg-[#94c43d]" />
                 </div>
                 <div className="grid sm:grid-cols-2 gap-6">
                   {relatedArticles.map((related) => (

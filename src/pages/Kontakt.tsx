@@ -85,8 +85,9 @@ const Kontakt = () => {
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
               <div className="mb-8">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-px bg-[#94c43d]" />
-                  <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{pt.badge}</span>
+                  <div className="w-8 h-0.5 bg-[#94c43d]" />
+                  <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">{pt.badge}</span>
+                  <div className="w-8 h-0.5 bg-[#94c43d]" />
                 </div>
                 <h1 className="font-display text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
                   {pt.title || 'Masz pytania?'} <br />
@@ -154,8 +155,9 @@ const Kontakt = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-px bg-[#94c43d]" />
-              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Biura</span>
+              <div className="w-8 h-0.5 bg-[#94c43d]" />
+              <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">Biura</span>
+              <div className="w-8 h-0.5 bg-[#94c43d]" />
             </div>
             <h3 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-6">
               {pt.locationsTitle} <span className="text-[#94c43d]">{pt.locationsTitleHighlight}</span>

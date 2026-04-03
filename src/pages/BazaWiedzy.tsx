@@ -56,8 +56,9 @@ const BazaWiedzy = () => {
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-px bg-[#94c43d]" />
-              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{pt.badge}</span>
+              <div className="w-8 h-0.5 bg-[#94c43d]" />
+              <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">{pt.badge}</span>
+              <div className="w-8 h-0.5 bg-[#94c43d]" />
             </div>
             <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 leading-tight mb-4">
               {pt.title} <span className="text-[#94c43d]">{pt.titleHighlight}</span>
@@ -153,9 +154,9 @@ const BazaWiedzy = () => {
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
             <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="w-8 h-px bg-[#94c43d]" />
-              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Zostań z nami</span>
-              <div className="w-8 h-px bg-[#94c43d]" />
+              <div className="w-8 h-0.5 bg-[#94c43d]" />
+              <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">Zostań z nami</span>
+              <div className="w-8 h-0.5 bg-[#94c43d]" />
             </div>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               {pt.ctaTitle} <span className="text-[#94c43d]">{pt.ctaTitleHighlight}</span>

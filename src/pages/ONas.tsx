@@ -21,13 +21,15 @@ import teamMaya from '@/assets/team-maya.jpg';
 import teamKebba from '@/assets/team-kebba.jpg';
 import teamChe from '@/assets/team-che.jpg';
 import teamAdrianNew from '@/assets/Adrian-2-e1753411695887.jpg';
+import teamPiotr from '@/assets/Piotr Biedrzycki.jpeg';
 
 const teamData = {
   pl: [
     { name: 'Dariusz Andrzejczak', role: 'Współzałożyciel, koordynacja lokalna', image: teamDarek1 },
-    { name: 'Olga Dąbrowska', role: 'Wsparcie projektowe', image: teamOlga },
     { name: 'Adrian Nkwamu', role: 'Współzałożyciel, marketing i komunikacja', image: teamAdrian },
+    { name: 'Olga Dąbrowska', role: 'Wsparcie projektowe', image: teamOlga },
     { name: 'Agata Wysocka', role: 'Koordynacja lokalna', image: teamAgata },
+    { name: 'Piotr Biedrzycki', role: 'Opiekun społeczności lokalnej', image: teamPiotr },
     { name: 'Adrian Grudziński', role: 'Wsparcie projektowe', image: teamAdrianNew },
     { name: 'Maya', role: 'Gospodyni domu polskiego w Gambii', image: teamMaya },
     { name: 'Kebba Suso', role: 'Opiekun domu polskiego w Gambii', image: teamKebba },
@@ -35,9 +37,10 @@ const teamData = {
   ],
   en: [
     { name: 'Dariusz Andrzejczak', role: 'Co-founder, local coordination', image: teamDarek1 },
-    { name: 'Olga Dąbrowska', role: 'Project support', image: teamOlga },
     { name: 'Adrian Nkwamu', role: 'Co-founder, marketing & communication', image: teamAdrian },
+    { name: 'Olga Dąbrowska', role: 'Project support', image: teamOlga },
     { name: 'Agata Wysocka', role: 'Local coordination', image: teamAgata },
+    { name: 'Piotr Biedrzycki', role: 'Local community caretaker', image: teamPiotr },
     { name: 'Adrian Grudziński', role: 'Project support', image: teamAdrianNew },
     { name: 'Maya', role: 'Housekeeper of the Polish House in Gambia', image: teamMaya },
     { name: 'Kebba Suso', role: 'Caretaker of the Polish House in Gambia', image: teamKebba },
@@ -45,9 +48,10 @@ const teamData = {
   ],
   nl: [
     { name: 'Dariusz Andrzejczak', role: 'Medeoprichter, lokale coördinatie', image: teamDarek1 },
-    { name: 'Olga Dąbrowska', role: 'Projectondersteuning', image: teamOlga },
     { name: 'Adrian Nkwamu', role: 'Medeoprichter, marketing & communicatie', image: teamAdrian },
+    { name: 'Olga Dąbrowska', role: 'Projectondersteuning', image: teamOlga },
     { name: 'Agata Wysocka', role: 'Lokale coördinatie', image: teamAgata },
+    { name: 'Piotr Biedrzycki', role: 'Lokale gemeenschapsbeheerder', image: teamPiotr },
     { name: 'Adrian Grudziński', role: 'Projectondersteuning', image: teamAdrianNew },
     { name: 'Maya', role: 'Huishoudster van het Poolse Huis in Gambia', image: teamMaya },
     { name: 'Kebba Suso', role: 'Beheerder van het Poolse Huis in Gambia', image: teamKebba },
@@ -122,8 +126,9 @@ const ONas = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-8 h-px bg-[#94c43d]" />
-                <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{hero.badge}</span>
+                <div className="w-8 h-0.5 bg-[#94c43d]" />
+                <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">{hero.badge}</span>
+                <div className="w-8 h-0.5 bg-[#94c43d]" />
               </div>
               <h1 className="font-display text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6">
                 {hero.title} <span className="text-[#94c43d]">{hero.titleHighlight}</span>{hero.titleEnd}
@@ -189,9 +194,9 @@ const ONas = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="w-8 h-px bg-[#94c43d]" />
-              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">{pt.teamBadge}</span>
-              <div className="w-8 h-px bg-[#94c43d]" />
+              <div className="w-8 h-0.5 bg-[#94c43d]" />
+              <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">{pt.teamBadge}</span>
+              <div className="w-8 h-0.5 bg-[#94c43d]" />
             </div>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
               {pt.teamTitle || 'Poznaj'} <span className="text-[#94c43d]">{pt.teamTitleHighlight || 'nas'}</span>
@@ -203,7 +208,7 @@ const ONas = () => {
               {team.map((member, index) => (
                 <motion.div key={member.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.08 }} className="group">
                   <div className="relative mb-3 rounded-2xl overflow-hidden aspect-[3/4]">
-                    <img src={member.image} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
                   </div>
                   <h3 className="font-display font-bold text-sm md:text-base lg:text-lg text-gray-900">{member.name}</h3>
                   <p className="text-gray-500 text-xs lg:text-sm">{member.role}</p>
@@ -221,9 +226,9 @@ const ONas = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="w-8 h-px bg-[#94c43d]" />
-              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Gambia</span>
-              <div className="w-8 h-px bg-[#94c43d]" />
+              <div className="w-8 h-0.5 bg-[#94c43d]" />
+              <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">Gambia</span>
+              <div className="w-8 h-0.5 bg-[#94c43d]" />
             </div>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
               {hero.globeTitle} <span className="text-[#94c43d]">{hero.globeHighlight}</span>
@@ -241,9 +246,9 @@ const ONas = () => {
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
             <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="w-8 h-px bg-[#94c43d]" />
-              <span className="text-[#94c43d] font-display font-medium tracking-wider uppercase text-sm">Dołącz do nas</span>
-              <div className="w-8 h-px bg-[#94c43d]" />
+              <div className="w-8 h-0.5 bg-[#94c43d]" />
+              <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">Dołącz do nas</span>
+              <div className="w-8 h-0.5 bg-[#94c43d]" />
             </div>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               {t.cta.title} <span className="text-[#94c43d]">{t.cta.titleHighlight}</span>
