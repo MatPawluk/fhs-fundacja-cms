@@ -11,18 +11,18 @@ const COLS_MOBILE = 3;
 const PER_COL = 5;
 
 const DEPTH_DESKTOP: { z: number; y: number; opacity: number }[] = [
-  { z: -80, y: 20, opacity: 0.45 },
-  { z: -40, y: 10, opacity: 0.60 },
-  { z: 0, y: 0, opacity: 0.80 },
-  { z: 0, y: 0, opacity: 0.80 },
-  { z: -40, y: 10, opacity: 0.60 },
-  { z: -80, y: 20, opacity: 0.45 },
+  { z: 0, y: 0, opacity: 0.35 },
+  { z: 0, y: 0, opacity: 0.60 },
+  { z: 0, y: 0, opacity: 0.90 },
+  { z: 0, y: 0, opacity: 0.90 },
+  { z: 0, y: 0, opacity: 0.60 },
+  { z: 0, y: 0, opacity: 0.35 },
 ];
 
 const DEPTH_MOBILE: { z: number; y: number; opacity: number }[] = [
-  { z: -30, y: 10, opacity: 0.50 },
-  { z: 0, y: 0, opacity: 0.80 },
-  { z: -30, y: 10, opacity: 0.50 },
+  { z: 0, y: 0, opacity: 0.50 },
+  { z: 0, y: 0, opacity: 0.85 },
+  { z: 0, y: 0, opacity: 0.50 },
 ];
 
 export const ThreeDPhotoBackground = ({ images }: ThreeDPhotoBackgroundProps) => {
@@ -50,15 +50,15 @@ export const ThreeDPhotoBackground = ({ images }: ThreeDPhotoBackgroundProps) =>
   });
 
   // Mobile: mniej agresywna perspektywa i mniejszy rotateZ
-  const perspective = isMobile ? '900px' : '600px';
-  const boardRotateX = isMobile ? '16deg' : '22deg';
-  const boardRotateZ = isMobile ? '-8deg' : '-16deg';
-  const boardWidth = isMobile ? '140%' : '120%';
-  const boardLeft = isMobile ? '-20%' : '-10%';
-  const boardTop = isMobile ? '-10%' : '-5%';
-  const colGap = isMobile ? '10px' : '24px';
-  const animDurationEven = isMobile ? 80 : 130;
-  const animDurationOdd = isMobile ? 86 : 136;
+  const perspective = isMobile ? '1000px' : '800px';
+  const boardRotateX = isMobile ? '15deg' : '24deg';
+  const boardRotateZ = isMobile ? '-8deg' : '-14deg';
+  const boardWidth = isMobile ? '140%' : '140%';
+  const boardLeft = isMobile ? '-20%' : '-20%';
+  const boardTop = isMobile ? '-10%' : '-15%';
+  const colGap = isMobile ? '12px' : '32px';
+  const animDurationEven = isMobile ? 80 : 140;
+  const animDurationOdd = isMobile ? 86 : 146;
 
   return (
     <div
@@ -109,7 +109,8 @@ export const ThreeDPhotoBackground = ({ images }: ThreeDPhotoBackgroundProps) =>
             <div
               key={colIdx}
               style={{
-                flex: 1,
+                flex: '1 0 0',
+                minWidth: isMobile ? '120px' : '220px',
                 display: 'flex',
                 flexDirection: 'column',
                 transformStyle: 'preserve-3d',
