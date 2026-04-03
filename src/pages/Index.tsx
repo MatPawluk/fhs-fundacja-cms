@@ -824,30 +824,31 @@ const Index = () => {
       {/* CTA Section */}
       <section className="relative py-16 overflow-hidden">
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
-          <div className="relative max-w-5xl mx-auto rounded-[2rem] overflow-hidden border border-white/10" style={{ background: '#0e0e0e' }}>
+          <div className="relative max-w-5xl mx-auto rounded-[2rem] overflow-hidden border border-gray-200" 
+               style={{ background: 'linear-gradient(to bottom, transparent, rgba(148,196,61,0.05))' }}>
 
-            {/* Grid texture overlay - like reference */}
-            <div className="absolute inset-0 opacity-[0.04]" style={{
-              backgroundImage: `linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)`,
+            {/* Grid texture overlay - subtle for light version */}
+            <div className="absolute inset-0 opacity-[0.03]" style={{
+              backgroundImage: `linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px)`,
               backgroundSize: '40px 40px'
             }} />
 
-            {/* Radial green glow from bottom-center - like reference's blue glow */}
+            {/* Radial green glow from bottom-center */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[350px] pointer-events-none"
-              style={{ background: 'radial-gradient(ellipse at center bottom, rgba(148,196,61,0.5) 0%, rgba(148,196,61,0.2) 45%, transparent 75%)' }}
+              style={{ background: 'radial-gradient(ellipse at center bottom, rgba(148,196,61,0.2) 0%, rgba(148,196,61,0.05) 45%, transparent 75%)' }}
             />
 
             {/* Content */}
             <div className="relative z-10 px-8 py-14 lg:py-20 text-center">
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
                 {t.cta.title} <span className="text-[#94c43d]">{t.cta.titleHighlight}</span>
               </h2>
-              <p className="text-gray-400 text-base mb-10 max-w-md mx-auto leading-relaxed">
+              <p className="text-gray-600 text-base mb-10 max-w-md mx-auto leading-relaxed">
                 {t.cta.subtitle}
               </p>
               <Link
                 to="/kontakt"
-                className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 rounded-full font-semibold text-base transition-all duration-300 hover:bg-[#94c43d] hover:text-white hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.6)] hover:scale-105"
+                className="group inline-flex items-center gap-3 px-8 py-4 bg-[#94c43d] text-white rounded-full font-semibold text-base transition-all duration-300 hover:scale-105 hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.4)]"
               >
                 {t.cta.button}
                 <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
