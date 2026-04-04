@@ -620,18 +620,10 @@ const Index = () => {
               <p className="text-gray-600 leading-relaxed mb-6">
                 {ix.wsprzyjDesc}
               </p>
-              <div className="mb-10 space-y-4">
+              <div className="mb-6 space-y-2">
                 <p className="text-gray-500 font-display font-medium text-sm uppercase tracking-wider">Wesprzyj nas i przekaż 1.5% podatku</p>
-                <div className="flex items-center gap-3 text-gray-500 font-display font-medium text-sm uppercase tracking-wider">
-                  <span className="opacity-70">KRS</span>
-                  <span className="text-[#94c43d] font-bold">0001104851</span>
-                </div>
-                <div>
-                  <p className="text-gray-900 font-display font-bold text-sm uppercase tracking-wider">
-                    CEL SZCZEGÓŁOWY 1,5%:<br/>
-                    <span className="text-[#94c43d] leading-relaxed block mt-1">WOLONTARIAT MEDYCZNY W AFRYCE</span>
-                  </p>
-                </div>
+                <p className="text-gray-500 font-display font-medium text-sm uppercase tracking-wider">KRS 0001104851</p>
+                <p className="text-gray-500 font-display font-medium text-sm uppercase tracking-wider">Cel szczegółowy 1,5%: Wolontariat Medyczny w Afryce</p>
               </div>
 
               <div ref={taxSectionRef} className="relative mb-16 group">
