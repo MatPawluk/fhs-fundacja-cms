@@ -13,13 +13,13 @@ import teamAdrian from '@/assets/team-adrian.jpg';
 import teamAdrian2 from '@/assets/team-adrian-2.jpg';
 
 // Video imports
-import mov1 from '@/assets/mov/DZIECIAK ZE SZKOŁY _skompresowany.webm';
-import mov2 from '@/assets/mov/KHEBA - wizytówka_beznapisów_skompresowany.webm';
-import mov3 from '@/assets/mov/NAGRANIA DOMU2_skompresowany.webm';
-import mov4 from '@/assets/mov/OLA_wizytówka_skompresowany.webm';
-import mov5 from '@/assets/mov/SZPITAL SOMA_skompresowany.webm';
-import mov6 from '@/assets/mov/University of the Gambia (1)_skompresowany.webm';
-import mov7 from '@/assets/mov/machanie_wioska_skompresowany.webm';
+import mov1 from '@/assets/mov/DZIECIAK ZE SZKOŁY _skompresowany_mini.mp4';
+import mov2 from '@/assets/mov/KHEBA - wizytówka_beznapisów_skompresowany_mini.mp4';
+import mov3 from '@/assets/mov/NAGRANIA DOMU2_skompresowany_mini.mp4';
+import mov4 from '@/assets/mov/OLA_wizytówka_skompresowany_mini.mp4';
+import mov5 from '@/assets/mov/SZPITAL SOMA_skompresowany_mini.mp4';
+import mov6 from '@/assets/mov/University of the Gambia (1)_skompresowany_mini.mp4';
+import mov7 from '@/assets/mov/machanie_wioska_skompresowany_mini.mp4';
 
 const allMedia = [
   dompolski1, 
@@ -94,7 +94,7 @@ export const PhotoCarousel = () => {
               <div className="flex flex-col gap-4" style={{ width: '240px' }}>
                 {group[0] && (
                   <div className="flex-1 rounded-2xl overflow-hidden shadow-md">
-                    {group[0].endsWith('.webm') ? (
+                    {group[0].endsWith('.mp4') ? (
                       <LazyVideo src={group[0]} />
                     ) : (
                       <img src={group[0]} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
@@ -103,7 +103,7 @@ export const PhotoCarousel = () => {
                 )}
                 {group[1] && (
                   <div className="flex-1 rounded-2xl overflow-hidden shadow-md">
-                    {group[1].endsWith('.webm') ? (
+                    {group[1].endsWith('.mp4') ? (
                       <LazyVideo src={group[1]} />
                     ) : (
                       <img src={group[1]} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
@@ -113,7 +113,7 @@ export const PhotoCarousel = () => {
               </div>
               {group[2] && (
                 <div className="rounded-2xl overflow-hidden shadow-md" style={{ width: '280px' }}>
-                  {group[2].endsWith('.webm') ? (
+                  {group[2].endsWith('.mp4') ? (
                     <LazyVideo src={group[2]} />
                   ) : (
                     <img src={group[2]} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
