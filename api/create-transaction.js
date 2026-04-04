@@ -38,12 +38,18 @@ export default async function handler(req, res) {
   const mIdNum = parseInt(merchantId);
   const p24AmountNum = parseInt(p24Amount);
   
-  // Signature payload MUST be numeric for merchantId and amount in v1
-  const signPayload = `{"sessionId":"${sessionId}","merchantId":${mIdNum},"amount":${p24AmountNum},"currency":"${currency}","crc":"${crc}"}`;
-  const sign = crypto.createHash('sha384').update(signPayload).digest('hex');
+  // Podpis generowany ściśle używając native JSON.stringify aby uniknąć przerw w składni
+  const signPayloadObj = {
+    sessionId: sessionId,
+    merchantId: mIdNum,
+    amount: p24AmountNum,
+    currency: currency,
+    crc: crc
+  };
+  const sign = crypto.createHash('sha384').update(JSON.stringify(signPayloadObj)).digest('hex');
 
   console.log('--- SIGN DEBUG ---');
-  console.log('Sign Payload:', signPayload);
+  console.log('Sign Payload:', JSON.stringify(signPayloadObj));
   console.log('Generated sign:', sign);
 
   const p24Payload = {
@@ -60,8 +66,8 @@ export default async function handler(req, res) {
     city: '',
     country,
     language,
-    urlReturn: `${req.headers.origin}/dziekujemy`,
-    urlStatus: `${req.headers.origin}/api/payment-status`,
+    urlReturn: isSandbox ? `${req.headers.origin}/dziekujemy` : 'https://www.fhs-strona-fundacji.pl/dziekujemy',
+    urlStatus: isSandbox ? `${req.headers.origin}/api/payment-status` : 'https://www.fhs-strona-fundacji.pl/api/payment-status',
     sign,
   };
 
