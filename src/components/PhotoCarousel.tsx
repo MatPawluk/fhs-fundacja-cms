@@ -46,33 +46,6 @@ for (let i = 0; i < allMedia.length; i += 3) {
   mediaGroups.push(allMedia.slice(i, i + 3));
 }
 
-const LazyVideo = ({ src }: { src: string }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  // We use a larger rootMargin to "warm up" the video before it enters the viewport
-  const isInView = useInView(videoRef, { amount: 0.01, margin: "200px 0px 200px 0px" });
-
-  return (
-    <div ref={videoRef as any} className="w-full h-full bg-[#f5f3ef] flex items-center justify-center overflow-hidden">
-      {isInView ? (
-        <video
-          src={src}
-          muted
-          loop
-          playsInline
-          autoPlay
-          preload="auto"
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-          style={{ transform: 'translateZ(0)' }}
-        />
-      ) : (
-        <div className="w-full h-full bg-[#94c43d]/5 flex items-center justify-center">
-          <div className="w-8 h-8 rounded-full border-2 border-t-transparent border-[#94c43d]/20 animate-spin" />
-        </div>
-      )}
-    </div>
-  );
-};
-
 export const PhotoCarousel = () => {
   // Reducing repetition to 2 is enough for most screens if the content is wide
   const repeatedGroups = [...mediaGroups, ...mediaGroups];
@@ -95,7 +68,7 @@ export const PhotoCarousel = () => {
                 {group[0] && (
                   <div className="flex-1 rounded-2xl overflow-hidden shadow-md">
                     {group[0].type === 'video' ? (
-                      <LazyVideo src={group[0].src} />
+                      <video src={group[0].src} autoPlay muted loop playsInline className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                     ) : (
                       <img src={group[0].src} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                     )}
@@ -104,7 +77,7 @@ export const PhotoCarousel = () => {
                 {group[1] && (
                   <div className="flex-1 rounded-2xl overflow-hidden shadow-md">
                     {group[1].type === 'video' ? (
-                      <LazyVideo src={group[1].src} />
+                      <video src={group[1].src} autoPlay muted loop playsInline className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                     ) : (
                       <img src={group[1].src} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                     )}
@@ -114,7 +87,7 @@ export const PhotoCarousel = () => {
               {group[2] && (
                 <div className="rounded-2xl overflow-hidden shadow-md" style={{ width: '280px' }}>
                   {group[2].type === 'video' ? (
-                    <LazyVideo src={group[2].src} />
+                    <video src={group[2].src} autoPlay muted loop playsInline className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                   ) : (
                     <img src={group[2].src} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                   )}
