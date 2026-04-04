@@ -96,7 +96,7 @@ export function useArtykuly(language: Language) {
   const { data, isLoading, error } = useQuery<SanityArtykul[]>({
     queryKey: ['artykuly'],
     queryFn: () => sanityClient.fetch(ARTYKULY_QUERY),
-    staleTime: 1000 * 60 * 5, // 5 minut cache
+    staleTime: 1000 * 60, // 1 minuta cache zamiast 5, aby CMS szybciej się odświeżał
     retry: 1,
   });
 
@@ -113,7 +113,7 @@ export function useArtykul(slug: string, language: Language) {
   const { data, isLoading, error } = useQuery<SanityArtykul | null>({
     queryKey: ['artykul', slug],
     queryFn: () => sanityClient.fetch(ARTYKUL_QUERY, { slug }),
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60,
     enabled: !!slug,
     retry: 1,
   });
