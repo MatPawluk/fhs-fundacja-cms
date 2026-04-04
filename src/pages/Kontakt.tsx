@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { GradientText } from '@/components/GradientText';
-import { MapPin, Send, ArrowUpRight } from 'lucide-react';
+import { MapPin, Send, ArrowUpRight, Loader2 } from 'lucide-react';
 import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { kontaktTranslations } from '@/i18n/pageTranslations';
@@ -63,10 +63,30 @@ const Kontakt = () => {
   ];
 
   const [activeLocation, setActiveLocation] = useState(locations[0]);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
+    if (!formData.name || !formData.email || !formData.message) return;
+
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      if (!res.ok) throw new Error('Failed to send');
+
+      setStatus('success');
+      setFormData({ name: '', email: '', topic: '', message: '' });
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (err) {
+      console.error(err);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   return (
@@ -139,9 +159,22 @@ const Kontakt = () => {
                     <textarea placeholder={pt.messagePlaceholder} rows={6} value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className="w-full px-4 py-3 rounded-xl border border-gray-200/50 text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#94c43d] focus:border-transparent transition-all duration-300 resize-none" style={{ backgroundColor: '#e8e5e0' }} />
                   </div>
 
-                  <button type="submit" className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#94c43d] text-white rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)]">
-                    {pt.submitButton}
-                    <Send className="w-5 h-5" />
+                  <button disabled={status === 'loading' || status === 'success'} type="submit" className={`w-full inline-flex items-center justify-center gap-2 px-8 py-4 ${status === 'success' ? 'bg-green-600' : status === 'error' ? 'bg-red-500' : 'bg-[#94c43d]'} text-white rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_16px_48px_-12px_rgba(148,196,61,0.5)] disabled:opacity-70 disabled:hover:scale-100 disabled:cursor-not-allowed`}>
+                    {status === 'loading' ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Wysyłanie...
+                      </>
+                    ) : status === 'success' ? (
+                      'Wysłano pomyślnie!'
+                    ) : status === 'error' ? (
+                      'Błąd wysyłania'
+                    ) : (
+                      <>
+                        {pt.submitButton}
+                        <Send className="w-5 h-5" />
+                      </>
+                    )}
                   </button>
                 </form>
               </div>
