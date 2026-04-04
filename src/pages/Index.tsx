@@ -620,11 +620,17 @@ const Index = () => {
               <p className="text-gray-600 leading-relaxed mb-6">
                 {ix.wsprzyjDesc}
               </p>
-              <div className="mb-6">
-                <p className="text-gray-500 font-display font-medium text-sm mb-3 uppercase tracking-wider">Wesprzyj nas i przekaż 1.5% podatku</p>
+              <div className="mb-10 space-y-4">
+                <p className="text-gray-500 font-display font-medium text-sm uppercase tracking-wider">Wesprzyj nas i przekaż 1.5% podatku</p>
                 <div className="flex items-center gap-3 text-gray-500 font-display font-medium text-sm uppercase tracking-wider">
                   <span className="opacity-70">KRS</span>
-                  <span>0001104851</span>
+                  <span className="text-[#94c43d] font-bold">0001104851</span>
+                </div>
+                <div>
+                  <p className="text-gray-900 font-display font-bold text-sm uppercase tracking-wider">
+                    CEL SZCZEGÓŁOWY 1,5%:<br/>
+                    <span className="text-[#94c43d] leading-relaxed block mt-1">WOLONTARIAT MEDYCZNY W AFRYCE</span>
+                  </p>
                 </div>
               </div>
 
