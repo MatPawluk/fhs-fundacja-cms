@@ -156,7 +156,7 @@ const Kontakt = () => {
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-8 h-0.5 bg-[#94c43d]" />
-              <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">Biura</span>
+              <span className="text-gray-900 font-display font-medium tracking-wider uppercase text-sm">Adresy</span>
               <div className="w-8 h-0.5 bg-[#94c43d]" />
             </div>
             <h3 className="font-display text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-6">
@@ -168,15 +168,13 @@ const Kontakt = () => {
                 <button
                   key={loc.id}
                   onClick={() => setActiveLocation(loc)}
-                  className={`text-left p-6 rounded-2xl border-2 transition-all duration-300 ${
-                    activeLocation.id === loc.id 
-                      ? 'border-[#94c43d] bg-white shadow-lg shadow-[#94c43d]/5' 
+                  className={`text-left p-6 rounded-2xl border-2 transition-all duration-300 ${activeLocation.id === loc.id
+                      ? 'border-[#94c43d] bg-white shadow-lg shadow-[#94c43d]/5'
                       : 'border-gray-200/50 hover:border-[#94c43d]/30 bg-white/50'
-                  }`}
+                    }`}
                 >
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors ${
-                    activeLocation.id === loc.id ? 'bg-[#94c43d]/10' : 'bg-[#e8e5e0]'
-                  }`}>
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors ${activeLocation.id === loc.id ? 'bg-[#94c43d]/10' : 'bg-[#e8e5e0]'
+                    }`}>
                     <MapPin className={`w-5 h-5 ${activeLocation.id === loc.id ? 'text-[#94c43d]' : 'text-gray-400'}`} />
                   </div>
                   <h4 className="font-semibold text-gray-900 mb-2">{loc.name}</h4>
@@ -188,10 +186,10 @@ const Kontakt = () => {
             </div>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }} 
-            whileInView={{ opacity: 1, y: 0 }} 
-            viewport={{ once: true }} 
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="rounded-[2.5rem] overflow-hidden border border-white/50 shadow-2xl shadow-gray-400/20 bg-white"
           >
