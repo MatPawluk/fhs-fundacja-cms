@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef, useEffect } from 'react';
 
 import dompolski1 from '@/assets/dompolski-1.jpg';
 import dompolski2 from '@/assets/dompolski-2.jpg';
@@ -45,7 +46,36 @@ for (let i = 0; i < allMedia.length; i += 3) {
   mediaGroups.push(allMedia.slice(i, i + 3));
 }
 
+const LazyVideo = ({ src }: { src: string }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const isInView = useInView(videoRef, { amount: 0.1 });
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+    if (isInView) {
+      videoRef.current.play().catch(() => {});
+    } else {
+      videoRef.current.pause();
+    }
+  }, [isInView]);
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+    />
+  );
+};
+
 export const PhotoCarousel = () => {
+  const repeatedGroups = [...mediaGroups, ...mediaGroups, ...mediaGroups];
+
+  return (
     <section className="py-8 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
       <div className="relative overflow-hidden">
         <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #f5f3ef 20%, transparent)' }} />
@@ -63,7 +93,7 @@ export const PhotoCarousel = () => {
                 {group[0] && (
                   <div className="flex-1 rounded-2xl overflow-hidden shadow-md">
                     {group[0].endsWith('.webm') ? (
-                      <video src={group[0]} autoPlay muted loop playsInline className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                      <LazyVideo src={group[0]} />
                     ) : (
                       <img src={group[0]} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                     )}
@@ -72,7 +102,7 @@ export const PhotoCarousel = () => {
                 {group[1] && (
                   <div className="flex-1 rounded-2xl overflow-hidden shadow-md">
                     {group[1].endsWith('.webm') ? (
-                      <video src={group[1]} autoPlay muted loop playsInline className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                      <LazyVideo src={group[1]} />
                     ) : (
                       <img src={group[1]} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                     )}
@@ -82,7 +112,7 @@ export const PhotoCarousel = () => {
               {group[2] && (
                 <div className="rounded-2xl overflow-hidden shadow-md" style={{ width: '280px' }}>
                   {group[2].endsWith('.webm') ? (
-                    <video src={group[2]} autoPlay muted loop playsInline className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                    <LazyVideo src={group[2]} />
                   ) : (
                     <img src={group[2]} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                   )}
