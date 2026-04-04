@@ -48,42 +48,44 @@ for (let i = 0; i < allMedia.length; i += 3) {
 
 const LazyVideo = ({ src }: { src: string }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const isInView = useInView(videoRef, { amount: 0.1 });
-
-  useEffect(() => {
-    if (!videoRef.current) return;
-    if (isInView) {
-      videoRef.current.play().catch(() => {});
-    } else {
-      videoRef.current.pause();
-    }
-  }, [isInView]);
+  // We use a larger rootMargin to "warm up" the video before it enters the viewport
+  const isInView = useInView(videoRef, { amount: 0.01, margin: "200px 0px 200px 0px" });
 
   return (
-    <video
-      ref={videoRef}
-      src={src}
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-    />
+    <div ref={videoRef as any} className="w-full h-full bg-gray-100 flex items-center justify-center overflow-hidden">
+      {isInView ? (
+        <video
+          src={src}
+          muted
+          loop
+          playsInline
+          autoPlay
+          preload="auto"
+          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          style={{ transform: 'translateZ(0)' }}
+        />
+      ) : (
+        <div className="w-full h-full bg-[#94c43d]/5 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full border-2 border-t-transparent border-[#94c43d]/20 animate-spin" />
+        </div>
+      )}
+    </div>
   );
 };
 
 export const PhotoCarousel = () => {
-  const repeatedGroups = [...mediaGroups, ...mediaGroups, ...mediaGroups];
+  // Reducing repetition to 2 is enough for most screens if the content is wide
+  const repeatedGroups = [...mediaGroups, ...mediaGroups];
 
   return (
     <section className="py-8 overflow-hidden" style={{ backgroundColor: '#f5f3ef' }}>
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden" style={{ transform: 'translateZ(0)', backfaceVisibility: 'hidden' }}>
         <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #f5f3ef 20%, transparent)' }} />
         <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #f5f3ef 20%, transparent)' }} />
 
         <motion.div
-          animate={{ x: ['0%', '-33.33%'] }}
-          transition={{ duration: 60, repeat: Infinity, ease: 'linear', repeatType: 'loop' }}
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ duration: 50, repeat: Infinity, ease: 'linear', repeatType: 'loop' }}
           className="flex gap-6 will-change-transform"
           style={{ width: 'max-content' }}
         >
