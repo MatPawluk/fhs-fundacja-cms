@@ -21,27 +21,27 @@ import mov5 from '@/assets/mov/SZPITAL SOMA_skompresowany_mini.mp4';
 import mov6 from '@/assets/mov/University of the Gambia (1)_skompresowany_mini.mp4';
 import mov7 from '@/assets/mov/machanie_wioska_skompresowany_mini.mp4';
 
-const allMedia = [
-  dompolski1, 
-  mov1,
-  teamDarek, 
-  mov2,
-  dompolski2, 
-  mov3,
-  teamAdrian, 
-  mov4,
-  dompolski3, 
-  mov5,
-  teamAdrian2, 
-  mov6,
-  dompolski4, 
-  mov7,
-  dompolski5, 
-  dompolski6, 
-  dompolski7
+const allMedia: { type: 'image' | 'video', src: string }[] = [
+  { type: 'image', src: dompolski1 },
+  { type: 'video', src: mov1 },
+  { type: 'image', src: teamDarek },
+  { type: 'video', src: mov2 },
+  { type: 'image', src: dompolski2 },
+  { type: 'video', src: mov3 },
+  { type: 'image', src: teamAdrian },
+  { type: 'video', src: mov4 },
+  { type: 'image', src: dompolski3 },
+  { type: 'video', src: mov5 },
+  { type: 'image', src: teamAdrian2 },
+  { type: 'video', src: mov6 },
+  { type: 'image', src: dompolski4 },
+  { type: 'video', src: mov7 },
+  { type: 'image', src: dompolski5 },
+  { type: 'image', src: dompolski6 },
+  { type: 'image', src: dompolski7 },
 ];
 
-const mediaGroups: string[][] = [];
+const mediaGroups: typeof allMedia[] = [];
 for (let i = 0; i < allMedia.length; i += 3) {
   mediaGroups.push(allMedia.slice(i, i + 3));
 }
@@ -52,7 +52,7 @@ const LazyVideo = ({ src }: { src: string }) => {
   const isInView = useInView(videoRef, { amount: 0.01, margin: "200px 0px 200px 0px" });
 
   return (
-    <div ref={videoRef as any} className="w-full h-full bg-gray-100 flex items-center justify-center overflow-hidden">
+    <div ref={videoRef as any} className="w-full h-full bg-[#f5f3ef] flex items-center justify-center overflow-hidden">
       {isInView ? (
         <video
           src={src}
@@ -94,29 +94,29 @@ export const PhotoCarousel = () => {
               <div className="flex flex-col gap-4" style={{ width: '240px' }}>
                 {group[0] && (
                   <div className="flex-1 rounded-2xl overflow-hidden shadow-md">
-                    {group[0].endsWith('.mp4') ? (
-                      <LazyVideo src={group[0]} />
+                    {group[0].type === 'video' ? (
+                      <LazyVideo src={group[0].src} />
                     ) : (
-                      <img src={group[0]} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                      <img src={group[0].src} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                     )}
                   </div>
                 )}
                 {group[1] && (
                   <div className="flex-1 rounded-2xl overflow-hidden shadow-md">
-                    {group[1].endsWith('.mp4') ? (
-                      <LazyVideo src={group[1]} />
+                    {group[1].type === 'video' ? (
+                      <LazyVideo src={group[1].src} />
                     ) : (
-                      <img src={group[1]} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                      <img src={group[1].src} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                     )}
                   </div>
                 )}
               </div>
               {group[2] && (
                 <div className="rounded-2xl overflow-hidden shadow-md" style={{ width: '280px' }}>
-                  {group[2].endsWith('.mp4') ? (
-                    <LazyVideo src={group[2]} />
+                  {group[2].type === 'video' ? (
+                    <LazyVideo src={group[2].src} />
                   ) : (
-                    <img src={group[2]} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                    <img src={group[2].src} alt="" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                   )}
                 </div>
               )}
