@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(curl -s -w \"\\\\nHTTP_CODE: %{http_code}\" -X GET \"https://secure.przelewy24.pl/api/v1/testAccess\" -H \"Authorization: Basic $\\(echo -n '298235:bb265d9c45f0024b708f662d69906336')",
-      "Bash(curl -s -w \"\\\\nHTTP_CODE: %{http_code}\" -X GET \"https://sandbox.przelewy24.pl/api/v1/testAccess\" -H \"Authorization: Basic $\\(echo -n '298235:bb265d9c45f0024b708f662d69906336')"
+      "Bash(curl -s -w \"\\\\nHTTP_CODE: %{http_code}\" -X GET \"https://sandbox.przelewy24.pl/api/v1/testAccess\" -H \"Authorization: Basic $\\(echo -n '298235:bb265d9c45f0024b708f662d69906336')",
+      "WebSearch"
     ]
   }
 }

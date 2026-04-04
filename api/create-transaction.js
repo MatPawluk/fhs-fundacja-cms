@@ -38,6 +38,7 @@ export default async function handler(req, res) {
     p24_url_return: `${req.headers.origin || 'https://fhspolska.pl'}/dziekujemy`,
     p24_url_status: `${req.headers.origin || 'https://fhspolska.pl'}/api/payment-status`,
     p24_sign: sign,
+    p24_channel: '63',
     p24_api_version: '3.2',
     p24_encoding: 'UTF-8',
   });
