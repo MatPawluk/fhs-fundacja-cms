@@ -35,10 +35,10 @@ export default async function handler(req, res) {
   const language = 'pl';
 
   // 🔐 SIGN (REST API v1 requires SHA-384 and JSON structure)
+  // Importance: sessionId, merchantId (int), amount (int), currency, crc
   const mIdNum = parseInt(merchantId);
   const p24AmountNum = parseInt(p24Amount);
   
-  // Podpis generowany ściśle używając native JSON.stringify aby uniknąć przerw w składni
   const signPayloadObj = {
     sessionId: sessionId,
     merchantId: mIdNum,
@@ -46,6 +46,7 @@ export default async function handler(req, res) {
     currency: currency,
     crc: crc
   };
+  // SHA-384 hash of the JSON-stringified object (no spaces by default in JSON.stringify)
   const sign = crypto.createHash('sha384').update(JSON.stringify(signPayloadObj)).digest('hex');
 
   console.log('--- SIGN DEBUG ---');
@@ -62,8 +63,8 @@ export default async function handler(req, res) {
     email,
     country,
     language,
-    urlReturn: isSandbox ? `${req.headers.origin}/dziekujemy` : 'https://www.fhs-strona-fundacji.pl/dziekujemy',
-    urlStatus: isSandbox ? `${req.headers.origin}/api/payment-status` : 'https://www.fhs-strona-fundacji.pl/api/payment-status',
+    urlReturn: `${req.headers.origin || 'https://fhspolska.pl'}/dziekujemy`,
+    urlStatus: `${req.headers.origin || 'https://fhspolska.pl'}/api/payment-status`,
     sign,
   };
 
